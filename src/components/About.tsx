@@ -1,12 +1,13 @@
 import avatarImg from "../../assets/image/avatar.JPG";
 import ScrollReveal from "./common/ScrollReveal";
+import PixelSwap from "./common/PixelSwap";
 import { coreCompetencies } from "../data/about";
 
 interface AboutProps {
-  setShowManifesto: (show: boolean) => void;
+  setShowManifesto?: (show: boolean) => void;
 }
 
-export default function About({ setShowManifesto }: AboutProps) {
+export default function About({ setShowManifesto: _setShowManifesto }: AboutProps) {
   return (
     <section id="about" className="py-24 bg-white border-b border-[#CCE5E3] scroll-mt-20">
       <div className="max-w-[1440px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
@@ -19,13 +20,70 @@ export default function About({ setShowManifesto }: AboutProps) {
             </h3>
           </ScrollReveal>
           <ScrollReveal direction="up" delay={0.25}>
-            <div className="w-full sm:w-4/5 lg:w-full aspect-[4/5] overflow-hidden bg-[#F0F8F7] group relative rounded-xl border border-[#CCE5E3] shadow-sm">
-              <img
-                src={avatarImg}
-                alt="Portrait of Nguyen Ha Minh Khanh"
-                className="w-full h-full object-cover group-hover:grayscale-0 transition-all duration-1000 ease-in-out scale-100 group-hover:scale-105"
+            <div className="w-full sm:w-4/5 lg:w-full overflow-hidden rounded-xl border border-[#CCE5E3] shadow-sm group">
+              <PixelSwap
+                pixelSize={64}
+                gap={0}
+                pixelRadius={0}
+                pixelSpin={0}
+                pixelScale={0.35}
+                duration={1400}
+                pixelDuration={450}
+                pattern="random"
+                randomness={0}
+                fade
+                trigger="hover"
+                aspectRatio="4 / 5"
+                firstContent={
+                  <div className="w-full h-full overflow-hidden bg-[#F0F8F7] relative">
+                    <img
+                      src={avatarImg}
+                      alt="Portrait of Nguyen Ha Minh Khanh"
+                      className="w-full h-full object-cover select-none"
+                    />
+                    <div className="absolute inset-0 bg-[#0B6E7B]/5 pointer-events-none"></div>
+                    <div className="absolute bottom-3 right-3 bg-[#07262B]/90 border border-[#0B6E7B]/40 px-3 py-1.5 rounded-full text-white text-[10px] font-narrow font-bold uppercase tracking-widest flex items-center gap-1.5 shadow-md">
+                      <i className="fa-solid fa-arrow-pointer text-[#2DD4BF] text-xs"></i>
+                      <span>Hover to Reveal</span>
+                    </div>
+                  </div>
+                }
+                secondContent={
+                  <div className="w-full h-full bg-gradient-to-br from-[#07262B] via-[#0A3D44] to-[#051E22] text-white p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden border border-[#0B6E7B]/40 shadow-xl select-none">
+                    <div className="relative z-10 space-y-4">
+                      <div className="flex items-center justify-between border-b border-[#0B6E7B]/40 pb-3">
+                        <span className="font-narrow text-[11px] font-black text-[#2DD4BF] tracking-[0.2em] uppercase">
+                          WORDS OF INTENT
+                        </span>
+                        <i className="fa-solid fa-quote-right text-lg text-[#2DD4BF]"></i>
+                      </div>
+
+                      <div className="space-y-3 pt-2">
+                        <h4 className="font-display text-xl sm:text-2xl uppercase tracking-tight text-white leading-snug">
+                          &ldquo;See deeper. Grow wiser. Live brighter.&rdquo;
+                        </h4>
+                        <p className="font-sans text-xs sm:text-sm text-white/85 leading-relaxed italic">
+                          &ldquo;I believe meaningful brands begin with understanding. Creating compassionate value, always moving forward.&rdquo;
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="relative z-10 pt-4 border-t border-[#0B6E7B]/40 flex items-end justify-between">
+                      <div className="space-y-0.5">
+                        <span className="font-sans text-[12px] font-bold text-white block">
+                          Nguyễn Hà Minh Khánh
+                        </span>
+                        <span className="font-narrow text-[10px] text-[#2DD4BF] uppercase tracking-wider block font-semibold">
+                          Brand & Marketing Communications
+                        </span>
+                      </div>
+                      <div className="font-cursive text-3xl text-[#2DD4BF] tracking-wide">
+                        Minh Khanh
+                      </div>
+                    </div>
+                  </div>
+                }
               />
-              <div className="absolute inset-0 bg-[#0B6E7B]/5 mix-blend-multiply opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
             </div>
           </ScrollReveal>
         </div>
@@ -88,24 +146,6 @@ export default function About({ setShowManifesto }: AboutProps) {
                     </div>
                   </div>
                 </div>
-              </div>
-            </ScrollReveal>
-
-            {/* Manifesto CTA Button */}
-            <ScrollReveal direction="up" delay={0.45}>
-              <div className="pt-4">
-                <button
-                  id="manifesto-btn"
-                  onClick={() => setShowManifesto(true)}
-                  className="group relative inline-flex items-center justify-between border border-[#0B6E7B] text-[#0B6E7B] px-6 py-3.5 font-narrow text-xs font-black tracking-[0.2em] uppercase overflow-hidden rounded-lg transition-all duration-300 hover:text-white cursor-pointer shadow-xs"
-                >
-                  <span className="absolute inset-0 bg-[#0B6E7B] translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></span>
-                  <span className="relative z-10 mr-4 flex items-center gap-2">
-                    <i className="fa-solid fa-book-open text-xs text-[#0B6E7B] group-hover:text-white transition-colors"></i>
-                    READ FULL MANIFESTO
-                  </span>
-                  <i className="fa-solid fa-arrow-up-right-from-square relative z-10 text-xs transition-transform duration-300 group-hover:rotate-45"></i>
-                </button>
               </div>
             </ScrollReveal>
           </div>

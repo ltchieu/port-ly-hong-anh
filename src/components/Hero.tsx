@@ -1,11 +1,12 @@
 import { motion } from "motion/react";
 import ThreeWavyBackground from "./common/ThreeWavyBackground";
+import DecryptedText from "./common/DecryptedText";
+import StrokeText from "./common/StrokeText";
 
 interface HeroProps {
   currentDateString: string;
   currentTime: string;
 }
-
 
 export default function Hero({ currentDateString, currentTime }: HeroProps) {
   return (
@@ -38,18 +39,39 @@ export default function Hero({ currentDateString, currentTime }: HeroProps) {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-          className="w-fit flex flex-col text-left"
+          className="w-fit max-w-full flex flex-col text-left"
         >
-          {/* Pre-headline */}
-          <span className="font-sans text-base sm:text-lg md:text-xl text-[#4E6E75] font-medium tracking-wide block mb-1 ml-2">
-            Nguyễn Hà Minh Khánh (Mia Nguyen)
-          </span>
+          {/* Pre-headline: DecryptedText */}
+          <DecryptedText
+            text="Nguyễn Hà Minh Khánh (Mia Nguyen)"
+            animateOn="view"
+            speed={75}
+            maxIterations={18}
+            parentClassName="font-sans text-xl sm:text-2xl md:text-3xl lg:text-[2rem] text-[#4E6E75] font-medium tracking-wide block mb-3 ml-1 select-none"
+            className="text-[#4E6E75]"
+            encryptedClassName="text-[#0B6E7B] font-mono font-bold"
+          />
 
-          {/* Headline */}
-          <h1 className="font-sans font-black text-[#0C2B31] leading-none tracking-tight text-5xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[9.5rem]">
-            Portfolio.
+          {/* Headline: StrokeText */}
+          <h1 className="w-full max-w-[94vw] sm:w-[580px] md:w-[740px] lg:w-[940px] xl:w-[1120px]">
+            <StrokeText
+              text="Portfolio."
+              strokeColor="#0B6E7B"
+              fillColor="#0C2B31"
+              strokeWidth={2.8}
+              drawDuration={2.2}
+              fillDelay={0.3}
+              stagger={0.07}
+              ease="power2.out"
+              trigger="mount"
+              fillMode="fade"
+              fontSize={180}
+              fontWeight={900}
+              letterSpacing={-4}
+              fontFamily='var(--font-sans, "Inter", ui-sans-serif, system-ui, sans-serif)'
+              className="font-sans font-black tracking-tight w-full"
+            />
           </h1>
-
         </motion.div>
       </div>
 
