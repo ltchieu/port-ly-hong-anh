@@ -88,10 +88,9 @@ export default function ThreeWavyBackground() {
 
         if (alpha < 0.001) discard;
 
-        // Monochrome Palette: Off-white and Soft Light Grey (closer to white)
-        vec3 colorLight = vec3(0.96, 0.96, 0.97); // Off-white
-        vec3 colorDark  = vec3(0.72, 0.72, 0.75); // Soft Light Grey
-
+        // Mint-Teal Tinted Palette: Luminous Pure Off-white and Soft Seafoam Mint
+        vec3 colorLight = vec3(0.99, 1.0, 1.0); // Crisp Bright White
+        vec3 colorDark  = vec3(0.85, 0.94, 0.94); // Light Seafoam Mint
 
         // Base gradient distorted by waves for a fluid look
         float grad = vUv.y + sin(vUv.x * 2.8 + uTime * 0.18) * 0.08;
@@ -101,22 +100,22 @@ export default function ThreeWavyBackground() {
         vec3 lightDir = normalize(vec3(-0.7, -0.7, 0.6));
         float diff = max(dot(vNormal, lightDir), 0.0);
 
-        // Volumetric Crease Shading: creases are significantly darker (deep soft volume shadow)
+        // Luminous Ambient Lighting: bright and airy, no harsh dark crease shadows
         float shadowFactor = smoothstep(0.12, 0.88, diff);
-        baseColor = baseColor * (0.32 + shadowFactor * 0.68);
+        baseColor = baseColor * (0.75 + shadowFactor * 0.25);
 
         // Soften the contrast in the center area for maximum typography legibility
         float centerDist = distance(vUv, vec2(0.5, 0.5));
         float centerFactor = smoothstep(0.42, 0.0, centerDist);
-        baseColor = mix(baseColor, colorLight, centerFactor * 0.46);
+        baseColor = mix(baseColor, colorLight, centerFactor * 0.60);
 
         // Satin/Silk specular highlight
         float spec = pow(diff, 16.0) * 0.08;
         vec3 finalColor = baseColor + vec3(spec);
 
-        // High-contrast film grain noise texture (very visible film look)
+        // Subtle clean film grain for elegance
         float grain = fract(sin(dot(gl_FragCoord.xy, vec2(12.9898, 78.233))) * 43758.5453);
-        finalColor += (grain - 0.5) * 0.075;
+        finalColor += (grain - 0.5) * 0.02;
 
         gl_FragColor = vec4(finalColor, alpha);
       }
@@ -200,7 +199,7 @@ export default function ThreeWavyBackground() {
   return (
     <div
       ref={containerRef}
-      className="absolute inset-0 w-full h-full z-0 bg-white"
+      className="absolute inset-0 w-full h-full z-0 bg-transparent"
     />
   );
 }

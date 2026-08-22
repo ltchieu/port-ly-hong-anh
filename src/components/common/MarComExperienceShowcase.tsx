@@ -89,7 +89,7 @@ export default function MarComExperienceShowcase() {
         key={idx}
         src={rawImages[path]}
         alt={`The Open Run 2025 Design ${idx + 1}`}
-        className="w-full h-full object-cover rounded-xl border border-[#CCCCCC]/60 shadow-md select-none"
+        className="w-full h-full object-cover rounded-xl border border-[#CCE5E3] shadow-md select-none"
       />
     ));
   }, []);
@@ -123,7 +123,7 @@ export default function MarComExperienceShowcase() {
         key={idx}
         src={rawImages[path]}
         alt={`The Open Run 2025 Photography ${idx + 1}`}
-        className="w-full h-full object-cover rounded-xl border border-[#CCCCCC]/60 shadow-md select-none"
+        className="w-full h-full object-cover rounded-xl border border-[#CCE5E3] shadow-md select-none"
       />
     ));
   }, []);
@@ -147,7 +147,7 @@ export default function MarComExperienceShowcase() {
           key={idx}
           src={src}
           alt={`Miss & Mister OU ${idx + 1}`}
-          className="w-full h-full object-cover rounded-xl border border-[#CCCCCC]/60 shadow-md select-none"
+          className="w-full h-full object-cover rounded-xl border border-[#CCE5E3] shadow-md select-none"
         />
       )),
     [missMisterImagesTop5]
@@ -258,26 +258,26 @@ export default function MarComExperienceShowcase() {
   }, [galleryModal.isOpen, closeGalleryModal, prevGalleryImage, nextGalleryImage]);
 
   return (
-    <div className="pt-6 space-y-10 border-t border-[#CCCCCC]/40 mt-6" onClick={(e) => e.stopPropagation()}>
+    <div className="pt-6 space-y-10 border-t border-[#CCE5E3] mt-6" onClick={(e) => e.stopPropagation()}>
 
       {/* ========================================================================= */}
       {/* COLLAGE: ORGANIZER, DESIGNER & PHOTOGRAPHER OF THE OPEN RUN 2025 */}
       {/* ========================================================================= */}
-      <div className="bg-[#FAF9F6] border border-[#CCCCCC]/60 rounded-xl p-5 sm:p-6 space-y-6">
+      <div className="bg-[#F4FAF9] border border-[#CCE5E3] rounded-xl p-5 sm:p-6 space-y-6">
         {/* Main Section Header */}
-        <div className="border-b border-[#CCCCCC]/30 pb-4 space-y-2">
+        <div className="border-b border-[#CCE5E3] pb-4 space-y-2">
           <div className="flex flex-wrap items-center justify-between gap-2">
-            <h3 className="font-display text-xl sm:text-2xl uppercase tracking-tight text-[#111111] flex items-center gap-2.5">
-              <i className="fa-solid fa-person-running text-base text-[#111111]"></i>
+            <h3 className="font-display text-xl sm:text-2xl uppercase tracking-tight text-[#0C2B31] flex items-center gap-2.5">
+              <i className="fa-solid fa-person-running text-base text-[#0B6E7B]"></i>
               Organizer, Main Designer & Photographer of The Open Run 2025
             </h3>
-            <span className="px-3 py-1 bg-[#111111] text-white font-narrow text-[11px] font-bold uppercase tracking-wider rounded flex items-center gap-1.5 shadow-sm">
-              <i className="fa-solid fa-award text-xs"></i>
+            <span className="px-3 py-1 bg-[#0B6E7B] text-white font-narrow text-[11px] font-bold uppercase tracking-wider rounded-lg flex items-center gap-1.5 shadow-xs">
+              <i className="fa-solid fa-award text-xs text-[#2DD4BF]"></i>
               Event Operations, Design & Photography
             </span>
           </div>
 
-          <p className="font-sans text-xs sm:text-sm text-[#444444] leading-relaxed">
+          <p className="font-sans text-xs sm:text-sm text-[#4E6E75] leading-relaxed">
             Main event organizer, graphic identity designer, and official photographer for Ho Chi Minh City Open University’s annual marathon. Coordinated 600+ on-site runners while producing the complete visual collateral suite and capturing live event moments.
           </p>
         </div>
@@ -286,21 +286,21 @@ export default function MarComExperienceShowcase() {
         <div className="space-y-6">
 
           {/* COLLAGE 1: DESIGN (ABOVE) */}
-          <div className="bg-white p-4 sm:p-5 rounded-lg border border-[#CCCCCC]/60 flex flex-col justify-between space-y-4">
-            <div className="space-y-1 border-b border-[#CCCCCC]/30 pb-3">
+          <div className="bg-white p-4 sm:p-5 rounded-xl border border-[#CCE5E3] flex flex-col justify-between space-y-4 shadow-xs">
+            <div className="space-y-1 border-b border-[#CCE5E3] pb-3">
               <div className="flex items-center justify-between gap-2">
                 <div>
-                  <h4 className="font-narrow text-xs font-black text-[#111111] uppercase tracking-wider flex items-center gap-1.5">
-                    <i className="fa-solid fa-palette text-[#111111]"></i>
+                  <h4 className="font-narrow text-xs font-black text-[#0C2B31] uppercase tracking-wider flex items-center gap-1.5">
+                    <i className="fa-solid fa-palette text-[#0B6E7B]"></i>
                     Visual Collateral & Graphic Design ({openRunDesignImages.length} Assets)
                   </h4>
-                  <p className="font-sans text-[10px] text-[#5E5E5E]">
+                  <p className="font-sans text-[10px] text-[#4E6E75]">
                     Hover over cards to trigger bounce animation; click photo to expand.
                   </p>
                 </div>
-                <span className="font-mono text-[9px] text-[#5E5E5E] hidden sm:inline-block">HOVER / CLICK</span>
+                <span className="font-mono text-[9px] text-[#0B6E7B] hidden sm:inline-block">HOVER / CLICK</span>
               </div>
-              <p className="font-sans text-[11px] text-[#666666] line-clamp-2">
+              <p className="font-sans text-[11px] text-[#4E6E75] line-clamp-2">
                 Elevator LEDs, contestant badges, background banners, standees, social posts & thank-you certificates.
               </p>
             </div>
@@ -334,10 +334,10 @@ export default function MarComExperienceShowcase() {
             </div>
 
             {/* Expand / View All button & Thumbnail row */}
-            <div className="space-y-3 pt-3 border-t border-[#CCCCCC]/30">
+            <div className="space-y-3 pt-3 border-t border-[#CCE5E3]">
               <button
                 onClick={() => openGalleryModal("The Open Run 2025 – Graphic & Brand Design", "Visual Branding & Graphic Design", openRunDesignImages, 0)}
-                className="w-full py-2 bg-[#FAF9F6] border border-[#CCCCCC] hover:bg-[#111111] hover:text-white transition-all rounded font-narrow text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 text-[#111111] cursor-pointer"
+                className="w-full py-2 bg-[#F4FAF9] border border-[#CCE5E3] hover:bg-[#0B6E7B] hover:text-white transition-all rounded-lg font-narrow text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 text-[#0C2B31] cursor-pointer shadow-xs"
               >
                 <i className="fa-solid fa-expand text-xs"></i>
                 <span>View Full Design Suite ({openRunDesignImages.length})</span>
@@ -348,7 +348,7 @@ export default function MarComExperienceShowcase() {
                   <button
                     key={idx}
                     onClick={() => openGalleryModal("The Open Run 2025 – Graphic & Brand Design", "Visual Branding & Graphic Design", openRunDesignImages, idx)}
-                    className="aspect-square rounded overflow-hidden border border-[#CCCCCC]/60 hover:border-[#111111] hover:scale-105 transition-all group cursor-pointer"
+                    className="aspect-square rounded-lg overflow-hidden border border-[#CCE5E3] hover:border-[#0B6E7B] hover:scale-105 transition-all group cursor-pointer"
                   >
                     <img
                       src={src}
@@ -363,21 +363,21 @@ export default function MarComExperienceShowcase() {
           </div>
 
           {/* COLLAGE 2: PHOTOGRAPHY (BELOW) */}
-          <div className="bg-white p-4 sm:p-5 rounded-lg border border-[#CCCCCC]/60 flex flex-col justify-between space-y-4">
-            <div className="space-y-1 border-b border-[#CCCCCC]/30 pb-3">
+          <div className="bg-white p-4 sm:p-5 rounded-xl border border-[#CCE5E3] flex flex-col justify-between space-y-4 shadow-xs">
+            <div className="space-y-1 border-b border-[#CCE5E3] pb-3">
               <div className="flex items-center justify-between gap-2">
                 <div>
-                  <h4 className="font-narrow text-xs font-black text-[#111111] uppercase tracking-wider flex items-center gap-1.5">
-                    <i className="fa-solid fa-camera text-[#111111]"></i>
+                  <h4 className="font-narrow text-xs font-black text-[#0C2B31] uppercase tracking-wider flex items-center gap-1.5">
+                    <i className="fa-solid fa-camera text-[#0B6E7B]"></i>
                     Event Photography & Race Coverage ({openRunPhotoImages.length} Shots)
                   </h4>
-                  <p className="font-sans text-[10px] text-[#5E5E5E]">
+                  <p className="font-sans text-[10px] text-[#4E6E75]">
                     Hover over cards to trigger bounce animation; click photo to expand.
                   </p>
                 </div>
-                <span className="font-mono text-[9px] text-[#5E5E5E] hidden sm:inline-block">HOVER / CLICK</span>
+                <span className="font-mono text-[9px] text-[#0B6E7B] hidden sm:inline-block">HOVER / CLICK</span>
               </div>
-              <p className="font-sans text-[11px] text-[#666666] line-clamp-2">
+              <p className="font-sans text-[11px] text-[#4E6E75] line-clamp-2">
                 Live track action, finish-line celebrations, award presentations & backstage operations.
               </p>
             </div>
@@ -411,10 +411,10 @@ export default function MarComExperienceShowcase() {
             </div>
 
             {/* Expand / View All button & Thumbnail row */}
-            <div className="space-y-3 pt-3 border-t border-[#CCCCCC]/30">
+            <div className="space-y-3 pt-3 border-t border-[#CCE5E3]">
               <button
                 onClick={() => openGalleryModal("The Open Run 2025 – Event Photography", "Event Operations & Photography", openRunPhotoImages, 0)}
-                className="w-full py-2 bg-[#FAF9F6] border border-[#CCCCCC] hover:bg-[#111111] hover:text-white transition-all rounded font-narrow text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 text-[#111111] cursor-pointer"
+                className="w-full py-2 bg-[#F4FAF9] border border-[#CCE5E3] hover:bg-[#0B6E7B] hover:text-white transition-all rounded-lg font-narrow text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 text-[#0C2B31] cursor-pointer shadow-xs"
               >
                 <i className="fa-solid fa-expand text-xs"></i>
                 <span>View Full Photo Gallery ({openRunPhotoImages.length})</span>
@@ -425,7 +425,7 @@ export default function MarComExperienceShowcase() {
                   <button
                     key={idx}
                     onClick={() => openGalleryModal("The Open Run 2025 – Event Photography", "Event Operations & Photography", openRunPhotoImages, idx)}
-                    className="aspect-square rounded overflow-hidden border border-[#CCCCCC]/60 hover:border-[#111111] hover:scale-105 transition-all group cursor-pointer"
+                    className="aspect-square rounded-lg overflow-hidden border border-[#CCE5E3] hover:border-[#0B6E7B] hover:scale-105 transition-all group cursor-pointer"
                   >
                     <img
                       src={src}
@@ -445,38 +445,38 @@ export default function MarComExperienceShowcase() {
       {/* ========================================================================= */}
       {/* COLLAGE 2: ORGANIZER OF MISS & MISTER OU 2025 */}
       {/* ========================================================================= */}
-      <div className="bg-[#FAF9F6] border border-[#CCCCCC]/60 rounded-xl p-5 sm:p-6 space-y-5">
-        <div className="border-b border-[#CCCCCC]/30 pb-4 space-y-2">
+      <div className="bg-[#F4FAF9] border border-[#CCE5E3] rounded-xl p-5 sm:p-6 space-y-5">
+        <div className="border-b border-[#CCE5E3] pb-4 space-y-2">
           <div className="flex flex-wrap items-center justify-between gap-2">
-            <h3 className="font-display text-xl sm:text-2xl uppercase tracking-tight text-[#111111] flex items-center gap-2.5">
-              <i className="fa-solid fa-crown text-base text-[#111111]"></i>
+            <h3 className="font-display text-xl sm:text-2xl uppercase tracking-tight text-[#0C2B31] flex items-center gap-2.5">
+              <i className="fa-solid fa-crown text-base text-[#0B6E7B]"></i>
               Organizer of Miss & Mister OU 2025
             </h3>
-            <span className="px-3 py-1 bg-white border border-[#111111]/20 font-narrow text-[11px] font-bold uppercase tracking-wider rounded text-[#111111] flex items-center gap-1.5 shadow-sm">
-              <i className="fa-solid fa-users text-[#111111] text-xs"></i>
+            <span className="px-3 py-1 bg-white border border-[#CCE5E3] font-narrow text-[11px] font-bold uppercase tracking-wider rounded-lg text-[#0B6E7B] flex items-center gap-1.5 shadow-xs">
+              <i className="fa-solid fa-users text-[#0B6E7B] text-xs"></i>
               Event Operations & Backstage Team
             </span>
           </div>
 
-          <p className="font-sans text-xs sm:text-sm text-[#444444] leading-relaxed">
+          <p className="font-sans text-xs sm:text-sm text-[#4E6E75] leading-relaxed">
             Organizing team assistant leading backstage logistics, media team setup, and contestant photo shooting for Miss & Mister OU 2025. Generated over 1,000+ online & offline audience interactions.
           </p>
         </div>
 
         {/* Bounce Card above & Gallery below (Cốm Gừng Style) */}
-        <div className="bg-white p-4 sm:p-5 rounded-lg border border-[#CCCCCC]/60 flex flex-col justify-between space-y-4">
+        <div className="bg-white p-4 sm:p-5 rounded-xl border border-[#CCE5E3] flex flex-col justify-between space-y-4 shadow-xs">
           <div>
             <div className="flex items-center justify-between gap-2 mb-3">
               <div>
-                <h4 className="font-narrow text-xs font-black text-[#111111] uppercase tracking-wider flex items-center gap-1.5">
-                  <i className="fa-solid fa-layer-group text-[#111111]"></i>
+                <h4 className="font-narrow text-xs font-black text-[#0C2B31] uppercase tracking-wider flex items-center gap-1.5">
+                  <i className="fa-solid fa-layer-group text-[#0B6E7B]"></i>
                   Backstage Operations & Organizing Team Gallery ({missMisterImages.length} Shots)
                 </h4>
-                <p className="font-sans text-[10px] text-[#5E5E5E]">
+                <p className="font-sans text-[10px] text-[#4E6E75]">
                   Hover over cards to trigger bounce animation; click photo to expand.
                 </p>
               </div>
-              <span className="font-mono text-[9px] text-[#5E5E5E] hidden sm:inline-block">HOVER / CLICK</span>
+              <span className="font-mono text-[9px] text-[#0B6E7B] hidden sm:inline-block">HOVER / CLICK</span>
             </div>
 
             {/* Bounce Cards Display (Desktop: BounceCards, Mobile: Stack) */}
@@ -509,10 +509,10 @@ export default function MarComExperienceShowcase() {
           </div>
 
           {/* Expand / View All button & Thumbnail row below */}
-          <div className="space-y-3 pt-3 border-t border-[#CCCCCC]/30">
+          <div className="space-y-3 pt-3 border-t border-[#CCE5E3]">
             <button
               onClick={() => openGalleryModal("Miss & Mister OU 2025", "Event Operations & Backstage Team", missMisterImages, 0)}
-              className="w-full py-2 bg-[#FAF9F6] border border-[#CCCCCC] hover:bg-[#111111] hover:text-white transition-all rounded font-narrow text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 text-[#111111] cursor-pointer"
+              className="w-full py-2 bg-[#F4FAF9] border border-[#CCE5E3] hover:bg-[#0B6E7B] hover:text-white transition-all rounded-lg font-narrow text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 text-[#0C2B31] cursor-pointer shadow-xs"
             >
               <i className="fa-solid fa-expand text-xs"></i>
               <span>View Full Miss & Mister OU Gallery ({missMisterImages.length})</span>
@@ -526,9 +526,9 @@ export default function MarComExperienceShowcase() {
                   <div
                     key={actualIndex}
                     onClick={() => openGalleryModal("Miss & Mister OU 2025", "Event Operations & Backstage Team", missMisterImages, actualIndex)}
-                    className="group relative rounded-lg overflow-hidden bg-white border border-[#CCCCCC]/60 cursor-pointer shadow-sm hover:shadow-md hover:border-[#111111] transition-all"
+                    className="group relative rounded-xl overflow-hidden bg-white border border-[#CCE5E3] cursor-pointer shadow-xs hover:shadow-md hover:border-[#0B6E7B] transition-all"
                   >
-                    <div className="aspect-[4/3] overflow-hidden bg-[#EBEBEB]">
+                    <div className="aspect-[4/3] overflow-hidden bg-[#E7F3F2]">
                       <img
                         src={src}
                         alt={`Miss Mister OU ${photoNum}`}
@@ -536,11 +536,11 @@ export default function MarComExperienceShowcase() {
                         className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105 pointer-events-none"
                       />
                     </div>
-                    <div className="p-2.5 bg-white flex items-center justify-between border-t border-[#CCCCCC]/30 pointer-events-none">
-                      <span className="font-narrow text-[11px] font-bold text-[#111111] uppercase tracking-wider truncate">
+                    <div className="p-2.5 bg-white flex items-center justify-between border-t border-[#CCE5E3] pointer-events-none">
+                      <span className="font-narrow text-[11px] font-bold text-[#0C2B31] uppercase tracking-wider truncate">
                         Photo {photoNum < 10 ? `0${photoNum}` : photoNum}
                       </span>
-                      <i className="fa-solid fa-expand text-[10px] text-[#5E5E5E] group-hover:text-[#111111]"></i>
+                      <i className="fa-solid fa-expand text-[10px] text-[#4E6E75] group-hover:text-[#0B6E7B]"></i>
                     </div>
                   </div>
                 );
@@ -553,20 +553,20 @@ export default function MarComExperienceShowcase() {
       {/* ========================================================================= */}
       {/* COLLAGE 3: DESIGN SHORT FILM POSTER, LEAFLET & BROCHURE */}
       {/* ========================================================================= */}
-      <div className="bg-[#FAF9F6] border border-[#CCCCCC]/60 rounded-xl p-5 sm:p-6 space-y-5">
-        <div className="border-b border-[#CCCCCC]/30 pb-4 space-y-2">
+      <div className="bg-[#F4FAF9] border border-[#CCE5E3] rounded-xl p-5 sm:p-6 space-y-5">
+        <div className="border-b border-[#CCE5E3] pb-4 space-y-2">
           <div className="flex flex-wrap items-center justify-between gap-2">
-            <h3 className="font-display text-xl sm:text-2xl uppercase tracking-tight text-[#111111] flex items-center gap-2.5">
-              <i className="fa-solid fa-scroll text-base text-[#111111]"></i>
+            <h3 className="font-display text-xl sm:text-2xl uppercase tracking-tight text-[#0C2B31] flex items-center gap-2.5">
+              <i className="fa-solid fa-scroll text-base text-[#0B6E7B]"></i>
               Design Short Film Poster, Leaflet & Brochure
             </h3>
-            <span className="px-3 py-1 bg-white border border-[#111111]/20 font-narrow text-[11px] font-bold uppercase tracking-wider rounded text-[#111111] flex items-center gap-1.5 shadow-sm">
-              <i className="fa-solid fa-file-pdf text-xs"></i>
+            <span className="px-3 py-1 bg-white border border-[#CCE5E3] font-narrow text-[11px] font-bold uppercase tracking-wider rounded-lg text-[#0B6E7B] flex items-center gap-1.5 shadow-xs">
+              <i className="fa-solid fa-file-pdf text-xs text-[#0B6E7B]"></i>
               International Admission Campaign 2026
             </span>
           </div>
 
-          <p className="font-sans text-xs sm:text-sm text-[#444444] leading-relaxed">
+          <p className="font-sans text-xs sm:text-sm text-[#4E6E75] leading-relaxed">
             Designed comprehensive student recruitment media collateral, including short film teaser posters, credit-transfer program leaflets, and international admission brochures.
           </p>
 
@@ -576,9 +576,9 @@ export default function MarComExperienceShowcase() {
               href="https://www.facebook.com/share/p/1D2Sjsapz5/"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-3 py-1.5 bg-white border border-[#CCCCCC] hover:border-[#111111] hover:bg-[#111111] hover:text-white transition-all rounded font-narrow text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 text-[#111111]"
+              className="px-3 py-1.5 bg-white border border-[#CCE5E3] hover:border-[#0B6E7B] hover:bg-[#0B6E7B] hover:text-white transition-all rounded-lg font-narrow text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 text-[#0C2B31] shadow-xs"
             >
-              <i className="fa-brands fa-facebook text-blue-600"></i>
+              <i className="fa-brands fa-facebook text-[#14B8A6]"></i>
               <span>Teasing Poster</span>
               <i className="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
             </a>
@@ -587,9 +587,9 @@ export default function MarComExperienceShowcase() {
               href="https://www.facebook.com/share/v/14errw88FvY/"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-3 py-1.5 bg-white border border-[#CCCCCC] hover:border-[#111111] hover:bg-[#111111] hover:text-white transition-all rounded font-narrow text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 text-[#111111]"
+              className="px-3 py-1.5 bg-white border border-[#CCE5E3] hover:border-[#0B6E7B] hover:bg-[#0B6E7B] hover:text-white transition-all rounded-lg font-narrow text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 text-[#0C2B31] shadow-xs"
             >
-              <i className="fa-solid fa-play text-red-600 text-xs"></i>
+              <i className="fa-solid fa-play text-red-500 text-xs"></i>
               <span>Ep1 Short Film</span>
               <i className="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
             </a>
@@ -602,9 +602,9 @@ export default function MarComExperienceShowcase() {
             <div
               key={idx}
               onClick={() => openGalleryModal(item.title, item.category, admissionCampaignImageUrls, idx)}
-              className="group relative rounded-lg overflow-hidden bg-white border border-[#CCCCCC]/60 cursor-pointer shadow-sm hover:shadow-md transition-all"
+              className="group relative rounded-xl overflow-hidden bg-white border border-[#CCE5E3] cursor-pointer shadow-xs hover:shadow-md transition-all"
             >
-              <div className="aspect-[3/4] overflow-hidden bg-[#F4F3EF]">
+              <div className="aspect-[3/4] overflow-hidden bg-[#E7F3F2]">
                 <img
                   src={item.src}
                   alt={`${item.title} ${idx + 1}`}
@@ -612,11 +612,11 @@ export default function MarComExperienceShowcase() {
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 pointer-events-none"
                 />
               </div>
-              <div className="p-2.5 bg-white border-t border-[#CCCCCC]/30 space-y-0.5 pointer-events-none">
-                <span className="font-narrow text-[10px] font-bold text-[#5E5E5E] uppercase tracking-wider block">
+              <div className="p-2.5 bg-white border-t border-[#CCE5E3] space-y-0.5 pointer-events-none">
+                <span className="font-narrow text-[10px] font-bold text-[#0B6E7B] uppercase tracking-wider block">
                   {item.category}
                 </span>
-                <p className="font-narrow text-xs font-bold text-[#111111] uppercase truncate">
+                <p className="font-narrow text-xs font-bold text-[#0C2B31] uppercase truncate">
                   {item.title}
                 </p>
               </div>
@@ -628,14 +628,14 @@ export default function MarComExperienceShowcase() {
       {/* ========================================================================= */}
       {/* REMAINING SECTION 1: DESIGN SOCIAL POST (BASIC DISPLAY) */}
       {/* ========================================================================= */}
-      <div className="bg-[#FAF9F6] border border-[#CCCCCC]/60 rounded-xl p-5 sm:p-6 space-y-4">
-        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#CCCCCC]/30 pb-3">
+      <div className="bg-[#F4FAF9] border border-[#CCE5E3] rounded-xl p-5 sm:p-6 space-y-4">
+        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#CCE5E3] pb-3">
           <div>
-            <h4 className="font-display text-lg sm:text-xl uppercase tracking-tight text-[#111111] flex items-center gap-2">
-              <i className="fa-brands fa-facebook text-base text-[#111111]"></i>
+            <h4 className="font-display text-lg sm:text-xl uppercase tracking-tight text-[#0C2B31] flex items-center gap-2">
+              <i className="fa-brands fa-facebook text-base text-[#0B6E7B]"></i>
               Design Social Post
             </h4>
-            <p className="font-sans text-xs text-[#5E5E5E]">
+            <p className="font-sans text-xs text-[#4E6E75]">
               Key visual social media graphics created for student engagement campaigns.
             </p>
           </div>
@@ -644,7 +644,7 @@ export default function MarComExperienceShowcase() {
             href="https://www.facebook.com/share/p/1BhJr3XouG/"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-3.5 py-1.5 bg-[#111111] text-white hover:bg-[#333333] transition-all rounded font-narrow text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-sm"
+            className="px-3.5 py-1.5 bg-[#0B6E7B] text-white hover:bg-[#08545E] transition-all rounded-lg font-narrow text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-xs"
           >
             <span>View FB Social Post</span>
             <i className="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
@@ -656,7 +656,7 @@ export default function MarComExperienceShowcase() {
             <div
               key={idx}
               onClick={() => openGalleryModal(`Design Social Post 0${idx + 1}`, "Key Visual Media Graphic", socialPostImages, idx)}
-              className="group relative aspect-square rounded-lg overflow-hidden bg-white border border-[#CCCCCC]/60 cursor-pointer shadow-sm hover:shadow-md transition-all"
+              className="group relative aspect-square rounded-xl overflow-hidden bg-white border border-[#CCE5E3] cursor-pointer shadow-xs hover:shadow-md transition-all"
             >
               <img
                 src={src}
@@ -664,8 +664,8 @@ export default function MarComExperienceShowcase() {
                 loading="lazy"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 pointer-events-none"
               />
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
-                <i className="fa-solid fa-expand text-white text-sm"></i>
+              <div className="absolute inset-0 bg-[#07262B]/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                <i className="fa-solid fa-expand text-[#2DD4BF] text-sm"></i>
               </div>
             </div>
           ))}
@@ -675,13 +675,13 @@ export default function MarComExperienceShowcase() {
       {/* ========================================================================= */}
       {/* REMAINING SECTION 2: EVENT PHOTOGRAPHER (BASIC DISPLAY) */}
       {/* ========================================================================= */}
-      <div className="bg-[#FAF9F6] border border-[#CCCCCC]/60 rounded-xl p-5 sm:p-6 space-y-4">
-        <div className="border-b border-[#CCCCCC]/30 pb-3">
-          <h4 className="font-display text-lg sm:text-xl uppercase tracking-tight text-[#111111] flex items-center gap-2">
-            <i className="fa-solid fa-camera-retro text-base text-[#111111]"></i>
+      <div className="bg-[#F4FAF9] border border-[#CCE5E3] rounded-xl p-5 sm:p-6 space-y-4">
+        <div className="border-b border-[#CCE5E3] pb-3">
+          <h4 className="font-display text-lg sm:text-xl uppercase tracking-tight text-[#0C2B31] flex items-center gap-2">
+            <i className="fa-solid fa-camera-retro text-base text-[#0B6E7B]"></i>
             Event Photographer
           </h4>
-          <p className="font-sans text-xs text-[#5E5E5E]">
+          <p className="font-sans text-xs text-[#4E6E75]">
             Official seminar & talk show photography coverage for Tọa Đàm Khởi Nghiệp and Tọa Đàm Khởi Nghiệp Thành Công.
           </p>
         </div>
@@ -691,7 +691,7 @@ export default function MarComExperienceShowcase() {
             <div
               key={idx}
               onClick={() => openGalleryModal(item.title, "Official Event Photography", eventPhotoImageUrls, idx)}
-              className="group relative aspect-video rounded-lg overflow-hidden bg-white border border-[#CCCCCC]/60 cursor-pointer shadow-sm hover:shadow-md transition-all"
+              className="group relative aspect-video rounded-xl overflow-hidden bg-white border border-[#CCE5E3] cursor-pointer shadow-xs hover:shadow-md transition-all"
             >
               <img
                 src={item.src}
@@ -699,7 +699,7 @@ export default function MarComExperienceShowcase() {
                 loading="lazy"
                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300 pointer-events-none"
               />
-              <div className="absolute bottom-0 inset-x-0 p-1.5 bg-gradient-to-t from-black/80 to-transparent text-white text-[9px] font-narrow uppercase tracking-wider truncate opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+              <div className="absolute bottom-0 inset-x-0 p-1.5 bg-gradient-to-t from-[#07262B]/90 to-transparent text-white text-[9px] font-narrow uppercase tracking-wider truncate opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
                 {item.title}
               </div>
             </div>
@@ -710,14 +710,14 @@ export default function MarComExperienceShowcase() {
       {/* ========================================================================= */}
       {/* REMAINING SECTION 3: SELECTED WEBSITE CONTENTS & SOCIAL MEDIA POSTS */}
       {/* ========================================================================= */}
-      <div className="bg-[#FAF9F6] border border-[#CCCCCC]/60 rounded-xl p-5 sm:p-6 space-y-5">
-        <div className="border-b border-[#CCCCCC]/30 pb-4 flex flex-wrap items-center justify-between gap-3">
+      <div className="bg-[#F4FAF9] border border-[#CCE5E3] rounded-xl p-5 sm:p-6 space-y-5">
+        <div className="border-b border-[#CCE5E3] pb-4 flex flex-wrap items-center justify-between gap-3">
           <div>
-            <h4 className="font-display text-lg sm:text-xl uppercase tracking-tight text-[#111111] flex items-center gap-2">
-              <i className="fa-solid fa-newspaper text-base text-[#111111]"></i>
+            <h4 className="font-display text-lg sm:text-xl uppercase tracking-tight text-[#0C2B31] flex items-center gap-2">
+              <i className="fa-solid fa-newspaper text-base text-[#0B6E7B]"></i>
               Some Selected Website Contents & Social Media Posts
             </h4>
-            <p className="font-sans text-xs text-[#5E5E5E]">
+            <p className="font-sans text-xs text-[#4E6E75]">
               Published news articles, press releases, and editorial photography for Ho Chi Minh City Open University (OU NEWS).
             </p>
           </div>
@@ -728,7 +728,7 @@ export default function MarComExperienceShowcase() {
               href="https://docs.google.com/spreadsheets/d/1TPeM_Xa9rWOBqELEY6hteWd515KmewoIfGflx01q2D8/edit?usp=drive_link"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-3 py-1.5 bg-white border border-[#CCCCCC] hover:border-[#111111] hover:bg-[#111111] hover:text-white transition-all rounded font-narrow text-[11px] font-bold uppercase tracking-wider flex items-center gap-1.5 text-[#111111]"
+              className="px-3 py-1.5 bg-white border border-[#CCE5E3] hover:border-[#0B6E7B] hover:bg-[#0B6E7B] hover:text-white transition-all rounded-lg font-narrow text-[11px] font-bold uppercase tracking-wider flex items-center gap-1.5 text-[#0C2B31] shadow-xs"
             >
               <i className="fa-solid fa-table text-emerald-600"></i>
               <span>Article Log 01</span>
@@ -739,7 +739,7 @@ export default function MarComExperienceShowcase() {
               href="https://docs.google.com/spreadsheets/d/1o9lYNlDCFvIEOIC3fsdKbm2OAz1I1-uFOl9VoCVvs58/edit?usp=drive_link"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-3 py-1.5 bg-white border border-[#CCCCCC] hover:border-[#111111] hover:bg-[#111111] hover:text-white transition-all rounded font-narrow text-[11px] font-bold uppercase tracking-wider flex items-center gap-1.5 text-[#111111]"
+              className="px-3 py-1.5 bg-white border border-[#CCE5E3] hover:border-[#0B6E7B] hover:bg-[#0B6E7B] hover:text-white transition-all rounded-lg font-narrow text-[11px] font-bold uppercase tracking-wider flex items-center gap-1.5 text-[#0C2B31] shadow-xs"
             >
               <i className="fa-solid fa-table text-emerald-600"></i>
               <span>Article Log 02 (Details)</span>
@@ -753,22 +753,22 @@ export default function MarComExperienceShowcase() {
           {pressArticles.map((article) => (
             <div
               key={article.id}
-              className="p-4 bg-white rounded-lg border border-[#CCCCCC]/60 hover:border-[#111111] transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3 group"
+              className="p-4 bg-white rounded-xl border border-[#CCE5E3] hover:border-[#0B6E7B] transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3 group shadow-xs"
             >
               <div className="space-y-1 flex-1">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="font-mono text-[10px] font-bold px-2 py-0.5 bg-[#FAF9F6] border border-[#CCCCCC]/60 text-[#111111] rounded">
+                  <span className="font-mono text-[10px] font-bold px-2 py-0.5 bg-[#F4FAF9] border border-[#CCE5E3] text-[#0C2B31] rounded">
                     {article.date}
                   </span>
-                  <span className="font-narrow text-[10px] font-bold uppercase tracking-wider text-[#5E5E5E]">
+                  <span className="font-narrow text-[10px] font-bold uppercase tracking-wider text-[#0B6E7B]">
                     {article.type}
                   </span>
-                  <span className="text-[#CCCCCC]">•</span>
-                  <span className="font-narrow text-[10px] font-medium text-[#5E5E5E]">
+                  <span className="text-[#CCE5E3]">•</span>
+                  <span className="font-narrow text-[10px] font-medium text-[#4E6E75]">
                     By {article.author}
                   </span>
                 </div>
-                <h5 className="font-sans text-xs sm:text-sm font-semibold text-[#111111] leading-snug group-hover:text-black">
+                <h5 className="font-sans text-xs sm:text-sm font-semibold text-[#0C2B31] leading-snug group-hover:text-[#0B6E7B] transition-colors">
                   {article.title}
                 </h5>
               </div>
@@ -777,7 +777,7 @@ export default function MarComExperienceShowcase() {
                 href={article.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3 py-1.5 bg-[#FAF9F6] border border-[#CCCCCC] hover:bg-[#111111] hover:text-white transition-all rounded font-narrow text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 text-[#111111] flex-shrink-0"
+                className="px-3 py-1.5 bg-[#F4FAF9] border border-[#CCE5E3] hover:bg-[#0B6E7B] hover:text-white transition-all rounded-lg font-narrow text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 text-[#0C2B31] flex-shrink-0"
               >
                 <span>Read Article</span>
                 <i className="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
@@ -790,11 +790,11 @@ export default function MarComExperienceShowcase() {
       {/* FULL GALLERY POPUP MODAL (LARGE CENTERED VIEW) */}
       {galleryModal.isOpen &&
         createPortal(
-          <div className="fixed inset-0 z-[999] flex items-center justify-center p-3 sm:p-6 bg-black/90 backdrop-blur-md" onClick={closeGalleryModal}>
-            <div className="relative w-full max-w-6xl bg-[#111111]/95 text-white border border-white/20 rounded-2xl p-5 sm:p-6 shadow-2xl space-y-4 flex flex-col justify-between max-h-[92vh] overflow-hidden" onClick={(e) => e.stopPropagation()}>
-              <div className="flex items-center justify-between border-b border-white/15 pb-3">
+          <div className="fixed inset-0 z-[999] flex items-center justify-center p-3 sm:p-6 bg-[#07262B]/90 backdrop-blur-md" onClick={closeGalleryModal}>
+            <div className="relative w-full max-w-6xl bg-[#051E22]/95 text-white border border-[#0B6E7B]/40 rounded-2xl p-5 sm:p-6 shadow-2xl space-y-4 flex flex-col justify-between max-h-[92vh] overflow-hidden" onClick={(e) => e.stopPropagation()}>
+              <div className="flex items-center justify-between border-b border-[#0B6E7B]/30 pb-3">
                 <div>
-                  <span className="font-narrow text-[11px] font-black text-[#00f2fe] tracking-[0.2em] uppercase block">
+                  <span className="font-narrow text-[11px] font-black text-[#2DD4BF] tracking-[0.2em] uppercase block">
                     {galleryModal.category}
                   </span>
                   <h3 className="font-display text-lg sm:text-xl md:text-2xl uppercase text-white tracking-wide">
@@ -802,12 +802,12 @@ export default function MarComExperienceShowcase() {
                   </h3>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="font-mono text-xs text-white/70 bg-white/10 px-3 py-1 rounded border border-white/15">
+                  <span className="font-mono text-xs text-white/80 bg-white/10 px-3 py-1 rounded-lg border border-[#0B6E7B]/40">
                     {galleryModal.currentIndex + 1} / {galleryModal.images.length}
                   </span>
                   <button
                     onClick={closeGalleryModal}
-                    className="w-9 h-9 rounded-full bg-white/10 hover:bg-white hover:text-[#111111] transition-colors flex items-center justify-center text-white cursor-pointer border border-white/20"
+                    className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#0B6E7B] transition-colors flex items-center justify-center text-white cursor-pointer border border-[#0B6E7B]/40"
                     aria-label="Close modal"
                   >
                     <i className="fa-solid fa-xmark text-sm pointer-events-none"></i>
@@ -820,7 +820,7 @@ export default function MarComExperienceShowcase() {
                 {galleryModal.images.length > 1 && (
                   <button
                     onClick={prevGalleryImage}
-                    className="p-3 rounded-full bg-white/10 hover:bg-white text-white hover:text-[#111111] transition-all z-20 shadow-lg border border-white/20 cursor-pointer flex items-center justify-center shrink-0"
+                    className="p-3 rounded-full bg-white/10 hover:bg-[#0B6E7B] text-white transition-all z-20 shadow-lg border border-[#0B6E7B]/40 cursor-pointer flex items-center justify-center shrink-0"
                     aria-label="Previous photo"
                   >
                     <i className="fa-solid fa-chevron-left text-base sm:text-lg pointer-events-none"></i>
@@ -831,14 +831,14 @@ export default function MarComExperienceShowcase() {
                   <img
                     src={galleryModal.images[galleryModal.currentIndex]}
                     alt={`Gallery ${galleryModal.currentIndex + 1}`}
-                    className="max-h-[74vh] max-w-full w-auto object-contain rounded-lg shadow-xl border border-white/10 pointer-events-none"
+                    className="max-h-[74vh] max-w-full w-auto object-contain rounded-lg shadow-xl border border-[#0B6E7B]/20 pointer-events-none"
                   />
                 </div>
 
                 {galleryModal.images.length > 1 && (
                   <button
                     onClick={nextGalleryImage}
-                    className="p-3 rounded-full bg-white/10 hover:bg-white text-white hover:text-[#111111] transition-all z-20 shadow-lg border border-white/20 cursor-pointer flex items-center justify-center shrink-0"
+                    className="p-3 rounded-full bg-white/10 hover:bg-[#0B6E7B] text-white transition-all z-20 shadow-lg border border-[#0B6E7B]/40 cursor-pointer flex items-center justify-center shrink-0"
                     aria-label="Next photo"
                   >
                     <i className="fa-solid fa-chevron-right text-base sm:text-lg pointer-events-none"></i>
@@ -848,14 +848,14 @@ export default function MarComExperienceShowcase() {
 
               {/* Bottom Thumbnail Strip */}
               {galleryModal.images.length > 1 && (
-                <div className="flex items-center gap-2 overflow-x-auto pt-3 border-t border-white/15">
+                <div className="flex items-center gap-2 overflow-x-auto pt-3 border-t border-[#0B6E7B]/30">
                   {galleryModal.images.map((src, idx) => (
                     <button
                       key={idx}
                       onClick={() => setGalleryModal((prev) => ({ ...prev, currentIndex: idx }))}
                       className={`w-12 h-12 sm:w-14 sm:h-14 rounded-lg overflow-hidden border-2 transition-all flex-shrink-0 cursor-pointer ${galleryModal.currentIndex === idx
-                        ? 'border-[#00f2fe] scale-105 shadow-lg opacity-100'
-                        : 'border-white/20 opacity-50 hover:opacity-100 hover:border-white'
+                        ? 'border-[#2DD4BF] scale-105 shadow-lg opacity-100'
+                        : 'border-white/20 opacity-50 hover:opacity-100 hover:border-[#0B6E7B]'
                         }`}
                     >
                       <img src={src} alt={`Thumb ${idx + 1}`} className="w-full h-full object-cover pointer-events-none" />

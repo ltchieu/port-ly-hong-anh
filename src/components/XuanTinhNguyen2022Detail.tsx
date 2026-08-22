@@ -132,7 +132,7 @@ export default function XuanTinhNguyen2022Detail() {
   }, [shelterImages]);
 
   return (
-    <div className="bg-[#FAF9F6] text-[#111111] font-sans antialiased min-h-screen selection:bg-[#111111] selection:text-white pb-24">
+    <div className="bg-[#FAFCFC] text-[#0C2B31] font-sans antialiased min-h-screen selection:bg-[#0B6E7B] selection:text-white pb-24">
       {/* Header Navigation Bar */}
       <HeaderNav
         onNavigateHome={handleNavigateHome}
@@ -148,7 +148,7 @@ export default function XuanTinhNguyen2022Detail() {
         title="Spring Volunteer Campaign 2022 — Community & Exhibition"
         description={
           <p>
-            Leading communications, documentary reportage production, children shelter visits, and the <strong className="text-[#111111] font-semibold">&ldquo;Saigon Wanderlust Chronicle&rdquo;</strong> thematic spring exhibition for <strong className="text-[#111111] font-semibold">Spring Volunteer Campaign 2022</strong>.
+            Leading communications, documentary reportage production, children shelter visits, and the <strong className="text-[#0C2B31] font-semibold">&ldquo;Saigon Wanderlust Chronicle&rdquo;</strong> thematic spring exhibition for <strong className="text-[#0C2B31] font-semibold">Spring Volunteer Campaign 2022</strong>.
           </p>
         }
         tags={['Documentary Production', 'Orphanage Charity Visit', 'Exhibition Scenography', 'Community Youth Games']}
@@ -161,21 +161,21 @@ export default function XuanTinhNguyen2022Detail() {
         {/* ========================================================================= */}
         <section id="campaign-identity-marquee">
           <ScrollReveal direction="up" distance={30}>
-            <div className="border-b border-[#CCCCCC]/40 pb-6 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div className="border-b border-[#CCE5E3] pb-6 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
               <div>
                 <div className="flex items-center gap-3 mb-2">
-                  <span className="font-narrow text-xs font-black text-[#5E5E5E] tracking-[0.25em] uppercase">
+                  <span className="font-narrow text-xs font-black text-[#0B6E7B] tracking-[0.25em] uppercase">
                     SHOWCASE 01 / 05
                   </span>
-                  <span className="text-[#CCCCCC]">•</span>
-                  <span className="font-narrow text-xs font-bold text-[#111111] tracking-widest uppercase">
+                  <span className="text-[#CCE5E3]">•</span>
+                  <span className="font-narrow text-xs font-bold text-[#0C2B31] tracking-widest uppercase">
                     FOLDER: SPRING VOLUNTEER CAMPAIGN 2022 (ROOT GRAPHICS)
                   </span>
                 </div>
-                <h2 className="font-display text-3xl sm:text-4xl md:text-5xl uppercase tracking-tighter text-[#111111]">
+                <h2 className="font-display text-3xl sm:text-4xl md:text-5xl uppercase tracking-tighter text-[#0C2B31]">
                   Campaign Brand Identity & Exhibition Visuals
                 </h2>
-                <p className="font-sans text-base text-[#5E5E5E] max-w-3xl leading-relaxed mt-2">
+                <p className="font-sans text-base text-[#4E6E75] max-w-3xl leading-relaxed mt-2">
                   Continuous marquee displaying official campaign cover banners, profile avatars, Saigon Wanderlust graphic series, and spring exhibition key visuals.
                 </p>
               </div>
@@ -205,21 +205,21 @@ export default function XuanTinhNguyen2022Detail() {
         {/* ========================================================================= */}
         <section id="children-games-stack">
           <ScrollReveal direction="up" distance={30}>
-            <div className="border-b border-[#CCCCCC]/40 pb-6 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div className="border-b border-[#CCE5E3] pb-6 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
               <div>
                 <div className="flex items-center gap-3 mb-2">
-                  <span className="font-narrow text-xs font-black text-[#5E5E5E] tracking-[0.25em] uppercase">
+                  <span className="font-narrow text-xs font-black text-[#0B6E7B] tracking-[0.25em] uppercase">
                     SHOWCASE 02 / 05
                   </span>
-                  <span className="text-[#CCCCCC]">•</span>
-                  <span className="font-narrow text-xs font-bold text-[#111111] tracking-widest uppercase">
+                  <span className="text-[#CCE5E3]">•</span>
+                  <span className="font-narrow text-xs font-bold text-[#0C2B31] tracking-widest uppercase">
                     SUBFOLDER: CHILDREN COMMUNITY GAMES (2022.01.20)
                   </span>
                 </div>
-                <h2 className="font-display text-3xl sm:text-4xl md:text-5xl uppercase tracking-tighter text-[#111111]">
+                <h2 className="font-display text-3xl sm:text-4xl md:text-5xl uppercase tracking-tighter text-[#0C2B31]">
                   Youth Workshop & Community Children Games
                 </h2>
-                <p className="font-sans text-base text-[#5E5E5E] max-w-3xl leading-relaxed mt-2">
+                <p className="font-sans text-base text-[#4E6E75] max-w-3xl leading-relaxed mt-2">
                   Interactive swipeable card stack capturing outdoor interactive games, team building, and gift distribution organized for local underprivileged children. Click top card to cycle through photos.
                 </p>
               </div>
@@ -243,7 +243,7 @@ export default function XuanTinhNguyen2022Detail() {
                             description: 'Interactive outdoor games and gift giving for community children.'
                           });
                         }}
-                        className="w-full h-full rounded-xl overflow-hidden border border-[#CCCCCC]/60 shadow-xl cursor-pointer bg-white"
+                        className="w-full h-full rounded-xl overflow-hidden border border-[#CCE5E3] shadow-xl cursor-pointer bg-white"
                       >
                         <img
                           src={src}
@@ -275,7 +275,7 @@ export default function XuanTinhNguyen2022Detail() {
                         description: 'Outdoor team activities and interactive games with local kids.'
                       });
                     }}
-                    className="group relative aspect-[4/3] rounded-xl overflow-hidden border border-[#CCCCCC]/60 shadow-sm cursor-pointer bg-[#EBEBEB]"
+                    className="group relative aspect-[4/3] rounded-xl overflow-hidden border border-[#CCE5E3] shadow-sm cursor-pointer bg-[#E7F3F2]"
                   >
                     <img
                       src={src}
@@ -284,12 +284,12 @@ export default function XuanTinhNguyen2022Detail() {
                       decoding="async"
                       className="w-full h-full object-cover transition-all duration-500 ease-out group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                      <span className="font-narrow text-[10px] font-black text-white/80 tracking-widest uppercase">
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#07262B]/80 via-[#07262B]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                      <span className="font-narrow text-[10px] font-black text-[#2DD4BF] tracking-widest uppercase">
                         PHOTO 0{idx + 5}
                       </span>
                       <p className="font-sans text-xs text-white font-medium flex items-center gap-1.5 mt-0.5">
-                        <i className="fa-solid fa-magnifying-glass-plus text-[10px]"></i> Inspect Photo
+                        <i className="fa-solid fa-magnifying-glass-plus text-[10px] text-[#2DD4BF]"></i> Inspect Photo
                       </p>
                     </div>
                   </div>
@@ -304,21 +304,21 @@ export default function XuanTinhNguyen2022Detail() {
         {/* ========================================================================= */}
         <section id="shelter-visit-masonry">
           <ScrollReveal direction="up" distance={30}>
-            <div className="border-b border-[#CCCCCC]/40 pb-6 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div className="border-b border-[#CCE5E3] pb-6 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
               <div>
                 <div className="flex items-center gap-3 mb-2">
-                  <span className="font-narrow text-xs font-black text-[#5E5E5E] tracking-[0.25em] uppercase">
+                  <span className="font-narrow text-xs font-black text-[#0B6E7B] tracking-[0.25em] uppercase">
                     SHOWCASE 03 / 05
                   </span>
-                  <span className="text-[#CCCCCC]">•</span>
-                  <span className="font-narrow text-xs font-bold text-[#111111] tracking-widest uppercase">
+                  <span className="text-[#CCE5E3]">•</span>
+                  <span className="font-narrow text-xs font-bold text-[#0C2B31] tracking-widest uppercase">
                     SUBFOLDER: SHELTER & ORPHANAGE CHARITY VISIT (2022.01.23)
                   </span>
                 </div>
-                <h2 className="font-display text-3xl sm:text-4xl md:text-5xl uppercase tracking-tighter text-[#111111]">
+                <h2 className="font-display text-3xl sm:text-4xl md:text-5xl uppercase tracking-tighter text-[#0C2B31]">
                   Shelter & Orphanage Charity Visit
                 </h2>
-                <p className="font-sans text-base text-[#5E5E5E] max-w-3xl leading-relaxed mt-2">
+                <p className="font-sans text-base text-[#4E6E75] max-w-3xl leading-relaxed mt-2">
                   Staggered photojournalism grid documenting volunteer interaction, warm gift exchanges, and creative art workshops at local children shelters.
                 </p>
               </div>
@@ -353,21 +353,21 @@ export default function XuanTinhNguyen2022Detail() {
         {/* ========================================================================= */}
         <section id="reportage-behind-scenes">
           <ScrollReveal direction="up" distance={30}>
-            <div className="border-b border-[#CCCCCC]/40 pb-6 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div className="border-b border-[#CCE5E3] pb-6 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
               <div>
                 <div className="flex items-center gap-3 mb-2">
-                  <span className="font-narrow text-xs font-black text-[#5E5E5E] tracking-[0.25em] uppercase">
+                  <span className="font-narrow text-xs font-black text-[#0B6E7B] tracking-[0.25em] uppercase">
                     SHOWCASE 04 / 05
                   </span>
-                  <span className="text-[#CCCCCC]">•</span>
-                  <span className="font-narrow text-xs font-bold text-[#111111] tracking-widest uppercase">
+                  <span className="text-[#CCE5E3]">•</span>
+                  <span className="font-narrow text-xs font-bold text-[#0C2B31] tracking-widest uppercase">
                     SUBFOLDER: REPORTAGE BEHIND THE SCENES (2022.01.18)
                   </span>
                 </div>
-                <h2 className="font-display text-3xl sm:text-4xl md:text-5xl uppercase tracking-tighter text-[#111111]">
+                <h2 className="font-display text-3xl sm:text-4xl md:text-5xl uppercase tracking-tighter text-[#0C2B31]">
                   Documentary Reportage Behind-The-Scenes
                 </h2>
-                <p className="font-sans text-base text-[#5E5E5E] max-w-3xl leading-relaxed mt-2">
+                <p className="font-sans text-base text-[#4E6E75] max-w-3xl leading-relaxed mt-2">
                   Dynamic animated card array showing camera operators, interview setups, and film crew logistics during documentary video production. Hover or click cards to inspect.
                 </p>
               </div>
@@ -401,21 +401,21 @@ export default function XuanTinhNguyen2022Detail() {
         {/* ========================================================================= */}
         <section id="quality-inspection-grid">
           <ScrollReveal direction="up" distance={30}>
-            <div className="border-b border-[#CCCCCC]/40 pb-6 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div className="border-b border-[#CCE5E3] pb-6 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
               <div>
                 <div className="flex items-center gap-3 mb-2">
-                  <span className="font-narrow text-xs font-black text-[#5E5E5E] tracking-[0.25em] uppercase">
+                  <span className="font-narrow text-xs font-black text-[#0B6E7B] tracking-[0.25em] uppercase">
                     SHOWCASE 05 / 05
                   </span>
-                  <span className="text-[#CCCCCC]">•</span>
-                  <span className="font-narrow text-xs font-bold text-[#111111] tracking-widest uppercase">
+                  <span className="text-[#CCE5E3]">•</span>
+                  <span className="font-narrow text-xs font-bold text-[#0C2B31] tracking-widest uppercase">
                     SUBFOLDER: PROJECT QUALITY INSPECTION & HANDOVER (2022.01.20)
                   </span>
                 </div>
-                <h2 className="font-display text-3xl sm:text-4xl uppercase tracking-tighter text-[#111111]">
+                <h2 className="font-display text-3xl sm:text-4xl uppercase tracking-tighter text-[#0C2B31]">
                   Project Quality Inspection & Community Handover
                 </h2>
-                <p className="font-sans text-base text-[#5E5E5E] max-w-3xl leading-relaxed mt-2">
+                <p className="font-sans text-base text-[#4E6E75] max-w-3xl leading-relaxed mt-2">
                   Photo coverage documenting formal project completion inspection, volunteer team leadership, and official community handover ceremonies. Click thumbnail for full view.
                 </p>
               </div>
@@ -434,7 +434,7 @@ export default function XuanTinhNguyen2022Detail() {
                     description: 'Formal quality inspection and community handover of completed volunteer works.'
                   });
                 }}
-                className="aspect-[16/10] rounded-xl overflow-hidden bg-white border border-[#CCCCCC]/60 shadow-sm relative group cursor-pointer"
+                className="aspect-[16/10] rounded-xl overflow-hidden bg-white border border-[#CCE5E3] shadow-sm relative group cursor-pointer"
               >
                 <img
                   src={src}
@@ -443,8 +443,8 @@ export default function XuanTinhNguyen2022Detail() {
                   decoding="async"
                   className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <span className="text-white text-xs font-narrow font-bold uppercase tracking-wider bg-black/70 px-3 py-1.5 rounded flex items-center gap-2">
+                <div className="absolute inset-0 bg-[#07262B]/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <span className="text-white text-xs font-narrow font-bold uppercase tracking-wider bg-[#0B6E7B]/90 px-3 py-1.5 rounded-lg flex items-center gap-2 shadow-sm">
                     <i className="fa-solid fa-magnifying-glass-plus text-xs"></i> View Full Photo
                   </span>
                 </div>
@@ -456,12 +456,12 @@ export default function XuanTinhNguyen2022Detail() {
 
       {/* Bottom Navigation & CTA */}
       <ScrollReveal direction="up" distance={20}>
-        <section className="max-w-[1440px] mx-auto px-6 pt-16 flex flex-col sm:flex-row justify-between items-center gap-6 border-t border-[#CCCCCC]/40 mt-20">
+        <section className="max-w-[1440px] mx-auto px-6 pt-16 flex flex-col sm:flex-row justify-between items-center gap-6 border-t border-[#CCE5E3] mt-20">
           <button
             onClick={handleNavigateHome}
-            className="group flex items-center gap-3 font-narrow text-xs uppercase tracking-[0.2em] font-bold text-[#111111] hover:text-[#5E5E5E] transition-colors cursor-pointer"
+            className="group flex items-center gap-3 font-narrow text-xs uppercase tracking-[0.2em] font-bold text-[#0C2B31] hover:text-[#0B6E7B] transition-colors cursor-pointer"
           >
-            <span className="w-10 h-10 rounded-full border border-[#111111] group-hover:bg-[#111111] group-hover:text-white flex items-center justify-center transition-all duration-300">
+            <span className="w-10 h-10 rounded-full border border-[#0B6E7B] group-hover:bg-[#0B6E7B] group-hover:text-white flex items-center justify-center transition-all duration-300">
               <i className="fa-solid fa-arrow-left text-sm"></i>
             </span>
             <span>Back to Portfolio Main Page</span>
@@ -469,7 +469,7 @@ export default function XuanTinhNguyen2022Detail() {
 
           <button
             onClick={handleScrollTop}
-            className="font-narrow text-xs font-bold text-[#5E5E5E] hover:text-[#111111] uppercase tracking-widest flex items-center gap-2 cursor-pointer"
+            className="font-narrow text-xs font-bold text-[#4E6E75] hover:text-[#0B6E7B] uppercase tracking-widest flex items-center gap-2 cursor-pointer"
           >
             <span>Top of Page</span>
             <i className="fa-solid fa-arrow-up text-xs"></i>

@@ -93,21 +93,21 @@
 /* Hologram background variant with matching glowing border */
 .specular-button--hologram {
   background: linear-gradient(110deg,
-      #0096c7 0%,
-      #00c4cc 18%,
-      #80e8e0 35%,
-      #fff5db 50%,
-      #ffd199 65%,
-      #f38827 82%,
-      #0096c7 100%);
+      #08545e 0%,
+      #0b6e7b 20%,
+      #14b8a6 40%,
+      #a7f3d0 50%,
+      #2dd4bf 60%,
+      #0b6e7b 80%,
+      #08545e 100%);
   background-size: 300% auto;
   animation: hologramShine 3.5s ease-in-out infinite;
-  box-shadow: 0 0 18px rgba(0, 196, 204, 0.5), 0 0 32px rgba(243, 136, 39, 0.35);
-  color: #000000;
+  box-shadow: 0 0 18px rgba(20, 184, 166, 0.4), 0 0 32px rgba(11, 110, 123, 0.3);
+  color: #ffffff;
 }
 
 .specular-button--hologram:hover {
-  box-shadow: 0 0 25px rgba(0, 196, 204, 0.7), 0 0 45px rgba(243, 136, 39, 0.5);
+  box-shadow: 0 0 25px rgba(45, 212, 191, 0.6), 0 0 45px rgba(11, 110, 123, 0.5);
 }
 
 /* Canvas extends past the button so the rim glow can bleed outside the edge */

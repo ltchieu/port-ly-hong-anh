@@ -23,20 +23,20 @@ export default function Work() {
   };
 
   return (
-    <section id="work" className="py-24 bg-[#FAF9F6] scroll-mt-20 border-b border-[#CCCCCC]/60">
+    <section id="work" className="py-24 bg-white scroll-mt-20 border-b border-[#CCE5E3]">
       <div className="max-w-[1440px] mx-auto px-6">
         {/* Section Header */}
         <ScrollReveal direction="up">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-4 border-b border-[#111111]/15 pb-8">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-4 border-b border-[#CCE5E3] pb-8">
             <div>
-              <span className="font-narrow text-xs font-black text-[#5E5E5E] tracking-[0.2em] block uppercase mb-1">
+              <span className="font-narrow text-xs font-black text-[#0B6E7B] tracking-[0.2em] block uppercase mb-1">
                 CURATED CREATIVE
               </span>
-              <h2 className="font-display text-5xl sm:text-6xl md:text-7xl uppercase tracking-tighter text-[#111111]">
+              <h2 className="font-display text-5xl sm:text-6xl md:text-7xl uppercase tracking-tighter text-[#0C2B31]">
                 SELECTED WORKS
               </h2>
             </div>
-            <p className="font-narrow text-xs font-bold text-[#5E5E5E] tracking-widest max-w-xs md:text-right">
+            <p className="font-narrow text-xs font-bold text-[#4E6E75] tracking-widest max-w-xs md:text-right">
               A precise collision of volunteer leadership, brand identity, and creative event production
             </p>
           </div>
@@ -48,19 +48,19 @@ export default function Work() {
             <div key={brandSection.id} className="space-y-6">
               {/* Brand Header */}
               <ScrollReveal direction="up" delay={bIdx * 0.1}>
-                <div className="bg-white border border-[#CCCCCC]/60 p-6 rounded-xl shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div className="bg-white border border-[#CCE5E3] p-6 rounded-xl shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
                   <div className="space-y-1 max-w-2xl">
                     <span className="font-narrow text-[13px] font-black hologram-metal-text tracking-[0.2em] uppercase block">
                       {brandSection.category}
                     </span>
-                    <h3 className="font-display text-2xl sm:text-3xl text-[#111111] uppercase tracking-wide">
+                    <h3 className="font-display text-2xl sm:text-3xl text-[#0C2B31] uppercase tracking-wide">
                       {brandSection.brand}
                     </h3>
-                    <p className="font-sans text-xs sm:text-sm text-[#5E5E5E] leading-relaxed pt-1">
+                    <p className="font-sans text-xs sm:text-sm text-[#4E6E75] leading-relaxed pt-1">
                       {brandSection.description}
                     </p>
                   </div>
-                  <span className="font-mono text-xs bg-[#111111] text-white px-3.5 py-1.5 rounded-full uppercase tracking-wider font-bold self-start md:self-auto">
+                  <span className="font-mono text-xs bg-[#0B6E7B] text-white px-3.5 py-1.5 rounded-full uppercase tracking-wider font-bold self-start md:self-auto shadow-xs">
                     {brandSection.videos.length} VIDEO REELS
                   </span>
                 </div>
@@ -77,7 +77,7 @@ export default function Work() {
                   <ScrollReveal key={video.stt} direction="up" delay={vIdx * 0.08}>
                     <div
                       onClick={() => handleOpenVideoModal(video)}
-                      className="group relative bg-[#111111] rounded-xl overflow-hidden shadow-md hover:shadow-xl border border-white/10 transition-all duration-300 cursor-pointer flex flex-col justify-between h-full"
+                      className="group relative bg-[#07262B] rounded-xl overflow-hidden shadow-md hover:shadow-xl border border-[#0B6E7B]/30 transition-all duration-300 cursor-pointer flex flex-col justify-between h-full"
                     >
                       {/* Live Facebook Video Player & Native Thumbnail */}
                       <div className="relative aspect-video w-full overflow-hidden bg-black flex items-center justify-center">
@@ -85,8 +85,8 @@ export default function Work() {
                       </div>
 
                       {/* Card Content & Action Trigger */}
-                      <div className="p-4 bg-[#141416] text-white space-y-3 flex-1 flex flex-col justify-between">
-                        <h4 className="font-sans text-xs sm:text-sm font-bold leading-snug line-clamp-2 group-hover:text-[#00f2fe] transition-colors">
+                      <div className="p-4 bg-[#0B252B] text-white space-y-3 flex-1 flex flex-col justify-between">
+                        <h4 className="font-sans text-xs sm:text-sm font-bold leading-snug line-clamp-2 group-hover:text-[#2DD4BF] transition-colors">
                           {video.title}
                         </h4>
 
@@ -116,14 +116,14 @@ export default function Work() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={handleCloseVideoModal}
-              className="fixed inset-0 z-[999] bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-8"
+              className="fixed inset-0 z-[999] bg-[#07262B]/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-8"
             >
               <motion.div
                 initial={{ scale: 0.95, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.95, opacity: 0 }}
                 onClick={(e) => e.stopPropagation()}
-                className="relative max-w-3xl w-full max-h-[92vh] flex flex-col bg-[#141416] border border-white/20 rounded-2xl p-5 sm:p-7 shadow-2xl space-y-4 overflow-hidden"
+                className="relative max-w-3xl w-full max-h-[92vh] flex flex-col bg-[#0B252B] border border-[#0B6E7B]/40 rounded-2xl p-5 sm:p-7 shadow-2xl space-y-4 overflow-hidden"
               >
                 {/* Modal Header */}
                 <div className="w-full flex items-center justify-between border-b border-white/15 pb-3">
@@ -138,7 +138,7 @@ export default function Work() {
 
                   <button
                     onClick={handleCloseVideoModal}
-                    className="w-8 h-8 rounded-full bg-white/10 hover:bg-white text-white hover:text-[#111111] flex items-center justify-center transition-colors cursor-pointer border border-white/20"
+                    className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#0B6E7B] text-white flex items-center justify-center transition-colors cursor-pointer border border-white/20"
                     aria-label="Close video modal"
                   >
                     <i className="fa-solid fa-xmark text-sm"></i>
@@ -159,7 +159,7 @@ export default function Work() {
                     href={selectedVideo.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-4 py-2 bg-[#1877F2] text-white hover:bg-[#166fe5] transition-all font-narrow text-xs uppercase tracking-wider font-bold rounded-lg flex items-center gap-2"
+                    className="px-4 py-2 bg-[#1877F2] text-white hover:bg-[#166fe5] transition-all font-narrow text-xs uppercase tracking-wider font-bold rounded-lg flex items-center gap-2 shadow-sm"
                   >
                     <span>Watch on Facebook</span>
                     <i className="fa-solid fa-arrow-up-right-from-square text-xs"></i>

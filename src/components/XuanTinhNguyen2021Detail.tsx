@@ -124,7 +124,7 @@ export default function XuanTinhNguyen2021Detail() {
   }, [wallEditedImages]);
 
   return (
-    <div className="bg-[#FAF9F6] text-[#111111] font-sans antialiased min-h-screen selection:bg-[#111111] selection:text-white pb-24">
+    <div className="bg-[#FAFCFC] text-[#0C2B31] font-sans antialiased min-h-screen selection:bg-[#0B6E7B] selection:text-white pb-24">
       {/* Header Navigation Bar */}
       <HeaderNav
         onNavigateHome={handleNavigateHome}
@@ -140,7 +140,7 @@ export default function XuanTinhNguyen2021Detail() {
         title="Xuân Tình Nguyện 2021 — Community Campaign"
         description={
           <p>
-            Leading community outreach, midnight porridge distribution, and primary school wall mural painting for <strong className="text-[#111111] font-semibold">Xuân Tình Nguyện 2021</strong>. Managed volunteer operations across 4 key fronts and created the complete visual branding suite.
+            Leading community outreach, midnight porridge distribution, and primary school wall mural painting for <strong className="text-[#0C2B31] font-semibold">Xuân Tình Nguyện 2021</strong>. Managed volunteer operations across 4 key fronts and created the complete visual branding suite.
           </p>
         }
         tags={['Wall Mural Painting', 'Midnight Porridge Outreach', 'Campaign Identity', 'Volunteer Logistics']}
@@ -153,21 +153,21 @@ export default function XuanTinhNguyen2021Detail() {
         {/* ========================================================================= */}
         <section id="campaign-marquee">
           <ScrollReveal direction="up" distance={30}>
-            <div className="border-b border-[#CCCCCC]/40 pb-6 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div className="border-b border-[#CCE5E3] pb-6 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
               <div>
                 <div className="flex items-center gap-3 mb-2">
-                  <span className="font-narrow text-xs font-black text-[#5E5E5E] tracking-[0.25em] uppercase">
+                  <span className="font-narrow text-xs font-black text-[#0B6E7B] tracking-[0.25em] uppercase">
                     SHOWCASE 01 / 05
                   </span>
-                  <span className="text-[#CCCCCC]">•</span>
-                  <span className="font-narrow text-xs font-bold text-[#111111] tracking-widest uppercase">
+                  <span className="text-[#CCE5E3]">•</span>
+                  <span className="font-narrow text-xs font-bold text-[#0C2B31] tracking-widest uppercase">
                     FOLDER: XUÂN TÌNH NGUYỆN 2021
                   </span>
                 </div>
-                <h2 className="font-display text-3xl sm:text-4xl md:text-5xl uppercase tracking-tighter text-[#111111]">
+                <h2 className="font-display text-3xl sm:text-4xl md:text-5xl uppercase tracking-tighter text-[#0C2B31]">
                   Campaign Visual & Graphic Identity Suite
                 </h2>
-                <p className="font-sans text-base text-[#5E5E5E] max-w-3xl leading-relaxed mt-2">
+                <p className="font-sans text-base text-[#4E6E75] max-w-3xl leading-relaxed mt-2">
                   Continuous infinite marquee displaying official campaign posters, Facebook cover graphics, scholarship certificates, gratitude letters, and avatar frames created for Xuân Tình Nguyện 2021.
                 </p>
               </div>
@@ -197,21 +197,21 @@ export default function XuanTinhNguyen2021Detail() {
         {/* ========================================================================= */}
         <section id="wall-painting-activity">
           <ScrollReveal direction="up" distance={30}>
-            <div className="border-b border-[#CCCCCC]/40 pb-6 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div className="border-b border-[#CCE5E3] pb-6 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
               <div>
                 <div className="flex items-center gap-3 mb-2">
-                  <span className="font-narrow text-xs font-black text-[#5E5E5E] tracking-[0.25em] uppercase">
+                  <span className="font-narrow text-xs font-black text-[#0B6E7B] tracking-[0.25em] uppercase">
                     SHOWCASE 02 / 05
                   </span>
-                  <span className="text-[#CCCCCC]">•</span>
-                  <span className="font-narrow text-xs font-bold text-[#111111] tracking-widest uppercase">
+                  <span className="text-[#CCE5E3]">•</span>
+                  <span className="font-narrow text-xs font-bold text-[#0C2B31] tracking-widest uppercase">
                     SUBFOLDER: HOẠT ĐỘNG VẼ TƯỜNG
                   </span>
                 </div>
-                <h2 className="font-display text-3xl sm:text-4xl md:text-5xl uppercase tracking-tighter text-[#111111]">
+                <h2 className="font-display text-3xl sm:text-4xl md:text-5xl uppercase tracking-tighter text-[#0C2B31]">
                   Primary School Wall Mural Painting
                 </h2>
-                <p className="font-sans text-base text-[#5E5E5E] max-w-3xl leading-relaxed mt-2">
+                <p className="font-sans text-base text-[#4E6E75] max-w-3xl leading-relaxed mt-2">
                   Photo coverage documenting volunteer artists painting colorful wall murals for local primary school children. Click any photo thumbnail to inspect in full resolution.
                 </p>
               </div>
@@ -230,7 +230,7 @@ export default function XuanTinhNguyen2021Detail() {
                     description: 'Volunteer artists painting colorful wall murals for local primary school children.'
                   });
                 }}
-                className="group relative aspect-[4/3] rounded-xl overflow-hidden border border-[#CCCCCC]/60 shadow-sm cursor-pointer"
+                className="group relative aspect-[4/3] rounded-xl overflow-hidden border border-[#CCE5E3] bg-white shadow-sm cursor-pointer"
               >
                 <img
                   src={src}
@@ -239,12 +239,12 @@ export default function XuanTinhNguyen2021Detail() {
                   decoding="async"
                   className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-105 group-hover:opacity-90"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                  <span className="font-narrow text-xs font-black text-white/80 tracking-widest uppercase mb-1">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#07262B]/90 via-[#07262B]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                  <span className="font-narrow text-xs font-black text-[#2DD4BF] tracking-widest uppercase mb-1">
                     WALL MURAL PHOTO 0{idx + 1}
                   </span>
                   <p className="font-sans text-xs text-white/90 font-medium flex items-center gap-2">
-                    <i className="fa-solid fa-magnifying-glass-plus text-xs"></i> View Full Photo
+                    <i className="fa-solid fa-magnifying-glass-plus text-xs text-[#2DD4BF]"></i> View Full Photo
                   </p>
                 </div>
               </div>
@@ -257,21 +257,21 @@ export default function XuanTinhNguyen2021Detail() {
         {/* ========================================================================= */}
         <section id="wall-painting-masonry">
           <ScrollReveal direction="up" distance={30}>
-            <div className="border-b border-[#CCCCCC]/40 pb-6 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div className="border-b border-[#CCE5E3] pb-6 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
               <div>
                 <div className="flex items-center gap-3 mb-2">
-                  <span className="font-narrow text-xs font-black text-[#5E5E5E] tracking-[0.25em] uppercase">
+                  <span className="font-narrow text-xs font-black text-[#0B6E7B] tracking-[0.25em] uppercase">
                     SHOWCASE 03 / 05
                   </span>
-                  <span className="text-[#CCCCCC]">•</span>
-                  <span className="font-narrow text-xs font-bold text-[#111111] tracking-widest uppercase">
+                  <span className="text-[#CCE5E3]">•</span>
+                  <span className="font-narrow text-xs font-bold text-[#0C2B31] tracking-widest uppercase">
                     SUBFOLDER: 20210125 VẼ TƯỜNG XTN21
                   </span>
                 </div>
-                <h2 className="font-display text-3xl sm:text-4xl md:text-5xl uppercase tracking-tighter text-[#111111]">
+                <h2 className="font-display text-3xl sm:text-4xl md:text-5xl uppercase tracking-tighter text-[#0C2B31]">
                   Mural Painting High-Res Photojournalism
                 </h2>
-                <p className="font-sans text-base text-[#5E5E5E] max-w-3xl leading-relaxed mt-2">
+                <p className="font-sans text-base text-[#4E6E75] max-w-3xl leading-relaxed mt-2">
                   Staggered masonry arrangement showcasing detailed brushwork, volunteer collaboration, and final wall mural artwork.
                 </p>
               </div>
@@ -306,21 +306,21 @@ export default function XuanTinhNguyen2021Detail() {
         {/* ========================================================================= */}
         <section id="night-porridge-stack">
           <ScrollReveal direction="up" distance={30}>
-            <div className="border-b border-[#CCCCCC]/40 pb-6 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div className="border-b border-[#CCE5E3] pb-6 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
               <div>
                 <div className="flex items-center gap-3 mb-2">
-                  <span className="font-narrow text-xs font-black text-[#5E5E5E] tracking-[0.25em] uppercase">
+                  <span className="font-narrow text-xs font-black text-[#0B6E7B] tracking-[0.25em] uppercase">
                     SHOWCASE 04 / 05
                   </span>
-                  <span className="text-[#CCCCCC]">•</span>
-                  <span className="font-narrow text-xs font-bold text-[#111111] tracking-widest uppercase">
+                  <span className="text-[#CCE5E3]">•</span>
+                  <span className="font-narrow text-xs font-bold text-[#0C2B31] tracking-widest uppercase">
                     SUBFOLDER: 20210123 HOẠT ĐỘNG PHÁT CHÁO ĐÊM
                   </span>
                 </div>
-                <h2 className="font-display text-3xl sm:text-4xl md:text-5xl uppercase tracking-tighter text-[#111111]">
+                <h2 className="font-display text-3xl sm:text-4xl md:text-5xl uppercase tracking-tighter text-[#0C2B31]">
                   Midnight Porridge Outreach Rounds
                 </h2>
-                <p className="font-sans text-base text-[#5E5E5E] max-w-3xl leading-relaxed mt-2">
+                <p className="font-sans text-base text-[#4E6E75] max-w-3xl leading-relaxed mt-2">
                   Interactive swipeable card stack capturing late night volunteer rounds distributing warm porridge to hard-working night laborers and street vendors. Click the top card to send to back.
                 </p>
               </div>
@@ -342,7 +342,7 @@ export default function XuanTinhNguyen2021Detail() {
                           description: 'Volunteers distributing midnight porridge to hard-working night laborers.'
                         });
                       }}
-                      className="w-full h-full rounded-xl overflow-hidden border border-[#CCCCCC]/60 shadow-xl cursor-pointer bg-white"
+                      className="w-full h-full rounded-xl overflow-hidden border border-[#CCE5E3] shadow-xl cursor-pointer bg-white"
                     >
                       <img
                         src={src}
@@ -365,21 +365,21 @@ export default function XuanTinhNguyen2021Detail() {
         {/* ========================================================================= */}
         <section id="cooking-porridge-grid">
           <ScrollReveal direction="up" distance={30}>
-            <div className="border-b border-[#CCCCCC]/40 pb-6 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div className="border-b border-[#CCE5E3] pb-6 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
               <div>
                 <div className="flex items-center gap-3 mb-2">
-                  <span className="font-narrow text-xs font-black text-[#5E5E5E] tracking-[0.25em] uppercase">
+                  <span className="font-narrow text-xs font-black text-[#0B6E7B] tracking-[0.25em] uppercase">
                     SHOWCASE 05 / 05
                   </span>
-                  <span className="text-[#CCCCCC]">•</span>
-                  <span className="font-narrow text-xs font-bold text-[#111111] tracking-widest uppercase">
+                  <span className="text-[#CCE5E3]">•</span>
+                  <span className="font-narrow text-xs font-bold text-[#0C2B31] tracking-widest uppercase">
                     SUBFOLDER: 20210123 HOẠT ĐỘNG NẤU CHÁO
                   </span>
                 </div>
-                <h2 className="font-display text-3xl sm:text-4xl uppercase tracking-tighter text-[#111111]">
+                <h2 className="font-display text-3xl sm:text-4xl uppercase tracking-tighter text-[#0C2B31]">
                   Porridge Kitchen Cooking & Packing
                 </h2>
-                <p className="font-sans text-base text-[#5E5E5E] max-w-3xl leading-relaxed mt-2">
+                <p className="font-sans text-base text-[#4E6E75] max-w-3xl leading-relaxed mt-2">
                   Standard responsive photo grid documenting early morning kitchen prep, large-kettle porridge cooking, and hygienic food portioning. Click any thumbnail to preview in full resolution.
                 </p>
               </div>
@@ -398,7 +398,7 @@ export default function XuanTinhNguyen2021Detail() {
                     description: 'Early morning cooking and packing of fresh nutritious porridge.'
                   });
                 }}
-                className="aspect-square rounded-xl overflow-hidden bg-white border border-[#CCCCCC]/60 shadow-sm relative group cursor-pointer"
+                className="aspect-square rounded-xl overflow-hidden bg-white border border-[#CCE5E3] shadow-sm relative group cursor-pointer"
               >
                 <img
                   src={src}
@@ -407,8 +407,8 @@ export default function XuanTinhNguyen2021Detail() {
                   decoding="async"
                   className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <span className="text-white text-xs font-narrow font-bold uppercase tracking-wider bg-black/70 px-3 py-1.5 rounded flex items-center gap-2">
+                <div className="absolute inset-0 bg-[#07262B]/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <span className="text-white text-xs font-narrow font-bold uppercase tracking-wider bg-[#0B6E7B]/90 px-3 py-1.5 rounded-lg flex items-center gap-2 shadow-sm">
                     <i className="fa-solid fa-magnifying-glass-plus text-xs"></i> View Full Photo
                   </span>
                 </div>
@@ -420,12 +420,12 @@ export default function XuanTinhNguyen2021Detail() {
 
       {/* Bottom Navigation & CTA */}
       <ScrollReveal direction="up" distance={20}>
-        <section className="max-w-[1440px] mx-auto px-6 pt-16 flex flex-col sm:flex-row justify-between items-center gap-6 border-t border-[#CCCCCC]/40 mt-20">
+        <section className="max-w-[1440px] mx-auto px-6 pt-16 flex flex-col sm:flex-row justify-between items-center gap-6 border-t border-[#CCE5E3] mt-20">
           <button
             onClick={handleNavigateHome}
-            className="group flex items-center gap-3 font-narrow text-xs uppercase tracking-[0.2em] font-bold text-[#111111] hover:text-[#5E5E5E] transition-colors cursor-pointer"
+            className="group flex items-center gap-3 font-narrow text-xs uppercase tracking-[0.2em] font-bold text-[#0C2B31] hover:text-[#0B6E7B] transition-colors cursor-pointer"
           >
-            <span className="w-10 h-10 rounded-full border border-[#111111] group-hover:bg-[#111111] group-hover:text-white flex items-center justify-center transition-all duration-300">
+            <span className="w-10 h-10 rounded-full border border-[#0B6E7B] group-hover:bg-[#0B6E7B] group-hover:text-white flex items-center justify-center transition-all duration-300">
               <i className="fa-solid fa-arrow-left text-sm"></i>
             </span>
             <span>Back to Portfolio Main Page</span>
@@ -433,7 +433,7 @@ export default function XuanTinhNguyen2021Detail() {
 
           <button
             onClick={handleScrollTop}
-            className="font-narrow text-xs font-bold text-[#5E5E5E] hover:text-[#111111] uppercase tracking-widest flex items-center gap-2 cursor-pointer"
+            className="font-narrow text-xs font-bold text-[#4E6E75] hover:text-[#0B6E7B] uppercase tracking-widest flex items-center gap-2 cursor-pointer"
           >
             <span>Top of Page</span>
             <i className="fa-solid fa-arrow-up text-xs"></i>

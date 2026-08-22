@@ -181,7 +181,7 @@ export default function YouthUnionCongressDetail() {
   ], []);
 
   return (
-    <div className="bg-[#FAF9F6] text-[#111111] font-sans antialiased min-h-screen selection:bg-[#111111] selection:text-white pb-24">
+    <div className="bg-[#FAFCFC] text-[#0C2B31] font-sans antialiased min-h-screen selection:bg-[#0B6E7B] selection:text-white pb-24">
       {/* Header Navigation Bar */}
       <HeaderNav
         onNavigateHome={handleNavigateHome}
@@ -197,7 +197,7 @@ export default function YouthUnionCongressDetail() {
         title="Youth Union Congress 2022 — Publication & Diplomatic Graphic Suite"
         description={
           <p>
-            Responsible for the comprehensive corporate identity, publication design, voting passes, VIP invitations, and slide presentation decks for the <strong className="text-[#111111] font-semibold">Youth Union Congress 2022 (Đại Hội Đoàn Khoa)</strong>. Designed official resolution draft booklets, delegate badges, invitation covers for District 3 Youth Union, and executive reporting slide masters.
+            Responsible for the comprehensive corporate identity, publication design, voting passes, VIP invitations, and slide presentation decks for the <strong className="text-[#0C2B31] font-semibold">Youth Union Congress 2022 (Đại Hội Đoàn Khoa)</strong>. Designed official resolution draft booklets, delegate badges, invitation covers for District 3 Youth Union, and executive reporting slide masters.
           </p>
         }
         tags={['Official Draft & Report Booklets', 'Delegate & VIP Guest Badges', 'Voting Cards & Invitations', 'Presentation Decks', 'Press Logistics']}
@@ -205,14 +205,14 @@ export default function YouthUnionCongressDetail() {
       />
 
       {/* Official Media Publications Bar */}
-      <section className="py-8 bg-white border-y border-[#CCCCCC]/40">
+      <section className="py-8 bg-white border-y border-[#CCE5E3]">
         <div className="max-w-[1440px] mx-auto px-6">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div>
-              <span className="font-narrow text-xs font-black text-[#5E5E5E] tracking-[0.25em] uppercase block mb-1">
+              <span className="font-narrow text-xs font-black text-[#0B6E7B] tracking-[0.25em] uppercase block mb-1">
                 OFFICIAL RECAP & CONGRESS COVERAGE
               </span>
-              <h3 className="font-display text-xl sm:text-2xl uppercase tracking-tight text-[#111111]">
+              <h3 className="font-display text-xl sm:text-2xl uppercase tracking-tight text-[#0C2B31]">
                 Youth Union Congress 2022 Media Report
               </h3>
             </div>
@@ -221,9 +221,9 @@ export default function YouthUnionCongressDetail() {
                 href="https://www.facebook.com/share/p/1EX9rW9qoj/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-5 py-2.5 bg-[#111111] text-white text-xs font-narrow font-bold uppercase tracking-wider rounded hover:bg-[#333333] transition-all flex items-center gap-2 shadow-sm"
+                className="px-5 py-2.5 bg-[#0B6E7B] text-white text-xs font-narrow font-bold uppercase tracking-wider rounded-lg hover:bg-[#08545E] transition-all flex items-center gap-2 shadow-sm"
               >
-                <i className="fa-brands fa-facebook text-xs text-[#1877F2]"></i>
+                <i className="fa-brands fa-facebook text-xs text-[#14B8A6]"></i>
                 <span>Read Official Congress Recap</span>
                 <i className="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-70"></i>
               </a>
@@ -236,21 +236,21 @@ export default function YouthUnionCongressDetail() {
         {/* SHOWCASE 01: MASONRY GALLERY (9 SPECIFIED ASSETS) */}
         <section id="doan-masonry-showcase">
           <ScrollReveal direction="up" distance={30}>
-            <div className="border-b border-[#CCCCCC]/40 pb-6 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div className="border-b border-[#CCE5E3] pb-6 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
               <div>
                 <div className="flex items-center gap-3 mb-2">
-                  <span className="font-narrow text-xs font-black text-[#5E5E5E] tracking-[0.25em] uppercase">
+                  <span className="font-narrow text-xs font-black text-[#0B6E7B] tracking-[0.25em] uppercase">
                     SHOWCASE 01 / 02
                   </span>
-                  <span className="text-[#CCCCCC]">•</span>
-                  <span className="font-narrow text-xs font-bold text-[#111111] tracking-widest uppercase">
+                  <span className="text-[#CCE5E3]">•</span>
+                  <span className="font-narrow text-xs font-bold text-[#0C2B31] tracking-widest uppercase">
                     MASONRY GALLERY ({masonryItems.length} ASSETS)
                   </span>
                 </div>
-                <h2 className="font-display text-3xl sm:text-4xl md:text-5xl uppercase tracking-tighter text-[#111111]">
+                <h2 className="font-display text-3xl sm:text-4xl md:text-5xl uppercase tracking-tighter text-[#0C2B31]">
                   Official Publications, Covers & Stage Artworks
                 </h2>
-                <p className="font-sans text-base text-[#5E5E5E] max-w-3xl leading-relaxed mt-2">
+                <p className="font-sans text-base text-[#4E6E75] max-w-3xl leading-relaxed mt-2">
                   Staggered masonry arrangement showcasing congress draft booklets, resolution book covers, executive slide backgrounds, avatar frames, and delegation banners. Click any item to inspect in high resolution.
                 </p>
               </div>
@@ -283,21 +283,21 @@ export default function YouthUnionCongressDetail() {
         {/* SHOWCASE 02: STANDARD PHOTO GRID (REMAINING ASSETS) */}
         <section id="doan-standard-grid">
           <ScrollReveal direction="up" distance={30}>
-            <div className="border-b border-[#CCCCCC]/40 pb-6 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div className="border-b border-[#CCE5E3] pb-6 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
               <div>
                 <div className="flex items-center gap-3 mb-2">
-                  <span className="font-narrow text-xs font-black text-[#5E5E5E] tracking-[0.25em] uppercase">
+                  <span className="font-narrow text-xs font-black text-[#0B6E7B] tracking-[0.25em] uppercase">
                     SHOWCASE 02 / 02
                   </span>
-                  <span className="text-[#CCCCCC]">•</span>
-                  <span className="font-narrow text-xs font-bold text-[#111111] tracking-widest uppercase">
+                  <span className="text-[#CCE5E3]">•</span>
+                  <span className="font-narrow text-xs font-bold text-[#0C2B31] tracking-widest uppercase">
                     DIPLOMATIC PASSES & CREDENTIALS ({standardGridImages.length} ASSETS)
                   </span>
                 </div>
-                <h2 className="font-display text-3xl sm:text-4xl md:text-5xl uppercase tracking-tighter text-[#111111]">
+                <h2 className="font-display text-3xl sm:text-4xl md:text-5xl uppercase tracking-tighter text-[#0C2B31]">
                   VIP Invitations, Voting Cards & Delegate Passes
                 </h2>
-                <p className="font-sans text-base text-[#5E5E5E] max-w-3xl leading-relaxed mt-2">
+                <p className="font-sans text-base text-[#4E6E75] max-w-3xl leading-relaxed mt-2">
                   Standard photo card grid displaying executive guest invitation folders, District 3 Youth Union diplomatic passes, delegate voting cards, and credential badges. Click any item to inspect in full resolution.
                 </p>
               </div>
@@ -316,7 +316,7 @@ export default function YouthUnionCongressDetail() {
                       description: img.description
                     })
                   }
-                  className="group relative aspect-[4/3] rounded-xl overflow-hidden bg-white border border-[#CCCCCC]/60 shadow-sm hover:shadow-md transition-all cursor-pointer"
+                  className="group relative aspect-[4/3] rounded-xl overflow-hidden bg-white border border-[#CCE5E3] shadow-sm hover:shadow-md transition-all cursor-pointer"
                 >
                   <img
                     src={img.src}
@@ -325,15 +325,15 @@ export default function YouthUnionCongressDetail() {
                     decoding="async"
                     className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                    <span className="font-narrow text-[10px] font-black text-white/80 tracking-widest uppercase mb-1">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#07262B]/90 via-[#07262B]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                    <span className="font-narrow text-[10px] font-black text-[#2DD4BF] tracking-widest uppercase mb-1">
                       {img.category}
                     </span>
                     <h4 className="font-display text-lg text-white uppercase leading-tight line-clamp-1">
                       {img.title}
                     </h4>
-                    <p className="font-sans text-xs text-white/80 font-medium flex items-center gap-2 mt-2">
-                      <i className="fa-solid fa-magnifying-glass-plus text-xs"></i> View High-Res Image
+                    <p className="font-sans text-xs text-white/90 font-medium flex items-center gap-2 mt-2">
+                      <i className="fa-solid fa-magnifying-glass-plus text-xs text-[#2DD4BF]"></i> View High-Res Image
                     </p>
                   </div>
                 </div>
@@ -343,25 +343,25 @@ export default function YouthUnionCongressDetail() {
         </section>
 
         {/* Project Context & Scope Summary */}
-        <section id="project-overview-summary" className="pt-12 border-t border-[#CCCCCC]/40">
+        <section id="project-overview-summary" className="pt-12 border-t border-[#CCE5E3]">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
             <div className="md:col-span-4">
-              <span className="font-narrow text-xs font-black text-[#5E5E5E] tracking-[0.25em] uppercase block mb-2">
+              <span className="font-narrow text-xs font-black text-[#0B6E7B] tracking-[0.25em] uppercase block mb-2">
                 PROJECT METADATA
               </span>
-              <h3 className="font-display text-2xl uppercase tracking-tight text-[#111111] mb-4">
+              <h3 className="font-display text-2xl uppercase tracking-tight text-[#0C2B31] mb-4">
                 Corporate Pre-press Scope
               </h3>
-              <div className="space-y-3 font-sans text-sm text-[#5E5E5E]">
-                <p><strong className="text-[#111111]">Role:</strong> Corporate & Press Pre-press Designer</p>
-                <p><strong className="text-[#111111]">Deliverables:</strong> Report Booklets, VIP Passes, Presentation Slides, Badges</p>
-                <p><strong className="text-[#111111]">Tools Used:</strong> Adobe InDesign, Illustrator, Photoshop</p>
-                <p><strong className="text-[#111111]">Diplomatic Reach:</strong> Faculty Leadership & District 3 Youth Union</p>
+              <div className="space-y-3 font-sans text-sm text-[#4E6E75]">
+                <p><strong className="text-[#0C2B31]">Role:</strong> Corporate & Press Pre-press Designer</p>
+                <p><strong className="text-[#0C2B31]">Deliverables:</strong> Report Booklets, VIP Passes, Presentation Slides, Badges</p>
+                <p><strong className="text-[#0C2B31]">Tools Used:</strong> Adobe InDesign, Illustrator, Photoshop</p>
+                <p><strong className="text-[#0C2B31]">Diplomatic Reach:</strong> Faculty Leadership & District 3 Youth Union</p>
               </div>
             </div>
-            <div className="md:col-span-8 space-y-4 font-sans text-base text-[#5E5E5E] leading-relaxed">
+            <div className="md:col-span-8 space-y-4 font-sans text-base text-[#4E6E75] leading-relaxed">
               <p>
-                The <strong className="text-[#111111]">Youth Union Congress 2022 (Đại Hội Đoàn Khoa)</strong> required a strict, high-precision corporate graphic system conforming to official diplomatic standards. Khanh managed the complete pre-press workflow for all printed publications, from resolution draft handbooks to delegate credential badges.
+                The <strong className="text-[#0C2B31]">Youth Union Congress 2022 (Đại Hội Đoàn Khoa)</strong> required a strict, high-precision corporate graphic system conforming to official diplomatic standards. Khanh managed the complete pre-press workflow for all printed publications, from resolution draft handbooks to delegate credential badges.
               </p>
               <p>
                 Special emphasis was placed on brand consistency across both digital channels (social media avatar frames, executive reporting slide decks) and physical diplomatic stationery sent to high-level partners such as District 3 Youth Union.
@@ -375,7 +375,7 @@ export default function YouthUnionCongressDetail() {
       <div className="fixed bottom-8 right-8 z-40">
         <button
           onClick={handleScrollTop}
-          className="w-12 h-12 rounded-full bg-[#111111] text-white shadow-xl flex items-center justify-center hover:bg-[#333333] transition-all hover:scale-110 active:scale-95"
+          className="w-12 h-12 rounded-full bg-[#0B6E7B] text-white shadow-xl flex items-center justify-center hover:bg-[#08545E] transition-all hover:scale-110 active:scale-95"
           title="Scroll to top"
         >
           <i className="fa-solid fa-arrow-up text-sm"></i>

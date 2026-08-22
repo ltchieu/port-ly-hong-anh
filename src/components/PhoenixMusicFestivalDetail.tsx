@@ -121,7 +121,7 @@ export default function PhoenixMusicFestivalDetail() {
   ], []);
 
   return (
-    <div className="bg-[#FAF9F6] text-[#111111] font-sans antialiased min-h-screen selection:bg-[#111111] selection:text-white pb-24">
+    <div className="bg-[#FAFCFC] text-[#0C2B31] font-sans antialiased min-h-screen selection:bg-[#0B6E7B] selection:text-white pb-24">
       {/* Header Navigation Bar */}
       <HeaderNav
         onNavigateHome={handleNavigateHome}
@@ -137,7 +137,7 @@ export default function PhoenixMusicFestivalDetail() {
         title="The Phoenix Music Festival 2022 — Visual Identity & Print Campaign"
         description={
           <p>
-            Directed complete visual identity and campaign print collateral for <strong className="text-[#111111] font-semibold">The Phoenix Music Festival 2022</strong>, an energetic live campus music gathering over 500+ attendees. Developed main key visual posters, promotional teaser series, 1x2m standees, and VIP wristband passes.
+            Directed complete visual identity and campaign print collateral for <strong className="text-[#0C2B31] font-semibold">The Phoenix Music Festival 2022</strong>, an energetic live campus music gathering over 500+ attendees. Developed main key visual posters, promotional teaser series, 1x2m standees, and VIP wristband passes.
           </p>
         }
         tags={['Key Visual Poster Design', 'Festival Entry Wristbands', '1x2m Standee Banners', 'Brand Identity', 'Event Marketing']}
@@ -145,14 +145,14 @@ export default function PhoenixMusicFestivalDetail() {
       />
 
       {/* Official Media Publications Bar */}
-      <section className="py-8 bg-white border-y border-[#CCCCCC]/40">
+      <section className="py-8 bg-white border-y border-[#CCE5E3]">
         <div className="max-w-[1440px] mx-auto px-6">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div>
-              <span className="font-narrow text-xs font-black text-[#5E5E5E] tracking-[0.25em] uppercase block mb-1">
+              <span className="font-narrow text-xs font-black text-[#0B6E7B] tracking-[0.25em] uppercase block mb-1">
                 OFFICIAL PRESS & SOCIAL MEDIA COVERAGE
               </span>
-              <h3 className="font-display text-xl sm:text-2xl uppercase tracking-tight text-[#111111]">
+              <h3 className="font-display text-xl sm:text-2xl uppercase tracking-tight text-[#0C2B31]">
                 Campaign Facebook Releases & Highlights
               </h3>
             </div>
@@ -163,9 +163,9 @@ export default function PhoenixMusicFestivalDetail() {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 bg-[#FAF9F6] border border-[#CCCCCC]/80 text-[#111111] text-xs font-narrow font-bold uppercase tracking-wider rounded hover:border-[#111111] hover:bg-[#111111] hover:text-white transition-all flex items-center gap-2 shadow-sm"
+                  className="px-4 py-2 bg-white border border-[#CCE5E3] text-[#0C2B31] text-xs font-narrow font-bold uppercase tracking-wider rounded-lg hover:border-[#0B6E7B] hover:bg-[#0B6E7B] hover:text-white transition-all flex items-center gap-2 shadow-sm"
                 >
-                  <i className={`${link.icon} text-xs`}></i>
+                  <i className={`${link.icon} text-xs text-[#0B6E7B] group-hover:text-white`}></i>
                   <span>{link.title}</span>
                   <i className="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-70"></i>
                 </a>
@@ -179,21 +179,21 @@ export default function PhoenixMusicFestivalDetail() {
       <div className="max-w-[1440px] mx-auto px-6 pt-16 space-y-24">
         <section id="phoenix-photo-grid">
           <ScrollReveal direction="up" distance={30}>
-            <div className="border-b border-[#CCCCCC]/40 pb-6 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div className="border-b border-[#CCE5E3] pb-6 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
               <div>
                 <div className="flex items-center gap-3 mb-2">
-                  <span className="font-narrow text-xs font-black text-[#5E5E5E] tracking-[0.25em] uppercase">
+                  <span className="font-narrow text-xs font-black text-[#0B6E7B] tracking-[0.25em] uppercase">
                     FEATURED SHOWCASE
                   </span>
-                  <span className="text-[#CCCCCC]">•</span>
-                  <span className="font-narrow text-xs font-bold text-[#111111] tracking-widest uppercase">
+                  <span className="text-[#CCE5E3]">•</span>
+                  <span className="font-narrow text-xs font-bold text-[#0C2B31] tracking-widest uppercase">
                     VISUAL GALLERY ({formattedImages.length} ASSETS)
                   </span>
                 </div>
-                <h2 className="font-display text-3xl sm:text-4xl md:text-5xl uppercase tracking-tighter text-[#111111]">
+                <h2 className="font-display text-3xl sm:text-4xl md:text-5xl uppercase tracking-tighter text-[#0C2B31]">
                   Visual Identity & Graphic Design Gallery
                 </h2>
-                <p className="font-sans text-base text-[#5E5E5E] max-w-3xl leading-relaxed mt-2">
+                <p className="font-sans text-base text-[#4E6E75] max-w-3xl leading-relaxed mt-2">
                   High-resolution photo gallery displaying key festival posters, 1x2m promotional standees, VIP access wristbands, and official event logos. Click any image to view in full resolution.
                 </p>
               </div>
@@ -212,7 +212,7 @@ export default function PhoenixMusicFestivalDetail() {
                       description: img.description
                     })
                   }
-                  className="group relative aspect-[4/3] rounded-xl overflow-hidden bg-white border border-[#CCCCCC]/60 shadow-sm hover:shadow-md transition-all cursor-pointer"
+                  className="group relative aspect-[4/3] rounded-xl overflow-hidden bg-white border border-[#CCE5E3] shadow-sm hover:shadow-md transition-all cursor-pointer"
                 >
                   <img
                     src={img.src}
@@ -221,15 +221,15 @@ export default function PhoenixMusicFestivalDetail() {
                     decoding="async"
                     className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                    <span className="font-narrow text-[10px] font-black text-white/80 tracking-widest uppercase mb-1">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#07262B]/90 via-[#07262B]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                    <span className="font-narrow text-[10px] font-black text-[#2DD4BF] tracking-widest uppercase mb-1">
                       {img.category}
                     </span>
                     <h4 className="font-display text-lg text-white uppercase leading-tight line-clamp-1">
                       {img.title}
                     </h4>
-                    <p className="font-sans text-xs text-white/80 font-medium flex items-center gap-2 mt-2">
-                      <i className="fa-solid fa-magnifying-glass-plus text-xs"></i> View High-Res Image
+                    <p className="font-sans text-xs text-white/90 font-medium flex items-center gap-2 mt-2">
+                      <i className="fa-solid fa-magnifying-glass-plus text-xs text-[#2DD4BF]"></i> View High-Res Image
                     </p>
                   </div>
                 </div>
@@ -239,25 +239,25 @@ export default function PhoenixMusicFestivalDetail() {
         </section>
 
         {/* Project Context & Scope Summary */}
-        <section id="project-overview-summary" className="pt-12 border-t border-[#CCCCCC]/40">
+        <section id="project-overview-summary" className="pt-12 border-t border-[#CCE5E3]">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
             <div className="md:col-span-4">
-              <span className="font-narrow text-xs font-black text-[#5E5E5E] tracking-[0.25em] uppercase block mb-2">
+              <span className="font-narrow text-xs font-black text-[#0B6E7B] tracking-[0.25em] uppercase block mb-2">
                 PROJECT METADATA
               </span>
-              <h3 className="font-display text-2xl uppercase tracking-tight text-[#111111] mb-4">
+              <h3 className="font-display text-2xl uppercase tracking-tight text-[#0C2B31] mb-4">
                 Design Scope & Impact
               </h3>
-              <div className="space-y-3 font-sans text-sm text-[#5E5E5E]">
-                <p><strong className="text-[#111111]">Role:</strong> Visual Identity & Lead Designer</p>
-                <p><strong className="text-[#111111]">Deliverables:</strong> Posters, Wristbands, Standees, Social Media Graphics</p>
-                <p><strong className="text-[#111111]">Tools Used:</strong> Adobe Illustrator, Photoshop, Print Pre-press</p>
-                <p><strong className="text-[#111111]">Target Audience:</strong> 500+ University Students & Music Fans</p>
+              <div className="space-y-3 font-sans text-sm text-[#4E6E75]">
+                <p><strong className="text-[#0C2B31]">Role:</strong> Visual Identity & Lead Designer</p>
+                <p><strong className="text-[#0C2B31]">Deliverables:</strong> Posters, Wristbands, Standees, Social Media Graphics</p>
+                <p><strong className="text-[#0C2B31]">Tools Used:</strong> Adobe Illustrator, Photoshop, Print Pre-press</p>
+                <p><strong className="text-[#0C2B31]">Target Audience:</strong> 500+ University Students & Music Fans</p>
               </div>
             </div>
-            <div className="md:col-span-8 space-y-4 font-sans text-base text-[#5E5E5E] leading-relaxed">
+            <div className="md:col-span-8 space-y-4 font-sans text-base text-[#4E6E75] leading-relaxed">
               <p>
-                <strong className="text-[#111111]">The Phoenix 2022</strong> music festival brought together high-energy live band performances, electronic music sets, and interactive student engagement zones. To build anticipation and convey the vibrant energy of the festival, the visual identity focused on bold fiery typography, high-contrast promotional graphics, and tactile festival wristband passes.
+                <strong className="text-[#0C2B31]">The Phoenix 2022</strong> music festival brought together high-energy live band performances, electronic music sets, and interactive student engagement zones. To build anticipation and convey the vibrant energy of the festival, the visual identity focused on bold fiery typography, high-contrast promotional graphics, and tactile festival wristband passes.
               </p>
               <p>
                 Every asset — from the large-format 1x2m campus standees placed across high-traffic student hallways to the security wristbands worn by VIP guests — was engineered for maximum visual impact and brand consistency across both physical print and digital channels.
@@ -271,7 +271,7 @@ export default function PhoenixMusicFestivalDetail() {
       <div className="fixed bottom-8 right-8 z-40">
         <button
           onClick={handleScrollTop}
-          className="w-12 h-12 rounded-full bg-[#111111] text-white shadow-xl flex items-center justify-center hover:bg-[#333333] transition-all hover:scale-110 active:scale-95"
+          className="w-12 h-12 rounded-full bg-[#0B6E7B] text-white shadow-xl flex items-center justify-center hover:bg-[#08545E] transition-all hover:scale-110 active:scale-95"
           title="Scroll to top"
         >
           <i className="fa-solid fa-arrow-up text-sm"></i>

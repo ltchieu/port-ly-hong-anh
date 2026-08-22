@@ -12,7 +12,7 @@ export default function AppRouter() {
   return (
     <>
       <ScrollManager />
-      <Suspense fallback={<div className="min-h-screen bg-[#FAF9F6]" />}>
+      <Suspense fallback={<div className="min-h-screen bg-[#FAFCFC]" />}>
         <Routes>
           <Route path="/" element={<MainPortfolio />} />
           <Route

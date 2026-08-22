@@ -41,7 +41,7 @@ export default function FreelanceExperienceShowcase() {
           key={idx}
           src={src}
           alt={`Cốm Gừng Ceramic Shot ${idx + 1}`}
-          className="w-full h-full object-cover rounded-xl border border-[#CCCCCC]/60 shadow-md select-none"
+          className="w-full h-full object-cover rounded-xl border border-[#CCE5E3] shadow-md select-none"
         />
       )),
     [comGungImagesTop5]
@@ -125,31 +125,31 @@ export default function FreelanceExperienceShowcase() {
   }, []);
 
   return (
-    <div className="pt-6 space-y-8 border-t border-[#CCCCCC]/40 mt-6" onClick={(e) => e.stopPropagation()}>
+    <div className="pt-6 space-y-8 border-t border-[#CCE5E3] mt-6" onClick={(e) => e.stopPropagation()}>
       {/* ========================================================================= */}
       {/* SECTION 1: INTIMATE PRIVATE WEDDING EXPERIENCE */}
       {/* ========================================================================= */}
-      <div className="bg-[#FAF9F6] border border-[#CCCCCC]/60 rounded-xl p-4 sm:p-6 space-y-5">
-        <div className="border-b border-[#CCCCCC]/30 pb-4 space-y-2">
+      <div className="bg-[#F4FAF9] border border-[#CCE5E3] rounded-xl p-4 sm:p-6 space-y-5">
+        <div className="border-b border-[#CCE5E3] pb-4 space-y-2">
           <div className="flex flex-wrap items-center justify-between gap-2">
-            <h3 className="font-display text-lg sm:text-xl uppercase tracking-tight text-[#111111]">
+            <h3 className="font-display text-lg sm:text-xl uppercase tracking-tight text-[#0C2B31]">
               Intimate Private Wedding Experience.
             </h3>
-            <span className="px-2.5 py-1 bg-white border border-[#111111]/20 font-narrow text-[11px] font-bold uppercase tracking-wider rounded text-[#111111] flex items-center gap-1.5 shadow-sm">
-              <i className="fa-solid fa-heart text-[#111111] text-xs"></i>
+            <span className="px-2.5 py-1 bg-white border border-[#CCE5E3] font-narrow text-[11px] font-bold uppercase tracking-wider rounded-lg text-[#0B6E7B] flex items-center gap-1.5 shadow-xs">
+              <i className="fa-solid fa-heart text-[#0B6E7B] text-xs"></i>
               Design - Plan
             </span>
           </div>
 
-          <ul className="space-y-2 pt-1 font-sans text-xs sm:text-sm text-[#333333] leading-relaxed">
+          <ul className="space-y-2 pt-1 font-sans text-xs sm:text-sm text-[#4E6E75] leading-relaxed">
             <li className="flex items-start gap-2.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#111111] mt-2 flex-shrink-0"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#0B6E7B] mt-2 flex-shrink-0"></span>
               <span>
                 Planned and coordinated intimate private wedding experiences, managing timelines, vendors, and on-site execution to ensure seamless event delivery.
               </span>
             </li>
             <li className="flex items-start gap-2.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#111111] mt-2 flex-shrink-0"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#0B6E7B] mt-2 flex-shrink-0"></span>
               <span>
                 Designed typography-led LED visuals tailored to each wedding concept, enhancing visual storytelling and guest experience.
               </span>
@@ -160,8 +160,8 @@ export default function FreelanceExperienceShowcase() {
         {/* Two Collages Side-by-Side */}
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <span className="font-narrow text-[11px] font-black text-[#5E5E5E] tracking-wider uppercase flex items-center gap-1.5">
-              <i className="fa-solid fa-images text-[#111111]"></i>
+            <span className="font-narrow text-[11px] font-black text-[#0B6E7B] tracking-wider uppercase flex items-center gap-1.5">
+              <i className="fa-solid fa-images text-[#0B6E7B]"></i>
               WEDDING GALLERIES
             </span>
           </div>
@@ -176,7 +176,7 @@ export default function FreelanceExperienceShowcase() {
                   'The groom Minh Tam and the Bride Anh Thu'
                 )
               }
-              className="group relative rounded-lg overflow-hidden bg-white border border-[#CCCCCC]/60 cursor-pointer shadow-sm hover:shadow-lg transition-all duration-300"
+              className="group relative rounded-xl overflow-hidden bg-white border border-[#CCE5E3] cursor-pointer shadow-xs hover:shadow-md transition-all duration-300"
             >
               <div className="aspect-[4/3] w-full overflow-hidden relative">
                 <img
@@ -186,24 +186,24 @@ export default function FreelanceExperienceShowcase() {
                   decoding="async"
                   className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#07262B]/85 via-[#07262B]/30 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
 
                 <div className="absolute top-2.5 left-2.5 z-10">
-                  <span className="px-2 py-0.5 bg-white/90 backdrop-blur-md text-[#111111] font-narrow text-[9px] font-black uppercase tracking-wider rounded border border-white/40 shadow-sm flex items-center gap-1">
-                    <i className="fa-solid fa-film"></i>
+                  <span className="px-2 py-0.5 bg-white/90 backdrop-blur-md text-[#0C2B31] font-narrow text-[9px] font-black uppercase tracking-wider rounded border border-[#CCE5E3] shadow-xs flex items-center gap-1">
+                    <i className="fa-solid fa-film text-[#0B6E7B]"></i>
                     LED Motion Visuals
                   </span>
                 </div>
 
                 <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-                  <span className="px-3.5 py-1.5 bg-white text-[#111111] font-narrow text-xs font-bold uppercase tracking-wider rounded-full shadow-lg flex items-center gap-1.5 transform translate-y-1 group-hover:translate-y-0 transition-transform">
+                  <span className="px-3.5 py-1.5 bg-[#0B6E7B] text-white font-narrow text-xs font-bold uppercase tracking-wider rounded-full shadow-lg flex items-center gap-1.5 transform translate-y-1 group-hover:translate-y-0 transition-transform">
                     <i className="fa-solid fa-expand text-xs"></i>
                     Open Gallery ({weddingLedImages.length})
                   </span>
                 </div>
 
                 <div className="absolute bottom-0 left-0 right-0 p-3 z-10 text-white space-y-0.5">
-                  <p className="font-narrow text-[9px] font-bold text-white/70 uppercase tracking-widest">
+                  <p className="font-narrow text-[9px] font-bold text-[#2DD4BF] uppercase tracking-widest">
                     GALLERY 01 • TYPOGRAPHY WEDDING LED
                   </p>
                   <h4 className="font-display text-sm sm:text-base uppercase tracking-tight line-clamp-1">
@@ -222,7 +222,7 @@ export default function FreelanceExperienceShowcase() {
                   'The groom Cao Cuong and the bride Ai Vi'
                 )
               }
-              className="group relative rounded-lg overflow-hidden bg-white border border-[#CCCCCC]/60 cursor-pointer shadow-sm hover:shadow-lg transition-all duration-300"
+              className="group relative rounded-xl overflow-hidden bg-white border border-[#CCE5E3] cursor-pointer shadow-xs hover:shadow-md transition-all duration-300"
             >
               <div className="aspect-[4/3] w-full overflow-hidden relative">
                 <img
@@ -232,24 +232,24 @@ export default function FreelanceExperienceShowcase() {
                   decoding="async"
                   className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#07262B]/85 via-[#07262B]/30 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
 
                 <div className="absolute top-2.5 left-2.5 z-10">
-                  <span className="px-2 py-0.5 bg-white/90 backdrop-blur-md text-[#111111] font-narrow text-[9px] font-black uppercase tracking-wider rounded border border-white/40 shadow-sm flex items-center gap-1">
-                    <i className="fa-solid fa-calendar-check"></i>
+                  <span className="px-2 py-0.5 bg-white/90 backdrop-blur-md text-[#0C2B31] font-narrow text-[9px] font-black uppercase tracking-wider rounded border border-[#CCE5E3] shadow-xs flex items-center gap-1">
+                    <i className="fa-solid fa-calendar-check text-[#0B6E7B]"></i>
                     Planning & Execution
                   </span>
                 </div>
 
                 <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-                  <span className="px-3.5 py-1.5 bg-white text-[#111111] font-narrow text-xs font-bold uppercase tracking-wider rounded-full shadow-lg flex items-center gap-1.5 transform translate-y-1 group-hover:translate-y-0 transition-transform">
+                  <span className="px-3.5 py-1.5 bg-[#0B6E7B] text-white font-narrow text-xs font-bold uppercase tracking-wider rounded-full shadow-lg flex items-center gap-1.5 transform translate-y-1 group-hover:translate-y-0 transition-transform">
                     <i className="fa-solid fa-expand text-xs"></i>
                     Open Gallery ({weddingPlannerImages.length})
                   </span>
                 </div>
 
                 <div className="absolute bottom-0 left-0 right-0 p-3 z-10 text-white space-y-0.5">
-                  <p className="font-narrow text-[9px] font-bold text-white/70 uppercase tracking-widest">
+                  <p className="font-narrow text-[9px] font-bold text-[#2DD4BF] uppercase tracking-widest">
                     GALLERY 02 • PRIVATE WEDDING PLANNER
                   </p>
                   <h4 className="font-display text-sm sm:text-base uppercase tracking-tight line-clamp-1">
@@ -258,8 +258,6 @@ export default function FreelanceExperienceShowcase() {
                 </div>
               </div>
             </div>
-
-
           </div>
         </div>
       </div>
@@ -267,33 +265,33 @@ export default function FreelanceExperienceShowcase() {
       {/* ========================================================================= */}
       {/* SECTION 2: CỐM GỪNG CERAMIC */}
       {/* ========================================================================= */}
-      <div className="bg-[#FAF9F6] border border-[#CCCCCC]/60 rounded-xl p-4 sm:p-6 space-y-5">
-        <div className="border-b border-[#CCCCCC]/30 pb-4 space-y-2">
+      <div className="bg-[#F4FAF9] border border-[#CCE5E3] rounded-xl p-4 sm:p-6 space-y-5">
+        <div className="border-b border-[#CCE5E3] pb-4 space-y-2">
           <div className="flex flex-wrap items-center justify-between gap-2">
-            <h3 className="font-display text-lg sm:text-xl uppercase tracking-tight text-[#111111]">
+            <h3 className="font-display text-lg sm:text-xl uppercase tracking-tight text-[#0C2B31]">
               Cốm Gừng Ceramic
             </h3>
-            <span className="px-2.5 py-1 bg-white border border-[#111111]/20 font-narrow text-[11px] font-bold uppercase tracking-wider rounded text-[#111111] flex items-center gap-1.5 shadow-sm">
-              <i className="fa-solid fa-camera-retro text-[#111111] text-xs"></i>
+            <span className="px-2.5 py-1 bg-white border border-[#CCE5E3] font-narrow text-[11px] font-bold uppercase tracking-wider rounded-lg text-[#0B6E7B] flex items-center gap-1.5 shadow-xs">
+              <i className="fa-solid fa-camera-retro text-[#0B6E7B] text-xs"></i>
               Content & Visual Production
             </span>
           </div>
 
-          <ul className="space-y-2 pt-1 font-sans text-xs sm:text-sm text-[#333333] leading-relaxed">
+          <ul className="space-y-2 pt-1 font-sans text-xs sm:text-sm text-[#4E6E75] leading-relaxed">
             <li className="flex items-start gap-2.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#111111] mt-2 flex-shrink-0"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#0B6E7B] mt-2 flex-shrink-0"></span>
               <span>
                 Produced short-form TikTok videos to showcase handcrafted ceramic collections.
               </span>
             </li>
             <li className="flex items-start gap-2.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#111111] mt-2 flex-shrink-0"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#0B6E7B] mt-2 flex-shrink-0"></span>
               <span>
                 Planned and executed product photography for digital marketing and e-commerce channels.
               </span>
             </li>
             <li className="flex items-start gap-2.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#111111] mt-2 flex-shrink-0"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#0B6E7B] mt-2 flex-shrink-0"></span>
               <span>
                 Created visual content tailored to social media engagement and brand storytelling.
               </span>
@@ -304,15 +302,15 @@ export default function FreelanceExperienceShowcase() {
         {/* Design 2 Collages: Left = BounceCards, Right = Clip TikTok */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-5 items-stretch">
           {/* Left Collage: Photography with BounceCards */}
-          <div className="md:col-span-7 bg-white p-4 rounded-lg border border-[#CCCCCC]/60 flex flex-col justify-between space-y-4">
+          <div className="md:col-span-7 bg-white p-4 rounded-xl border border-[#CCE5E3] flex flex-col justify-between space-y-4 shadow-xs">
             <div>
               <div className="flex items-center justify-between gap-2 mb-3">
                 <div>
-                  <h4 className="font-narrow text-xs font-black text-[#111111] uppercase tracking-wider flex items-center gap-1.5">
-                    <i className="fa-solid fa-layer-group text-[#111111]"></i>
+                  <h4 className="font-narrow text-xs font-black text-[#0C2B31] uppercase tracking-wider flex items-center gap-1.5">
+                    <i className="fa-solid fa-layer-group text-[#0B6E7B]"></i>
                     Ceramic Product Photography
                   </h4>
-                  <p className="font-sans text-[10px] text-[#5E5E5E]">
+                  <p className="font-sans text-[10px] text-[#4E6E75]">
                     Hover over cards to trigger bounce animation; click photo to expand.
                   </p>
                 </div>
@@ -347,8 +345,8 @@ export default function FreelanceExperienceShowcase() {
             </div>
 
             {/* Thumbnail strip */}
-            <div className="pt-3 border-t border-[#CCCCCC]/30 space-y-1.5">
-              <span className="font-narrow text-[10px] font-bold text-[#5E5E5E] uppercase tracking-wider block">
+            <div className="pt-3 border-t border-[#CCE5E3] space-y-1.5">
+              <span className="font-narrow text-[10px] font-bold text-[#0B6E7B] uppercase tracking-wider block">
                 Product Shot Collection ({comGungImages.length})
               </span>
               <div className="grid grid-cols-5 gap-1.5">
@@ -356,7 +354,7 @@ export default function FreelanceExperienceShowcase() {
                   <button
                     key={thumbIdx}
                     onClick={() => handleSelectImage(src, `Cốm Gừng Ceramic Shot ${thumbIdx + 1}`)}
-                    className="aspect-square rounded overflow-hidden border border-[#CCCCCC]/60 hover:border-[#111111] hover:scale-105 transition-all group cursor-pointer"
+                    className="aspect-square rounded-lg overflow-hidden border border-[#CCE5E3] hover:border-[#0B6E7B] hover:scale-105 transition-all group cursor-pointer"
                   >
                     <img
                       src={src}
@@ -372,20 +370,20 @@ export default function FreelanceExperienceShowcase() {
           </div>
 
           {/* Right Collage: Embedded TikTok Video Clip */}
-          <div className="md:col-span-5 bg-[#111111] text-white p-4 rounded-lg border border-[#111111] flex flex-col items-center justify-between space-y-3 shadow-md">
-            <div className="w-full pb-2.5 border-b border-white/15 flex items-center justify-between">
+          <div className="md:col-span-5 bg-[#07262B] text-white p-4 rounded-xl border border-[#0B6E7B]/40 flex flex-col items-center justify-between space-y-3 shadow-md">
+            <div className="w-full pb-2.5 border-b border-[#0B6E7B]/30 flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <i className="fa-brands fa-tiktok text-base text-[#00f2fe]"></i>
+                <i className="fa-brands fa-tiktok text-base text-[#2DD4BF]"></i>
                 <div>
                   <h4 className="font-narrow text-xs font-black uppercase tracking-wider text-white">
                     TikTok Video Clip
                   </h4>
-                  <p className="font-sans text-[10px] text-white/60">
+                  <p className="font-sans text-[10px] text-white/70">
                     @comgung_ceramic
                   </p>
                 </div>
               </div>
-              <span className="font-mono text-[9px] bg-white/10 text-white px-2 py-0.5 rounded border border-white/20 uppercase">
+              <span className="font-mono text-[9px] bg-[#0B6E7B]/40 text-[#2DD4BF] px-2 py-0.5 rounded border border-[#0B6E7B]/60 uppercase">
                 REEL
               </span>
             </div>
@@ -399,16 +397,16 @@ export default function FreelanceExperienceShowcase() {
               />
             </div>
 
-            <div className="w-full pt-2.5 border-t border-white/15 flex items-center justify-between text-[10px] font-narrow text-white/70">
+            <div className="w-full pt-2.5 border-t border-[#0B6E7B]/30 flex items-center justify-between text-[10px] font-narrow text-white/80">
               <span className="flex items-center gap-1.5">
-                <i className="fa-solid fa-circle-play text-[#00f2fe] text-xs"></i>
+                <i className="fa-solid fa-circle-play text-[#2DD4BF] text-xs"></i>
                 @comgung_ceramic
               </span>
               <a
                 href="https://www.tiktok.com/@comgung_ceramic/video/7546055391021419797"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white hover:text-[#00f2fe] hover:underline flex items-center gap-1 font-bold transition-colors"
+                className="text-white hover:text-[#2DD4BF] hover:underline flex items-center gap-1 font-bold transition-colors"
               >
                 <span>Watch on TikTok</span>
                 <i className="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
@@ -428,20 +426,20 @@ export default function FreelanceExperienceShowcase() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-[999] bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-6"
+              className="fixed inset-0 z-[999] bg-[#07262B]/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-6"
               onClick={closeWeddingGallery}
             >
               <motion.div
                 initial={{ scale: 0.95, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.95, opacity: 0 }}
-                className="bg-[#141414]/95 border border-white/20 text-white max-w-4xl w-full rounded-2xl p-5 sm:p-6 shadow-2xl relative flex flex-col justify-between max-h-[92vh] overflow-hidden"
+                className="bg-[#051E22]/95 border border-[#0B6E7B]/40 text-white max-w-4xl w-full rounded-2xl p-5 sm:p-6 shadow-2xl relative flex flex-col justify-between max-h-[92vh] overflow-hidden"
                 onClick={(e) => e.stopPropagation()}
               >
                 {/* Modal Header */}
-                <div className="flex items-start justify-between border-b border-white/15 pb-3">
+                <div className="flex items-start justify-between border-b border-[#0B6E7B]/30 pb-3">
                   <div className="space-y-1">
-                    <span className="font-narrow text-[11px] font-black text-[#00f2fe] tracking-[0.2em] uppercase block">
+                    <span className="font-narrow text-[11px] font-black text-[#2DD4BF] tracking-[0.2em] uppercase block">
                       {weddingGallery.subtitle}
                     </span>
                     <h3 className="font-display text-lg sm:text-xl md:text-2xl uppercase tracking-wide text-white">
@@ -450,12 +448,12 @@ export default function FreelanceExperienceShowcase() {
                   </div>
 
                   <div className="flex items-center gap-3">
-                    <span className="font-mono text-xs text-white/70 bg-white/10 px-3 py-1 rounded border border-white/15">
+                    <span className="font-mono text-xs text-white/80 bg-white/10 px-3 py-1 rounded-lg border border-[#0B6E7B]/40">
                       {weddingGallery.currentIndex + 1} / {weddingGallery.images.length}
                     </span>
                     <button
                       onClick={closeWeddingGallery}
-                      className="w-8 h-8 rounded-full bg-white/10 hover:bg-white text-white hover:text-[#111111] transition-all flex items-center justify-center cursor-pointer border border-white/20"
+                      className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#0B6E7B] text-white transition-all flex items-center justify-center cursor-pointer border border-[#0B6E7B]/40"
                       aria-label="Close gallery modal"
                     >
                       <i className="fa-solid fa-xmark text-sm"></i>
@@ -467,7 +465,7 @@ export default function FreelanceExperienceShowcase() {
                 <div className="relative flex-1 flex items-center justify-between my-3 min-h-[280px] max-h-[60vh]">
                   <button
                     onClick={prevWeddingImage}
-                    className="p-3 rounded-full bg-white/10 hover:bg-white text-white hover:text-[#111111] transition-all z-20 shadow-lg border border-white/20 cursor-pointer flex items-center justify-center"
+                    className="p-3 rounded-full bg-white/10 hover:bg-[#0B6E7B] text-white transition-all z-20 shadow-lg border border-[#0B6E7B]/40 cursor-pointer flex items-center justify-center"
                     aria-label="Previous photo"
                   >
                     <i className="fa-solid fa-chevron-left text-base sm:text-lg"></i>
@@ -483,14 +481,14 @@ export default function FreelanceExperienceShowcase() {
                         transition={{ duration: 0.2 }}
                         src={weddingGallery.images[weddingGallery.currentIndex]}
                         alt={`Wedding Photo ${weddingGallery.currentIndex + 1}`}
-                        className="max-h-[58vh] max-w-full object-contain rounded-lg shadow-xl border border-white/10"
+                        className="max-h-[58vh] max-w-full object-contain rounded-lg shadow-xl border border-[#0B6E7B]/20"
                       />
                     </AnimatePresence>
                   </div>
 
                   <button
                     onClick={nextWeddingImage}
-                    className="p-3 rounded-full bg-white/10 hover:bg-white text-white hover:text-[#111111] transition-all z-20 shadow-lg border border-white/20 cursor-pointer flex items-center justify-center"
+                    className="p-3 rounded-full bg-white/10 hover:bg-[#0B6E7B] text-white transition-all z-20 shadow-lg border border-[#0B6E7B]/40 cursor-pointer flex items-center justify-center"
                     aria-label="Next photo"
                   >
                     <i className="fa-solid fa-chevron-right text-base sm:text-lg"></i>
@@ -498,14 +496,14 @@ export default function FreelanceExperienceShowcase() {
                 </div>
 
                 {/* Modal Bottom Thumbnail Strip */}
-                <div className="pt-3 border-t border-white/15 flex items-center justify-center gap-2 overflow-x-auto">
+                <div className="pt-3 border-t border-[#0B6E7B]/30 flex items-center justify-center gap-2 overflow-x-auto">
                   {weddingGallery.images.map((src, idx) => (
                     <button
                       key={idx}
                       onClick={() => selectWeddingImage(idx)}
                       className={`w-12 h-12 sm:w-14 sm:h-14 rounded-lg overflow-hidden border-2 transition-all flex-shrink-0 cursor-pointer ${weddingGallery.currentIndex === idx
-                        ? 'border-[#00f2fe] scale-105 shadow-lg opacity-100'
-                        : 'border-white/20 opacity-50 hover:opacity-100 hover:border-white'
+                        ? 'border-[#2DD4BF] scale-105 shadow-lg opacity-100'
+                        : 'border-white/20 opacity-50 hover:opacity-100 hover:border-[#0B6E7B]'
                         }`}
                     >
                       <img src={src} alt={`thumb-${idx}`} className="w-full h-full object-cover" />

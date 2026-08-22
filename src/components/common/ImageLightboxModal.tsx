@@ -28,20 +28,20 @@ export const ImageLightboxModal = memo(function ImageLightboxModal({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[999] bg-black/90 backdrop-blur-md flex items-center justify-center p-3 sm:p-6"
+            className="fixed inset-0 z-[999] bg-[#07262B]/90 backdrop-blur-md flex items-center justify-center p-3 sm:p-6"
             onClick={onClose}
           >
             <motion.div
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
-              className="relative max-w-6xl w-full bg-[#111111]/95 border border-white/20 text-white rounded-2xl p-4 sm:p-6 shadow-2xl flex flex-col justify-between max-h-[92vh] overflow-hidden"
+              className="relative max-w-6xl w-full bg-[#051E22]/95 border border-[#0B6E7B]/40 text-white rounded-2xl p-4 sm:p-6 shadow-2xl flex flex-col justify-between max-h-[92vh] overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header */}
-              <div className="flex items-center justify-between border-b border-white/15 pb-3">
+              <div className="flex items-center justify-between border-b border-[#0B6E7B]/30 pb-3">
                 <div>
-                  <span className="font-narrow text-[11px] font-black text-[#00f2fe] tracking-[0.2em] uppercase block">
+                  <span className="font-narrow text-[11px] font-black text-[#2DD4BF] tracking-[0.2em] uppercase block">
                     {selectedImage.category}
                   </span>
                   <h3 className="font-display text-lg sm:text-xl md:text-2xl uppercase tracking-wide text-white">
@@ -50,7 +50,7 @@ export const ImageLightboxModal = memo(function ImageLightboxModal({
                 </div>
                 <button
                   onClick={onClose}
-                  className="w-9 h-9 rounded-full bg-white/10 hover:bg-white text-white hover:text-[#111111] transition-all flex items-center justify-center cursor-pointer border border-white/20"
+                  className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#0B6E7B] text-white transition-all flex items-center justify-center cursor-pointer border border-[#0B6E7B]/40 shadow-xs"
                   aria-label="Close image preview"
                 >
                   <i className="fa-solid fa-xmark text-sm"></i>
@@ -62,14 +62,14 @@ export const ImageLightboxModal = memo(function ImageLightboxModal({
                 <img
                   src={selectedImage.src}
                   alt={selectedImage.title}
-                  className="max-h-[76vh] max-w-full w-auto object-contain rounded-lg shadow-xl border border-white/10"
+                  className="max-h-[76vh] max-w-full w-auto object-contain rounded-lg shadow-xl border border-[#0B6E7B]/20"
                 />
               </div>
 
               {/* Optional Description Footer */}
               {selectedImage.description && (
-                <div className="pt-3 border-t border-white/15 text-center">
-                  <p className="font-sans text-xs sm:text-sm text-white/70 max-w-3xl mx-auto">
+                <div className="pt-3 border-t border-[#0B6E7B]/30 text-center">
+                  <p className="font-sans text-xs sm:text-sm text-white/80 max-w-3xl mx-auto">
                     {selectedImage.description}
                   </p>
                 </div>

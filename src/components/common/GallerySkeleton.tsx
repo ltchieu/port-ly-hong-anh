@@ -8,9 +8,9 @@ export const GallerySkeleton = memo(function GallerySkeleton({
   return (
     <div
       style={{ height }}
-      className="w-full bg-[#1A1A1A] animate-pulse rounded-xl flex flex-col items-center justify-center border border-white/10 p-6 text-center"
+      className="w-full bg-[#E7F3F2] animate-pulse rounded-xl flex flex-col items-center justify-center border border-[#CCE5E3] p-6 text-center"
     >
-      <div className="flex items-center gap-3 text-white/60 text-xs font-mono">
+      <div className="flex items-center gap-3 text-[#0B6E7B] text-xs font-mono">
         <i className="fa-solid fa-spinner fa-spin text-base"></i>
         <span>{title}</span>
       </div>

@@ -8,24 +8,24 @@ interface AboutProps {
 
 export default function About({ setShowManifesto }: AboutProps) {
   return (
-    <section id="about" className="py-24 bg-white border-b border-[#CCCCCC]/60 scroll-mt-20">
+    <section id="about" className="py-24 bg-white border-b border-[#CCE5E3] scroll-mt-20">
       <div className="max-w-[1440px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
 
         {/* Left Column: Image and Huge Title */}
         <div className="lg:col-span-5 space-y-8 lg:ml-4">
           <ScrollReveal direction="up" delay={0.1}>
-            <h3 className="font-display text-4xl sm:text-6xl md:text-7xl leading-none uppercase text-[#111111] tracking-tighter">
+            <h3 className="font-display text-4xl sm:text-6xl md:text-7xl leading-none uppercase text-[#0C2B31] tracking-tighter">
               INTRODUCE
             </h3>
           </ScrollReveal>
           <ScrollReveal direction="up" delay={0.25}>
-            <div className="w-full sm:w-4/5 lg:w-full aspect-[4/5] overflow-hidden bg-[#EBEBEB] group relative rounded-sm shadow-sm">
+            <div className="w-full sm:w-4/5 lg:w-full aspect-[4/5] overflow-hidden bg-[#F0F8F7] group relative rounded-xl border border-[#CCE5E3] shadow-sm">
               <img
                 src={avatarImg}
                 alt="Portrait of Nguyen Ha Minh Khanh"
                 className="w-full h-full object-cover group-hover:grayscale-0 transition-all duration-1000 ease-in-out scale-100 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-black/5 mix-blend-multiply opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+              <div className="absolute inset-0 bg-[#0B6E7B]/5 mix-blend-multiply opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
             </div>
           </ScrollReveal>
         </div>
@@ -35,10 +35,10 @@ export default function About({ setShowManifesto }: AboutProps) {
           <div className="space-y-10">
             <ScrollReveal direction="left" delay={0.2}>
               <div className="space-y-4 mt-[20px]">
-                <p className="font-narrow text-xs font-black text-[#5E5E5E] uppercase tracking-[0.25em] font-bold">
+                <p className="font-narrow text-xs font-black text-[#0B6E7B] uppercase tracking-[0.25em]">
                   Experience Summary
                 </p>
-                <div className="font-sans text-sm text-[#5E5E5E] leading-relaxed max-w-xl space-y-3">
+                <div className="font-sans text-sm text-[#4E6E75] leading-relaxed max-w-xl space-y-3">
                   <p>
                     Working in Brand & Marketing Communications, with experience in delivering integrated communication, public relations, event marketing and multimedia productions across higher education and service industries.
                   </p>
@@ -54,12 +54,12 @@ export default function About({ setShowManifesto }: AboutProps) {
 
             {/* Skills and Education Grid */}
             <ScrollReveal direction="up" delay={0.35}>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-4 border-t border-[#CCCCCC]/40">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-4 border-t border-[#CCE5E3]">
                 <div className="space-y-4">
-                  <p className="font-narrow text-xs font-black text-[#5E5E5E] uppercase tracking-[0.25em] font-bold">
+                  <p className="font-narrow text-xs font-black text-[#0B6E7B] uppercase tracking-[0.25em]">
                     CORE COMPETENCIES
                   </p>
-                  <ul className="font-sans text-sm text-[#111111] space-y-2">
+                  <ul className="font-sans text-sm text-[#0C2B31] space-y-2">
                     {coreCompetencies.map((item, index) => (
                       <li key={index} className="flex items-center gap-2">
                         <span className="w-1.5 h-1.5 rounded-full hologram-metal-bg flex-shrink-0"></span>
@@ -70,21 +70,21 @@ export default function About({ setShowManifesto }: AboutProps) {
                 </div>
 
                 <div className="space-y-4">
-                  <p className="font-narrow text-xs font-black text-[#5E5E5E] uppercase tracking-[0.25em] font-bold">
+                  <p className="font-narrow text-xs font-black text-[#0B6E7B] uppercase tracking-[0.25em]">
                     Education
                   </p>
-                  <div className="font-sans text-sm text-[#111111] space-y-3">
+                  <div className="font-sans text-sm text-[#0C2B31] space-y-3">
                     <div>
                       <p className="font-bold">Western Sydney University</p>
-                      <p className="text-[#5E5E5E] text-xs">Master of Business Administration</p>
-                      <p className="text-[#888888] text-[10px] mt-0.5 font-mono">2025 - Present</p>
+                      <p className="text-[#4E6E75] text-xs">Master of Business Administration</p>
+                      <p className="text-[#0B6E7B] text-[10px] mt-0.5 font-mono">2025 - Present</p>
                     </div>
-                    <div className="h-px bg-[#CCCCCC]/40"></div>
+                    <div className="h-px bg-[#CCE5E3]"></div>
                     <div>
                       <p className="font-bold">Ho Chi Minh City Open University</p>
-                      <p className="text-[#5E5E5E] text-xs">Bachelor of Business English</p>
-                      <p className="text-[#5E5E5E] text-xs">GPA: 3.16 / 4.0</p>
-                      <p className="text-[#888888] text-[10px] mt-0.5 font-mono">2020 - 2024</p>
+                      <p className="text-[#4E6E75] text-xs">Bachelor of Business English</p>
+                      <p className="text-[#4E6E75] text-xs">GPA: 3.16 / 4.0</p>
+                      <p className="text-[#0B6E7B] text-[10px] mt-0.5 font-mono">2020 - 2024</p>
                     </div>
                   </div>
                 </div>
@@ -97,11 +97,11 @@ export default function About({ setShowManifesto }: AboutProps) {
                 <button
                   id="manifesto-btn"
                   onClick={() => setShowManifesto(true)}
-                  className="group relative inline-flex items-center justify-between border border-[#111111] text-[#111111] px-6 py-3.5 font-narrow text-xs font-black tracking-[0.2em] uppercase overflow-hidden transition-all duration-300 hover:text-white cursor-pointer"
+                  className="group relative inline-flex items-center justify-between border border-[#0B6E7B] text-[#0B6E7B] px-6 py-3.5 font-narrow text-xs font-black tracking-[0.2em] uppercase overflow-hidden rounded-lg transition-all duration-300 hover:text-white cursor-pointer shadow-xs"
                 >
-                  <span className="absolute inset-0 bg-[#111111] translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></span>
+                  <span className="absolute inset-0 bg-[#0B6E7B] translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></span>
                   <span className="relative z-10 mr-4 flex items-center gap-2">
-                    <i className="fa-solid fa-book-open text-xs text-[#111111] group-hover:text-white transition-colors"></i>
+                    <i className="fa-solid fa-book-open text-xs text-[#0B6E7B] group-hover:text-white transition-colors"></i>
                     READ FULL MANIFESTO
                   </span>
                   <i className="fa-solid fa-arrow-up-right-from-square relative z-10 text-xs transition-transform duration-300 group-hover:rotate-45"></i>

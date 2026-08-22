@@ -4,7 +4,7 @@ import SpecularButton from "./common/SpecularButton";
 export default function Footer() {
   return (
     <>
-      <section id="contact" className="py-24 bg-[#111111] text-white scroll-mt-20">
+      <section id="contact" className="py-24 bg-[#07262B] text-white scroll-mt-20">
         <div className="max-w-[1440px] mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
 
@@ -16,7 +16,7 @@ export default function Footer() {
               </ScrollReveal>
 
               <ScrollReveal direction="up" delay={0.2}>
-                <p className="font-narrow text-xl text-white/60 max-w-md">
+                <p className="font-narrow text-xl text-white/70 max-w-md">
                   Always open to new opportunities, thoughtful collaborations, and ideas worth exploring - especially ideas that can grow into meaningful work.
                 </p>
               </ScrollReveal>
@@ -26,7 +26,7 @@ export default function Footer() {
                   <a
                     id="cta-say-hello"
                     href="mailto:n.khanhwork@gmail.com"
-                    className="inline-flex items-center gap-3 hologram-metal-bg text-black px-8 py-4 font-narrow text-xs font-black tracking-[0.2em] uppercase rounded hover:opacity-85 transition-all duration-300 hover:scale-105 shadow-md group cursor-pointer"
+                    className="inline-flex items-center gap-3 hologram-metal-bg text-white px-8 py-4 font-narrow text-xs font-black tracking-[0.2em] uppercase rounded-lg hover:opacity-90 transition-all duration-300 hover:scale-105 shadow-lg group cursor-pointer"
                   >
                     SAY HELLO
                     <i className="fa-solid fa-arrow-right group-hover:translate-x-1.5 transition-transform"></i>
@@ -39,17 +39,17 @@ export default function Footer() {
               <ScrollReveal direction="up" delay={0.35}>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-12 w-full lg:w-auto items-start">
                   <div className="space-y-4">
-                    <p className="font-narrow text-xs font-black text-white/40 uppercase tracking-widest">
+                    <p className="font-narrow text-xs font-black text-[#2DD4BF] uppercase tracking-widest">
                       SOCIAL CONNECTS
                     </p>
                     <ul className="space-y-2 font-narrow text-xs font-bold tracking-wider text-white/80">
                       <li>
-                        <a href="https://www.linkedin.com/in/mknh13" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-1.5">
+                        <a href="https://www.linkedin.com/in/mknh13" target="_blank" rel="noopener noreferrer" className="hover:text-[#2DD4BF] transition-colors flex items-center gap-1.5">
                           <i className="fa-brands fa-linkedin hologram-metal-text"></i> LINKEDIN
                         </a>
                       </li>
                       <li>
-                        <a href="http://fb.com/mknh13" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-1.5">
+                        <a href="http://fb.com/mknh13" target="_blank" rel="noopener noreferrer" className="hover:text-[#2DD4BF] transition-colors flex items-center gap-1.5">
                           <i className="fa-brands fa-facebook hologram-metal-text"></i> FACEBOOK
                         </a>
                       </li>
@@ -57,7 +57,7 @@ export default function Footer() {
                   </div>
 
                   <div className="space-y-4">
-                    <p className="font-narrow text-xs font-black text-white/40 uppercase tracking-widest">
+                    <p className="font-narrow text-xs font-black text-[#2DD4BF] uppercase tracking-widest">
                       DIRECT CHAT
                     </p>
                     <SpecularButton
@@ -67,11 +67,11 @@ export default function Footer() {
                       rel="noopener noreferrer"
                       size="md"
                       radius={8}
-                      tint="#dbdbd8ff"
+                      tint="#0E4249"
                       tintOpacity={0.96}
-                      textColor="#111111"
-                      lineColor="#0068FF"
-                      baseColor="#4b5563"
+                      textColor="#FFFFFF"
+                      lineColor="#2DD4BF"
+                      baseColor="#07262B"
                       intensity={1.2}
                       shineSize={18}
                       shineFade={35}
@@ -80,7 +80,7 @@ export default function Footer() {
                       speed={0.4}
                       className="font-narrow text-xs font-black tracking-[0.15em] uppercase shadow-md hover:shadow-xl transition-shadow"
                     >
-                      <i className="fa-solid fa-comment-dots text-sm text-[#0068FF]"></i>
+                      <i className="fa-solid fa-comment-dots text-sm text-[#2DD4BF]"></i>
                       ZALO ME
                     </SpecularButton>
                   </div>
@@ -93,17 +93,17 @@ export default function Footer() {
       </section>
 
       {/* Footer copyright and final brand anchor */}
-      <footer className="bg-[#111111] border-t border-white/10 w-full py-12 px-6 text-white">
+      <footer className="bg-[#051E22] border-t border-[#0B6E7B]/20 w-full py-12 px-6 text-white">
         <div className="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="font-display text-xl tracking-[0.2em] font-black uppercase text-white hover:opacity-75 transition-opacity">
+          <div className="font-display text-xl tracking-[0.2em] font-black uppercase text-white hover:text-[#2DD4BF] transition-colors">
             PORTFOLIO
           </div>
 
           <div className="flex flex-wrap justify-center gap-6">
-            <a href="#about" className="font-narrow text-xs font-bold tracking-wider text-white/60 hover:text-white transition-colors">INTRODUCE</a>
-            <a href="#experience" className="font-narrow text-xs font-bold tracking-wider text-white/60 hover:text-white transition-colors">EXPERIENCE</a>
-            <a href="#work" className="font-narrow text-xs font-bold tracking-wider text-white/60 hover:text-white transition-colors">PROJECTS</a>
-            <a href="#awards" className="font-narrow text-xs font-bold tracking-wider text-white/60 hover:text-white transition-colors">AWARDS</a>
+            <a href="#about" className="font-narrow text-xs font-bold tracking-wider text-white/60 hover:text-[#2DD4BF] transition-colors">INTRODUCE</a>
+            <a href="#experience" className="font-narrow text-xs font-bold tracking-wider text-white/60 hover:text-[#2DD4BF] transition-colors">EXPERIENCE</a>
+            <a href="#work" className="font-narrow text-xs font-bold tracking-wider text-white/60 hover:text-[#2DD4BF] transition-colors">PROJECTS</a>
+            <a href="#awards" className="font-narrow text-xs font-bold tracking-wider text-white/60 hover:text-[#2DD4BF] transition-colors">AWARDS</a>
           </div>
 
           <div className="font-mono text-[10px] text-white/40 tracking-wider">

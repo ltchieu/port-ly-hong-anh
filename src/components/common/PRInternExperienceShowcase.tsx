@@ -91,18 +91,18 @@ export default function PRInternExperienceShowcase() {
   }, [galleryModal.isOpen, closeGalleryModal, prevGalleryImage, nextGalleryImage]);
 
   return (
-    <div className="pt-6 space-y-10 border-t border-[#CCCCCC]/40 mt-6" onClick={(e) => e.stopPropagation()}>
+    <div className="pt-6 space-y-10 border-t border-[#CCE5E3] mt-6" onClick={(e) => e.stopPropagation()}>
       {/* SECTION 1: MOU CEREMONY */}
-      <div className="bg-[#FAF9F6] border border-[#CCCCCC]/60 rounded-xl p-5 sm:p-7 space-y-5">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#CCCCCC]/40 pb-4">
+      <div className="bg-[#F4FAF9] border border-[#CCE5E3] rounded-xl p-5 sm:p-7 space-y-5">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#CCE5E3] pb-4">
           <div>
-            <span className="font-narrow text-xs font-black text-[#5E5E5E] tracking-widest uppercase block">
+            <span className="font-narrow text-xs font-black text-[#0B6E7B] tracking-widest uppercase block">
               PARTNERSHIP EVENT
             </span>
-            <h4 className="font-display text-xl sm:text-2xl uppercase text-[#111111] tracking-tight">
+            <h4 className="font-display text-xl sm:text-2xl uppercase text-[#0C2B31] tracking-tight">
               1. {prInternData.mouSigning.title}
             </h4>
-            <p className="font-sans text-xs sm:text-sm text-[#5E5E5E] mt-1">
+            <p className="font-sans text-xs sm:text-sm text-[#4E6E75] mt-1">
               {prInternData.mouSigning.subtitle}
             </p>
           </div>
@@ -113,7 +113,7 @@ export default function PRInternExperienceShowcase() {
                 href={prInternData.mouSigning.newsLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3.5 py-1.5 bg-[#111111] text-white hover:bg-[#333333] transition-colors rounded text-xs font-narrow font-black tracking-wider uppercase inline-flex items-center gap-1.5 shadow-2xs"
+                className="px-3.5 py-1.5 bg-[#0B6E7B] text-white hover:bg-[#08545E] transition-colors rounded-lg text-xs font-narrow font-black tracking-wider uppercase inline-flex items-center gap-1.5 shadow-xs"
               >
                 <span>Read Official Press</span>
                 <i className="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
@@ -124,7 +124,7 @@ export default function PRInternExperienceShowcase() {
                 href={prInternData.mouSigning.socialPostLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3.5 py-1.5 bg-[#1877F2] text-white hover:bg-[#165EBF] transition-colors rounded text-xs font-narrow font-black tracking-wider uppercase inline-flex items-center gap-1.5 shadow-2xs"
+                className="px-3.5 py-1.5 bg-[#08545E] text-white hover:bg-[#07262B] transition-colors rounded-lg text-xs font-narrow font-black tracking-wider uppercase inline-flex items-center gap-1.5 shadow-xs"
               >
                 <span>BE x OU Post</span>
                 <i className="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
@@ -140,7 +140,7 @@ export default function PRInternExperienceShowcase() {
               <div
                 key={idx}
                 onClick={() => openGalleryModal("MOU Ceremony Gallery", mouImages, idx)}
-                className="aspect-4/3 w-full rounded-lg overflow-hidden bg-white border border-[#CCCCCC]/60 cursor-pointer group relative shadow-2xs"
+                className="aspect-4/3 w-full rounded-xl overflow-hidden bg-white border border-[#CCE5E3] cursor-pointer group relative shadow-xs"
               >
                 <img
                   src={src}
@@ -148,8 +148,8 @@ export default function PRInternExperienceShowcase() {
                   loading="lazy"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 pointer-events-none"
                 />
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white pointer-events-none">
-                  <i className="fa-solid fa-magnifying-glass-plus text-base pointer-events-none"></i>
+                <div className="absolute inset-0 bg-[#07262B]/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white pointer-events-none">
+                  <i className="fa-solid fa-magnifying-glass-plus text-base text-[#2DD4BF] pointer-events-none"></i>
                 </div>
               </div>
             ))}
@@ -158,9 +158,9 @@ export default function PRInternExperienceShowcase() {
             {mouImages.length > 7 && (
               <div
                 onClick={() => openGalleryModal("MOU Ceremony Gallery", mouImages, 7)}
-                className="aspect-4/3 w-full rounded-lg overflow-hidden bg-[#111111] text-white border border-[#111111] cursor-pointer group relative flex flex-col items-center justify-center p-3 text-center shadow-2xs hover:bg-[#222222] transition-colors"
+                className="aspect-4/3 w-full rounded-xl overflow-hidden bg-[#07262B] text-white border border-[#0B6E7B]/40 cursor-pointer group relative flex flex-col items-center justify-center p-3 text-center shadow-xs hover:bg-[#0A3D44] transition-colors"
               >
-                <i className="fa-solid fa-images text-xl text-[#00f2fe] mb-1 group-hover:scale-110 transition-transform pointer-events-none"></i>
+                <i className="fa-solid fa-images text-xl text-[#2DD4BF] mb-1 group-hover:scale-110 transition-transform pointer-events-none"></i>
                 <span className="font-narrow text-xs font-black uppercase tracking-wider pointer-events-none">
                   View All ({mouImages.length})
                 </span>
@@ -172,15 +172,15 @@ export default function PRInternExperienceShowcase() {
       </div>
 
       {/* SECTION 2: PR PRACTICE */}
-      <div className="bg-[#FAF9F6] border border-[#CCCCCC]/60 rounded-xl p-5 sm:p-7 space-y-5">
-        <div className="border-b border-[#CCCCCC]/40 pb-4">
-          <span className="font-narrow text-xs font-black text-[#5E5E5E] tracking-widest uppercase block">
+      <div className="bg-[#F4FAF9] border border-[#CCE5E3] rounded-xl p-5 sm:p-7 space-y-5">
+        <div className="border-b border-[#CCE5E3] pb-4">
+          <span className="font-narrow text-xs font-black text-[#0B6E7B] tracking-widest uppercase block">
             CAMPAIGN DESIGN & OPERATIONS
           </span>
-          <h4 className="font-display text-xl sm:text-2xl uppercase text-[#111111] tracking-tight">
+          <h4 className="font-display text-xl sm:text-2xl uppercase text-[#0C2B31] tracking-tight">
             2. {prInternData.prPractice.title}
           </h4>
-          <p className="font-sans text-xs sm:text-sm text-[#5E5E5E] mt-1">
+          <p className="font-sans text-xs sm:text-sm text-[#4E6E75] mt-1">
             {prInternData.prPractice.subtitle} — {prInternData.prPractice.description}
           </p>
         </div>
@@ -188,8 +188,8 @@ export default function PRInternExperienceShowcase() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* LED Background Key Visual Designs */}
           <div className="space-y-3">
-            <h5 className="font-narrow text-xs font-black uppercase tracking-wider text-[#111111] flex items-center gap-1.5">
-              <i className="fa-solid fa-palette text-[#111111]"></i>
+            <h5 className="font-narrow text-xs font-black uppercase tracking-wider text-[#0C2B31] flex items-center gap-1.5">
+              <i className="fa-solid fa-palette text-[#0B6E7B]"></i>
               <span>Key Visual LED Designs ({prPracticeLedImages.length})</span>
             </h5>
             <div className="grid grid-cols-2 gap-2">
@@ -197,7 +197,7 @@ export default function PRInternExperienceShowcase() {
                 <div
                   key={idx}
                   onClick={() => openGalleryModal("Key Visual LED Designs", prPracticeLedImages, idx)}
-                  className="aspect-video w-full rounded-lg overflow-hidden bg-black border border-[#CCCCCC]/60 cursor-pointer group relative shadow-2xs"
+                  className="aspect-video w-full rounded-xl overflow-hidden bg-black border border-[#CCE5E3] cursor-pointer group relative shadow-xs"
                 >
                   <img
                     src={src}
@@ -205,8 +205,8 @@ export default function PRInternExperienceShowcase() {
                     loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 pointer-events-none"
                   />
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white pointer-events-none">
-                    <i className="fa-solid fa-magnifying-glass-plus text-sm pointer-events-none"></i>
+                  <div className="absolute inset-0 bg-[#07262B]/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white pointer-events-none">
+                    <i className="fa-solid fa-magnifying-glass-plus text-sm text-[#2DD4BF] pointer-events-none"></i>
                   </div>
                 </div>
               ))}
@@ -215,8 +215,8 @@ export default function PRInternExperienceShowcase() {
 
           {/* Event Operation Highlights */}
           <div className="space-y-3">
-            <h5 className="font-narrow text-xs font-black uppercase tracking-wider text-[#111111] flex items-center gap-1.5">
-              <i className="fa-solid fa-camera text-[#111111]"></i>
+            <h5 className="font-narrow text-xs font-black uppercase tracking-wider text-[#0C2B31] flex items-center gap-1.5">
+              <i className="fa-solid fa-camera text-[#0B6E7B]"></i>
               <span>Event Operations ({prPracticeHighlightImages.length})</span>
             </h5>
             <div className="grid grid-cols-2 gap-2">
@@ -224,7 +224,7 @@ export default function PRInternExperienceShowcase() {
                 <div
                   key={idx}
                   onClick={() => openGalleryModal("PR Practice Event Highlights", prPracticeAllImages, idx + prPracticeLedImages.length)}
-                  className="aspect-video w-full rounded-lg overflow-hidden bg-white border border-[#CCCCCC]/60 cursor-pointer group relative shadow-2xs"
+                  className="aspect-video w-full rounded-xl overflow-hidden bg-white border border-[#CCE5E3] cursor-pointer group relative shadow-xs"
                 >
                   <img
                     src={src}
@@ -232,17 +232,17 @@ export default function PRInternExperienceShowcase() {
                     loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 pointer-events-none"
                   />
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white pointer-events-none">
-                    <i className="fa-solid fa-magnifying-glass-plus text-sm pointer-events-none"></i>
+                  <div className="absolute inset-0 bg-[#07262B]/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white pointer-events-none">
+                    <i className="fa-solid fa-magnifying-glass-plus text-sm text-[#2DD4BF] pointer-events-none"></i>
                   </div>
                 </div>
               ))}
 
               <div
                 onClick={() => openGalleryModal("PR Practice Event Highlights", prPracticeAllImages, 0)}
-                className="aspect-video w-full rounded-lg overflow-hidden bg-[#111111] text-white border border-[#111111] cursor-pointer group relative flex flex-col items-center justify-center p-2 text-center shadow-2xs hover:bg-[#222222] transition-colors"
+                className="aspect-video w-full rounded-xl overflow-hidden bg-[#07262B] text-white border border-[#0B6E7B]/40 cursor-pointer group relative flex flex-col items-center justify-center p-2 text-center shadow-xs hover:bg-[#0A3D44] transition-colors"
               >
-                <i className="fa-solid fa-images text-lg text-[#00f2fe] mb-0.5 group-hover:scale-110 transition-transform pointer-events-none"></i>
+                <i className="fa-solid fa-images text-lg text-[#2DD4BF] mb-0.5 group-hover:scale-110 transition-transform pointer-events-none"></i>
                 <span className="font-narrow text-xs font-black uppercase tracking-wider pointer-events-none">
                   View All ({prPracticeAllImages.length})
                 </span>
@@ -253,15 +253,15 @@ export default function PRInternExperienceShowcase() {
       </div>
 
       {/* SECTION 3: ADMISSION PHOTOGRAPHY */}
-      <div className="bg-[#FAF9F6] border border-[#CCCCCC]/60 rounded-xl p-5 sm:p-7 space-y-5">
-        <div className="border-b border-[#CCCCCC]/40 pb-4">
-          <span className="font-narrow text-xs font-black text-[#5E5E5E] tracking-widest uppercase block">
+      <div className="bg-[#F4FAF9] border border-[#CCE5E3] rounded-xl p-5 sm:p-7 space-y-5">
+        <div className="border-b border-[#CCE5E3] pb-4">
+          <span className="font-narrow text-xs font-black text-[#0B6E7B] tracking-widest uppercase block">
             RECRUITMENT BRANDING
           </span>
-          <h4 className="font-display text-xl sm:text-2xl uppercase text-[#111111] tracking-tight">
+          <h4 className="font-display text-xl sm:text-2xl uppercase text-[#0C2B31] tracking-tight">
             3. {prInternData.admissionPhotography.title}
           </h4>
-          <p className="font-sans text-xs sm:text-sm text-[#5E5E5E] mt-1">
+          <p className="font-sans text-xs sm:text-sm text-[#4E6E75] mt-1">
             {prInternData.admissionPhotography.subtitle} — {prInternData.admissionPhotography.description}
           </p>
         </div>
@@ -271,7 +271,7 @@ export default function PRInternExperienceShowcase() {
             <div
               key={idx}
               onClick={() => openGalleryModal("Admission Photography Gallery", admissionImages, idx)}
-              className="aspect-square w-full rounded-lg overflow-hidden bg-white border border-[#CCCCCC]/60 cursor-pointer group relative shadow-2xs"
+              className="aspect-square w-full rounded-xl overflow-hidden bg-white border border-[#CCE5E3] cursor-pointer group relative shadow-xs"
             >
               <img
                 src={src}
@@ -279,8 +279,8 @@ export default function PRInternExperienceShowcase() {
                 loading="lazy"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 pointer-events-none"
               />
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white pointer-events-none">
-                <i className="fa-solid fa-magnifying-glass-plus text-sm pointer-events-none"></i>
+              <div className="absolute inset-0 bg-[#07262B]/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white pointer-events-none">
+                <i className="fa-solid fa-magnifying-glass-plus text-sm text-[#2DD4BF] pointer-events-none"></i>
               </div>
             </div>
           ))}
@@ -289,9 +289,9 @@ export default function PRInternExperienceShowcase() {
           {admissionImages.length > 11 && (
             <div
               onClick={() => openGalleryModal("Admission Photography Gallery", admissionImages, 11)}
-              className="aspect-square w-full rounded-lg overflow-hidden bg-[#111111] text-white border border-[#111111] cursor-pointer group relative flex flex-col items-center justify-center p-2 text-center shadow-2xs hover:bg-[#222222] transition-colors"
+              className="aspect-square w-full rounded-xl overflow-hidden bg-[#07262B] text-white border border-[#0B6E7B]/40 cursor-pointer group relative flex flex-col items-center justify-center p-2 text-center shadow-xs hover:bg-[#0A3D44] transition-colors"
             >
-              <i className="fa-solid fa-camera-retro text-xl text-[#00f2fe] mb-1 group-hover:scale-110 transition-transform pointer-events-none"></i>
+              <i className="fa-solid fa-camera-retro text-xl text-[#2DD4BF] mb-1 group-hover:scale-110 transition-transform pointer-events-none"></i>
               <span className="font-narrow text-xs font-black uppercase tracking-wider pointer-events-none">
                 All ({admissionImages.length})
               </span>
@@ -301,15 +301,15 @@ export default function PRInternExperienceShowcase() {
       </div>
 
       {/* SECTION 4: EXTRACURRICULAR ACTIVITY PHOTOGRAPHY */}
-      <div className="bg-[#FAF9F6] border border-[#CCCCCC]/60 rounded-xl p-5 sm:p-7 space-y-5">
-        <div className="border-b border-[#CCCCCC]/40 pb-4">
-          <span className="font-narrow text-xs font-black text-[#5E5E5E] tracking-widest uppercase block">
+      <div className="bg-[#F4FAF9] border border-[#CCE5E3] rounded-xl p-5 sm:p-7 space-y-5">
+        <div className="border-b border-[#CCE5E3] pb-4">
+          <span className="font-narrow text-xs font-black text-[#0B6E7B] tracking-widest uppercase block">
             INTERNATIONAL EXCHANGE
           </span>
-          <h4 className="font-display text-xl sm:text-2xl uppercase text-[#111111] tracking-tight">
+          <h4 className="font-display text-xl sm:text-2xl uppercase text-[#0C2B31] tracking-tight">
             4. {prInternData.extracurricularPhotography.title}
           </h4>
-          <p className="font-sans text-xs sm:text-sm text-[#5E5E5E] mt-1">
+          <p className="font-sans text-xs sm:text-sm text-[#4E6E75] mt-1">
             {prInternData.extracurricularPhotography.subtitle} — {prInternData.extracurricularPhotography.description}
           </p>
         </div>
@@ -319,7 +319,7 @@ export default function PRInternExperienceShowcase() {
             <div
               key={idx}
               onClick={() => openGalleryModal("Flinders x OU Event Gallery", flindersImages, idx)}
-              className="aspect-4/3 w-full rounded-lg overflow-hidden bg-white border border-[#CCCCCC]/60 cursor-pointer group relative shadow-2xs"
+              className="aspect-4/3 w-full rounded-xl overflow-hidden bg-white border border-[#CCE5E3] cursor-pointer group relative shadow-xs"
             >
               <img
                 src={src}
@@ -327,8 +327,8 @@ export default function PRInternExperienceShowcase() {
                 loading="lazy"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 pointer-events-none"
               />
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white pointer-events-none">
-                <i className="fa-solid fa-magnifying-glass-plus text-sm pointer-events-none"></i>
+              <div className="absolute inset-0 bg-[#07262B]/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white pointer-events-none">
+                <i className="fa-solid fa-magnifying-glass-plus text-sm text-[#2DD4BF] pointer-events-none"></i>
               </div>
             </div>
           ))}
@@ -337,9 +337,9 @@ export default function PRInternExperienceShowcase() {
           {flindersImages.length > 11 && (
             <div
               onClick={() => openGalleryModal("Flinders x OU Event Gallery", flindersImages, 11)}
-              className="aspect-4/3 w-full rounded-lg overflow-hidden bg-[#111111] text-white border border-[#111111] cursor-pointer group relative flex flex-col items-center justify-center p-2 text-center shadow-2xs hover:bg-[#222222] transition-colors"
+              className="aspect-4/3 w-full rounded-xl overflow-hidden bg-[#07262B] text-white border border-[#0B6E7B]/40 cursor-pointer group relative flex flex-col items-center justify-center p-2 text-center shadow-xs hover:bg-[#0A3D44] transition-colors"
             >
-              <i className="fa-solid fa-earth-americas text-xl text-[#00f2fe] mb-1 group-hover:scale-110 transition-transform pointer-events-none"></i>
+              <i className="fa-solid fa-earth-americas text-xl text-[#2DD4BF] mb-1 group-hover:scale-110 transition-transform pointer-events-none"></i>
               <span className="font-narrow text-xs font-black uppercase tracking-wider pointer-events-none">
                 All ({flindersImages.length})
               </span>
@@ -351,20 +351,20 @@ export default function PRInternExperienceShowcase() {
       {/* FULL GALLERY POPUP MODAL */}
       {galleryModal.isOpen &&
         createPortal(
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md" onClick={closeGalleryModal}>
-            <div className="relative w-full max-w-4xl bg-[#111111] text-white border border-[#333333] rounded-2xl p-6 shadow-2xl space-y-4" onClick={(e) => e.stopPropagation()}>
-              <div className="flex items-center justify-between border-b border-[#333333] pb-3">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#07262B]/90 backdrop-blur-md" onClick={closeGalleryModal}>
+            <div className="relative w-full max-w-4xl bg-[#051E22] text-white border border-[#0B6E7B]/40 rounded-2xl p-6 shadow-2xl space-y-4" onClick={(e) => e.stopPropagation()}>
+              <div className="flex items-center justify-between border-b border-[#0B6E7B]/30 pb-3">
                 <div>
                   <h3 className="font-display text-lg sm:text-xl uppercase text-white tracking-tight">
                     {galleryModal.title}
                   </h3>
-                  <span className="font-narrow text-xs text-[#AAAAAA] uppercase tracking-wider">
+                  <span className="font-narrow text-xs text-[#2DD4BF] uppercase tracking-wider">
                     Photo {galleryModal.currentIndex + 1} of {galleryModal.images.length}
                   </span>
                 </div>
                 <button
                   onClick={closeGalleryModal}
-                  className="w-8 h-8 rounded-full bg-white/10 hover:bg-white hover:text-[#111111] transition-colors flex items-center justify-center text-white cursor-pointer"
+                  className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#0B6E7B] transition-colors flex items-center justify-center text-white cursor-pointer border border-[#0B6E7B]/40"
                 >
                   <i className="fa-solid fa-xmark text-sm pointer-events-none"></i>
                 </button>
@@ -381,13 +381,13 @@ export default function PRInternExperienceShowcase() {
                   <>
                     <button
                       onClick={prevGalleryImage}
-                      className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-white hover:text-[#111111] transition-colors flex items-center justify-center text-white border border-white/20 cursor-pointer z-10"
+                      className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#07262B]/80 hover:bg-[#0B6E7B] transition-colors flex items-center justify-center text-white border border-[#0B6E7B]/40 cursor-pointer z-10"
                     >
                       <i className="fa-solid fa-chevron-left text-sm pointer-events-none"></i>
                     </button>
                     <button
                       onClick={nextGalleryImage}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-white hover:text-[#111111] transition-colors flex items-center justify-center text-white border border-white/20 cursor-pointer z-10"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#07262B]/80 hover:bg-[#0B6E7B] transition-colors flex items-center justify-center text-white border border-[#0B6E7B]/40 cursor-pointer z-10"
                     >
                       <i className="fa-solid fa-chevron-right text-sm pointer-events-none"></i>
                     </button>
@@ -401,7 +401,7 @@ export default function PRInternExperienceShowcase() {
                   <div
                     key={idx}
                     onClick={() => setGalleryModal((prev) => ({ ...prev, currentIndex: idx }))}
-                    className={`w-12 h-12 rounded-lg overflow-hidden border-2 cursor-pointer shrink-0 transition-all ${galleryModal.currentIndex === idx ? 'border-[#00f2fe] scale-105' : 'border-transparent opacity-60 hover:opacity-100'}`}
+                    className={`w-12 h-12 rounded-lg overflow-hidden border-2 cursor-pointer shrink-0 transition-all ${galleryModal.currentIndex === idx ? 'border-[#2DD4BF] scale-105' : 'border-transparent opacity-60 hover:opacity-100'}`}
                   >
                     <img src={src} alt={`Thumb ${idx + 1}`} className="w-full h-full object-cover pointer-events-none" />
                   </div>

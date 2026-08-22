@@ -8,6 +8,9 @@
   --font-cursive: "Dancing Script", cursive;
   --font-serif: "Cormorant Garamond", serif;
 
+  --color-brand-teal: #0B6E7B;
+  --color-brand-mint: #14B8A6;
+  --color-brand-dark: #08282E;
   --color-brand-red: #E31E24;
 }
 
@@ -25,57 +28,56 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #EBEBEB;
+  background: #F0F8F7;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #111111;
+  background: #0B6E7B;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #333333;
+  background: #08545E;
 }
 
-/* Ultra-Shining Hologram Metal & Iridescent Effects */
+/* Ultra-Shining Teal & Mint Hologram / Iridescent Effects */
 .hologram-metal-text {
   background: linear-gradient(110deg,
-      #0096c7 0%,
-      #00c4cc 25%,
-      #6fdbd2 50%,
-      #fabf76 75%,
-      #f38827 100%);
+      #0A5C67 0%,
+      #0B7285 25%,
+      #14B8A6 50%,
+      #20B2AA 75%,
+      #0A5C67 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
-  /* filter: drop-shadow(0 0 2px rgba(0, 196, 204, 0.45)) drop-shadow(0 0 16px rgba(243, 136, 39, 0.35)); */
 }
 
 .hologram-metal-bg {
   background: linear-gradient(110deg,
-      #0096c7 0%,
-      #00c4cc 18%,
-      #80e8e0 35%,
-      #fff5db 50%,
-      #ffd199 65%,
-      #f38827 82%,
-      #0096c7 100%);
+      #0A5C67 0%,
+      #0B7285 18%,
+      #14B8A6 35%,
+      #80E8DD 50%,
+      #20B2AA 65%,
+      #0B7285 82%,
+      #0A5C67 100%);
   background-size: 300% auto;
   animation: hologramShine 3.5s ease-in-out infinite;
-  box-shadow: 0 0 15px rgba(0, 196, 204, 0.45), 0 0 30px rgba(243, 136, 39, 0.35);
+  box-shadow: 0 0 15px rgba(20, 184, 166, 0.45), 0 0 30px rgba(11, 114, 133, 0.35);
 }
 
 .hologram-metal-border {
   border-image: linear-gradient(110deg,
-      #0096c7 0%,
-      #00c4cc 33%,
-      #ffd199 66%,
-      #f38827 100%) 1;
-  box-shadow: 0 0 15px rgba(0, 196, 204, 0.4);
+      #0A5C67 0%,
+      #14B8A6 33%,
+      #80E8DD 66%,
+      #0B7285 100%) 1;
+  box-shadow: 0 0 15px rgba(20, 184, 166, 0.4);
 }
 
 .hologram-glow {
-  box-shadow: 0 0 20px rgba(0, 196, 204, 0.55), 0 0 35px rgba(243, 136, 39, 0.4);
+  box-shadow: 0 0 20px rgba(20, 184, 166, 0.55), 0 0 35px rgba(11, 114, 133, 0.4);
 }
 
 @keyframes hologramShine {

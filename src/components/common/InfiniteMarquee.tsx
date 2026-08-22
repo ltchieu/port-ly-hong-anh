@@ -22,7 +22,7 @@ function InfiniteMarquee({
             className="infinite-marquee-item cursor-pointer group"
             onClick={() => onItemClick?.(item)}
           >
-            <div className="relative overflow-hidden rounded-xl bg-white border border-[#CCCCCC]/60 shadow-md transition-transform duration-300 group-hover:scale-105 group-hover:border-[#111111]">
+            <div className="relative overflow-hidden rounded-xl bg-white border border-[#CCE5E3] shadow-md transition-transform duration-300 group-hover:scale-105 group-hover:border-[#0B6E7B]">
               <img
                 src={item.img}
                 alt={item.title || 'Campaign Visual'}
@@ -31,12 +31,12 @@ function InfiniteMarquee({
                 decoding="async"
               />
               {item.title && (
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end">
-                  <span className="font-narrow text-xs font-black uppercase text-white tracking-widest">
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#07262B]/90 via-[#07262B]/50 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end">
+                  <span className="font-narrow text-xs font-black uppercase text-[#2DD4BF] tracking-widest">
                     {item.title}
                   </span>
                   {item.subtitle && (
-                    <span className="font-mono text-[10px] text-white/70 tracking-wider">
+                    <span className="font-mono text-[10px] text-white/80 tracking-wider">
                       {item.subtitle}
                     </span>
                   )}

@@ -48,7 +48,7 @@ export default function MainPortfolio() {
   }, []);
 
   return (
-    <div className="bg-[#FAF9F6] text-[#111111] font-sans antialiased overflow-x-hidden min-h-screen selection:bg-[#111111] selection:text-white">
+    <div className="bg-[#FAFCFC] text-[#0C2B31] font-sans antialiased overflow-x-hidden min-h-screen selection:bg-[#0B6E7B] selection:text-white">
       {/* 1. Header Navigation */}
       <Navbar
         isMobileMenuOpen={isMobileMenuOpen}
