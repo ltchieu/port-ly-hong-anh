@@ -1,0 +1,91 @@
+import { useState, useEffect } from "react";
+import Navbar from "../components/Navbar";
+import Hero from "../components/Hero";
+import About from "../components/About";
+import ExperienceSection from "../components/Experience";
+import Work from "../components/Work";
+import Awards from "../components/Awards";
+import Footer from "../components/Footer";
+import ManifestoModal from "../components/ManifestoModal";
+import ProjectLightbox from "../components/ProjectLightbox";
+import { Project } from "../models/Project";
+
+export default function MainPortfolio() {
+  const [activeExperience, setActiveExperience] = useState<string | null>(null);
+  const [showManifesto, setShowManifesto] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // Real-time local clock
+  const [currentTime, setCurrentTime] = useState("");
+  const [currentDateString, setCurrentDateString] = useState("");
+
+  useEffect(() => {
+    const updateTimeAndDate = () => {
+      const now = new Date();
+      const gmt7Offset = 7 * 60 * 60 * 1000;
+      const gmt7Date = new Date(now.getTime() + gmt7Offset);
+
+      const hours = String(gmt7Date.getUTCHours()).padStart(2, "0");
+      const minutes = String(gmt7Date.getUTCMinutes()).padStart(2, "0");
+      const seconds = String(gmt7Date.getUTCSeconds()).padStart(2, "0");
+      setCurrentTime(`${hours}:${minutes}:${seconds}`);
+
+      const months = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];
+
+      const dayNum = gmt7Date.getUTCDate();
+      const monthName = months[gmt7Date.getUTCMonth()];
+      const year = gmt7Date.getUTCFullYear();
+
+      setCurrentDateString(`${dayNum} ${monthName} ${year}`);
+    };
+
+    updateTimeAndDate();
+    const interval = setInterval(updateTimeAndDate, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="bg-[#FAF9F6] text-[#111111] font-sans antialiased overflow-x-hidden min-h-screen selection:bg-[#111111] selection:text-white">
+      {/* 1. Header Navigation */}
+      <Navbar
+        isMobileMenuOpen={isMobileMenuOpen}
+        setIsMobileMenuOpen={setIsMobileMenuOpen}
+      />
+
+      {/* 2. Welcome Hero Section */}
+      <Hero
+        currentDateString={currentDateString}
+        currentTime={currentTime}
+      />
+
+      {/* 3. Introduction Section */}
+      <About
+        setShowManifesto={setShowManifesto}
+      />
+
+      {/* 4. Experience Timeline Accordion */}
+      <ExperienceSection
+        activeExperience={activeExperience}
+        setActiveExperience={setActiveExperience}
+      />
+
+      {/* 5. Selected Works Portfolio */}
+      <Work />
+
+      {/* 6. Awards Curation */}
+      <Awards />
+
+      {/* 7. Contact CTA & Footer */}
+      <Footer />
+
+      {/* 8. Manifesto Lightbox Modal */}
+      <ManifestoModal
+        isOpen={showManifesto}
+        onClose={() => setShowManifesto(false)}
+      />
+    </div>
+  );
+}

@@ -1,0 +1,34 @@
+@keyframes marquee-scroll {
+  0% {
+    transform: translate3d(0%, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.infinite-marquee-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  user-select: none;
+  contain: layout paint style;
+}
+
+.infinite-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 35s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.infinite-marquee-container:hover .infinite-marquee-track {
+  animation-play-state: paused;
+}
+
+.infinite-marquee-item {
+  flex-shrink: 0;
+  padding: 0 12px;
+  will-change: transform;
+}
