@@ -1,13 +1,14 @@
 import { useRef } from "react";
-import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence, useScroll, useSpring, useTransform } from "motion/react";
 import { experiences } from "../data/experiences";
 import ScrollReveal from "./common/ScrollReveal";
+import AnimatedCounter from "./common/AnimatedCounter";
+import HighlightText from "./common/HighlightText";
+import DNGroupExperienceShowcase from "./common/DNGroupExperienceShowcase";
+import VLotusExperienceShowcase from "./common/VLotusExperienceShowcase";
+import BeneliftsAsiaExperienceShowcase from "./common/BeneliftsAsiaExperienceShowcase";
 import FreelanceExperienceShowcase from "./common/FreelanceExperienceShowcase";
 import MarComExperienceShowcase from "./common/MarComExperienceShowcase";
-import MarketingExecutiveExperienceShowcase from "./common/MarketingExecutiveExperienceShowcase";
-import PRInternExperienceShowcase from "./common/PRInternExperienceShowcase";
-import ViceChairmanExperienceShowcase from "./common/ViceChairmanExperienceShowcase";
 
 interface ExperienceSectionProps {
   activeExperience: string | null;
@@ -18,7 +19,6 @@ export default function ExperienceSection({
   activeExperience,
   setActiveExperience,
 }: ExperienceSectionProps) {
-  const navigate = useNavigate();
   const sectionRef = useRef<HTMLDivElement>(null);
 
   // Track scroll progress inside the Experience section
@@ -39,39 +39,42 @@ export default function ExperienceSection({
   const itemRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
   const contentRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
+  const closedCardOffsets: Record<string, number> = {
+    "dn-group": 0,
+    "v-lotus": 218,
+    "benelifts-asia": 456,
+    "freelance-event-coordinator": 694,
+    "ou-news-marcom-associate": 892,
+  };
+
+  const getTargetDocY = (id: string) => {
+    if (!sectionRef.current) return 0;
+    const sectionTop = sectionRef.current.offsetTop;
+    const baseOffset = 270;
+    const itemOffset = closedCardOffsets[id] ?? 0;
+    return sectionTop + baseOffset + itemOffset;
+  };
+
   const handleToggleExperience = (id: string) => {
     const isOpening = activeExperience !== id;
-    const prevOpenId = activeExperience;
 
     if (isOpening) {
-      const clickedIdx = experiences.findIndex((e) => e.id === id);
-      let collapseHeight = 0;
+      const yOffset = 85; // Top navbar clearance
+      const targetY = Math.max(0, getTargetDocY(id) - yOffset);
 
-      if (prevOpenId) {
-        const prevIdx = experiences.findIndex((e) => e.id === prevOpenId);
-        // Only subtract collapse height if previously open job was ABOVE the newly clicked job
-        if (prevIdx < clickedIdx && contentRefs.current[prevOpenId]) {
-          collapseHeight = contentRefs.current[prevOpenId]!.getBoundingClientRect().height;
-        }
-      }
+      setActiveExperience(id);
 
-      const el = itemRefs.current[id];
-      if (el) {
-        const yOffset = 90; // Top header offset
-        const currentTop = el.getBoundingClientRect().top;
-        const targetY = window.scrollY + currentTop - collapseHeight - yOffset;
+      // Immediate scroll towards target
+      window.scrollTo({ top: targetY, behavior: "smooth" });
 
-        setActiveExperience(id);
-
-        // Instantly align scroll position to targetY with zero delayed smooth-scroll bounce
-        requestAnimationFrame(() => {
-          window.scrollTo({ top: Math.max(0, targetY), behavior: "auto" });
-        });
-        return;
-      }
+      // Post-collapse scroll alignment to overcome browser smooth-scroll cancellation during DOM shrink
+      setTimeout(() => {
+        window.scrollTo({ top: targetY, behavior: "smooth" });
+      }, 260);
+      return;
     }
 
-    setActiveExperience(isOpening ? id : null);
+    setActiveExperience(null);
   };
 
   return (
@@ -124,11 +127,11 @@ export default function ExperienceSection({
             const isOpen = activeExperience === exp.id;
             const isFullWidth =
               isOpen &&
-              (exp.id === "freelance-event-coordinator" ||
-                exp.id === "ou-news-marcom-associate" ||
-                exp.id === "amor-resort-marketing-executive" ||
-                exp.id === "school-advanced-study-pr" ||
-                exp.id === "vsa-vice-chairman");
+              (exp.id === "dn-group" ||
+                exp.id === "v-lotus" ||
+                exp.id === "benelifts-asia" ||
+                exp.id === "freelance-event-coordinator" ||
+                exp.id === "ou-news-marcom-associate");
 
             return (
               <ScrollReveal
@@ -138,8 +141,9 @@ export default function ExperienceSection({
                 className="py-4"
               >
                 <div
-                  className={`flex flex-col lg:flex-row ${isEven && !isFullWidth ? "lg:justify-end" : "lg:justify-start"
-                    } relative w-full`}
+                  className={`flex flex-col lg:flex-row ${
+                    isEven && !isFullWidth ? "lg:justify-end" : "lg:justify-start"
+                  } relative w-full`}
                 >
                   {/* Point node on timeline axis */}
                   <div className="hidden lg:block absolute left-1/2 top-8 w-3.5 h-3.5 rounded-full bg-[#0B6E7B] border-2 border-white -translate-x-1/2 z-20 transition-all duration-300 shadow-sm group-hover:scale-125"></div>
@@ -148,14 +152,18 @@ export default function ExperienceSection({
                     ref={(el) => {
                       itemRefs.current[exp.id] = el;
                     }}
-                    className={`w-full ${isFullWidth ? "lg:w-full z-30" : "lg:w-[46%]"
-                      } bg-white/90 backdrop-blur-sm border border-[#CCE5E3] p-6 md:p-8 rounded-xl transition-all duration-300 hover:bg-white hover:shadow-lg scroll-mt-24 ${isOpen
+                    data-experience-id={exp.id}
+                    className={`w-full ${
+                      isFullWidth ? "lg:w-full z-30" : "lg:w-[46%]"
+                    } bg-white/90 backdrop-blur-sm border border-[#CCE5E3] p-6 md:p-8 rounded-xl transition-all duration-300 hover:bg-white hover:shadow-lg scroll-mt-24 ${
+                      isOpen
                         ? "bg-white shadow-md border-l-4 border-l-[#0B6E7B]"
                         : ""
-                      }`}
+                    }`}
                   >
                     {/* Header trigger */}
                     <div
+                      data-experience-header={exp.id}
                       onClick={() => handleToggleExperience(exp.id)}
                       className="cursor-pointer flex items-center justify-between gap-4 select-none"
                     >
@@ -173,10 +181,11 @@ export default function ExperienceSection({
 
                       {/* Icon */}
                       <button
-                        className={`p-2 rounded-full border border-[#CCE5E3] hover:border-[#0B6E7B] hover:bg-[#0B6E7B] hover:text-white transition-all duration-300 text-[#0C2B31] ${isOpen
-                          ? "rotate-45 border-[#0B6E7B] bg-[#0B6E7B] text-white"
-                          : ""
-                          }`}
+                        className={`p-2 rounded-full border border-[#CCE5E3] hover:border-[#0B6E7B] hover:bg-[#0B6E7B] hover:text-white transition-all duration-300 text-[#0C2B31] ${
+                          isOpen
+                            ? "rotate-45 border-[#0B6E7B] bg-[#0B6E7B] text-white"
+                            : ""
+                        }`}
                         aria-expanded={isOpen}
                         aria-label="Expand role details"
                       >
@@ -184,7 +193,7 @@ export default function ExperienceSection({
                       </button>
                     </div>
 
-                    {/* Expandable Content Container */}
+                    {/* Expandable Content Container with larger content typography */}
                     <AnimatePresence initial={false}>
                       {isOpen && (
                         <motion.div
@@ -197,39 +206,45 @@ export default function ExperienceSection({
                             contentRefs.current[exp.id] = el;
                           }}
                         >
-                          <div className="pt-6 space-y-4 border-t border-[#CCE5E3] mt-6">
+                          <div className="pt-6 space-y-6 border-t border-[#CCE5E3] mt-6">
                             {exp.sections ? (
-                              <div className="space-y-4 pt-1">
+                              <div className="space-y-6 pt-1">
                                 {exp.sections.map((sec, sIdx) => (
-                                  <div key={sIdx} className="space-y-2">
-                                    <h6 className="font-narrow text-xs font-black text-[#0B6E7B] uppercase tracking-wider flex items-center gap-1.5">
-                                      <i className="fa-solid fa-chevron-right text-[10px] text-[#0B6E7B]"></i>
+                                  <div key={sIdx} className="space-y-3">
+                                    <h6 className="font-narrow text-sm sm:text-base font-black text-[#0B6E7B] uppercase tracking-wider flex items-center gap-2">
+                                      <i className="fa-solid fa-chevron-right text-xs text-[#0B6E7B]"></i>
                                       {sec.title}
                                     </h6>
-                                    <ul className="space-y-1.5 pl-2 font-sans text-xs sm:text-sm text-[#4E6E75] leading-relaxed">
+                                    <ul className="space-y-2.5 pl-2 font-sans text-base sm:text-[17px] text-[#2C4A51] leading-relaxed">
                                       {sec.items.map((item, iIdx) => {
                                         if (typeof item === "string") {
                                           return (
-                                            <li key={iIdx} className="flex items-start gap-2">
-                                              <span className="text-[#0B6E7B] font-bold text-xs mt-0.5">•</span>
-                                              <span>{item}</span>
+                                            <li key={iIdx} className="flex items-start gap-2.5">
+                                              <span className="text-[#0B6E7B] font-bold text-base mt-0.5">•</span>
+                                              <span className="flex-1">
+                                                <HighlightText text={item} />
+                                              </span>
                                             </li>
                                           );
                                         } else {
                                           return (
-                                            <li key={iIdx} className="space-y-2 pt-1">
-                                              <div className="flex items-start gap-2">
-                                                <span className="text-[#0B6E7B] font-bold text-xs mt-0.5">•</span>
-                                                <span className="font-medium text-[#0C2B31]">{item.subtitle}</span>
+                                            <li key={iIdx} className="space-y-2.5 pt-1.5">
+                                              <div className="flex items-start gap-2.5">
+                                                <span className="text-[#0B6E7B] font-bold text-base mt-0.5">•</span>
+                                                <span className="font-bold text-base sm:text-lg text-[#0C2B31]">
+                                                  {item.subtitle}
+                                                </span>
                                               </div>
-                                              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pl-4 pt-1">
+                                              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pl-4 pt-1">
                                                 {item.subitems.map((sub, subIdx) => (
                                                   <div
                                                     key={subIdx}
-                                                    className="px-3 py-1.5 bg-[#F4FAF9] border border-[#0B6E7B]/30 rounded-md flex items-center gap-1.5 font-narrow font-black text-xs text-[#0C2B31] shadow-2xs hover:bg-[#0B6E7B] hover:text-white transition-all group/sub"
+                                                    className="px-4 py-2 bg-[#F4FAF9] border border-[#0B6E7B]/30 rounded-lg flex items-center gap-2 font-narrow font-black text-sm sm:text-base text-[#0C2B31] shadow-2xs hover:bg-[#0B6E7B] hover:text-white transition-all group/sub"
                                                   >
-                                                    <i className="fa-solid fa-chart-line text-[#0B6E7B] group-hover/sub:text-[#2DD4BF] text-[10px] transition-colors"></i>
-                                                    <span>{sub}</span>
+                                                    <i className="fa-solid fa-chart-line text-[#0B6E7B] group-hover/sub:text-[#2DD4BF] text-xs transition-colors"></i>
+                                                    <span>
+                                                      <AnimatedCounter value={sub} />
+                                                    </span>
                                                   </div>
                                                 ))}
                                               </div>
@@ -242,33 +257,31 @@ export default function ExperienceSection({
                                 ))}
                               </div>
                             ) : (
-                              <p className="font-sans text-sm sm:text-base text-[#4E6E75] leading-relaxed">
-                                {exp.description}
+                              <p className="font-sans text-base sm:text-lg text-[#2C4A51] leading-relaxed">
+                                <HighlightText text={exp.description} />
                               </p>
                             )}
 
-                            {exp.id === "freelance-event-coordinator" ? (
+                            {/* Render Custom Showcase based on Experience ID */}
+                            {exp.id === "dn-group" ? (
+                              <DNGroupExperienceShowcase />
+                            ) : exp.id === "v-lotus" ? (
+                              <VLotusExperienceShowcase />
+                            ) : exp.id === "benelifts-asia" ? (
+                              <BeneliftsAsiaExperienceShowcase />
+                            ) : exp.id === "freelance-event-coordinator" ? (
                               <FreelanceExperienceShowcase />
                             ) : exp.id === "ou-news-marcom-associate" ? (
                               <MarComExperienceShowcase />
-                            ) : exp.id === "amor-resort-marketing-executive" ? (
-                              <MarketingExecutiveExperienceShowcase />
-                            ) : exp.id === "school-advanced-study-pr" ? (
-                              <PRInternExperienceShowcase />
-                            ) : exp.id === "vsa-vice-chairman" ? (
-                              <ViceChairmanExperienceShowcase />
                             ) : (
-                              <>
-                                {/* Experience Work Image */}
-                                <div className="aspect-video w-full overflow-hidden rounded bg-[#E7F3F2] mt-4 relative group border border-[#CCE5E3]">
-                                  <img
-                                    src={exp.image}
-                                    alt={`${exp.company} campaign`}
-                                    referrerPolicy="no-referrer"
-                                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-in-out scale-100 group-hover:scale-105"
-                                  />
-                                </div>
-                              </>
+                              <div className="aspect-video w-full overflow-hidden rounded bg-[#E7F3F2] mt-4 relative group border border-[#CCE5E3]">
+                                <img
+                                  src={exp.image}
+                                  alt={`${exp.company} campaign`}
+                                  referrerPolicy="no-referrer"
+                                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-in-out scale-100 group-hover:scale-105"
+                                />
+                              </div>
                             )}
                           </div>
                         </motion.div>

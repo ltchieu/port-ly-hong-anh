@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import TikTokEmbed from './TikTokEmbed';
 import GallerySkeleton from './GallerySkeleton';
 import ImageLightboxModal from './ImageLightboxModal';
+import HighlightText from './HighlightText';
 import { weddingPlannerImages, weddingLedImages, comGungImages } from '../../data/freelanceProjectsData';
 import type { LightboxImageData } from '../../models/imageLightboxModal';
 
@@ -141,17 +142,17 @@ export default function FreelanceExperienceShowcase() {
             </span>
           </div>
 
-          <ul className="space-y-2 pt-1 font-sans text-xs sm:text-sm text-[#4E6E75] leading-relaxed">
+          <ul className="space-y-2.5 pt-1 font-sans text-base sm:text-lg text-[#2C4A51] leading-relaxed">
             <li className="flex items-start gap-2.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#0B6E7B] mt-2 flex-shrink-0"></span>
+              <span className="w-2 h-2 rounded-full bg-[#0B6E7B] mt-2.5 flex-shrink-0"></span>
               <span>
-                Planned and coordinated intimate private wedding experiences, managing timelines, vendors, and on-site execution to ensure seamless event delivery.
+                <HighlightText text="Planned and coordinated intimate private wedding experiences, managing timelines, vendors, and on-site execution to ensure seamless event delivery." />
               </span>
             </li>
             <li className="flex items-start gap-2.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#0B6E7B] mt-2 flex-shrink-0"></span>
+              <span className="w-2 h-2 rounded-full bg-[#0B6E7B] mt-2.5 flex-shrink-0"></span>
               <span>
-                Designed typography-led LED visuals tailored to each wedding concept, enhancing visual storytelling and guest experience.
+                <HighlightText text="Designed typography-led LED visuals tailored to each wedding concept, enhancing visual storytelling and guest experience." />
               </span>
             </li>
           </ul>
@@ -160,7 +161,7 @@ export default function FreelanceExperienceShowcase() {
         {/* Two Collages Side-by-Side */}
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <span className="font-narrow text-[11px] font-black text-[#0B6E7B] tracking-wider uppercase flex items-center gap-1.5">
+            <span className="font-narrow text-xs sm:text-sm font-black text-[#0B6E7B] tracking-wider uppercase flex items-center gap-1.5">
               <i className="fa-solid fa-images text-[#0B6E7B]"></i>
               WEDDING GALLERIES
             </span>
@@ -189,24 +190,24 @@ export default function FreelanceExperienceShowcase() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#07262B]/85 via-[#07262B]/30 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
 
                 <div className="absolute top-2.5 left-2.5 z-10">
-                  <span className="px-2 py-0.5 bg-white/90 backdrop-blur-md text-[#0C2B31] font-narrow text-[9px] font-black uppercase tracking-wider rounded border border-[#CCE5E3] shadow-xs flex items-center gap-1">
+                  <span className="px-2.5 py-1 bg-white/90 backdrop-blur-md text-[#0C2B31] font-narrow text-xs font-black uppercase tracking-wider rounded border border-[#CCE5E3] shadow-xs flex items-center gap-1">
                     <i className="fa-solid fa-film text-[#0B6E7B]"></i>
                     LED Motion Visuals
                   </span>
                 </div>
 
                 <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-                  <span className="px-3.5 py-1.5 bg-[#0B6E7B] text-white font-narrow text-xs font-bold uppercase tracking-wider rounded-full shadow-lg flex items-center gap-1.5 transform translate-y-1 group-hover:translate-y-0 transition-transform">
+                  <span className="px-4 py-2 bg-[#0B6E7B] text-white font-narrow text-xs sm:text-sm font-bold uppercase tracking-wider rounded-full shadow-lg flex items-center gap-2 transform translate-y-1 group-hover:translate-y-0 transition-transform">
                     <i className="fa-solid fa-expand text-xs"></i>
                     Open Gallery ({weddingLedImages.length})
                   </span>
                 </div>
 
-                <div className="absolute bottom-0 left-0 right-0 p-3 z-10 text-white space-y-0.5">
-                  <p className="font-narrow text-[9px] font-bold text-[#2DD4BF] uppercase tracking-widest">
+                <div className="absolute bottom-0 left-0 right-0 p-4 z-10 text-white space-y-1">
+                  <p className="font-narrow text-xs font-bold text-[#2DD4BF] uppercase tracking-widest">
                     GALLERY 01 • TYPOGRAPHY WEDDING LED
                   </p>
-                  <h4 className="font-display text-sm sm:text-base uppercase tracking-tight line-clamp-1">
+                  <h4 className="font-display text-base sm:text-lg uppercase tracking-tight line-clamp-1">
                     Typography Stage Visuals
                   </h4>
                 </div>
@@ -218,8 +219,8 @@ export default function FreelanceExperienceShowcase() {
               onClick={() =>
                 openWeddingGallery(
                   weddingPlannerImages,
-                  'Private Wedding Planner & On-Site Execution',
-                  'The groom Cao Cuong and the bride Ai Vi'
+                  'Intimate Private Wedding Planning & Execution',
+                  'The groom Minh Tam and the Bride Anh Thu'
                 )
               }
               className="group relative rounded-xl overflow-hidden bg-white border border-[#CCE5E3] cursor-pointer shadow-xs hover:shadow-md transition-all duration-300"
@@ -227,7 +228,7 @@ export default function FreelanceExperienceShowcase() {
               <div className="aspect-[4/3] w-full overflow-hidden relative">
                 <img
                   src={weddingPlannerImages[0]}
-                  alt="Private Wedding Planner Profile Cover"
+                  alt="Private Wedding Planning Profile Cover"
                   loading="lazy"
                   decoding="async"
                   className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
@@ -235,24 +236,24 @@ export default function FreelanceExperienceShowcase() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#07262B]/85 via-[#07262B]/30 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
 
                 <div className="absolute top-2.5 left-2.5 z-10">
-                  <span className="px-2 py-0.5 bg-white/90 backdrop-blur-md text-[#0C2B31] font-narrow text-[9px] font-black uppercase tracking-wider rounded border border-[#CCE5E3] shadow-xs flex items-center gap-1">
-                    <i className="fa-solid fa-calendar-check text-[#0B6E7B]"></i>
+                  <span className="px-2.5 py-1 bg-white/90 backdrop-blur-md text-[#0C2B31] font-narrow text-xs font-black uppercase tracking-wider rounded border border-[#CCE5E3] shadow-xs flex items-center gap-1">
+                    <i className="fa-solid fa-champagne-glasses text-[#0B6E7B]"></i>
                     Planning & Execution
                   </span>
                 </div>
 
                 <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-                  <span className="px-3.5 py-1.5 bg-[#0B6E7B] text-white font-narrow text-xs font-bold uppercase tracking-wider rounded-full shadow-lg flex items-center gap-1.5 transform translate-y-1 group-hover:translate-y-0 transition-transform">
+                  <span className="px-4 py-2 bg-[#0B6E7B] text-white font-narrow text-xs sm:text-sm font-bold uppercase tracking-wider rounded-full shadow-lg flex items-center gap-2 transform translate-y-1 group-hover:translate-y-0 transition-transform">
                     <i className="fa-solid fa-expand text-xs"></i>
                     Open Gallery ({weddingPlannerImages.length})
                   </span>
                 </div>
 
-                <div className="absolute bottom-0 left-0 right-0 p-3 z-10 text-white space-y-0.5">
-                  <p className="font-narrow text-[9px] font-bold text-[#2DD4BF] uppercase tracking-widest">
+                <div className="absolute bottom-0 left-0 right-0 p-4 z-10 text-white space-y-1">
+                  <p className="font-narrow text-xs font-bold text-[#2DD4BF] uppercase tracking-widest">
                     GALLERY 02 • PRIVATE WEDDING PLANNER
                   </p>
-                  <h4 className="font-display text-sm sm:text-base uppercase tracking-tight line-clamp-1">
+                  <h4 className="font-display text-base sm:text-lg uppercase tracking-tight line-clamp-1">
                     Intimate Wedding Planning
                   </h4>
                 </div>
@@ -265,35 +266,35 @@ export default function FreelanceExperienceShowcase() {
       {/* ========================================================================= */}
       {/* SECTION 2: CỐM GỪNG CERAMIC */}
       {/* ========================================================================= */}
-      <div className="bg-[#F4FAF9] border border-[#CCE5E3] rounded-xl p-4 sm:p-6 space-y-5">
+      <div className="bg-[#F4FAF9] border border-[#CCE5E3] rounded-xl p-5 sm:p-6 space-y-5">
         <div className="border-b border-[#CCE5E3] pb-4 space-y-2">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <h3 className="font-display text-lg sm:text-xl uppercase tracking-tight text-[#0C2B31]">
               Cốm Gừng Ceramic
             </h3>
-            <span className="px-2.5 py-1 bg-white border border-[#CCE5E3] font-narrow text-[11px] font-bold uppercase tracking-wider rounded-lg text-[#0B6E7B] flex items-center gap-1.5 shadow-xs">
+            <span className="px-3 py-1 bg-white border border-[#CCE5E3] font-narrow text-xs font-bold uppercase tracking-wider rounded-lg text-[#0B6E7B] flex items-center gap-1.5 shadow-xs">
               <i className="fa-solid fa-camera-retro text-[#0B6E7B] text-xs"></i>
               Content & Visual Production
             </span>
           </div>
 
-          <ul className="space-y-2 pt-1 font-sans text-xs sm:text-sm text-[#4E6E75] leading-relaxed">
+          <ul className="space-y-2.5 pt-1 font-sans text-base sm:text-lg text-[#2C4A51] leading-relaxed">
             <li className="flex items-start gap-2.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#0B6E7B] mt-2 flex-shrink-0"></span>
+              <span className="w-2 h-2 rounded-full bg-[#0B6E7B] mt-2.5 flex-shrink-0"></span>
               <span>
-                Produced short-form TikTok videos to showcase handcrafted ceramic collections.
+                <HighlightText text="Produced short-form TikTok videos to showcase handcrafted ceramic collections." />
               </span>
             </li>
             <li className="flex items-start gap-2.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#0B6E7B] mt-2 flex-shrink-0"></span>
+              <span className="w-2 h-2 rounded-full bg-[#0B6E7B] mt-2.5 flex-shrink-0"></span>
               <span>
-                Planned and executed product photography for digital marketing and e-commerce channels.
+                <HighlightText text="Planned and executed product photography for digital marketing and e-commerce channels." />
               </span>
             </li>
             <li className="flex items-start gap-2.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#0B6E7B] mt-2 flex-shrink-0"></span>
+              <span className="w-2 h-2 rounded-full bg-[#0B6E7B] mt-2.5 flex-shrink-0"></span>
               <span>
-                Created visual content tailored to social media engagement and brand storytelling.
+                <HighlightText text="Created visual content tailored to social media engagement and brand storytelling." />
               </span>
             </li>
           </ul>

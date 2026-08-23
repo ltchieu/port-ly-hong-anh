@@ -2,6 +2,7 @@ import { useState, useMemo, useCallback, useEffect, lazy, Suspense } from 'react
 import { createPortal } from 'react-dom';
 import ImageLightboxModal from './ImageLightboxModal';
 import GallerySkeleton from './GallerySkeleton';
+import HighlightText from './HighlightText';
 import type { LightboxImageData } from '../../models/imageLightboxModal';
 import { pressArticles } from '../../data/pressArticlesData';
 
@@ -277,8 +278,8 @@ export default function MarComExperienceShowcase() {
             </span>
           </div>
 
-          <p className="font-sans text-xs sm:text-sm text-[#4E6E75] leading-relaxed">
-            Main event organizer, graphic identity designer, and official photographer for Ho Chi Minh City Open University’s annual marathon. Coordinated 600+ on-site runners while producing the complete visual collateral suite and capturing live event moments.
+          <p className="font-sans text-base sm:text-lg text-[#2C4A51] leading-relaxed">
+            <HighlightText text="Main event organizer, graphic identity designer, and official photographer for Ho Chi Minh City Open University’s annual marathon. Coordinated 600+ on-site runners while producing the complete visual collateral suite and capturing live event moments." />
           </p>
         </div>
 
@@ -458,8 +459,8 @@ export default function MarComExperienceShowcase() {
             </span>
           </div>
 
-          <p className="font-sans text-xs sm:text-sm text-[#4E6E75] leading-relaxed">
-            Organizing team assistant leading backstage logistics, media team setup, and contestant photo shooting for Miss & Mister OU 2025. Generated over 1,000+ online & offline audience interactions.
+          <p className="font-sans text-base sm:text-lg text-[#2C4A51] leading-relaxed">
+            <HighlightText text="Organizing team assistant leading backstage logistics, media team setup, and contestant photo shooting for Miss & Mister OU 2025. Generated over 1,000+ online & offline audience interactions." />
           </p>
         </div>
 
@@ -566,8 +567,8 @@ export default function MarComExperienceShowcase() {
             </span>
           </div>
 
-          <p className="font-sans text-xs sm:text-sm text-[#4E6E75] leading-relaxed">
-            Designed comprehensive student recruitment media collateral, including short film teaser posters, credit-transfer program leaflets, and international admission brochures.
+          <p className="font-sans text-base sm:text-lg text-[#2C4A51] leading-relaxed">
+            <HighlightText text="Designed comprehensive student recruitment media collateral, including short film teaser posters, credit-transfer program leaflets, and international admission brochures." />
           </p>
 
           {/* Social Links for Short Film Posters */}
@@ -757,19 +758,19 @@ export default function MarComExperienceShowcase() {
             >
               <div className="space-y-1 flex-1">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="font-mono text-[10px] font-bold px-2 py-0.5 bg-[#F4FAF9] border border-[#CCE5E3] text-[#0C2B31] rounded">
+                  <span className="font-mono text-xs font-bold px-2.5 py-0.5 bg-[#F4FAF9] border border-[#CCE5E3] text-[#0C2B31] rounded">
                     {article.date}
                   </span>
-                  <span className="font-narrow text-[10px] font-bold uppercase tracking-wider text-[#0B6E7B]">
+                  <span className="font-narrow text-xs font-bold uppercase tracking-wider text-[#0B6E7B]">
                     {article.type}
                   </span>
                   <span className="text-[#CCE5E3]">•</span>
-                  <span className="font-narrow text-[10px] font-medium text-[#4E6E75]">
+                  <span className="font-narrow text-xs font-medium text-[#4E6E75]">
                     By {article.author}
                   </span>
                 </div>
-                <h5 className="font-sans text-xs sm:text-sm font-semibold text-[#0C2B31] leading-snug group-hover:text-[#0B6E7B] transition-colors">
-                  {article.title}
+                <h5 className="font-sans text-sm sm:text-base font-bold text-[#0C2B31] leading-snug group-hover:text-[#0B6E7B] transition-colors">
+                  <HighlightText text={article.title} />
                 </h5>
               </div>
 
@@ -777,10 +778,10 @@ export default function MarComExperienceShowcase() {
                 href={article.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3 py-1.5 bg-[#F4FAF9] border border-[#CCE5E3] hover:bg-[#0B6E7B] hover:text-white transition-all rounded-lg font-narrow text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 text-[#0C2B31] flex-shrink-0"
+                className="px-4 py-2 bg-[#F4FAF9] border border-[#CCE5E3] hover:bg-[#0B6E7B] hover:text-white transition-all rounded-lg font-narrow text-xs sm:text-sm font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 text-[#0C2B31] flex-shrink-0"
               >
                 <span>Read Article</span>
-                <i className="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                <i className="fa-solid fa-arrow-up-right-from-square text-xs"></i>
               </a>
             </div>
           ))}
