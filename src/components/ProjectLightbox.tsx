@@ -19,12 +19,16 @@ export default function ProjectLightbox({
         <motion.div
           key="project-lightbox-modal"
           id="project-lightbox"
+          data-lenis-prevent="true"
+          data-lenis-prevent-wheel="true"
+          data-lenis-prevent-touch="true"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           className="fixed inset-0 z-50 bg-[#07262B]/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-6"
         >
           <motion.div 
+            data-lenis-prevent="true"
             initial={{ scale: 0.92, y: 15 }}
             animate={{ scale: 1, y: 0 }}
             exit={{ scale: 0.92, y: 15 }}

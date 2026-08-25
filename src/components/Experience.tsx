@@ -1,23 +1,17 @@
 import { useRef } from "react";
-import { motion, AnimatePresence, useScroll, useSpring, useTransform } from "motion/react";
+import { motion, useScroll, useSpring, useTransform } from "motion/react";
 import { experiences } from "../data/experiences";
 import ScrollReveal from "./common/ScrollReveal";
-import AnimatedCounter from "./common/AnimatedCounter";
-import HighlightText from "./common/HighlightText";
-import DNGroupExperienceShowcase from "./common/DNGroupExperienceShowcase";
-import VLotusExperienceShowcase from "./common/VLotusExperienceShowcase";
-import BeneliftsAsiaExperienceShowcase from "./common/BeneliftsAsiaExperienceShowcase";
-import FreelanceExperienceShowcase from "./common/FreelanceExperienceShowcase";
-import MarComExperienceShowcase from "./common/MarComExperienceShowcase";
 
 interface ExperienceSectionProps {
-  activeExperience: string | null;
+  activeExperience?: string | null;
   setActiveExperience: (id: string | null) => void;
+  onSelectExperience?: (id: string) => void;
 }
 
 export default function ExperienceSection({
-  activeExperience,
   setActiveExperience,
+  onSelectExperience,
 }: ExperienceSectionProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -36,45 +30,12 @@ export default function ExperienceSection({
   // Calculate position of the glowing runner node
   const lightTopPosition = useTransform(smoothProgress, [0, 1], ["0%", "100%"]);
 
-  const itemRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
-  const contentRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
-
-  const closedCardOffsets: Record<string, number> = {
-    "dn-group": 0,
-    "v-lotus": 218,
-    "benelifts-asia": 456,
-    "freelance-event-coordinator": 694,
-    "ou-news-marcom-associate": 892,
-  };
-
-  const getTargetDocY = (id: string) => {
-    if (!sectionRef.current) return 0;
-    const sectionTop = sectionRef.current.offsetTop;
-    const baseOffset = 270;
-    const itemOffset = closedCardOffsets[id] ?? 0;
-    return sectionTop + baseOffset + itemOffset;
-  };
-
-  const handleToggleExperience = (id: string) => {
-    const isOpening = activeExperience !== id;
-
-    if (isOpening) {
-      const yOffset = 85; // Top navbar clearance
-      const targetY = Math.max(0, getTargetDocY(id) - yOffset);
-
+  const handleOpenExperience = (id: string) => {
+    if (onSelectExperience) {
+      onSelectExperience(id);
+    } else {
       setActiveExperience(id);
-
-      // Immediate scroll towards target
-      window.scrollTo({ top: targetY, behavior: "smooth" });
-
-      // Post-collapse scroll alignment to overcome browser smooth-scroll cancellation during DOM shrink
-      setTimeout(() => {
-        window.scrollTo({ top: targetY, behavior: "smooth" });
-      }, 260);
-      return;
     }
-
-    setActiveExperience(null);
   };
 
   return (
@@ -124,14 +85,6 @@ export default function ExperienceSection({
         <div className="space-y-8 lg:space-y-0 relative z-10">
           {experiences.map((exp, idx) => {
             const isEven = idx % 2 === 1;
-            const isOpen = activeExperience === exp.id;
-            const isFullWidth =
-              isOpen &&
-              (exp.id === "dn-group" ||
-                exp.id === "v-lotus" ||
-                exp.id === "benelifts-asia" ||
-                exp.id === "freelance-event-coordinator" ||
-                exp.id === "ou-news-marcom-associate");
 
             return (
               <ScrollReveal
@@ -142,36 +95,27 @@ export default function ExperienceSection({
               >
                 <div
                   className={`flex flex-col lg:flex-row ${
-                    isEven && !isFullWidth ? "lg:justify-end" : "lg:justify-start"
+                    isEven ? "lg:justify-end" : "lg:justify-start"
                   } relative w-full`}
                 >
                   {/* Point node on timeline axis */}
                   <div className="hidden lg:block absolute left-1/2 top-8 w-3.5 h-3.5 rounded-full bg-[#0B6E7B] border-2 border-white -translate-x-1/2 z-20 transition-all duration-300 shadow-sm group-hover:scale-125"></div>
 
                   <div
-                    ref={(el) => {
-                      itemRefs.current[exp.id] = el;
-                    }}
                     data-experience-id={exp.id}
-                    className={`w-full ${
-                      isFullWidth ? "lg:w-full z-30" : "lg:w-[46%]"
-                    } bg-white/90 backdrop-blur-sm border border-[#CCE5E3] p-6 md:p-8 rounded-xl transition-all duration-300 hover:bg-white hover:shadow-lg scroll-mt-24 ${
-                      isOpen
-                        ? "bg-white shadow-md border-l-4 border-l-[#0B6E7B]"
-                        : ""
-                    }`}
+                    className="w-full lg:w-[46%] bg-white/90 backdrop-blur-sm border border-[#CCE5E3] p-6 md:p-8 rounded-xl transition-all duration-300 hover:bg-white hover:shadow-lg scroll-mt-24 cursor-pointer group"
+                    onClick={() => handleOpenExperience(exp.id)}
                   >
                     {/* Header trigger */}
                     <div
                       data-experience-header={exp.id}
-                      onClick={() => handleToggleExperience(exp.id)}
                       className="cursor-pointer flex items-center justify-between gap-4 select-none"
                     >
                       <div className="space-y-1">
                         <span className="font-narrow text-sm sm:text-base font-black hologram-metal-text tracking-widest block">
                           {exp.index} / {exp.role}
                         </span>
-                        <h5 className="font-display text-xl sm:text-2xl uppercase leading-none text-[#0C2B31]">
+                        <h5 className="font-display text-xl sm:text-2xl uppercase leading-none text-[#0C2B31] group-hover:text-[#0B6E7B] transition-colors">
                           {exp.company}
                         </h5>
                         <p className="font-narrow text-xs sm:text-sm font-bold text-[#4E6E75] tracking-wider uppercase">
@@ -179,114 +123,14 @@ export default function ExperienceSection({
                         </p>
                       </div>
 
-                      {/* Icon */}
+                      {/* Plus icon button */}
                       <button
-                        className={`p-2 rounded-full border border-[#CCE5E3] hover:border-[#0B6E7B] hover:bg-[#0B6E7B] hover:text-white transition-all duration-300 text-[#0C2B31] ${
-                          isOpen
-                            ? "rotate-45 border-[#0B6E7B] bg-[#0B6E7B] text-white"
-                            : ""
-                        }`}
-                        aria-expanded={isOpen}
-                        aria-label="Expand role details"
+                        className="p-2 rounded-full border border-[#CCE5E3] group-hover:border-[#0B6E7B] group-hover:bg-[#0B6E7B] group-hover:text-white transition-all duration-300 text-[#0C2B31] cursor-pointer"
+                        aria-label={`Open ${exp.company} details`}
                       >
                         <i className="fa-solid fa-plus text-sm"></i>
                       </button>
                     </div>
-
-                    {/* Expandable Content Container with larger content typography */}
-                    <AnimatePresence initial={false}>
-                      {isOpen && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.25, ease: "easeInOut" }}
-                          className="overflow-hidden"
-                          ref={(el) => {
-                            contentRefs.current[exp.id] = el;
-                          }}
-                        >
-                          <div className="pt-6 space-y-6 border-t border-[#CCE5E3] mt-6">
-                            {exp.sections ? (
-                              <div className="space-y-6 pt-1">
-                                {exp.sections.map((sec, sIdx) => (
-                                  <div key={sIdx} className="space-y-3">
-                                    <h6 className="font-narrow text-sm sm:text-base font-black text-[#0B6E7B] uppercase tracking-wider flex items-center gap-2">
-                                      <i className="fa-solid fa-chevron-right text-xs text-[#0B6E7B]"></i>
-                                      {sec.title}
-                                    </h6>
-                                    <ul className="space-y-2.5 pl-2 font-sans text-base sm:text-[17px] text-[#2C4A51] leading-relaxed">
-                                      {sec.items.map((item, iIdx) => {
-                                        if (typeof item === "string") {
-                                          return (
-                                            <li key={iIdx} className="flex items-start gap-2.5">
-                                              <span className="text-[#0B6E7B] font-bold text-base mt-0.5">•</span>
-                                              <span className="flex-1">
-                                                <HighlightText text={item} />
-                                              </span>
-                                            </li>
-                                          );
-                                        } else {
-                                          return (
-                                            <li key={iIdx} className="space-y-2.5 pt-1.5">
-                                              <div className="flex items-start gap-2.5">
-                                                <span className="text-[#0B6E7B] font-bold text-base mt-0.5">•</span>
-                                                <span className="font-bold text-base sm:text-lg text-[#0C2B31]">
-                                                  {item.subtitle}
-                                                </span>
-                                              </div>
-                                              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pl-4 pt-1">
-                                                {item.subitems.map((sub, subIdx) => (
-                                                  <div
-                                                    key={subIdx}
-                                                    className="px-4 py-2 bg-[#F4FAF9] border border-[#0B6E7B]/30 rounded-lg flex items-center gap-2 font-narrow font-black text-sm sm:text-base text-[#0C2B31] shadow-2xs hover:bg-[#0B6E7B] hover:text-white transition-all group/sub"
-                                                  >
-                                                    <i className="fa-solid fa-chart-line text-[#0B6E7B] group-hover/sub:text-[#2DD4BF] text-xs transition-colors"></i>
-                                                    <span>
-                                                      <AnimatedCounter value={sub} />
-                                                    </span>
-                                                  </div>
-                                                ))}
-                                              </div>
-                                            </li>
-                                          );
-                                        }
-                                      })}
-                                    </ul>
-                                  </div>
-                                ))}
-                              </div>
-                            ) : (
-                              <p className="font-sans text-base sm:text-lg text-[#2C4A51] leading-relaxed">
-                                <HighlightText text={exp.description} />
-                              </p>
-                            )}
-
-                            {/* Render Custom Showcase based on Experience ID */}
-                            {exp.id === "dn-group" ? (
-                              <DNGroupExperienceShowcase />
-                            ) : exp.id === "v-lotus" ? (
-                              <VLotusExperienceShowcase />
-                            ) : exp.id === "benelifts-asia" ? (
-                              <BeneliftsAsiaExperienceShowcase />
-                            ) : exp.id === "freelance-event-coordinator" ? (
-                              <FreelanceExperienceShowcase />
-                            ) : exp.id === "ou-news-marcom-associate" ? (
-                              <MarComExperienceShowcase />
-                            ) : (
-                              <div className="aspect-video w-full overflow-hidden rounded bg-[#E7F3F2] mt-4 relative group border border-[#CCE5E3]">
-                                <img
-                                  src={exp.image}
-                                  alt={`${exp.company} campaign`}
-                                  referrerPolicy="no-referrer"
-                                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-in-out scale-100 group-hover:scale-105"
-                                />
-                              </div>
-                            )}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
                   </div>
                 </div>
               </ScrollReveal>

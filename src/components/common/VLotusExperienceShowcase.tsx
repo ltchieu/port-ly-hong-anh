@@ -71,14 +71,14 @@ export default function VLotusExperienceShowcase() {
               <div
                 onClick={() =>
                   handleOpenLightbox(
-                    getVLotusImage("v_lotus_img_07.webp"),
+                    getVLotusImage("v_lotus_img_01.webp"),
                     "V Lotus Holdings — Brand Portfolio Showcase"
                   )
                 }
                 className="w-full sm:w-72 aspect-[4/3] rounded-xl overflow-hidden border border-[#0B6E7B]/40 relative group cursor-pointer shadow-md"
               >
                 <img
-                  src={getVLotusImage("v_lotus_img_07.webp")}
+                  src={getVLotusImage("v_lotus_img_01.webp")}
                   alt="V Lotus Portfolio Showcase"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
@@ -139,7 +139,7 @@ export default function VLotusExperienceShowcase() {
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-[#0B6E7B]/30 rounded-lg text-xs sm:text-sm shadow-2xs">
               <i className="fa-solid fa-ranking-star text-[#0B6E7B]"></i>
               <span className="font-narrow font-black text-[#0C2B31] uppercase">
-                <AnimatedCounter value="35+" /> In-Depth Articles
+                35+ In-Depth Articles
               </span>
             </div>
           </div>
@@ -234,7 +234,7 @@ export default function VLotusExperienceShowcase() {
 
             <div className="flex flex-wrap items-center gap-2">
               <span className="px-4 py-2 bg-white border border-[#0B6E7B]/30 rounded-lg text-xs sm:text-sm font-narrow font-black text-[#0C2B31] uppercase shadow-2xs">
-                Peak Reach: <AnimatedCounter value="425,000+" />
+                Peak Reach: 425,000+
               </span>
             </div>
           </div>
@@ -252,26 +252,23 @@ export default function VLotusExperienceShowcase() {
               <button
                 key={brand.id}
                 onClick={() => setActiveBrandId(brand.id)}
-                className={`px-5 py-3 rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center gap-2.5 transition-all cursor-pointer border ${
-                  isSelected
-                    ? "bg-[#0B6E7B] text-white border-[#0B6E7B] shadow-sm"
-                    : "bg-white text-[#0C2B31] border-[#CCE5E3] hover:border-[#0B6E7B] hover:bg-[#F0F8F7]"
-                }`}
+                className={`px-5 py-3 rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center gap-2.5 transition-all cursor-pointer border ${isSelected
+                  ? "bg-[#0B6E7B] text-white border-[#0B6E7B] shadow-sm"
+                  : "bg-white text-[#0C2B31] border-[#CCE5E3] hover:border-[#0B6E7B] hover:bg-[#F0F8F7]"
+                  }`}
               >
                 <i
-                  className={`fa-solid ${
-                    brand.id === "fanpage-conservo"
-                      ? "fa-bread-slice"
-                      : brand.id === "fanpage-yoshinoya"
+                  className={`fa-solid ${brand.id === "fanpage-conservo"
+                    ? "fa-bread-slice"
+                    : brand.id === "fanpage-yoshinoya"
                       ? "fa-bowl-rice"
                       : "fa-fire"
-                  } text-sm ${isSelected ? "text-[#2DD4BF]" : "text-[#0B6E7B]"}`}
+                    } text-sm ${isSelected ? "text-[#2DD4BF]" : "text-[#0B6E7B]"}`}
                 ></i>
                 <span>{brand.brandName}</span>
                 <span
-                  className={`text-xs px-2.5 py-0.5 rounded-full ${
-                    isSelected ? "bg-white/20 text-white" : "bg-[#F0F8F7] text-[#4E6E75]"
-                  }`}
+                  className={`text-xs px-2.5 py-0.5 rounded-full ${isSelected ? "bg-white/20 text-white" : "bg-[#F0F8F7] text-[#4E6E75]"
+                    }`}
                 >
                   {brand.badge}
                 </span>
@@ -425,29 +422,29 @@ export default function VLotusExperienceShowcase() {
                   </p>
                 </div>
 
-                {/* Metrics Box with Animated Count Up */}
-                <div className="grid grid-cols-3 gap-2.5 bg-[#F0F8F7] p-4 rounded-xl border border-[#CCE5E3]">
-                  <div className="text-center">
-                    <span className="block font-display text-2xl sm:text-3xl text-[#0C2B31]">
+                {/* Metrics Box with Animated Count Up & generous divider margins */}
+                <div className="grid grid-cols-[1.5fr_1fr_1fr] divide-x divide-[#CCE5E3] bg-[#F0F8F7] py-3.5 px-3 rounded-xl border border-[#CCE5E3]">
+                  <div className="text-center px-3">
+                    <span className="block font-display text-xl sm:text-2xl text-[#0C2B31] tracking-tight leading-none">
                       <AnimatedCounter value={video.stats.views} />
                     </span>
-                    <span className="font-narrow text-xs uppercase font-bold text-[#4E6E75]">
+                    <span className="font-narrow text-xs uppercase font-bold text-[#4E6E75] block mt-1.5">
                       Views
                     </span>
                   </div>
-                  <div className="text-center border-x border-[#CCE5E3]">
-                    <span className="block font-display text-2xl sm:text-3xl text-[#0C2B31]">
+                  <div className="text-center px-3">
+                    <span className="block font-display text-xl sm:text-2xl text-[#0C2B31] tracking-tight leading-none">
                       <AnimatedCounter value={video.stats.likes} />
                     </span>
-                    <span className="font-narrow text-xs uppercase font-bold text-[#4E6E75]">
+                    <span className="font-narrow text-xs uppercase font-bold text-[#4E6E75] block mt-1.5">
                       Likes
                     </span>
                   </div>
-                  <div className="text-center">
-                    <span className="block font-display text-2xl sm:text-3xl text-[#0C2B31]">
+                  <div className="text-center px-3">
+                    <span className="block font-display text-xl sm:text-2xl text-[#0C2B31] tracking-tight leading-none">
                       <AnimatedCounter value={video.stats.shares} />
                     </span>
-                    <span className="font-narrow text-xs uppercase font-bold text-[#4E6E75]">
+                    <span className="font-narrow text-xs uppercase font-bold text-[#4E6E75] block mt-1.5">
                       Shares
                     </span>
                   </div>

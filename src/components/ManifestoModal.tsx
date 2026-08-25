@@ -14,12 +14,16 @@ export default function ManifestoModal({ isOpen, onClose }: ManifestoModalProps)
         <motion.div
           key="manifesto-modal"
           id="manifesto-modal"
+          data-lenis-prevent="true"
+          data-lenis-prevent-wheel="true"
+          data-lenis-prevent-touch="true"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           className="fixed inset-0 z-50 bg-[#07262B]/90 backdrop-blur-md flex items-center justify-center p-6"
         >
           <motion.div
+            data-lenis-prevent="true"
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.95, opacity: 0 }}

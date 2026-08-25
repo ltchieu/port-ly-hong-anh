@@ -139,7 +139,7 @@ export default function BeneliftsAsiaExperienceShowcase() {
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-[#0B6E7B]/30 rounded-lg text-xs sm:text-sm shadow-2xs">
               <i className="fa-solid fa-bullseye text-[#0B6E7B]"></i>
               <span className="font-narrow font-black text-[#0C2B31] uppercase">
-                Direct Inbound: <AnimatedCounter value="20" /> Leads / Month
+                Direct Inbound: 20 Leads / Month
               </span>
             </div>
           </div>
@@ -219,7 +219,7 @@ export default function BeneliftsAsiaExperienceShowcase() {
             </div>
 
             <span className="px-4 py-2 bg-white border border-[#0B6E7B]/30 rounded-lg text-xs sm:text-sm font-narrow font-black text-[#0C2B31] uppercase shadow-2xs">
-              Month 1: <AnimatedCounter value="+600" /> Followers
+              Month 1: +600 Followers
             </span>
           </div>
 
@@ -380,13 +380,38 @@ export default function BeneliftsAsiaExperienceShowcase() {
                   <span className="px-3 py-1 bg-[#0B6E7B] text-white font-narrow text-xs font-black uppercase rounded">
                     TikTok / Reels
                   </span>
-                  <p className="font-display text-base sm:text-lg text-white uppercase tracking-tight mt-1.5">
-                    <AnimatedCounter value={beneliftsData.videoPillar.stats.views} />
-                  </p>
                 </div>
                 <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white group-hover:bg-[#0B6E7B] transition-colors">
                   <i className="fa-solid fa-play text-sm"></i>
                 </div>
+              </div>
+            </div>
+
+            {/* Metrics Box with Animated Count Up & generous divider margins */}
+            <div className="grid grid-cols-[1.5fr_1fr_1fr] divide-x divide-[#CCE5E3] bg-white py-3.5 px-3 rounded-xl border border-[#CCE5E3] shadow-xs">
+              <div className="text-center px-3">
+                <span className="block font-display text-xl sm:text-2xl text-[#0C2B31] tracking-tight leading-none">
+                  <AnimatedCounter value={beneliftsData.videoPillar.stats.views} />
+                </span>
+                <span className="font-narrow text-xs uppercase font-bold text-[#4E6E75] block mt-1.5">
+                  Views
+                </span>
+              </div>
+              <div className="text-center px-3">
+                <span className="block font-display text-xl sm:text-2xl text-[#0C2B31] tracking-tight leading-none">
+                  <AnimatedCounter value={beneliftsData.videoPillar.stats.likes} />
+                </span>
+                <span className="font-narrow text-xs uppercase font-bold text-[#4E6E75] block mt-1.5">
+                  Likes
+                </span>
+              </div>
+              <div className="text-center px-3">
+                <span className="block font-display text-xl sm:text-2xl text-[#0C2B31] tracking-tight leading-none">
+                  <AnimatedCounter value={beneliftsData.videoPillar.stats.shares} />
+                </span>
+                <span className="font-narrow text-xs uppercase font-bold text-[#4E6E75] block mt-1.5">
+                  Shares
+                </span>
               </div>
             </div>
 

@@ -1,5 +1,4 @@
 import { memo } from 'react';
-import AnimatedCounter from './AnimatedCounter';
 
 interface HighlightTextProps {
   text: string;
@@ -37,7 +36,7 @@ export const HighlightText = memo(function HighlightText({ text, className = '' 
               key={index}
               className="inline-flex items-center gap-1 font-narrow font-black text-[#0B6E7B] bg-[#E7F3F2] px-2 py-0.5 rounded-md border border-[#0B6E7B]/30 shadow-2xs mx-0.5 align-baseline hover:bg-[#0B6E7B] hover:text-white transition-all group/hl"
             >
-              <AnimatedCounter value={numPart} className="group-hover/hl:text-white" />
+              <span className="group-hover/hl:text-white">{numPart}</span>
               {labelPart && (
                 <span className="text-[#0C2B31] font-bold group-hover/hl:text-white/90">
                   {labelPart}

@@ -140,7 +140,7 @@ export default function DNGroupExperienceShowcase() {
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-[#0B6E7B]/30 rounded-lg text-xs sm:text-sm shadow-2xs">
               <i className="fa-solid fa-trophy text-[#0B6E7B]"></i>
               <span className="font-narrow font-black text-[#0C2B31] uppercase">
-                Best Post: <AnimatedCounter value="130,000+" /> Reach • <AnimatedCounter value="160+" /> Likes • <AnimatedCounter value="52" /> Comments
+                Best Post: 130,000+ Reach &bull; 160+ Likes &bull; 52 Comments
               </span>
             </div>
           </div>
@@ -253,7 +253,7 @@ export default function DNGroupExperienceShowcase() {
                         {post.stats.reach && (
                           <div className="bg-[#F0F8F7] p-2 rounded text-center">
                             <span className="block font-black text-[#0C2B31] text-sm sm:text-base">
-                              <AnimatedCounter value={post.stats.reach} />
+                              {post.stats.reach}
                             </span>
                             <span className="text-[#4E6E75] uppercase text-[11px]">Reach</span>
                           </div>
@@ -261,7 +261,7 @@ export default function DNGroupExperienceShowcase() {
                         {post.stats.likes && (
                           <div className="bg-[#F0F8F7] p-2 rounded text-center">
                             <span className="block font-black text-[#0C2B31] text-sm sm:text-base">
-                              <AnimatedCounter value={post.stats.likes} />
+                              {post.stats.likes}
                             </span>
                             <span className="text-[#4E6E75] uppercase text-[11px]">Likes</span>
                           </div>
@@ -269,7 +269,7 @@ export default function DNGroupExperienceShowcase() {
                         {post.stats.comments && (
                           <div className="bg-[#F0F8F7] p-2 rounded text-center">
                             <span className="block font-black text-[#0C2B31] text-sm sm:text-base">
-                              <AnimatedCounter value={post.stats.comments} />
+                              {post.stats.comments}
                             </span>
                             <span className="text-[#4E6E75] uppercase text-[11px]">Comments</span>
                           </div>
@@ -295,7 +295,108 @@ export default function DNGroupExperienceShowcase() {
         </AnimatePresence>
       </div>
 
+      {/* 4. SECTION 1.2: VIDEO EDITOR & SHORT-FORM PRODUCTION */}
+      <div className="bg-[#F4FAF9] border border-[#CCE5E3] rounded-xl p-6 sm:p-8 space-y-6">
+        <div className="border-b border-[#CCE5E3] pb-5 space-y-3">
+          <div>
+            <span className="font-narrow text-xs sm:text-sm font-black text-[#0B6E7B] tracking-[0.2em] uppercase block">
+              VIDEO EDITING & VIRAL TIKTOK CHANNELS
+            </span>
+            <h4 className="font-display text-xl sm:text-2xl uppercase tracking-tight text-[#0C2B31]">
+              {dnGroupData.videoEditorPillars.title}
+            </h4>
+          </div>
+          <p className="font-sans text-base sm:text-lg text-[#2C4A51] leading-relaxed max-w-5xl">
+            <HighlightText text={dnGroupData.videoEditorPillars.overview} />
+          </p>
+        </div>
 
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {dnGroupData.videoEditorPillars.projects.map((video) => (
+            <div
+              key={video.id}
+              onClick={() => handleOpenLightbox(video.image, video.title, video.description)}
+              className="bg-white rounded-2xl border border-[#CCE5E3] overflow-hidden hover:border-[#0B6E7B] hover:shadow-lg transition-all duration-300 flex flex-col justify-between group cursor-pointer"
+            >
+              <div className="relative aspect-video bg-[#E7F3F2] overflow-hidden">
+                <img
+                  src={video.image}
+                  alt={video.title}
+                  loading="lazy"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute top-3 left-3">
+                  <span className="px-2.5 py-1 bg-[#07262B]/85 backdrop-blur-md text-white font-narrow text-xs font-bold uppercase rounded tracking-wider border border-white/20">
+                    {video.channel}
+                  </span>
+                </div>
+                <div className="absolute inset-0 bg-[#07262B]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <span className="px-4 py-2 bg-[#0B6E7B] text-white rounded-full font-narrow text-xs sm:text-sm font-bold uppercase flex items-center gap-2 shadow-md">
+                    <i className="fa-solid fa-play text-xs"></i>
+                    View Video Reel
+                  </span>
+                </div>
+              </div>
+
+              <div className="p-6 space-y-4 flex-1 flex flex-col justify-between">
+                <div className="space-y-2.5">
+                  <div className="flex items-center justify-between">
+                    <span className="font-narrow text-xs sm:text-sm font-bold text-[#0B6E7B] uppercase tracking-wider flex items-center gap-2">
+                      <i className="fa-solid fa-video text-xs"></i>
+                      {video.role}
+                    </span>
+                  </div>
+                  <h6 className="font-sans font-bold text-lg sm:text-xl text-[#0C2B31]">
+                    {video.title}
+                  </h6>
+                  <p className="font-sans text-base sm:text-lg text-[#4E6E75] leading-relaxed">
+                    <HighlightText text={video.description} />
+                  </p>
+                </div>
+
+                {/* Metrics Box with Animated Count Up & generous divider margins */}
+                <div className="grid grid-cols-[1.5fr_1fr_1fr] divide-x divide-[#CCE5E3] bg-[#F0F8F7] py-3.5 px-3 rounded-xl border border-[#CCE5E3]">
+                  <div className="text-center px-3">
+                    <span className="block font-display text-xl sm:text-2xl text-[#0C2B31] tracking-tight leading-none">
+                      <AnimatedCounter value={video.stats.views} />
+                    </span>
+                    <span className="font-narrow text-xs uppercase font-bold text-[#4E6E75] block mt-1.5">
+                      Views
+                    </span>
+                  </div>
+                  <div className="text-center px-3">
+                    <span className="block font-display text-xl sm:text-2xl text-[#0C2B31] tracking-tight leading-none">
+                      <AnimatedCounter value={video.stats.likes} />
+                    </span>
+                    <span className="font-narrow text-xs uppercase font-bold text-[#4E6E75] block mt-1.5">
+                      Likes
+                    </span>
+                  </div>
+                  <div className="text-center px-3">
+                    <span className="block font-display text-xl sm:text-2xl text-[#0C2B31] tracking-tight leading-none">
+                      <AnimatedCounter value={video.stats.shares || video.stats.comments || "0"} />
+                    </span>
+                    <span className="font-narrow text-xs uppercase font-bold text-[#4E6E75] block mt-1.5">
+                      {video.stats.shares ? "Shares" : "Comments"}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap gap-2 pt-1">
+                  {video.tags.map((tag, tIdx) => (
+                    <span
+                      key={tIdx}
+                      className="px-3 py-1 bg-[#F4FAF9] border border-[#CCE5E3] rounded-md text-xs sm:text-sm font-narrow font-bold text-[#0C2B31]"
+                    >
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
 
       {/* Lightbox Modal */}
       <ImageLightboxModal selectedImage={selectedImage} onClose={handleCloseLightbox} />

@@ -7,8 +7,7 @@ import Work from "../components/Work";
 import Awards from "../components/Awards";
 import Footer from "../components/Footer";
 import ManifestoModal from "../components/ManifestoModal";
-import ProjectLightbox from "../components/ProjectLightbox";
-import { Project } from "../models/Project";
+import ExperienceDetailModal from "../components/ExperienceDetailModal";
 
 export default function MainPortfolio() {
   const [activeExperience, setActiveExperience] = useState<string | null>(null);
@@ -66,10 +65,11 @@ export default function MainPortfolio() {
         setShowManifesto={setShowManifesto}
       />
 
-      {/* 4. Experience Timeline Accordion */}
+      {/* 4. Experience Timeline Section */}
       <ExperienceSection
         activeExperience={activeExperience}
         setActiveExperience={setActiveExperience}
+        onSelectExperience={(id) => setActiveExperience(id)}
       />
 
       {/* 5. Selected Works Portfolio */}
@@ -85,6 +85,13 @@ export default function MainPortfolio() {
       <ManifestoModal
         isOpen={showManifesto}
         onClose={() => setShowManifesto(false)}
+      />
+
+      {/* 9. Experience Showcase Deep-Dive Modal */}
+      <ExperienceDetailModal
+        experienceId={activeExperience}
+        onClose={() => setActiveExperience(null)}
+        onSelectExperience={(id) => setActiveExperience(id)}
       />
     </div>
   );
