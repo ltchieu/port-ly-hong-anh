@@ -58,7 +58,7 @@ export const experiences: Experience[] = [
     location: "PROJECT 2 — V LOTUS",
     summary: "Led SEO content and multi-brand social media marketing for 35+ Japanese franchise restaurants (Conservo, Yoshinoya, Ussina Snow Aging Beef). Authored 35+ SEO articles ranking top on Google and generated 425K+ reach on flagship campaigns.",
     description: "Led SEO content and multi-brand social media marketing for 35+ Japanese franchise restaurants (Conservo, Yoshinoya, Ussina Snow Aging Beef). Authored 35+ SEO articles ranking top on Google and generated 425K+ reach on flagship campaigns.",
-    image: getVLotusImage("v_lotus_img_01.webp") || getVLotusImage("v_lotus_img_05.webp"),
+    image: getVLotusImage("v_lotus_img_07.webp") || getVLotusImage("v_lotus_img_04.webp"),
     tech: ["SEO Optimization", "Multi-Brand Management", "Food & Beverage Marketing", "Photoshoot Staging", "TikTok ASMR"],
     sections: [
       {

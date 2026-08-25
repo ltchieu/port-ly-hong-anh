@@ -1,5 +1,6 @@
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "motion/react";
+import { introBio, careerObjectives, educationInfo } from "../data/about";
 
 interface ManifestoModalProps {
   isOpen: boolean;
@@ -36,33 +37,38 @@ export default function ManifestoModal({ isOpen, onClose }: ManifestoModalProps)
 
             <div className="space-y-6">
               <span className="font-narrow text-xs font-black hologram-metal-text tracking-[0.25em] block uppercase">
-                EXECUTIVE STATEMENT
+                EXECUTIVE STATEMENT &bull; LY HONG ANH
               </span>
 
-              <h3 className="font-display text-4xl uppercase leading-none tracking-tight text-[#0C2B31]">
-                See deeper. Grow wiser. Live brighter.
+              <h3 className="font-display text-3xl sm:text-4xl uppercase leading-none tracking-tight text-[#0C2B31]">
+                Connecting Brands With Customers Through Impactful Marketing
               </h3>
 
               <div className="h-0.5 bg-[#0B6E7B] w-20"></div>
 
               <div className="font-sans text-sm text-[#4E6E75] space-y-4 leading-relaxed">
                 <p className="font-bold text-[#0C2B31] italic">
-                  &ldquo;I believe meaningful brands begin with understanding.&rdquo;
+                  &ldquo;Every project I participate in is an opportunity to learn, experiment, and deliver meaningful results for the business.&rdquo;
                 </p>
-                <p>
-                  As a lifelong learner, I explore ideas, create with intention, and continuously grow through every experience. Working in Brand & Marketing Communications, I have built experience across PR, Event Marketing, and Multimedia Production – bringing strategy and creativity together to deliver communications that support business objectives.
-                </p>
-                <p>
-                  Currently pursuing an MBA, I am expanding my perspective on Brand Strategy, Marketing Management, and Customer Experience, with the belief that learning fuels better decisions, stronger brands, and more meaningful experiences.
-                </p>
-                <strong className="text-[#0C2B31] block">
-                  Creating compassionate value, always moving forward.
-                </strong>
+                {introBio.paragraphs.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
+                <div className="bg-[#F0F8F7] border border-[#CCE5E3] p-4 rounded-xl space-y-2">
+                  <p className="text-xs text-[#0C2B31] font-bold uppercase tracking-wider">
+                    Career Direction
+                  </p>
+                  <p className="text-xs text-[#4E6E75]">
+                    <strong className="text-[#0B6E7B]">Goal:</strong> {careerObjectives.longTerm}
+                  </p>
+                  <p className="text-xs text-[#4E6E75]">
+                    <strong className="text-[#0B6E7B]">Education:</strong> {educationInfo.major} ({educationInfo.institution})
+                  </p>
+                </div>
               </div>
 
               <div className="pt-6 border-t border-[#CCE5E3] flex justify-between items-center">
                 <div className="font-cursive hologram-metal-text text-3xl">
-                  Minh Khanh
+                  Ly Hong Anh
                 </div>
                 <button
                   onClick={onClose}

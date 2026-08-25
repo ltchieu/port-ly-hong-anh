@@ -71,14 +71,14 @@ export default function VLotusExperienceShowcase() {
               <div
                 onClick={() =>
                   handleOpenLightbox(
-                    getVLotusImage("v_lotus_img_01.webp"),
+                    getVLotusImage("v_lotus_img_07.webp"),
                     "V Lotus Holdings — Brand Portfolio Showcase"
                   )
                 }
                 className="w-full sm:w-72 aspect-[4/3] rounded-xl overflow-hidden border border-[#0B6E7B]/40 relative group cursor-pointer shadow-md"
               >
                 <img
-                  src={getVLotusImage("v_lotus_img_01.webp")}
+                  src={getVLotusImage("v_lotus_img_07.webp")}
                   alt="V Lotus Portfolio Showcase"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
@@ -164,7 +164,7 @@ export default function VLotusExperienceShowcase() {
         </div>
 
         {/* SEO Articles Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {vLotusData.seoPillar.articles.map((art) => (
             <div
               key={art.id}

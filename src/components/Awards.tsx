@@ -50,7 +50,7 @@ export default function Awards() {
             </div>
             <div className="space-y-2 md:text-right">
               <p className="font-narrow text-xs font-bold text-[#4E6E75] tracking-widest uppercase max-w-xs text-balance">
-                Curated record of academic distinctions, professional certifications, and leadership honors.
+                Curated record of professional certifications and language proficiency honors.
               </p>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E7F3F2] border border-[#CCE5E3] text-[#0B6E7B] font-mono text-[11px]">
                 <i className="fa-solid fa-layer-group text-xs animate-pulse"></i>

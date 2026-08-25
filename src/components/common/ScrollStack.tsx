@@ -379,8 +379,8 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       <div
         className={`scroll-stack-inner ${
           useWindowScroll
-            ? 'pt-4 pb-[30rem] sm:pb-[35rem] min-h-[60vh]'
-            : 'pt-[15vh] px-4 sm:px-12 md:px-20 pb-[50rem] min-h-screen'
+            ? 'pt-4 pb-12 min-h-0'
+            : 'pt-[15vh] px-4 sm:px-12 md:px-20 pb-16 min-h-screen'
         }`}
       >
         {children}

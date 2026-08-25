@@ -1,5 +1,6 @@
 import ScrollReveal from "./common/ScrollReveal";
 import SpecularButton from "./common/SpecularButton";
+import { contactInfo } from "../data/about";
 
 export default function Footer() {
   return (
@@ -17,19 +18,27 @@ export default function Footer() {
 
               <ScrollReveal direction="up" delay={0.2}>
                 <p className="font-narrow text-xl text-white/70 max-w-md">
-                  Always open to new opportunities, thoughtful collaborations, and ideas worth exploring - especially ideas that can grow into meaningful work.
+                  Always open to new opportunities, creative collaborations, and projects that drive impactful marketing and business growth.
                 </p>
               </ScrollReveal>
 
               <ScrollReveal direction="up" delay={0.3}>
-                <div className="pt-6">
+                <div className="pt-6 flex flex-wrap items-center gap-4">
                   <a
                     id="cta-say-hello"
-                    href="mailto:n.khanhwork@gmail.com"
+                    href={`mailto:${contactInfo.email}`}
                     className="inline-flex items-center gap-3 hologram-metal-bg text-white px-8 py-4 font-narrow text-xs font-black tracking-[0.2em] uppercase rounded-lg hover:opacity-90 transition-all duration-300 hover:scale-105 shadow-lg group cursor-pointer"
                   >
                     SAY HELLO
                     <i className="fa-solid fa-arrow-right group-hover:translate-x-1.5 transition-transform"></i>
+                  </a>
+                  <a
+                    id="cta-call-me"
+                    href={`tel:${contactInfo.phone.replace(/\s+/g, "")}`}
+                    className="inline-flex items-center gap-2.5 bg-white/10 hover:bg-white/20 border border-white/20 text-white px-6 py-4 font-narrow text-xs font-black tracking-[0.15em] uppercase rounded-lg transition-all duration-300 hover:scale-105 shadow-md cursor-pointer"
+                  >
+                    <i className="fa-solid fa-phone text-[#2DD4BF]"></i>
+                    {contactInfo.phone}
                   </a>
                 </div>
               </ScrollReveal>
@@ -40,18 +49,21 @@ export default function Footer() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-12 w-full lg:w-auto items-start">
                   <div className="space-y-4">
                     <p className="font-narrow text-xs font-black text-[#2DD4BF] uppercase tracking-widest">
-                      SOCIAL CONNECTS
+                      CONTACT DIRECT
                     </p>
-                    <ul className="space-y-2 font-narrow text-xs font-bold tracking-wider text-white/80">
+                    <ul className="space-y-2.5 font-narrow text-xs font-bold tracking-wider text-white/80">
                       <li>
-                        <a href="https://www.linkedin.com/in/mknh13" target="_blank" rel="noopener noreferrer" className="hover:text-[#2DD4BF] transition-colors flex items-center gap-1.5">
-                          <i className="fa-brands fa-linkedin hologram-metal-text"></i> LINKEDIN
+                        <a href={`mailto:${contactInfo.email}`} className="hover:text-[#2DD4BF] transition-colors flex items-center gap-2">
+                          <i className="fa-solid fa-envelope hologram-metal-text"></i> {contactInfo.email}
                         </a>
                       </li>
                       <li>
-                        <a href="http://fb.com/mknh13" target="_blank" rel="noopener noreferrer" className="hover:text-[#2DD4BF] transition-colors flex items-center gap-1.5">
-                          <i className="fa-brands fa-facebook hologram-metal-text"></i> FACEBOOK
+                        <a href={`tel:${contactInfo.phone.replace(/\s+/g, "")}`} className="hover:text-[#2DD4BF] transition-colors flex items-center gap-2">
+                          <i className="fa-solid fa-phone hologram-metal-text"></i> {contactInfo.phone}
                         </a>
+                      </li>
+                      <li className="flex items-center gap-2 text-white/60">
+                        <i className="fa-solid fa-location-dot hologram-metal-text"></i> {contactInfo.location}
                       </li>
                     </ul>
                   </div>
@@ -62,7 +74,7 @@ export default function Footer() {
                     </p>
                     <SpecularButton
                       id="cta-zalo-me"
-                      href="https://zalo.me/0823933913"
+                      href={`https://zalo.me/${contactInfo.phone.replace(/\s+/g, "")}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       size="md"
@@ -96,7 +108,7 @@ export default function Footer() {
       <footer className="bg-[#051E22] border-t border-[#0B6E7B]/20 w-full py-12 px-6 text-white">
         <div className="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="font-display text-xl tracking-[0.2em] font-black uppercase text-white hover:text-[#2DD4BF] transition-colors">
-            PORTFOLIO
+            LY HONG ANH &bull; PORTFOLIO
           </div>
 
           <div className="flex flex-wrap justify-center gap-6">
@@ -107,7 +119,7 @@ export default function Footer() {
           </div>
 
           <div className="font-mono text-[10px] text-white/40 tracking-wider">
-            © {new Date().getFullYear()} PORTFOLIO. ALL RIGHTS RESERVED.
+            © {new Date().getFullYear()} LY HONG ANH. ALL RIGHTS RESERVED.
           </div>
         </div>
       </footer>

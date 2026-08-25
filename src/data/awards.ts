@@ -1,81 +1,30 @@
 import { Award } from "../models/Award";
-
-// Vite eager glob for image assets in /assets/image/Award & Certification/
-const awardImageMap = import.meta.glob<string>(
-  '../../assets/image/Award & Certification/**/*.{webp,png,jpg,jpeg,PNG,JPG,JPEG}',
-  { eager: true, import: 'default' }
-);
-
-function getAwardImg(filenameSubstring: string): string {
-  const matchKey = Object.keys(awardImageMap).find((k) =>
-    k.toLowerCase().includes(filenameSubstring.toLowerCase())
-  );
-  return matchKey && awardImageMap[matchKey] ? awardImageMap[matchKey] : '';
-}
-
-// Official IELTS PDF document asset URL
-export const ieltsPdfUrl = new URL(
-  '../../assets/image/Award & Certification/VN10126518035-25-06-2026-ETRF.pdf',
-  import.meta.url
-).href;
-
-// Official IELTS PNG image asset URL
-export const ieltsImgUrl = new URL(
-  '../../assets/image/Award & Certification/IELTS.png',
-  import.meta.url
-).href;
+import microsoftImg from "../../assets/image/Award & Certification/microsoft.jpg";
+import toiecImg from "../../assets/image/Award & Certification/toiec.jpg";
 
 export const awards: Award[] = [
-  // =========================================================================
-  // TOP 4 PRIMARY HIGHLIGHTED AWARDS & CERTIFICATIONS
-  // =========================================================================
   {
-    id: 'usw-sea-scholarship',
+    id: 'toeic-certificate',
     isFeatured: true,
-    year: '2025',
-    category: 'POSTGRADUATE SCHOLARSHIP DISTINCTION',
-    title: 'Southeast Asian Postgraduate Excellence Scholarship (£6,000)',
-    issuer: 'University of South Wales – UK',
-    role: 'Shortlisted Candidate (£6,000 Award)',
-    project: 'Postgraduate Excellence Scholarship',
-    description: 'Selected for the competitive interview round for the Southeast Asian Postgraduate Excellence Scholarship worth £6,000 at the University of South Wales, UK.',
-    image: getAwardImg('USW SEA Scholarship Interview')
-  },
-  {
-    id: 'nckh-cap-truong',
-    isFeatured: true,
-    year: '2022-2023',
-    category: 'ACADEMIC RESEARCH & INNOVATION',
-    title: 'Recorded the University-Level Student Scientific Research Competition (2022-2023)',
-    issuer: 'HCMC Open University Research Board',
-    role: 'Principal Researcher & Author',
-    project: 'NCKH Cấp Trường Competition',
-    description: 'Officially recorded in the University-Level Student Scientific Research Competition (2022-2023) for academic research competition.',
-    image: getAwardImg('NCKH Cấp Trường')
-  },
-  {
-    id: 'ielts-etrf',
-    isFeatured: true,
-    year: '2026',
+    year: '2022',
     category: 'INTERNATIONAL LANGUAGE PROFICIENCY',
-    title: 'IELTS Academic Official Test Report (ETRF)',
-    issuer: 'IDP Education / Cambridge English',
-    role: 'Advanced Professional Proficiency',
-    project: 'Official Language Certification',
-    description: 'Official IELTS Academic Test Report Form certifying B2 level academic English proficiency across Listening, Reading, Writing, and Speaking skills.',
-    pdfUrl: ieltsPdfUrl,
-    image: ieltsImgUrl
+    title: 'TOEIC Official Score Certificate (825 / 990)',
+    issuer: 'ETS (Educational Testing Service) / IIG Vietnam',
+    role: 'Score: 825 / 990 (Listening: 445, Reading: 380)',
+    project: 'Official English Proficiency Certification',
+    description: 'Achieved an overall score of 825/990 on the official TOEIC Listening & Reading examination, certifying advanced communication skills and professional English capability in international business and marketing environments.',
+    image: toiecImg
   },
   {
-    id: 'outstanding-student-association',
+    id: 'microsoft-office-specialist',
     isFeatured: true,
-    year: '2020 - 2023',
-    category: 'STUDENT LEADERSHIP & MERIT HONORS',
-    title: 'Outstanding Achievements in Student Association Work and Student Movements',
-    issuer: 'Vietnamese Students’ Association',
-    role: 'Student Association Leader',
-    project: 'Student Movements & Youth Operations',
-    description: 'Recognized for outstanding achievements in Student Association work and active leadership in student movements.',
-    image: getAwardImg('Thành tích xuất sắc')
-  },
+    year: '2023',
+    category: 'PROFESSIONAL IT & PRODUCTIVITY CERTIFICATION',
+    title: 'Microsoft Office Specialist: Office Word 2016',
+    issuer: 'Microsoft / Certiport',
+    role: 'Certified Specialist (Verification: HkUy-XMYL)',
+    project: 'Microsoft Certified Professional',
+    description: 'Successfully completed the comprehensive requirements to be recognized as a Microsoft Office Specialist for Office Word 2016, demonstrating advanced document structuring, formatting, and office productivity expertise.',
+    image: microsoftImg
+  }
 ];

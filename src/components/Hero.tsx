@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import ThreeWavyBackground from "./common/ThreeWavyBackground";
 import DecryptedText from "./common/DecryptedText";
 import StrokeText from "./common/StrokeText";
+import { contactInfo } from "../data/about";
 
 interface HeroProps {
   currentDateString: string;
@@ -20,7 +21,7 @@ export default function Hero({ currentDateString, currentTime }: HeroProps) {
       {/* Top Header Row */}
       <div className="relative flex justify-between items-start w-full z-10 max-w-[1440px] mx-auto">
         <div className="font-narrow text-xs font-black tracking-[0.2em] text-[#0C2B31] uppercase max-w-xs md:max-w-none">
-          BRAND &amp; MARKETING COMMUNICATIONS
+          MARKETING EXECUTIVE &bull; PORTFOLIO
         </div>
 
         <div className="flex items-center gap-3 font-narrow text-xs font-bold tracking-[0.1em] text-[#4E6E75]">
@@ -43,7 +44,7 @@ export default function Hero({ currentDateString, currentTime }: HeroProps) {
         >
           {/* Pre-headline: DecryptedText */}
           <DecryptedText
-            text="Nguyễn Hà Minh Khánh (Mia Nguyen)"
+            text="Lý Hồng Anh (Ly Hong Anh)"
             animateOn="view"
             speed={75}
             maxIterations={18}
@@ -78,20 +79,20 @@ export default function Hero({ currentDateString, currentTime }: HeroProps) {
       {/* Bottom Metadata Info Grid */}
       <div className="relative flex flex-col md:grid md:grid-cols-3 gap-3 md:gap-4 w-full z-10 font-mono text-xs sm:text-sm md:text-[15px] tracking-widest text-[#4E6E75] max-w-[1440px] mx-auto pt-4 border-t border-[#CCE5E3]">
         <div className="flex items-center justify-start gap-2 text-left">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#0B6E7B] flex-shrink-0"></span>
-          <a href="https://www.linkedin.com/in/mknh13/" target="_blank" rel="noopener noreferrer" className="hover:text-[#0B6E7B] transition-colors">
-            @mknh13
+          <i className="fa-solid fa-phone text-xs text-[#0B6E7B] flex-shrink-0"></i>
+          <a href={`tel:${contactInfo.phone.replace(/\s+/g, "")}`} className="hover:text-[#0B6E7B] transition-colors">
+            {contactInfo.phone}
           </a>
         </div>
         <div className="flex items-center justify-start md:justify-center gap-2 text-left md:text-center">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#0B6E7B] flex-shrink-0 md:hidden"></span>
-          <a href="mailto:n.khanhwork@gmail.com" className="hover:text-[#0B6E7B] transition-colors break-all">
-            n.khanhwork@gmail.com
+          <i className="fa-solid fa-envelope text-xs text-[#0B6E7B] flex-shrink-0"></i>
+          <a href={`mailto:${contactInfo.email}`} className="hover:text-[#0B6E7B] transition-colors break-all">
+            {contactInfo.email}
           </a>
         </div>
         <div className="flex items-center justify-start md:justify-end gap-1.5 text-left md:text-right">
           <i className="fa-solid fa-location-dot text-xs text-[#0B6E7B] flex-shrink-0"></i>
-          <span>Ho Chi Minh, Viet Nam — Global Remote</span>
+          <span>{contactInfo.location}</span>
         </div>
       </div>
     </section>
