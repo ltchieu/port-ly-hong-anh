@@ -36,8 +36,8 @@ export default function VLotusExperienceShowcase() {
         <div className="relative z-10 space-y-5">
           <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#0B6E7B]/40 pb-3">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-[#0B6E7B]/40 backdrop-blur-md rounded-full text-xs sm:text-sm font-narrow font-black tracking-widest text-[#2DD4BF] uppercase border border-[#0B6E7B]/50">
-              <i className="fa-solid fa-utensils text-xs"></i>
-              <span>Project 02 • F&B Division & Franchise Operations</span>
+              <i className="fa-solid fa-file-lines text-xs"></i>
+              <span>CONTENT STRATEGY & EXECUTION EVIDENCE</span>
             </div>
             <span className="font-mono text-xs sm:text-sm text-[#2DD4BF] bg-white/10 px-3.5 py-1 rounded-md border border-[#0B6E7B]/40 font-bold">
               {vLotusData.overview.scale}
@@ -47,23 +47,57 @@ export default function VLotusExperienceShowcase() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
             <div className="lg:col-span-8 space-y-4">
               <h4 className="font-display text-2xl sm:text-3xl uppercase tracking-tight text-white leading-tight">
-                {vLotusData.companyName} — {vLotusData.parentGroup}
+                USSINA, YOSHINOYA & CONSERVO STRATEGY SHOWCASE
               </h4>
               <p className="font-sans text-base sm:text-lg text-white/90 leading-relaxed">
-                <HighlightText text={vLotusData.overview.description} />
+                Explore the complete content plans, weekly performance reports, and brand communication strategies executed from February to August 2025.
               </p>
-              <div className="flex flex-wrap items-center gap-2 pt-1">
-                <span className="font-narrow text-xs sm:text-sm text-[#2DD4BF] font-black uppercase tracking-wider mr-1">
-                  Franchise Brands:
-                </span>
-                {vLotusData.overview.brands.map((brand, bIdx) => (
-                  <span
-                    key={bIdx}
-                    className="px-3 py-1.5 bg-white/10 text-white rounded-md text-xs sm:text-sm font-narrow font-bold border border-white/20 hover:border-[#2DD4BF] transition-colors"
+              <div className="space-y-3 pt-1">            
+                <div className="flex flex-wrap items-center gap-2.5 pt-1">
+                  <a
+                    href="https://docs.google.com/spreadsheets/d/1n-Lj-pgF6jiWC0A_rVl9sSk3Zn3s6hNOsEtsEipJCLk/edit?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3.5 py-2 bg-[#0B6E7B] hover:bg-[#08545E] text-white border border-[#2DD4BF]/40 rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center gap-2 transition-all shadow-md hover:scale-105 cursor-pointer"
                   >
-                    {brand}
-                  </span>
-                ))}
+                    <i className="fa-solid fa-chart-simple text-[#2DD4BF]"></i>
+                    <span>View Weekly Report (Details)</span>
+                    <i className="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-80"></i>
+                  </a>
+
+                  <a
+                    href="https://docs.google.com/spreadsheets/d/1NX2T20DUYthFjvFbkQrEXJMWTqgndg1k/edit?usp=sharing&ouid=115935600825419567163&rtpof=true&sd=true"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3.5 py-2 bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-[#2DD4BF] rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center gap-2 transition-all shadow-sm hover:scale-105 cursor-pointer"
+                  >
+                    <i className="fa-solid fa-bread-slice text-[#2DD4BF]"></i>
+                    <span>View Conservo Content Plan</span>
+                    <i className="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-80"></i>
+                  </a>
+
+                  <a
+                    href="https://docs.google.com/spreadsheets/d/1exNdp-espEwwhrTWQIJ0kUeHSCQVk46_kua6DSsVm2A/edit?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3.5 py-2 bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-[#2DD4BF] rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center gap-2 transition-all shadow-sm hover:scale-105 cursor-pointer"
+                  >
+                    <i className="fa-solid fa-bowl-rice text-[#2DD4BF]"></i>
+                    <span>View Yoshinoya Content Plan</span>
+                    <i className="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-80"></i>
+                  </a>
+
+                  <a
+                    href="https://docs.google.com/spreadsheets/d/1W2VrQlxd1YcWlIVlrVDoTljeyrjdt3Wg/edit?usp=sharing&ouid=115935600825419567163&rtpof=true&sd=true"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3.5 py-2 bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-[#2DD4BF] rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center gap-2 transition-all shadow-sm hover:scale-105 cursor-pointer"
+                  >
+                    <i className="fa-solid fa-drumstick-bite text-[#2DD4BF]"></i>
+                    <span>View Ussina Content Plan</span>
+                    <i className="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-80"></i>
+                  </a>
+                </div>
               </div>
             </div>
 
@@ -391,13 +425,14 @@ export default function VLotusExperienceShowcase() {
                   loading="lazy"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#07262B]/90 via-transparent to-transparent flex items-end justify-between p-4 sm:p-5">
+                {/* Title in the video: appears on hover */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#07262B]/95 via-[#07262B]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-4 sm:p-5">
                   <div>
                     <span className="px-3 py-1 bg-[#0B6E7B] text-white font-narrow text-xs font-black uppercase rounded tracking-wider">
                       {video.brandName}
                     </span>
                     <h5 className="font-display text-base sm:text-lg text-white uppercase tracking-tight mt-1.5">
-                      {video.highlight}
+                      {video.title}
                     </h5>
                   </div>
                   <div className="w-11 h-11 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white group-hover:bg-[#0B6E7B] transition-colors shadow-lg">
@@ -408,12 +443,6 @@ export default function VLotusExperienceShowcase() {
 
               <div className="p-6 space-y-4 flex-1 flex flex-col justify-between">
                 <div className="space-y-2.5">
-                  <div className="flex items-center justify-between">
-                    <span className="font-narrow text-xs sm:text-sm font-bold text-[#0B6E7B] uppercase tracking-wider flex items-center gap-2">
-                      <i className="fa-solid fa-camera text-xs"></i>
-                      {video.role}
-                    </span>
-                  </div>
                   <h6 className="font-sans font-bold text-lg sm:text-xl text-[#0C2B31]">
                     {video.title}
                   </h6>

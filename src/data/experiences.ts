@@ -7,43 +7,39 @@ export const experiences: Experience[] = [
   {
     id: "dn-group",
     index: "01",
-    role: "Content Creator & Video Editor / Social Media Specialist",
+    role: "Content Marketing Executive",
     company: "Diem Nhan Group JSC | Shark Dental",
-    location: "PROJECT 1 — DN GROUP",
-    summary: "Spearheaded bilingual content strategy across Facebook, Instagram, and TikTok for Shark Dental. Built the viral 'Shark Dental x Điều ước của mẹ' TikTok channel (5.3K followers, 596K+ top video views) and generated 130K+ reach on flagship posts.",
-    description: "Spearheaded bilingual content strategy across Facebook, Instagram, and TikTok for Shark Dental. Built the viral 'Shark Dental x Điều ước của mẹ' TikTok channel (5.3K followers, 596K+ top video views) and generated 130K+ reach on flagship posts.",
+    location: "August 2025 - Now",
+    summary: "Formulated monthly content strategies by defining core pillars and creative angles for Shark Dental. Scaled 'Shark Dental x Điều ước của mẹ' TikTok channel with 200+ on-location and self-shot videos, delivering 1,000+ posts, 320 fanpage videos, and 200 TikTok videos.",
+    description: "Formulated monthly content strategies by defining core pillars and creative angles for Shark Dental. Scaled 'Shark Dental x Điều ước của mẹ' TikTok channel with 200+ on-location and self-shot videos, delivering 1,000+ posts, 320 fanpage videos, and 200 TikTok videos.",
     image: getDNImage("dn_group_img_09.webp") || getDNImage("dn_group_img_01.webp"),
     tech: ["Social Media Strategy", "TikTok Channel Growth", "Bilingual Content", "Video Production & Editing", "Healthcare Marketing"],
     sections: [
       {
-        title: "1.1. Content Fanpage & Social Media Strategy",
+        title: "Content Fanpage & Social Media Strategy",
         items: [
-          "Developed and executed monthly bilingual content calendars across Facebook, TikTok, and Instagram for Shark Dental.",
-          "Achieved over 1,700+ Facebook followers, 150+ Instagram followers, and 5,300+ TikTok followers.",
-          {
-            subtitle: "Best-performing social campaign highlights:",
-            subitems: [
-              "130,000+ Post Reach",
-              "160+ Likes & Reactions",
-              "52 Active Comments",
-              "9 Organic Shares"
-            ]
-          },
-          "Managed Shark Dental Vietnam (Domestic) and Shark Dental Global (Expats & Dental Tourism) fanpages."
+          "Formulated monthly content strategies by defining core pillars and creative angles tailored to campaign directions.",
+          "Developed and executed bilingual content across Facebook, TikTok, and Instagram for the Shark Dental brand.",
+          "Conceptualized visual directions and provided clear creative briefs to designers that ensuring visual assets seamlessly complemented written copy.",
         ]
       },
       {
-        title: "1.2. Video Editor & Short-Form Content Production",
+        title: "Video Editor & Short-Form Content Production",
         items: [
-          "Collaborated with marketing planners to script, stage, and shoot clinical promotional videos and patient smile stories.",
-          "Built and scaled 'Shark Dental x Điều ước của mẹ' TikTok channel organically to 5.3K followers and 51.7K likes.",
+          "Executed multimedia content production for the Shark Dental brand by building and scaling the 'Shark Dental x Điều ước của mẹ' TikTok channel with over 200 on-location and self-shot videos.",
+          "Supported end-to-end video production by collaborating with planners on scripts and leveraging CapCut Pro and AI tools for short-form editing.",
+        ]
+      },
+      {
+        title: "Key Achievements",
+        items: [
+          "Executed high-volume digital content production across social media channels, delivering over 1,000 written posts and 320 videos for the fanpage, alongside 200 short-form videos for TikTok.",
           {
-            subtitle: "Top short-form video milestones:",
+            subtitle: "Contributed to Nha khoa Shark, generating:",
             subitems: [
-              "596,000+ Viral Views",
-              "17,000+ Video Likes",
-              "209 Comments",
-              "145 Video Shares"
+              "1,700+ Facebook Followers",
+              "150+ Instagram Followers",
+              "5,300+ TikTok Followers"
             ]
           }
         ]
@@ -53,42 +49,55 @@ export const experiences: Experience[] = [
   {
     id: "v-lotus",
     index: "02",
-    role: "Marketing Executive / Content & SEO Specialist",
+    role: "Content Marketing Executive",
     company: "V Lotus Holdings JSC | Lotus Group (F&B Division)",
-    location: "PROJECT 2 — V LOTUS",
-    summary: "Led SEO content and multi-brand social media marketing for 35+ Japanese franchise restaurants (Conservo, Yoshinoya, Ussina Snow Aging Beef). Authored 35+ SEO articles ranking top on Google and generated 425K+ reach on flagship campaigns.",
-    description: "Led SEO content and multi-brand social media marketing for 35+ Japanese franchise restaurants (Conservo, Yoshinoya, Ussina Snow Aging Beef). Authored 35+ SEO articles ranking top on Google and generated 425K+ reach on flagship campaigns.",
+    location: "February 2025 - August 2025",
+    summary: "Formulated monthly content strategies and executed bilingual campaigns across Facebook, TikTok and Instagram for 3 fanpages Ussina, Conservo and Yoshinoya. Produced 50+ short-form videos and authored 35+ SEO-optimized website articles for Ussina.",
+    description: "Formulated monthly content strategies and executed bilingual campaigns across Facebook, TikTok and Instagram for 3 fanpages Ussina, Conservo and Yoshinoya. Produced 50+ short-form videos and authored 35+ SEO-optimized website articles for Ussina.",
     image: getVLotusImage("v_lotus_img_07.webp") || getVLotusImage("v_lotus_img_04.webp"),
-    tech: ["SEO Optimization", "Multi-Brand Management", "Food & Beverage Marketing", "Photoshoot Staging", "TikTok ASMR"],
+    tech: ["Social Media Strategy", "TikTok Video Production", "SEO Content & Research", "Bilingual Content", "F&B Marketing"],
     sections: [
       {
-        title: "2.1. SEO Content & Culinary Research",
+        title: "Content Fanpage & Social Media Strategy",
         items: [
-          "Authored 35+ SEO-optimized Vietnamese website articles covering signature dining products, culinary heritage, and gastronomic guides.",
-          "Conducted deep visual and factual research, earning top Google search rankings for high-intent keywords such as 'nhà hàng bò Wagyu' and 'bò Wagyu ủ tuyết'."
+          "Formulated monthly content strategies and executed bilingual campaigns across Facebook, TikTok and Instagram for 3 fanpages Ussina, Conservo and Yoshinoya.",
+          "Directed visual asset creation by defining creative angles and delivering clear design briefs to seamlessly complement written copy."
         ]
       },
       {
-        title: "2.2. Multi-Brand Social Content Strategy",
+        title: "Video Editor & Short-Form Content Production",
         items: [
-          "Planned and implemented cross-platform content (Facebook, TikTok, Website) for Conservo Bakery, Yoshinoya, and Ussina.",
-          "Gained 1,300+ FB followers, 250+ IG followers, and 500+ TikTok followers within 6 months.",
+          "Produced 50+ short-form videos for Yoshinoya and Conservo by organizing onsite restaurant shoots and directing visual storytelling.",
+          "Managed end-to-end video operations, from scripting with planners to final editing using CapCut Pro and AI integration."
+        ]
+      },
+      {
+        title: "SEO Content & Culinary Research",
+        items: [
+          "Authored 35+ SEO-optimized website articles for Ussina, conducting in-depth research to cover products, culinary insights, and industry news.",
+          "Achieved top search engine rankings for targeted keywords (e.g., “nhà hàng bò Wagyu”, “bò Wagyu ủ tuyết”) to drive organic website traffic."
+        ]
+      },
+      {
+        title: "Key Achievements",
+        items: [
+          "Executed high-volume digital content production across 6 months, delivering over 200 written posts and 50 videos for Conservo, Ussina, and Yoshinoya, alongside 35 SEO-optimized articles for Ussina.",
           {
-            subtitle: "Top multi-brand campaign performance:",
+            subtitle: "Contributed to multi-brand channel growth, generating:",
             subitems: [
-              "425,000+ Peak Reach",
-              "1,500+ Post Likes",
-              "52 Shares",
-              "35 Discussion Comments"
+              "1,300+ Facebook Followers",
+              "200+ Instagram Followers",
+              "300+ TikTok Followers"
+            ]
+          },
+          {
+            subtitle: "Achieved peak engagement metrics:",
+            subitems: [
+              "425,000+ Best Post Reach",
+              "1,500+ Likes & 52 Shares",
+              "120,000+ Best Video Views"
             ]
           }
-        ]
-      },
-      {
-        title: "2.3. Video Editor & Restaurant Media Production",
-        items: [
-          "Ideated, organized, and hosted professional photoshoots and video recordings at restaurant locations.",
-          "Edited viral short-form TikTok reels (Conservo ASMR: 120,000+ views; Yoshinoya Gyudon Vlog: 105,000+ views)."
         ]
       }
     ]

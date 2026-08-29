@@ -1,18 +1,14 @@
 import { useState, useCallback } from "react";
-import { motion, AnimatePresence } from "motion/react";
 import { dnGroupData, getDNImage } from "../../data/dnGroupData";
 import ImageLightboxModal from "./ImageLightboxModal";
 import AnimatedCounter from "./AnimatedCounter";
 import HighlightText from "./HighlightText";
+import FacebookEmbed from "./FacebookEmbed";
+import TikTokEmbed from "./TikTokEmbed";
 import type { LightboxImageData } from "../../models/imageLightboxModal";
 
 export default function DNGroupExperienceShowcase() {
-  const [activeChannelId, setActiveChannelId] = useState<string>("shark-dental-vn");
   const [selectedImage, setSelectedImage] = useState<LightboxImageData | null>(null);
-
-  const activeChannel = dnGroupData.fanpagePillars.channels.find(
-    (c) => c.id === activeChannelId
-  ) || dnGroupData.fanpagePillars.channels[0];
 
   const handleOpenLightbox = useCallback((src: string, title: string, description?: string) => {
     setSelectedImage({
@@ -123,16 +119,19 @@ export default function DNGroupExperienceShowcase() {
         ))}
       </div>
 
-      {/* 3. SECTION 1.1: CONTENT FANPAGE & SOCIAL STRATEGY */}
-      <div className="bg-[#F4FAF9] border border-[#CCE5E3] rounded-xl p-6 sm:p-8 space-y-6">
+      {/* 3. SECTION 1.1: SOCIAL MEDIA PERFORMANCE & ANALYTICS GRID */}
+      <div className="bg-[#F4FAF9] border border-[#CCE5E3] rounded-2xl p-6 sm:p-8 space-y-6">
         <div className="border-b border-[#CCE5E3] pb-5 space-y-3">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
               <span className="font-narrow text-xs sm:text-sm font-black text-[#0B6E7B] tracking-[0.2em] uppercase block">
-                SOCIAL MEDIA STRATEGY
+                {dnGroupData.socialMediaPillar.title}
               </span>
-              <h4 className="font-display text-xl sm:text-2xl uppercase tracking-tight text-[#0C2B31]">
-                {dnGroupData.fanpagePillars.title}
+              <h4 className="font-display text-xl sm:text-2xl uppercase tracking-tight text-[#0C2B31] flex items-center gap-2.5">
+                <i className="fa-solid fa-chart-pie text-[#0B6E7B]"></i>
+                <span>
+                  {dnGroupData.socialMediaPillar.sectionTitle} ({dnGroupData.socialMediaPillar.assets.length} Assets)
+                </span>
               </h4>
             </div>
 
@@ -145,154 +144,106 @@ export default function DNGroupExperienceShowcase() {
             </div>
           </div>
 
+          <p className="font-sans text-xs sm:text-sm font-bold text-[#0B6E7B]">
+            {dnGroupData.socialMediaPillar.instruction}
+          </p>
+
           <p className="font-sans text-base sm:text-lg text-[#2C4A51] leading-relaxed max-w-5xl">
-            <HighlightText text={dnGroupData.fanpagePillars.overview} />
+            <HighlightText text={dnGroupData.socialMediaPillar.description} />
           </p>
         </div>
 
-        {/* Channel Switcher Tabs */}
-        <div className="flex flex-wrap gap-3">
-          {dnGroupData.fanpagePillars.channels.map((channel) => {
-            const isSelected = activeChannelId === channel.id;
-            return (
-              <button
-                key={channel.id}
-                onClick={() => setActiveChannelId(channel.id)}
-                className={`px-5 py-3 rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center gap-2.5 transition-all cursor-pointer border ${
-                  isSelected
-                    ? "bg-[#0B6E7B] text-white border-[#0B6E7B] shadow-sm"
-                    : "bg-white text-[#0C2B31] border-[#CCE5E3] hover:border-[#0B6E7B] hover:bg-[#F0F8F7]"
-                }`}
-              >
-                <i
-                  className={`fa-solid ${
-                    channel.id === "shark-dental-vn" ? "fa-flag" : "fa-globe"
-                  } text-sm ${isSelected ? "text-[#2DD4BF]" : "text-[#0B6E7B]"}`}
-                ></i>
-                <span>{channel.name}</span>
-                <span
-                  className={`text-xs px-2.5 py-0.5 rounded-full ${
-                    isSelected ? "bg-white/20 text-white" : "bg-[#F0F8F7] text-[#4E6E75]"
-                  }`}
-                >
-                  {channel.badge}
-                </span>
-              </button>
-            );
-          })}
-        </div>
+        {/* Assets Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {dnGroupData.socialMediaPillar.assets.map((post) => (
+            <div
+              key={post.id}
+              onClick={() =>
+                handleOpenLightbox(post.image, post.title, post.description)
+              }
+              className="bg-[#07262B] rounded-2xl border border-[#CCE5E3] overflow-hidden hover:border-[#0B6E7B] hover:shadow-xl transition-all duration-300 group cursor-pointer relative aspect-[4/3] flex flex-col justify-between shadow-xs"
+            >
+              {/* Main Image */}
+              <img
+                src={post.image}
+                alt={post.title}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105 opacity-95 group-hover:opacity-40"
+              />
 
-        {/* Active Channel Details & Posts Grid */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeChannel.id}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2 }}
-            className="space-y-5"
-          >
-            <div className="bg-white p-5 rounded-xl border border-[#CCE5E3] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-              <div className="space-y-1">
-                <span className="font-narrow text-xs sm:text-sm font-bold text-[#0B6E7B] uppercase tracking-wider block">
-                  Target Audience: {activeChannel.targetAudience}
+              {/* Category Tag Header */}
+              <div className="absolute top-3 inset-x-3 flex items-center justify-between z-10 pointer-events-none">
+                <span className="px-2.5 py-1 bg-[#07262B]/85 backdrop-blur-md text-white font-narrow text-xs font-bold uppercase rounded-md tracking-wider border border-white/20">
+                  {post.category}
                 </span>
-                <p className="font-sans text-sm sm:text-base text-[#2C4A51]">
-                  <HighlightText text={activeChannel.description} />
-                </p>
+                <span className="w-8 h-8 rounded-full bg-white/25 backdrop-blur-md flex items-center justify-center text-white text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-md">
+                  <i className="fa-solid fa-magnifying-glass-plus"></i>
+                </span>
               </div>
-              <span className="font-mono text-xs sm:text-sm font-bold text-[#0B6E7B] bg-[#F0F8F7] px-3.5 py-1.5 rounded-md shrink-0 border border-[#CCE5E3]">
-                {activeChannel.posts.length} Curated Posts
-              </span>
-            </div>
 
-            {/* Posts Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {activeChannel.posts.map((post) => (
-                <div
-                  key={post.id}
-                  onClick={() =>
-                    handleOpenLightbox(post.image, post.title, post.description)
-                  }
-                  className="bg-white rounded-xl border border-[#CCE5E3] overflow-hidden hover:border-[#0B6E7B] hover:shadow-md transition-all duration-300 flex flex-col justify-between group cursor-pointer"
-                >
-                  <div className="relative aspect-[4/3] bg-[#E7F3F2] overflow-hidden">
-                    <img
-                      src={post.image}
-                      alt={post.title}
-                      loading="lazy"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute top-3 left-3">
-                      <span className="px-2.5 py-1 bg-[#07262B]/85 backdrop-blur-md text-white font-narrow text-xs font-bold uppercase rounded tracking-wider border border-white/20">
-                        {post.category}
+              {/* Rich Hover Overlay with Metrics */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#07262B]/95 via-[#07262B]/80 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-5 z-20 pointer-events-none">
+                <div className="space-y-3">
+                  <div>
+                    {post.channel && (
+                      <span className="font-narrow text-[11px] font-bold text-[#2DD4BF] tracking-widest uppercase block mb-1">
+                        {post.channel}
                       </span>
-                    </div>
-                    <div className="absolute inset-0 bg-[#07262B]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                      <span className="px-4 py-2 bg-[#0B6E7B] text-white rounded-full font-narrow text-xs sm:text-sm font-bold uppercase flex items-center gap-2 shadow-md">
-                        <i className="fa-solid fa-magnifying-glass-plus text-xs"></i>
-                        Zoom Asset
-                      </span>
-                    </div>
+                    )}
+                    <h5 className="font-sans font-bold text-base text-white leading-snug drop-shadow-sm">
+                      {post.title}
+                    </h5>
                   </div>
 
-                  <div className="p-5 space-y-3.5 flex-1 flex flex-col justify-between">
-                    <div className="space-y-2">
-                      <h5 className="font-sans font-bold text-base sm:text-lg text-[#0C2B31] leading-snug line-clamp-2">
-                        {post.title}
-                      </h5>
-                      {post.description && (
-                        <p className="font-sans text-sm sm:text-base text-[#4E6E75] line-clamp-2 leading-relaxed">
-                          <HighlightText text={post.description} />
-                        </p>
+                  {/* Engagement Metrics Box */}
+                  {post.stats && (
+                    <div className="grid grid-cols-3 gap-1.5 p-2 bg-white/10 backdrop-blur-md rounded-xl border border-white/15 text-center text-white">
+                      {post.stats.reach && (
+                        <div className="px-1">
+                          <span className="block font-display text-sm font-bold text-[#2DD4BF] leading-tight">
+                            {post.stats.reach}
+                          </span>
+                          <span className="font-narrow text-[10px] uppercase text-white/70 tracking-wider">Reach</span>
+                        </div>
+                      )}
+                      {post.stats.likes && (
+                        <div className="px-1">
+                          <span className="block font-display text-sm font-bold text-white leading-tight">
+                            {post.stats.likes}
+                          </span>
+                          <span className="font-narrow text-[10px] uppercase text-white/70 tracking-wider">Likes</span>
+                        </div>
+                      )}
+                      {post.stats.comments && (
+                        <div className="px-1">
+                          <span className="block font-display text-sm font-bold text-white leading-tight">
+                            {post.stats.comments}
+                          </span>
+                          <span className="font-narrow text-[10px] uppercase text-white/70 tracking-wider">Comments</span>
+                        </div>
                       )}
                     </div>
+                  )}
 
-                    {post.stats && (
-                      <div className="grid grid-cols-3 gap-1.5 pt-3 border-t border-[#CCE5E3] text-xs font-narrow font-bold text-[#0B6E7B]">
-                        {post.stats.reach && (
-                          <div className="bg-[#F0F8F7] p-2 rounded text-center">
-                            <span className="block font-black text-[#0C2B31] text-sm sm:text-base">
-                              {post.stats.reach}
-                            </span>
-                            <span className="text-[#4E6E75] uppercase text-[11px]">Reach</span>
-                          </div>
-                        )}
-                        {post.stats.likes && (
-                          <div className="bg-[#F0F8F7] p-2 rounded text-center">
-                            <span className="block font-black text-[#0C2B31] text-sm sm:text-base">
-                              {post.stats.likes}
-                            </span>
-                            <span className="text-[#4E6E75] uppercase text-[11px]">Likes</span>
-                          </div>
-                        )}
-                        {post.stats.comments && (
-                          <div className="bg-[#F0F8F7] p-2 rounded text-center">
-                            <span className="block font-black text-[#0C2B31] text-sm sm:text-base">
-                              {post.stats.comments}
-                            </span>
-                            <span className="text-[#4E6E75] uppercase text-[11px]">Comments</span>
-                          </div>
-                        )}
-                      </div>
-                    )}
-
-                    <div className="flex flex-wrap gap-1.5 pt-1">
+                  {/* Tags */}
+                  {post.tags && post.tags.length > 0 && (
+                    <div className="flex flex-wrap gap-1.5 pt-0.5">
                       {post.tags.map((tag, tIdx) => (
                         <span
                           key={tIdx}
-                          className="px-2.5 py-1 bg-[#F0F8F7] text-[#4E6E75] text-xs font-narrow font-semibold rounded"
+                          className="px-2 py-0.5 bg-white/15 text-white/90 text-[11px] font-narrow font-semibold rounded"
                         >
                           #{tag}
                         </span>
                       ))}
                     </div>
-                  </div>
+                  )}
                 </div>
-              ))}
+              </div>
             </div>
-          </motion.div>
-        </AnimatePresence>
+          ))}
+        </div>
       </div>
 
       {/* 4. SECTION 1.2: VIDEO EDITOR & SHORT-FORM PRODUCTION */}
@@ -311,90 +262,97 @@ export default function DNGroupExperienceShowcase() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {dnGroupData.videoEditorPillars.projects.map((video) => (
-            <div
-              key={video.id}
-              onClick={() => handleOpenLightbox(video.image, video.title, video.description)}
-              className="bg-white rounded-2xl border border-[#CCE5E3] overflow-hidden hover:border-[#0B6E7B] hover:shadow-lg transition-all duration-300 flex flex-col justify-between group cursor-pointer"
-            >
-              <div className="relative aspect-video bg-[#E7F3F2] overflow-hidden">
-                <img
-                  src={video.image}
-                  alt={video.title}
-                  loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute top-3 left-3">
-                  <span className="px-2.5 py-1 bg-[#07262B]/85 backdrop-blur-md text-white font-narrow text-xs font-bold uppercase rounded tracking-wider border border-white/20">
-                    {video.channel}
-                  </span>
-                </div>
-                <div className="absolute inset-0 bg-[#07262B]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <span className="px-4 py-2 bg-[#0B6E7B] text-white rounded-full font-narrow text-xs sm:text-sm font-bold uppercase flex items-center gap-2 shadow-md">
-                    <i className="fa-solid fa-play text-xs"></i>
-                    View Video Reel
-                  </span>
-                </div>
-              </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {dnGroupData.videoEditorPillars.projects.map((video) => {
+            const isFacebook = video.platform === "facebook";
 
-              <div className="p-6 space-y-4 flex-1 flex flex-col justify-between">
-                <div className="space-y-2.5">
-                  <div className="flex items-center justify-between">
-                    <span className="font-narrow text-xs sm:text-sm font-bold text-[#0B6E7B] uppercase tracking-wider flex items-center gap-2">
-                      <i className="fa-solid fa-video text-xs"></i>
-                      {video.role}
-                    </span>
+            return (
+              <div
+                key={video.id}
+                className="bg-white rounded-2xl border border-[#CCE5E3] overflow-hidden hover:border-[#0B6E7B] hover:shadow-xl transition-all duration-300 flex flex-col justify-between group shadow-xs"
+              >
+                {/* Live Video Embed Player directly rendered with title on hover inside video */}
+                <div className="relative w-full bg-[#07262B] p-4 flex flex-col items-center justify-center overflow-hidden">
+                  <div className="w-full flex justify-center items-center">
+                    {isFacebook ? (
+                      <div className="w-full max-w-[340px] sm:max-w-[380px] h-[520px] sm:h-[580px] rounded-xl overflow-hidden shadow-2xl bg-black border border-white/10 relative flex items-center justify-center">
+                        <FacebookEmbed url={video.videoUrl} className="w-full h-full" />
+                      </div>
+                    ) : (
+                      <TikTokEmbed
+                        url={video.videoUrl}
+                        videoId={video.videoId}
+                        title={video.title}
+                        author="@sharkdentalxdieuuoccuame"
+                      />
+                    )}
                   </div>
-                  <h6 className="font-sans font-bold text-lg sm:text-xl text-[#0C2B31]">
-                    {video.title}
-                  </h6>
-                  <p className="font-sans text-base sm:text-lg text-[#4E6E75] leading-relaxed">
-                    <HighlightText text={video.description} />
-                  </p>
-                </div>
 
-                {/* Metrics Box with Animated Count Up & generous divider margins */}
-                <div className="grid grid-cols-[1.5fr_1fr_1fr] divide-x divide-[#CCE5E3] bg-[#F0F8F7] py-3.5 px-3 rounded-xl border border-[#CCE5E3]">
-                  <div className="text-center px-3">
-                    <span className="block font-display text-xl sm:text-2xl text-[#0C2B31] tracking-tight leading-none">
-                      <AnimatedCounter value={video.stats.views} />
-                    </span>
-                    <span className="font-narrow text-xs uppercase font-bold text-[#4E6E75] block mt-1.5">
-                      Views
-                    </span>
-                  </div>
-                  <div className="text-center px-3">
-                    <span className="block font-display text-xl sm:text-2xl text-[#0C2B31] tracking-tight leading-none">
-                      <AnimatedCounter value={video.stats.likes} />
-                    </span>
-                    <span className="font-narrow text-xs uppercase font-bold text-[#4E6E75] block mt-1.5">
-                      Likes
-                    </span>
-                  </div>
-                  <div className="text-center px-3">
-                    <span className="block font-display text-xl sm:text-2xl text-[#0C2B31] tracking-tight leading-none">
-                      <AnimatedCounter value={video.stats.shares || video.stats.comments || "0"} />
-                    </span>
-                    <span className="font-narrow text-xs uppercase font-bold text-[#4E6E75] block mt-1.5">
-                      {video.stats.shares ? "Shares" : "Comments"}
-                    </span>
-                  </div>
-                </div>
+                  {/* Title in the video: appears when hover */}
+                  <div className="absolute inset-x-0 top-0 p-4 sm:p-5 bg-gradient-to-b from-[#07262B]/95 via-[#07262B]/75 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none flex items-center justify-between gap-3 z-10">
+                    <div className="flex items-center gap-3">
+                      <a
+                        href={video.videoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title={isFacebook ? "Open on Facebook" : "Open on TikTok"}
+                        className={`w-9 h-9 rounded-full flex items-center justify-center text-white shadow-md hover:scale-110 active:scale-95 transition-all shrink-0 pointer-events-auto ${
+                          isFacebook
+                            ? "bg-[#1877F2] hover:bg-[#1565C0]"
+                            : "bg-black hover:bg-neutral-800 border border-white/20"
+                        }`}
+                      >
+                        <i className={`${isFacebook ? "fa-brands fa-facebook-f" : "fa-brands fa-tiktok"} text-sm`}></i>
+                      </a>
+                      <h5 className="font-display text-base sm:text-lg text-white uppercase tracking-tight font-bold drop-shadow-md">
+                        {video.title}
+                      </h5>
+                    </div>
 
-                <div className="flex flex-wrap gap-2 pt-1">
-                  {video.tags.map((tag, tIdx) => (
-                    <span
-                      key={tIdx}
-                      className="px-3 py-1 bg-[#F4FAF9] border border-[#CCE5E3] rounded-md text-xs sm:text-sm font-narrow font-bold text-[#0C2B31]"
+                    <a
+                      href={video.videoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-3 py-1.5 bg-[#0B6E7B] hover:bg-[#08545E] text-white text-xs font-narrow font-bold uppercase rounded-lg shadow-sm transition-all pointer-events-auto shrink-0 flex items-center gap-1.5"
                     >
-                      #{tag}
-                    </span>
-                  ))}
+                      <span>{isFacebook ? "Facebook" : "TikTok"}</span>
+                      <i className="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                    </a>
+                  </div>
+                  {/* Bottom Action buttons on hover: Brief Video & Kịch bản đi quay */}
+                  {(video.briefUrl || video.scriptUrl) && (
+                    <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5 bg-gradient-to-t from-[#07262B]/95 via-[#07262B]/75 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none flex flex-wrap items-center justify-center gap-2.5 z-10">
+                      {video.briefUrl && (
+                        <a
+                          href={video.briefUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="px-3.5 py-2 bg-white/95 backdrop-blur-md hover:bg-white text-[#0C2B31] border border-white/20 rounded-xl font-narrow text-xs font-black uppercase tracking-wider flex items-center gap-2 transition-all shadow-lg hover:scale-105 pointer-events-auto cursor-pointer"
+                        >
+                          <i className="fa-solid fa-table text-emerald-600"></i>
+                          <span>Brief Video</span>
+                          <i className="fa-solid fa-arrow-up-right-from-square text-[10px] text-[#4E6E75]"></i>
+                        </a>
+                      )}
+
+                      {video.scriptUrl && (
+                        <a
+                          href={video.scriptUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="px-3.5 py-2 bg-[#0B6E7B]/90 backdrop-blur-md hover:bg-[#0B6E7B] text-white border border-[#2DD4BF]/40 rounded-xl font-narrow text-xs font-black uppercase tracking-wider flex items-center gap-2 transition-all shadow-lg hover:scale-105 pointer-events-auto cursor-pointer"
+                        >
+                          <i className="fa-solid fa-clapperboard text-[#2DD4BF]"></i>
+                          <span>Kịch bản đi quay</span>
+                          <i className="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-80"></i>
+                        </a>
+                      )}
+                    </div>
+                  )}
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 

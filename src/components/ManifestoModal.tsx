@@ -45,15 +45,15 @@ export default function ManifestoModal({ isOpen, onClose }: ManifestoModalProps)
               </span>
 
               <h3 className="font-display text-3xl sm:text-4xl uppercase leading-none tracking-tight text-[#0C2B31]">
-                Connecting Brands With Customers Through Impactful Marketing
+                Craft The Message. Drive The Impact. Shape The Narrative.
               </h3>
 
               <div className="h-0.5 bg-[#0B6E7B] w-20"></div>
 
               <div className="font-sans text-sm text-[#4E6E75] space-y-4 leading-relaxed">
-                <p className="font-bold text-[#0C2B31] italic">
-                  &ldquo;Every project I participate in is an opportunity to learn, experiment, and deliver meaningful results for the business.&rdquo;
-                </p>
+                <blockquote className="border-l-2 border-[#0B6E7B] pl-4 py-1 text-base text-[#0C2B31] font-semibold italic bg-[#F0F8F7] rounded-r-lg">
+                  &ldquo;Great marketing doesn't just speak to the audience, it resonates and inspires action.&rdquo;
+                </blockquote>
                 {introBio.paragraphs.map((p, i) => (
                   <p key={i}>{p}</p>
                 ))}

@@ -20,6 +20,7 @@ export interface PostItem {
   id: string;
   title: string;
   category: string;
+  channel?: string;
   image: string;
   description?: string;
   stats?: {
@@ -34,12 +35,17 @@ export interface PostItem {
 
 export interface VideoEditorItem {
   id: string;
+  platform: "facebook" | "tiktok";
   channel: string;
   title: string;
   role: string;
-  stats: {
-    views: string;
-    likes: string;
+  videoUrl: string;
+  videoId?: string;
+  briefUrl?: string;
+  scriptUrl?: string;
+  stats?: {
+    views?: string;
+    likes?: string;
     shares?: string;
     comments?: string;
     followers?: string;
@@ -63,23 +69,18 @@ export interface DNGroupData {
     mission: string;
   };
   keyMetrics: MetricItem[];
-  fanpagePillars: {
+  socialMediaPillar: {
     title: string;
-    overview: string;
+    sectionTitle: string;
+    instruction: string;
+    description: string;
     bestPostStats: {
       reach: string;
       likes: string;
       comments: string;
       shares: string;
     };
-    channels: {
-      id: string;
-      name: string;
-      targetAudience: string;
-      description: string;
-      badge: string;
-      posts: PostItem[];
-    }[];
+    assets: PostItem[];
   };
   videoEditorPillars: {
     title: string;
@@ -126,153 +127,167 @@ export const dnGroupData: DNGroupData = {
       icon: "fa-solid fa-users",
     },
   ],
-  fanpagePillars: {
+  socialMediaPillar: {
     title: "1.1. Content Fanpage & Social Strategy",
-    overview: "Monthly content planning and bilingual execution across Facebook, TikTok, and Instagram for Shark Dental brand. Achieved over 1,700+ Facebook followers, 150+ Instagram followers, and 5,300+ TikTok followers.",
+    sectionTitle: "Social Media Performance & Analytics",
+    instruction: "Hover over cards to view engagement metrics; click image to expand.",
+    description: "Meta content calendars, fanpage analytics dashboards, top-performing post screenshots, TikTok data reports & reach metrics.",
     bestPostStats: {
       reach: "130,000+",
       likes: "160+",
       comments: "52",
       shares: "9",
     },
-    channels: [
+    assets: [
       {
-        id: "shark-dental-vn",
-        name: "Shark Dental Vietnam (Fanpage Nha Khoa Shark)",
-        targetAudience: "Domestic Patients & Dental Healthcare Seekers in Vietnam",
-        badge: "Domestic Market",
-        description: "Comprehensive content calendar and interactive social post designs educating customers on oral healthcare, specialized dental treatments, customer testimonials, and seasonal promotions.",
-        posts: [
-          {
-            id: "sd-vn-1",
-            title: "Expert Dental Consultation & Aesthetic Smile Design",
-            category: "Treatment & Education",
-            image: getDNImage("dn_group_img_16.webp"),
-            description: "Detailed breakdown of painless aesthetic dentistry and dental implant procedures.",
-            stats: { reach: "130,000+", likes: "160+", comments: "52", shares: "9" },
-            tags: ["Content Plan", "Social Post", "Dentistry", "Customer Education"],
-          },
-          {
-            id: "sd-vn-2",
-            title: "Customer Smile Transformation Story Series",
-            category: "Customer Storytelling",
-            image: getDNImage("dn_group_img_17.webp"),
-            description: "High-impact before & after smile transformations with real patient testimonials.",
-            stats: { reach: "85,000+", likes: "120+", comments: "34", shares: "6" },
-            tags: ["Storytelling", "Patient Trust", "Branding"],
-          },
-          {
-            id: "sd-vn-3",
-            title: "Seasonal Oral Healthcare Campaign & Voucher Activation",
-            category: "Promotional Campaign",
-            image: getDNImage("dn_group_img_18.webp"),
-            description: "Promotional visual layout driving appointment bookings and clinic check-ins.",
-            stats: { reach: "64,000+", likes: "95+", comments: "28", shares: "12" },
-            tags: ["Promotion", "Lead Generation", "Call to Action"],
-          },
-          {
-            id: "sd-vn-4",
-            title: "Doctor's Advice: Daily Hygiene & Gum Protection",
-            category: "Medical Tips",
-            image: getDNImage("dn_group_img_19.webp"),
-            description: "Infographic-style post providing quick dental tips and common mistake warnings.",
-            stats: { reach: "42,000+", likes: "80+", comments: "19", shares: "5" },
-            tags: ["Infographic", "Health Tips", "Doctor Voice"],
-          },
-          {
-            id: "sd-vn-5",
-            title: "Modern Clinical Technology & Sterile Environment",
-            category: "Facility & Tech",
-            image: getDNImage("dn_group_img_20.webp"),
-            description: "Showcasing advanced European dental machinery and hygiene standards.",
-            stats: { reach: "38,000+", likes: "72+", comments: "15", shares: "3" },
-            tags: ["Technology", "Clinical Standards", "Quality"],
-          },
-        ],
+        id: "sd-vn-1",
+        title: "Expert Dental Consultation & Aesthetic Smile Design",
+        category: "Treatment & Education",
+        channel: "Fanpage Nha Khoa Shark (VN)",
+        image: getDNImage("dn_group_img_16.webp"),
+        description: "Detailed breakdown of painless aesthetic dentistry and dental implant procedures.",
+        stats: { reach: "130,000+", likes: "160+", comments: "52", shares: "9" },
+        tags: ["Content Plan", "Social Post", "Dentistry", "Customer Education"],
       },
       {
-        id: "shark-dental-global",
-        name: "Shark Dental Global (Fanpage Shark Dental)",
-        targetAudience: "Overseas Vietnamese & International Dental Tourists",
-        badge: "Global & Expat Market",
-        description: "Bilingual English-Vietnamese content tailored for expats, tourists, and overseas Vietnamese seeking world-class dental treatments with transparent pricing and international quality standards.",
-        posts: [
-          {
-            id: "sd-gl-1",
-            title: "International Dental Tourism & Complete Smile Makeover",
-            category: "Dental Tourism",
-            image: getDNImage("dn_group_img_24.webp"),
-            description: "English-language campaign tailored for international tourists visiting Vietnam for dental care.",
-            stats: { reach: "45,000+", likes: "88+", comments: "24", shares: "11" },
-            tags: ["Global Market", "Bilingual Content", "Smile Makeover"],
-          },
-          {
-            id: "sd-gl-2",
-            title: "All-on-4 & All-on-6 Dental Implant Global Standard",
-            category: "High-Tech Treatment",
-            image: getDNImage("dn_group_img_25.webp"),
-            description: "Specialized implant guide highlighting warranty policies and cost advantages.",
-            stats: { reach: "32,000+", likes: "65+", comments: "18", shares: "7" },
-            tags: ["Implants", "Medical Tourism", "English Post"],
-          },
-          {
-            id: "sd-gl-3",
-            title: "Global Patient Testimonials & Airport Pickup Service",
-            category: "Hospitality Service",
-            image: getDNImage("dn_group_img_26.webp"),
-            description: "Full service concierge experience for overseas clients arriving in Ho Chi Minh City.",
-            stats: { reach: "28,000+", likes: "54+", comments: "16", shares: "4" },
-            tags: ["Concierge Care", "VIP Experience", "Expat Focus"],
-          },
-          {
-            id: "sd-gl-4",
-            title: "Porcelain Veneers vs. Composite Bonding Comparison",
-            category: "Aesthetic Guide",
-            image: getDNImage("dn_group_img_27.webp"),
-            description: "Educational comparison guide helping clients choose the best cosmetic option.",
-            stats: { reach: "36,000+", likes: "70+", comments: "22", shares: "8" },
-            tags: ["Veneers", "Comparison", "Bilingual"],
-          },
-        ],
+        id: "sd-vn-2",
+        title: "Customer Smile Transformation Story Series",
+        category: "Customer Storytelling",
+        channel: "Fanpage Nha Khoa Shark (VN)",
+        image: getDNImage("dn_group_img_17.webp"),
+        description: "High-impact before & after smile transformations with real patient testimonials.",
+        stats: { reach: "85,000+", likes: "120+", comments: "34", shares: "6" },
+        tags: ["Storytelling", "Patient Trust", "Branding"],
+      },
+      {
+        id: "sd-vn-3",
+        title: "Seasonal Oral Healthcare Campaign & Voucher Activation",
+        category: "Promotional Campaign",
+        channel: "Fanpage Nha Khoa Shark (VN)",
+        image: getDNImage("dn_group_img_18.webp"),
+        description: "Promotional visual layout driving appointment bookings and clinic check-ins.",
+        stats: { reach: "64,000+", likes: "95+", comments: "28", shares: "12" },
+        tags: ["Promotion", "Lead Generation", "Call to Action"],
+      },
+      {
+        id: "sd-vn-4",
+        title: "Doctor's Advice: Daily Hygiene & Gum Protection",
+        category: "Medical Tips",
+        channel: "Fanpage Nha Khoa Shark (VN)",
+        image: getDNImage("dn_group_img_19.webp"),
+        description: "Infographic-style post providing quick dental tips and common mistake warnings.",
+        stats: { reach: "42,000+", likes: "80+", comments: "19", shares: "5" },
+        tags: ["Infographic", "Health Tips", "Doctor Voice"],
+      },
+      {
+        id: "sd-vn-5",
+        title: "Modern Clinical Technology & Sterile Environment",
+        category: "Facility & Tech",
+        channel: "Fanpage Nha Khoa Shark (VN)",
+        image: getDNImage("dn_group_img_20.webp"),
+        description: "Showcasing advanced European dental machinery and hygiene standards.",
+        stats: { reach: "38,000+", likes: "72+", comments: "15", shares: "3" },
+        tags: ["Technology", "Clinical Standards", "Quality"],
+      },
+      {
+        id: "sd-gl-1",
+        title: "International Dental Tourism & Complete Smile Makeover",
+        category: "Dental Tourism",
+        channel: "Fanpage Shark Dental (Global)",
+        image: getDNImage("dn_group_img_24.webp"),
+        description: "English-language campaign tailored for international tourists visiting Vietnam for dental care.",
+        stats: { reach: "45,000+", likes: "88+", comments: "24", shares: "11" },
+        tags: ["Global Market", "Bilingual Content", "Smile Makeover"],
+      },
+      {
+        id: "sd-gl-2",
+        title: "All-on-4 & All-on-6 Dental Implant Global Standard",
+        category: "High-Tech Treatment",
+        channel: "Fanpage Shark Dental (Global)",
+        image: getDNImage("dn_group_img_25.webp"),
+        description: "Specialized implant guide highlighting warranty policies and cost advantages.",
+        stats: { reach: "32,000+", likes: "65+", comments: "18", shares: "7" },
+        tags: ["Implants", "Medical Tourism", "English Post"],
+      },
+      {
+        id: "sd-gl-3",
+        title: "Global Patient Testimonials & Airport Pickup Service",
+        category: "Hospitality Service",
+        channel: "Fanpage Shark Dental (Global)",
+        image: getDNImage("dn_group_img_26.webp"),
+        description: "Full service concierge experience for overseas clients arriving in Ho Chi Minh City.",
+        stats: { reach: "28,000+", likes: "54+", comments: "16", shares: "4" },
+        tags: ["Concierge Care", "VIP Experience", "Expat Focus"],
+      },
+      {
+        id: "sd-gl-4",
+        title: "Porcelain Veneers vs. Composite Bonding Comparison",
+        category: "Aesthetic Guide",
+        channel: "Fanpage Shark Dental (Global)",
+        image: getDNImage("dn_group_img_27.webp"),
+        description: "Educational comparison guide helping clients choose the best cosmetic option.",
+        stats: { reach: "36,000+", likes: "70+", comments: "22", shares: "8" },
+        tags: ["Veneers", "Comparison", "Bilingual"],
       },
     ],
   },
   videoEditorPillars: {
     title: "1.2. Video Editor & Short-Form Content Production",
-    overview: "Spearheaded end-to-end short-form video scripting, filming coordination, and creative video editing across TikTok and Reels, capturing brand voice and driving organic viral engagement.",
+    overview: "Executed multimedia content production for the Shark Dental brand by building and scaling the 'Shark Dental x Điều ước của mẹ' TikTok channel with over 200 on-location and self-shot videos, collaborating with planners on scripts and leveraging CapCut Pro and AI tools for short-form editing.",
     projects: [
       {
-        id: "video-shark-vn",
-        channel: "Shark Dental (Vietnam)",
-        title: "Promotional Brand & Treatment Video Series",
-        role: "Scriptwriter, Production Coordinator & Video Editor",
-        stats: {
-          views: "179,000+",
-          likes: "208",
-          shares: "6",
-          comments: "15+",
-        },
-        highlight: "179K+ Views on Best Promotional Reel",
-        description: "Collaborated closely with marketing planners to script and shoot promotional videos and clinical brand stories. Edited dynamic short-form TikTok videos optimized with hooks, subtitles, and engaging visual pacing.",
-        image: getDNImage("dn_group_img_28.webp"),
-        tags: ["TikTok Scripting", "CapCut / Premiere", "Promo Videos", "Short-form"],
+        id: "fb-shark-reel",
+        platform: "facebook",
+        channel: "Nha khoa Shark",
+        title: "Nha khoa Shark",
+        role: "Video Creator & Editor",
+        videoUrl: "https://www.facebook.com/reel/24250507347978560",
+        highlight: "Facebook Reel",
+        description: "Engaging short-form dental care & clinic experience reel published on Nha khoa Shark Facebook page.",
+        image: getDNImage("dn_group_img_28.webp") || getDNImage("dn_group_img_16.webp"),
+        tags: ["Facebook Reel", "Nha Khoa Shark", "CapCut Pro", "Short-Form"],
       },
       {
-        id: "video-dieu-uoc-cua-me",
-        channel: "Shark Dental x Điều Ước Của Mẹ",
-        title: "Community & Emotional Brand TikTok Channel",
-        role: "Channel Creator, Content Lead & Video Editor",
-        stats: {
-          views: "596,000+",
-          likes: "17,000+",
-          comments: "209",
-          shares: "145",
-          followers: "5.3K Organic Followers (51.7K Likes)",
-        },
-        highlight: "596K+ Views, 17K+ Likes on Flagship Viral Video",
-        description: "Built and managed the dedicated TikTok channel 'Shark Dental x Điều ước của mẹ' from the ground up, reaching 5.3K organic followers and 51.7K likes. Produced emotional human-interest stories, dental transformation journeys, and mother-child care campaigns.",
-        image: getDNImage("dn_group_img_29.webp"),
-        tags: ["Viral Channel Growth", "Human Interest", "Community Campaign", "596K Views"],
+        id: "fb-shark-video-production",
+        platform: "facebook",
+        channel: "Nha khoa Shark",
+        title: "Nha khoa Shark",
+        role: "Production Lead & Video Editor",
+        videoUrl: "https://www.facebook.com/reel/855037387682043",
+        briefUrl: "https://docs.google.com/spreadsheets/d/1OiF65aYb5gk5Lluo50LQPVBCD9AZ2et2tfgGoGVbAYQ/edit?usp=sharing",
+        scriptUrl: "https://docs.google.com/spreadsheets/d/145IwPNgMM3_desFcJoGOzzN21Lbtw2hVOaNPayWZrk8/edit?usp=sharing",
+        highlight: "Facebook Video with Brief & Script",
+        description: "End-to-end video production including comprehensive video brief planning and detailed on-location shooting script (Kịch bản đi quay).",
+        image: getDNImage("dn_group_img_30.webp") || getDNImage("dn_group_img_20.webp"),
+        tags: ["Facebook Video", "Shooting Script", "Creative Brief", "Dental Clinic"],
+      },
+      {
+        id: "tiktok-dieu-uoc-cua-me-1",
+        platform: "tiktok",
+        channel: "Nha khoa Shark x Điều ước của mẹ",
+        title: "Nha khoa Shark x Điều ước của mẹ",
+        role: "Channel Growth Lead & Video Editor",
+        videoUrl: "https://www.tiktok.com/@sharkdentalxdieuuoccuame/video/7567568707547958548",
+        videoId: "7567568707547958548",
+        highlight: "TikTok Video",
+        description: "Heartwarming patient story and mother-care viral short-form video produced for the 'Shark Dental x Điều ước của mẹ' campaign channel.",
+        image: getDNImage("dn_group_img_29.webp") || getDNImage("dn_group_img_17.webp"),
+        tags: ["TikTok Viral", "Điều Ước Của Mẹ", "Human Interest", "CapCut Pro"],
+      },
+      {
+        id: "tiktok-dieu-uoc-cua-me-2",
+        platform: "tiktok",
+        channel: "Nha khoa Shark x Điều ước của mẹ",
+        title: "Nha khoa Shark x Điều ước của mẹ",
+        role: "Production Lead & Video Editor",
+        videoUrl: "https://www.tiktok.com/@sharkdentalxdieuuoccuame/video/7596998560168578322",
+        videoId: "7596998560168578322",
+        briefUrl: "https://docs.google.com/spreadsheets/d/1OiF65aYb5gk5Lluo50LQPVBCD9AZ2et2tfgGoGVbAYQ/edit?usp=sharing",
+        scriptUrl: "https://docs.google.com/spreadsheets/d/145IwPNgMM3_desFcJoGOzzN21Lbtw2hVOaNPayWZrk8/edit?usp=sharing",
+        highlight: "TikTok Feature with Brief & Script",
+        description: "Full-lifecycle TikTok video production supported by strategic creative brief documentation and detailed on-location shooting script (Kịch bản đi quay).",
+        image: getDNImage("dn_group_img_29.webp") || getDNImage("dn_group_img_08.webp"),
+        tags: ["TikTok Production", "Shooting Script", "Creative Brief", "Viral Channel"],
       },
     ],
   },

@@ -99,8 +99,8 @@ export interface VLotusData {
 export const vLotusData: VLotusData = {
   companyName: "V Lotus Holdings JSC",
   parentGroup: "Lotus Group (F&B Division)",
-  roleTitle: "Marketing Executive / Content & SEO Specialist",
-  period: "Project 2",
+  roleTitle: "Content Marketing Executive",
+  period: "February 2025 - August 2025",
   overview: {
     description: "V Lotus Holdings JSC (F&B Division) is a member of Lotus Group, specializing in the food and beverage sector. To date, the company operates over 35 restaurants across Vietnam, featuring leading Japanese franchise brands such as Marukame Udon, Coco Ichibanya, Yoshinoya, Ussina Snow Aging Beef, Ushi Mania, Conservo, Tenku – Japanese Modern Kaiseki & Bar.",
     scale: "35+ Restaurants Across Vietnam",
