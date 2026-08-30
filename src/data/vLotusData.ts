@@ -43,20 +43,60 @@ export interface BrandFanpage {
   }[];
 }
 
+export interface FacebookHighlightPost {
+  id: string;
+  postNumber: string;
+  brandName: string;
+  title: string;
+  category: string;
+  content: string;
+  postUrl: string;
+  tags: string[];
+}
+
+export interface HighlightPostsSection {
+  title: string;
+  sectionTitle: string;
+  instruction: string;
+  description: string;
+  posts: FacebookHighlightPost[];
+}
+
 export interface VideoProductionItem {
   id: string;
+  platform: "facebook" | "tiktok";
   brandName: string;
   title: string;
   role: string;
-  stats: {
-    views: string;
-    likes: string;
-    shares: string;
+  videoUrl: string;
+  videoId?: string;
+  briefUrl?: string;
+  stats?: {
+    views?: string;
+    likes?: string;
+    shares?: string;
   };
   highlight: string;
   description: string;
   image: string;
   tags: string[];
+}
+
+export interface VLotusWebsiteArticle {
+  id: string;
+  date: string;
+  title: string;
+  author: string;
+  type: string;
+  url: string;
+}
+
+export interface WebsiteArticlesSection {
+  title: string;
+  description: string;
+  seoArticlesDocUrl: string;
+  contentPlanUrl: string;
+  articles: VLotusWebsiteArticle[];
 }
 
 export interface VLotusData {
@@ -89,11 +129,14 @@ export interface VLotusData {
     };
     brands: BrandFanpage[];
   };
+  highlightPostsSection: HighlightPostsSection;
   videoPillar: {
     title: string;
     overview: string;
+    briefVideoUrl: string;
     videos: VideoProductionItem[];
   };
+  websiteArticlesSection: WebsiteArticlesSection;
 }
 
 export const vLotusData: VLotusData = {
@@ -339,39 +382,196 @@ export const vLotusData: VLotusData = {
       },
     ],
   },
-  videoPillar: {
-    title: "2.3. Video Editor & Restaurant Media Production",
-    overview: "Ideated, organized, and participated in photoshoots and video recordings at restaurants to create creative and engaging content. Filmed and edited short-form TikTok videos based on content requirements.",
-    videos: [
+  highlightPostsSection: {
+    title: "2.3. Highlight Facebook Posts & Copywriting Showcase",
+    sectionTitle: "High-Impact Multi-Brand Copywriting & Seasonal Campaigns",
+    instruction: "Explore viral Japanese culinary copywriting, product launches, brand promotions, and luxury sky dining campaigns.",
+    description: "Curated top-performing social posts across Conservo Japanese Breads & Café, Yoshinoya Vietnam, and Ussina Snow Aging Beef.",
+    posts: [
       {
-        id: "vid-conservo",
-        brandName: "Conservo Japanese Breads & Café",
-        title: "2.3. VIDEO EDITOR — CONSERVO",
-        role: "Ideation, Photoshoot Staging & Video Editor",
-        stats: {
-          views: "120,000+",
-          likes: "68",
-          shares: "3",
-        },
-        highlight: "120,000+ Views • 68 Likes • 3 Shares",
-        description: "Ideated, organized, and participated in photoshoots and video recordings at restaurants to create creative and engaging content. Filmed and edited short-form TikTok videos based on content requirements. Best-performing video received 120,000+ views, 68 likes, 3 shares.",
-        image: getVLotusImage("v_lotus_img_06.webp"),
-        tags: ["Conservo TikTok", "120K Views", "Food Production", "TikTok Reel"],
+        id: "vlotus-fb-post-1",
+        postNumber: "Facebook Post #1",
+        brandName: "Conservo - Japanese Breads & Café",
+        title: "HOA TRÊN TUYẾT - YUKIBANA",
+        category: "BST Thức Uống Mùa Hè",
+        postUrl: "https://www.facebook.com/share/p/1BzohZ2Cfd/",
+        content: `Mát lạnh sảng khoái, vị nào cũng mêêêêê!
+🌸 Như hoa anh đào khẽ rơi trên nền tuyết trắng – khoảnh khắc đẹp nhất xứ Phù Tang, BST YUKIBANA – HOA TRÊN TUYẾT đã chính thức có mặt tại Conservo.
+Với sự kết hợp cùng thương hiệu sữa chua cao cấp Morinaga, BST YUKIBANA mang hương vị chua nhẹ cùng kết cấu đá xay mát lạnh quyện với topping 100% trái cây tươi. Hãy cảm nhận nốt hương tuyệt diệu của Mùa Hoa Anh Đào với 03 vị trái cây:
+🍓 𝒀𝒖𝒌𝒊 𝑵𝒐 𝑯𝒂𝒏𝒂 | Dâu Sữa Chua Đá Xay: dâu tươi kết hợp sữa chua thanh nhẹ, tạo hương vị chua ngọt cuốn hút.
+🍈 𝑴𝒊𝒛𝒖 𝑵𝒐 𝑯𝒂𝒏𝒂 | Dưa Lưới Sữa Chua Đá Xay: sự kết hợp mát lành với dưa lưới ngọt thanh trên nền sữa chua beo béo.
+🥭 𝑻𝒂𝒊𝒚𝒐𝒖 𝑵𝒐 𝑯𝒂𝒏𝒂 | Xoài Cát Sữa Chua Đá Xay: vị ngọt ngào từ xoài cát được cân bằng hoàn hảo với chút chua nhẹ của sữa chua.
+YUKIBANA hiện đã có mặt tại các cửa hàng Conservo.
+Đến Conservo và đắm mình trong khung cảnh & hương vị mùa hoa anh đào Nhật Bản nhé!`,
+        tags: ["Yukibana", "Hoa Trên Tuyết", "Morinaga", "Conservo", "Summer Drink"],
       },
       {
-        id: "vid-yoshinoya",
+        id: "vlotus-fb-post-2",
+        postNumber: "Facebook Post #2",
         brandName: "Yoshinoya Vietnam",
-        title: "2.3. VIDEO EDITOR — YOSHINOYA",
-        role: "Shooting Coordinator, Content Host & Video Editor",
-        stats: {
-          views: "105,000+",
-          likes: "205",
-          shares: "11",
-        },
-        highlight: "105,000+ Views • 205 Likes • 11 Shares",
-        description: "Ideated, organized, and participated in photoshoots and video recordings at restaurants to create creative and engaging content. Filmed and edited short-form TikTok videos based on content requirements. Best-performing video received 105,000+ views, 205 likes, 11 shares.",
+        title: "⚡ YOSHI DAY - DEAL ĐẶC BIỆT CHỈ TỪ 53K",
+        category: "Khuyến Mãi & Ngày Hội Thương Hiệu",
+        postUrl: "https://www.facebook.com/share/p/1GFxPHVGdH/",
+        content: `🔥 Ngày 5 hàng tháng, fan đã sẵn sàng chưa?
+Deadline có thể dời, nhưng hẹn Yoshi Day thì nhất định phải tới nha! Chỉ 1 ngày duy nhất trong tháng để ăn ngon, nhẹ ví, cả hội chill hè thật đáng nhớ!
+👉 CHỈ TỪ 53K, chọn ngay 1 trong 7 món siêu hot:
+🍚Cơm Bò Yoshi
+🍚Cơm Bò Trứng
+🍚Cơm Thố Bò Nướng
+🍚Cơm Thố Bò Nướng & Phô Mai
+🍚Cơm Gà Nanban
+🍚Cơm Gà Karaage
+🍚Cơm Thịt Heo Xào Gừng
+📌 Điều kiện áp dụng:
+- Áp dụng hình thức Dùng món tại nhà hàng hoặc Mua mang về trên toàn hệ thống.
+- Áp dụng thanh toán qua đồng thời bằng voucher đối tác GOT IT, URBOX, PLUXEE.
+- Không áp dụng đồng thời các CTKM/ giảm giá khác.`,
+        tags: ["Yoshi Day", "Deal 53K", "Yoshinoya Vietnam", "Gyudon", "Hot Promotion"],
+      },
+      {
+        id: "vlotus-fb-post-3",
+        postNumber: "Facebook Post #3",
+        brandName: "Ussina Snow Aging Beef & Bar",
+        title: "☁️ SKYLINE JAPANESE AFTERNOON TEA",
+        category: "Skyline Dining & Set Trà Chiều",
+        postUrl: "https://www.facebook.com/share/p/1HmovSVXsa/",
+        content: `A Perfect Weekend Escape In The Sky
+(English Below)
+Dành một chiều cuối tuần thật nhẹ nhàng cho chính mình – nơi không còn ồn ào, chỉ có mây trời, trà thơm và những điều đẹp đẽ.
+Giữa guồng quay tất bật, ai cũng cần một khoảng lặng để thở – để lắng nghe chính mình và tận hưởng sự thanh bình. Skyline Japanese Afternoon Tea tại Ussina chính là lời mời cho một buổi chiều như thế.
+Không đơn thuần là một set trà chiều, đây là trải nghiệm được tuyển chọn tỉ mỉ:
+✨ Afternoon Bliss (390,000 VND/khách): bao gồm 8 món ngọt và 1 thức uống tự chọn.
+✨ Golden Hour (590,000 VND/khách): bao gồm 5 món ngọt, 5 món mặn và 2 thức uống tự chọn.
+Tất cả được phục vụ trong không gian sang trọng giữa tầng không – nơi thành phố thu nhỏ dưới chân bạn.
+📌 Điều kiện áp dụng:
+- Giá chưa bao gồm VAT
+- Áp dụng phục vụ từ 2 set cùng loại trở lên
+- Vui lòng đặt trước 1 ngày
+- Thời gian phục vụ từ 14h - 17h mỗi ngày.
+💫 Hoàn hảo cho một buổi hẹn cuối tuần, một cuộc trò chuyện riêng tư, hoặc đơn giản là khoảnh khắc yêu chiều bản thân – bởi bạn xứng đáng được tận hưởng những điều đẹp đẽ nhất.`,
+        tags: ["Skyline Afternoon Tea", "Ussina Sky 77", "Landmark 81", "Japanese Tea", "Luxury Dining"],
+      },
+      {
+        id: "vlotus-fb-post-4",
+        postNumber: "Facebook Post #4",
+        brandName: "Conservo - Japanese Breads & Café",
+        title: "NAMA DONUT - Ít ngọt - Tròn đầy",
+        category: "Ra Mắt Bánh Mới & Triết Lý Washoku",
+        postUrl: "https://www.facebook.com/share/p/19UtHAxRfr/",
+        content: `Thanh nhẹ, tinh tế - đó không chỉ là cách người Nhật tôn vinh ẩm thực, mà còn là triết lý Washoku được gửi gắm vào từng chiếc Nama Donut vừa ra mắt tại Conservo.
+Với lớp vỏ mềm mịn ôm trọn phần kem trái cây thanh mát bên trong, Nama Donut mang đến cảm giác dễ chịu, nhẹ nhàng từ miếng đầu tiên. Không quá ngọt, không gây ngấy - chiếc bánh này chiều lòng cả những ai ít hảo đồ ngọt nhất.
+Chính sự tinh giản trong nguyên liệu, sự chỉn chu trong cách làm và tâm huyết trong từng chi tiết nhỏ đã tạo nên một chiếc bánh vừa đẹp mắt, vừa hài hoà vị giác. Dù là bữa xế nhẹ, món tráng miệng hay chỉ đơn giản là muốn nạp chút “ngọt lành” cho ngày thêm vui - Nama Donut chính là lựa chọn lý tưởng dành cho bạn.
+📍 Ghé Conservo hôm nay để thưởng thức siêu phẩm mới toanh này nhé.`,
+        tags: ["Nama Donut", "Washoku Philosophy", "Conservo", "Fresh Bakery", "Japanese Pastry"],
+      },
+    ],
+  },
+  videoPillar: {
+    title: "2.4. Video Editor & Short-Form Media Production",
+    overview: "Executed end-to-end multimedia content production for Conservo Japanese Breads & Café and Yoshinoya Vietnam across Facebook Reels and TikTok. Ideated video angles, coordinated on-site shootings, authored comprehensive creative briefs, and edited dynamic short-form videos with viral reach.",
+    briefVideoUrl: "https://docs.google.com/presentation/d/1vXM5CUAIm0cCK_NDEoBUoqhK-zl7rq1eJfKrmhMXO9Y/edit?usp=sharing",
+    videos: [
+      {
+        id: "vid-fb-conservo",
+        platform: "facebook",
+        brandName: "Conservo - Japanese Breads & Café",
+        title: "Conservo - Japanese Breads & Café",
+        role: "Video Creator & Editor",
+        videoUrl: "https://www.facebook.com/reel/2088629484989843/",
+        briefUrl: "https://docs.google.com/presentation/d/1vXM5CUAIm0cCK_NDEoBUoqhK-zl7rq1eJfKrmhMXO9Y/edit?usp=sharing",
+        highlight: "Facebook Reel",
+        description: "Engaging short-form bakery presentation and artisan bread crafting reel published on Conservo Japanese Breads & Café Facebook page.",
+        image: getVLotusImage("v_lotus_img_06.webp"),
+        tags: ["Facebook Reel", "Conservo", "Artisan Bakery", "Short-Form"],
+      },
+      {
+        id: "vid-fb-yoshinoya",
+        platform: "facebook",
+        brandName: "Yoshinoya Vietnam",
+        title: "Yoshinoya Vietnam",
+        role: "Video Creator & Editor",
+        videoUrl: "https://www.facebook.com/reel/1243129067306742/",
+        briefUrl: "https://docs.google.com/presentation/d/1vXM5CUAIm0cCK_NDEoBUoqhK-zl7rq1eJfKrmhMXO9Y/edit?usp=sharing",
+        highlight: "Facebook Reel",
+        description: "Dynamic dining experience, sizzling beef bowls, and lifestyle food reel published on Yoshinoya Vietnam Facebook page.",
         image: getVLotusImage("v_lotus_img_05.webp"),
-        tags: ["Yoshinoya TikTok", "105K Views", "Dining Experience", "TikTok Reel"],
+        tags: ["Facebook Reel", "Yoshinoya", "Gyudon", "Fast Casual"],
+      },
+      {
+        id: "vid-tiktok-conservo",
+        platform: "tiktok",
+        brandName: "Conservo Việt Nam",
+        title: "Conservo Việt Nam",
+        role: "Shooting Coordinator & TikTok Editor",
+        videoUrl: "https://www.tiktok.com/@conservovn/video/7519379432910392584",
+        videoId: "7519379432910392584",
+        briefUrl: "https://docs.google.com/presentation/d/1vXM5CUAIm0cCK_NDEoBUoqhK-zl7rq1eJfKrmhMXO9Y/edit?usp=sharing",
+        highlight: "TikTok Video",
+        description: "Viral short-form TikTok reel showcasing freshly baked Japanese artisan pastries, cafe ambiance, and customer favorites at Conservo.",
+        image: getVLotusImage("v_lotus_img_31.webp") || getVLotusImage("v_lotus_img_06.webp"),
+        tags: ["TikTok Video", "Conservo Việt Nam", "Japanese Bakery", "Food Reel"],
+      },
+      {
+        id: "vid-tiktok-yoshinoya",
+        platform: "tiktok",
+        brandName: "Yoshinoya Vietnam",
+        title: "Yoshinoya Vietnam",
+        role: "Shooting Coordinator & TikTok Editor",
+        videoUrl: "https://www.tiktok.com/@yoshinoyavietnamofficial/video/7517883339034987783",
+        videoId: "7517883339034987783",
+        briefUrl: "https://docs.google.com/presentation/d/1vXM5CUAIm0cCK_NDEoBUoqhK-zl7rq1eJfKrmhMXO9Y/edit?usp=sharing",
+        highlight: "TikTok Video",
+        description: "High-energy culinary short-form TikTok reel celebrating Yoshinoya's 120-year Tokyo beef bowl heritage and mouthwatering menu items.",
+        image: getVLotusImage("v_lotus_img_24.webp") || getVLotusImage("v_lotus_img_05.webp"),
+        tags: ["TikTok Video", "Yoshinoya Vietnam", "Gyudon Experience", "Viral Food"],
+      },
+    ],
+  },
+  websiteArticlesSection: {
+    title: "Some Selected Website Contents",
+    description: "Published SEO articles, culinary insights, and brand storytelling for Ussina Snow Aging Beef & Bar (V Lotus Holdings).",
+    seoArticlesDocUrl: "https://docs.google.com/document/d/1et29HNZpvdqlIijd9MCwSJr22HnkEi86Ta-B17WJzdc/edit?tab=t.0#heading=h.lo79n582y1x7",
+    contentPlanUrl: "https://docs.google.com/spreadsheets/d/1W2VrQlxd1YcWlIVlrVDoTljeyrjdt3Wg/edit?usp=sharing&ouid=115935600825419567163&rtpof=true&sd=true",
+    articles: [
+      {
+        id: "ussina-art-1",
+        date: "08/2025",
+        title: "KHÁM PHÁ NÉT VĂN HÓA MÙA HÈ NHẬT BẢN – HÀNH TRÌNH VỊ GIÁC TẠI USSINA",
+        author: "Hồng Anh",
+        type: "Content",
+        url: "https://ussinavietnam.vn/kham-pha-net-van-hoa-mua-he-nhat-ban-hanh-trinh-vi-giac-tai-ussina/",
+      },
+      {
+        id: "ussina-art-2",
+        date: "07/2025",
+        title: "BÒ WAGYU Ủ TUYẾT – TINH HOA ẨM THỰC NHẬT BẢN TẠI USSINA",
+        author: "Hồng Anh",
+        type: "Content",
+        url: "https://ussinavietnam.vn/bo-wagyu-u-tuyet-tinh-hoa-am-thuc-nhat-ban-tai-ussina/",
+      },
+      {
+        id: "ussina-art-3",
+        date: "05/2025",
+        title: "YUKIMURO – Tuyết Trắng Nhật Bản & Nghệ Thuật “Nuôi Dưỡng Hương Vị” Từ Tự Nhiên",
+        author: "Hồng Anh",
+        type: "Content",
+        url: "https://ussinavietnam.vn/yukimuro-tuyet-trang-nhat-ban-nghe-thuat-nuoi-duong-huong-vi-tu-tu-nhien/",
+      },
+      {
+        id: "ussina-art-4",
+        date: "03/2025",
+        title: "Đặc Sản Theo Vùng Nhật Bản: Hành Trình Khám Phá Ẩm Thực Độc Đáo",
+        author: "Hồng Anh",
+        type: "Content",
+        url: "https://ussinavietnam.vn/dac-san-theo-vung-nhat-ban-hanh-trinh-kham-pha-am-thuc-doc-dao/",
+      },
+      {
+        id: "ussina-art-5",
+        date: "02/2025",
+        title: "Tinh thần Omotenashi – Phong Cách Phục Vụ Hiếu Khách Tại Ussina Sky 77",
+        author: "Hồng Anh",
+        type: "Content",
+        url: "https://ussinavietnam.vn/tinh-than-omotenashi-phong-cach-phuc-vu-hieu-khach-tai-ussina-sky-77/",
       },
     ],
   },

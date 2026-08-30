@@ -105,39 +105,48 @@ export const experiences: Experience[] = [
   {
     id: "benelifts-asia",
     index: "03",
-    role: "Marketing Executive & Communications Coordinator",
-    company: "Benelifts Asia Co., Ltd. | Benelifts S.r.l (Milan, Italy)",
-    location: "PROJECT 3 — BENELIFTS ASIA",
-    summary: "Coordinated 360° marketing communications for Italian luxury elevators. Generated 20 inbound customer leads/month via 45+ bilingual SEO articles, grew fanpages (+600 followers month 1), and acquired 120+ leads managing VietBuild 2024 exhibition.",
-    description: "Coordinated 360° marketing communications for Italian luxury elevators. Generated 20 inbound customer leads/month via 45+ bilingual SEO articles, grew fanpages (+600 followers month 1), and acquired 120+ leads managing VietBuild 2024 exhibition.",
+    role: "Marketing Officer",
+    company: "Benelifts Asia Co.,Ltd. I Benelifts S.r.l",
+    location: "April 2024 - February 2025",
+    summary: "Planned and executed monthly content calendars for three brands, managed end-to-end video production, created 45+ bilingual SEO articles, and coordinated internal corporate events & trade exhibitions.",
+    description: "Planned and executed monthly content calendars for three brands, managed end-to-end video production, created 45+ bilingual SEO articles, and coordinated internal corporate events & trade exhibitions.",
     image: getBeneliftsImage("benelifts_img_01.webp") || getBeneliftsImage("benelifts_img_03.webp"),
-    tech: ["Inbound Lead Generation", "Bilingual Technical SEO", "Exhibition Management", "Visual Design", "B2B Communications"],
+    tech: ["Social Media Strategy", "Video Production & Editing", "Bilingual SEO Content", "Event Operation & MC", "B2B Communications"],
     sections: [
       {
-        title: "3.1. Technical SEO & Inbound Lead Generation",
+        title: "Content Fanpage & Social Media Strategy",
         items: [
-          "Authored 45+ SEO-optimized bilingual (English-Vietnamese) website articles on luxury home elevator engineering and European safety norms.",
-          "Designed eye-catching visual thumbnails and information layouts, converting organic web search into up to 20 customer inquiries/month."
+          "Planned and executed monthly content calendars for three brands: Benelifts Asia, Benelifts S.r.l and Casanova Building.",
+          "Created engaging social media content including posts, reels, banners and posters to support fanpage growth."
         ]
       },
       {
-        title: "3.2. Multi-Brand Social Strategy & Visual Design",
+        title: "Video Editor & Short-Form Content Production",
         items: [
-          "Spearheaded visual design and content calendars for Benelifts Asia (Corporate), Benelifts S.r.l Milan (Engineering), and Casanova (Luxury Aesthetics).",
-          "Generated 600+ organic industry followers in the first month and delivered 4.7K reach per announcement."
+          "Managed end-to-end video production from script development and content planning to editing and final delivery.",
+          "Produced short-form video content using CapCut Pro and AI-powered tools."
         ]
       },
       {
-        title: "3.3. Video Production & Technical Short-Form Content",
+        title: "SEO Content & Culinary Research",
         items: [
-          "Scripted, staged, and edited TikTok/Reels showcasing smart elevator safety features, European interior craftsmanship, and installation guides."
+          "Created over 45 bilingual (English-Vietnamese) SEO-optimized articles covering products and elevator-related topics.",
+          "Conducted in-depth research and developed supporting visuals, including thumbnails and creative assets."
         ]
       },
       {
-        title: "3.4. Corporate Events & Trade Exhibitions",
+        title: "Organizer, Main Designer & Photographer OF EVENT",
         items: [
-          "Planned and operated marketing communications for VietBuild 2024 International Exhibition, directly generating 120+ qualified customer leads.",
-          "Hosted and served as Master of Ceremonies (MC) for the annual Corporate New Year Gala with 60+ VIP guests and corporate partners."
+          "Planned, organized, and managed communications for corporate events and exhibitions, including 20/10 celebrations and New Year Party. Coordinated with vendors, served as MC when needed, and managed end-to-end event.",
+          "Developed communication materials and managed onsite media activities, including invitation design, banners, MC coordination, event photography and post-event content."
+        ]
+      },
+      {
+        title: "Key Achievements",
+        items: [
+          "Achieved over 600 new followers within the first month across three brand fanpages.",
+          "Delivered high-performing social content, with the top post reaching 4.7K people and the best-performing video generating 1.2K+ views, 53 likes, 11 shares and 11 comments.",
+          "Successfully organized a New Year Party with over 60 guests and supported VietBuild 2024 generating 120+ customer leads."
         ]
       }
     ]

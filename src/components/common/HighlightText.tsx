@@ -6,7 +6,7 @@ interface HighlightTextProps {
 }
 
 // Regex to capture numeric metrics and achievements across all projects
-const METRIC_REGEX = /(\b\+?\d{1,3}(?:,\d{3})*(?:\.\d+)?[KkMm]?(?:\+|%|\s*(?:–|-)\s*\d+)?(?:\s*(?:Facebook followers|Instagram followers|TikTok followers|FB followers|IG followers|organic industry followers|new followers|followers|likes|viral views|views|reach|comments|shares|SEO-optimized articles|news articles|articles|customer inquiries\/month|inquiries\/month|qualified customer leads|customer leads|leads|VIP guests|participants|restaurants|offices|employees))?(?=[^\w]|$))/gi;
+const METRIC_REGEX = /(\b\+?\d{1,3}(?:,\d{3})*(?:\.\d+)?[KkMm]?(?:\+|%|\s*(?:–|-)\s*\d+)?(?:\s*(?:Facebook followers|Instagram followers|TikTok followers|FB followers|IG followers|organic industry followers|new followers|followers|likes|viral views|views|reach|comments|shares|SEO-optimized articles|news articles|articles|customer inquiries\/month|inquiries\/month|qualified customer leads|customer leads|leads|VIP guests|guests|people|participants|restaurants|offices|employees))?(?=[^\w]|$))/gi;
 
 export const HighlightText = memo(function HighlightText({ text, className = '' }: HighlightTextProps) {
   if (!text) return null;
@@ -22,7 +22,7 @@ export const HighlightText = memo(function HighlightText({ text, className = '' 
         // Check if this token matches a metric pattern:
         // Must start with digits/+, and contain '+', 'K', 'M', or an attached metric unit
         const hasSpecialChar = /[+km–-]/i.test(trimmed);
-        const hasKeyword = /(?:followers|likes|views|reach|comments|shares|articles|inquiries|leads|guests|participants|restaurants|offices|employees)/i.test(trimmed);
+        const hasKeyword = /(?:followers|likes|views|reach|comments|shares|articles|inquiries|leads|guests|people|participants|restaurants|offices|employees)/i.test(trimmed);
         const isMetric = /^\+?\d/.test(trimmed) && (hasSpecialChar || hasKeyword);
 
         if (isMetric) {
