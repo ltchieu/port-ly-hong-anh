@@ -62,6 +62,17 @@ export default function Footer() {
                           <i className="fa-solid fa-phone hologram-metal-text"></i> {contactInfo.phone}
                         </a>
                       </li>
+                      <li>
+                        <a
+                          id="footer-linkedin-direct"
+                          href={contactInfo.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:text-[#2DD4BF] transition-colors flex items-center gap-2"
+                        >
+                          <i className="fa-brands fa-linkedin hologram-metal-text"></i> linkedin.com/in/honganhlys
+                        </a>
+                      </li>
                       <li className="flex items-center gap-2 text-white/60">
                         <i className="fa-solid fa-location-dot hologram-metal-text"></i> {contactInfo.location}
                       </li>
@@ -70,31 +81,56 @@ export default function Footer() {
 
                   <div className="space-y-4">
                     <p className="font-narrow text-xs font-black text-[#2DD4BF] uppercase tracking-widest">
-                      DIRECT CHAT
+                      CONNECT DIRECT
                     </p>
-                    <SpecularButton
-                      id="cta-zalo-me"
-                      href={`https://zalo.me/${contactInfo.phone.replace(/\s+/g, "")}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      size="md"
-                      radius={8}
-                      tint="#0E4249"
-                      tintOpacity={0.96}
-                      textColor="#FFFFFF"
-                      lineColor="#2DD4BF"
-                      baseColor="#07262B"
-                      intensity={1.2}
-                      shineSize={18}
-                      shineFade={35}
-                      thickness={1.5}
-                      autoAnimate={true}
-                      speed={0.4}
-                      className="font-narrow text-xs font-black tracking-[0.15em] uppercase shadow-md hover:shadow-xl transition-shadow"
-                    >
-                      <i className="fa-solid fa-comment-dots text-sm text-[#2DD4BF]"></i>
-                      ZALO ME
-                    </SpecularButton>
+                    <div className="flex flex-col gap-3">
+                      <SpecularButton
+                        id="cta-zalo-me"
+                        href={`https://zalo.me/${contactInfo.phone.replace(/\s+/g, "")}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        size="md"
+                        radius={8}
+                        tint="#0E4249"
+                        tintOpacity={0.96}
+                        textColor="#FFFFFF"
+                        lineColor="#2DD4BF"
+                        baseColor="#07262B"
+                        intensity={1.2}
+                        shineSize={18}
+                        shineFade={35}
+                        thickness={1.5}
+                        autoAnimate={true}
+                        speed={0.4}
+                        className="font-narrow text-xs font-black tracking-[0.15em] uppercase shadow-md hover:shadow-xl transition-shadow"
+                      >
+                        <i className="fa-solid fa-comment-dots text-sm text-[#2DD4BF]"></i>
+                        ZALO ME
+                      </SpecularButton>
+                      <SpecularButton
+                        id="cta-linkedin-me"
+                        href={contactInfo.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        size="md"
+                        radius={8}
+                        tint="#0E4249"
+                        tintOpacity={0.96}
+                        textColor="#FFFFFF"
+                        lineColor="#2DD4BF"
+                        baseColor="#07262B"
+                        intensity={1.2}
+                        shineSize={18}
+                        shineFade={35}
+                        thickness={1.5}
+                        autoAnimate={true}
+                        speed={0.4}
+                        className="font-narrow text-xs font-black tracking-[0.15em] uppercase shadow-md hover:shadow-xl transition-shadow"
+                      >
+                        <i className="fa-brands fa-linkedin text-sm text-[#2DD4BF]"></i>
+                        LINKEDIN
+                      </SpecularButton>
+                    </div>
                   </div>
                 </div>
               </ScrollReveal>
@@ -111,11 +147,14 @@ export default function Footer() {
             LY HONG ANH &bull; PORTFOLIO
           </div>
 
-          <div className="flex flex-wrap justify-center gap-6">
+          <div className="flex flex-wrap justify-center items-center gap-6">
             <a href="#about" className="font-narrow text-xs font-bold tracking-wider text-white/60 hover:text-[#2DD4BF] transition-colors">INTRODUCE</a>
             <a href="#experience" className="font-narrow text-xs font-bold tracking-wider text-white/60 hover:text-[#2DD4BF] transition-colors">EXPERIENCE</a>
             <a href="#work" className="font-narrow text-xs font-bold tracking-wider text-white/60 hover:text-[#2DD4BF] transition-colors">PROJECTS</a>
             <a href="#awards" className="font-narrow text-xs font-bold tracking-wider text-white/60 hover:text-[#2DD4BF] transition-colors">AWARDS</a>
+            <a href={contactInfo.linkedin} target="_blank" rel="noopener noreferrer" className="font-narrow text-xs font-bold tracking-wider text-white/60 hover:text-[#2DD4BF] transition-colors inline-flex items-center gap-1.5">
+              <i className="fa-brands fa-linkedin"></i> LINKEDIN
+            </a>
           </div>
 
           <div className="font-mono text-[10px] text-white/40 tracking-wider">

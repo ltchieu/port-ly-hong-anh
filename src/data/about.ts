@@ -49,9 +49,10 @@ export const educationInfo = {
 };
 
 export const contactInfo = {
-  location: "Tan Phu District, Ho Chi Minh City",
+  location: "Ho Chi Minh City, Vietnam",
   phone: "0946 549 320",
-  email: "lys.honganh@gmail.com"
+  email: "lys.honganh@gmail.com",
+  linkedin: "https://www.linkedin.com/in/honganhlys/"
 };
 
 export const introBio = {
