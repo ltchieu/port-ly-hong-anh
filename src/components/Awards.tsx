@@ -32,7 +32,7 @@ export default function Awards() {
   }, []);
 
   return (
-    <section id="awards" className="py-20 sm:py-24 pb-24 sm:pb-32 bg-[#FAFCFC] scroll-mt-20 border-b border-[#CCE5E3] overflow-clip">
+    <section id="awards" className="py-20 sm:py-24 pb-24 sm:pb-32 bg-[#FAFCFC] scroll-mt-20 border-b border-[#CCE5E3]">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6">
         {/* Section Title Header */}
         <ScrollReveal direction="up">
