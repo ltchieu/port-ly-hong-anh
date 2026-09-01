@@ -65,21 +65,16 @@ export default function Awards() {
         {/* ========================================================================= */}
         <div className="w-full relative">
           <ScrollStack
-            itemDistance={70}
-            itemScale={0.03}
-            itemStackDistance={28}
-            stackPosition="15%"
-            scaleEndPosition="6%"
-            baseScale={0.88}
-            rotationAmount={0}
-            blurAmount={0}
-            useWindowScroll={true}
+            itemDistance={36}
+            itemStackDistance={20}
+            topOffsetMobile={72}
+            topOffsetDesktop={96}
           >
             {awards.map((award, idx) => (
               <ScrollStackItem
                 key={award.id}
                 onClick={() => handleAwardClick(award)}
-                itemClassName="h-auto min-h-[260px] sm:min-h-[280px] my-4 sm:my-6 p-0 rounded-2xl bg-white border-2 border-[#CCE5E3] shadow-xl hover:border-[#0B6E7B] cursor-pointer overflow-hidden flex flex-col justify-between group"
+                itemClassName="h-auto min-h-[260px] sm:min-h-[280px] p-0 rounded-2xl bg-white border-2 border-[#CCE5E3] shadow-lg hover:shadow-2xl hover:border-[#0B6E7B] cursor-pointer overflow-hidden flex flex-col justify-between group"
               >
                 <div className="w-full h-full flex flex-col justify-between">
                   {/* Top Category & Year Header */}
