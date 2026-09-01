@@ -1,5 +1,11 @@
 import type { ReactNode, CSSProperties } from 'react';
 
+export interface CarouselMetricItem {
+  value: string;
+  label: string;
+  highlight?: boolean;
+}
+
 export interface CarouselItemData {
   id: string | number;
   title: string;
@@ -9,6 +15,7 @@ export interface CarouselItemData {
   link?: string;
   postNumber?: string;
   tag?: string;
+  metrics?: CarouselMetricItem[];
 }
 
 export interface CarouselProps {

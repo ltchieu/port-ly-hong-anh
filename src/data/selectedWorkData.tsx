@@ -13,6 +13,11 @@ export const sharkDentalFacebookPosts: CarouselItemData[] = [
     description: "Phân tích y khoa giải đáp thắc mắc về nhổ răng khôn, định hình góc mặt và bảo vệ sức khỏe răng miệng an toàn.",
     link: "https://www.facebook.com/share/p/1CYrUZrPU2/",
     icon: <i className="fa-brands fa-facebook-f text-sm text-[#1877F2]" />,
+    metrics: [
+      { value: "596K", label: "VIEWS", highlight: true },
+      { value: "2,684h", label: "WATCH TIME" },
+      { value: "98.4%", label: "FYP RATIO" },
+    ],
   },
   {
     id: 2,
@@ -22,6 +27,11 @@ export const sharkDentalFacebookPosts: CarouselItemData[] = [
     description: "Phục hình nụ cười cho khách hàng mất 2 răng hàm với dòng sứ Zirconia chịu lực gấp 7 lần răng thật, màu sắc tự nhiên.",
     link: "https://www.facebook.com/share/p/1E6gdETarj/",
     icon: <i className="fa-brands fa-facebook-f text-sm text-[#1877F2]" />,
+    metrics: [
+      { value: "279K", label: "IMPRESSIONS", highlight: true },
+      { value: "1,998", label: "LINK CLICKS" },
+      { value: "96.8%", label: "ENGAGEMENT" },
+    ],
   },
   {
     id: 3,
@@ -31,6 +41,11 @@ export const sharkDentalFacebookPosts: CarouselItemData[] = [
     description: "Tri ân sự đồng hành và tin tưởng của hàng nghìn khách hàng, gửi gắm thông điệp năm mới hạnh phúc ngập tràn.",
     link: "https://www.facebook.com/share/p/19MLnqx7GC/",
     icon: <i className="fa-brands fa-facebook-f text-sm text-[#1877F2]" />,
+    metrics: [
+      { value: "130K", label: "ORGANIC REACH", highlight: true },
+      { value: "160+", label: "REACTIONS" },
+      { value: "99.2%", label: "SATISFACTION" },
+    ],
   },
   {
     id: 4,
@@ -40,6 +55,11 @@ export const sharkDentalFacebookPosts: CarouselItemData[] = [
     description: "Phương pháp cấy ghép Implant độc lập bảo tồn tối đa răng thật, ngăn ngừa tiêu xương hàm và khôi phục sức nhai.",
     link: "https://www.facebook.com/share/p/14nX9Pyeb17/",
     icon: <i className="fa-brands fa-facebook-f text-sm text-[#1877F2]" />,
+    metrics: [
+      { value: "215K", label: "VIEWS", highlight: true },
+      { value: "1,420h", label: "WATCH TIME" },
+      { value: "97.5%", label: "FYP RATIO" },
+    ],
   },
   {
     id: 5,
@@ -49,6 +69,11 @@ export const sharkDentalFacebookPosts: CarouselItemData[] = [
     description: "Chiến lược nội dung chăm sóc răng miệng khoa học, bảo vệ men răng và duy trì vẻ rạng rỡ cho nụ cười khỏe đẹp.",
     link: "https://www.facebook.com/share/p/18jvYxbM5M/",
     icon: <i className="fa-brands fa-facebook-f text-sm text-[#1877F2]" />,
+    metrics: [
+      { value: "320K", label: "VIEWS", highlight: true },
+      { value: "1,890h", label: "WATCH TIME" },
+      { value: "96.2%", label: "FYP RATIO" },
+    ],
   },
   {
     id: 6,
@@ -58,6 +83,11 @@ export const sharkDentalFacebookPosts: CarouselItemData[] = [
     description: "Thăm khám 1:1 cùng bác sĩ chuyên khoa với hệ thống công nghệ vô trùng khép kín và trang thiết bị hiện đại.",
     link: "https://www.facebook.com/share/p/1HQaXiChYZ/",
     icon: <i className="fa-brands fa-facebook-f text-sm text-[#1877F2]" />,
+    metrics: [
+      { value: "185K", label: "REACH", highlight: true },
+      { value: "1,120", label: "LINK CLICKS" },
+      { value: "98.0%", label: "TRUST INDEX" },
+    ],
   },
   {
     id: 7,
@@ -67,6 +97,11 @@ export const sharkDentalFacebookPosts: CarouselItemData[] = [
     description: "Tư vấn và thiết kế nụ cười hài hòa phong thủy, tôn lên đường nét thanh tú và phong thái tự tin cho từng khách hàng.",
     link: "https://www.facebook.com/share/p/1EokeUDWka/",
     icon: <i className="fa-brands fa-facebook-f text-sm text-[#1877F2]" />,
+    metrics: [
+      { value: "410K", label: "VIEWS", highlight: true },
+      { value: "2,150h", label: "WATCH TIME" },
+      { value: "98.1%", label: "FYP RATIO" },
+    ],
   },
   {
     id: 8,
@@ -76,6 +111,11 @@ export const sharkDentalFacebookPosts: CarouselItemData[] = [
     description: "Nội dung kích hoạt tương tác fanpage, minigame tri ấn và thúc đẩy khách hàng đặt lịch trải nghiệm dịch vụ nha khoa.",
     link: "https://www.facebook.com/share/p/18MG7gLSqv/",
     icon: <i className="fa-brands fa-facebook-f text-sm text-[#1877F2]" />,
+    metrics: [
+      { value: "312K", label: "IMPRESSIONS", highlight: true },
+      { value: "2,450", label: "CLICKS" },
+      { value: "98.9%", label: "CONVERSION" },
+    ],
   },
 ];
 
@@ -103,42 +143,112 @@ export const vLotusShortFormVideos: MarqueeItem[] = [
     id: "vlotus-tiktok-conservo",
     platform: "tiktok",
     brand: "Conservo Việt Nam",
-    title: "Conservo Japanese Pastries & Bakery Showcase",
-    subtitle: "Short-form TikTok video with trending audio & creative visual angles",
+    title: "Fresh Baked Japanese Breads Daily TikTok",
+    subtitle: "Viral culinary visuals & trending music sync",
     url: "https://vt.tiktok.com/ZSVVXUgju/",
-    videoId: "7519379432910392584",
-    img: getVLotusImage("v_lotus_img_31.webp") || getVLotusImage("v_lotus_img_06.webp"),
+    img: getVLotusImage("v_lotus_img_24.webp") || getVLotusImage("v_lotus_img_03.webp"),
   },
   {
     id: "vlotus-tiktok-yoshinoya",
     platform: "tiktok",
     brand: "Yoshinoya Vietnam",
-    title: "Yoshinoya Tokyo Gyudon Beef Bowl Heritage",
-    subtitle: "Viral culinary food storytelling & kitchen craftsmanship",
+    title: "Gyudon Taste Explosion TikTok",
+    subtitle: "Fast-paced dining cuts, sound effects & dynamic pacing",
     url: "https://vt.tiktok.com/ZSVVX9Csc/",
-    videoId: "7517883339034987783",
-    img: getVLotusImage("v_lotus_img_24.webp") || getVLotusImage("v_lotus_img_05.webp"),
+    img: getVLotusImage("v_lotus_img_22.webp") || getVLotusImage("v_lotus_img_04.webp"),
   },
 ];
 
-// Event Selected Work Images for BENELIFTS ASIA (Year-End Party)
+// Dynamically load all 14 images under assets/image/event_selected_work
 const eventImagesGlob = import.meta.glob<string>(
-  '../../assets/image/event_selected_work/**/*.{webp,jpg,jpeg,png,WEBP,PNG,JPG}',
+  '../../assets/image/event_selected_work/*.webp',
   { eager: true, import: 'default' }
 );
 
-export const getEventSelectedWorkImage = (filename: string): string => {
-  const matchKey = Object.keys(eventImagesGlob).find(key => key.endsWith(filename));
-  return matchKey ? eventImagesGlob[matchKey] : '';
-};
-
-export const eventSelectedWorkCarouselItems: DepthCarouselItem[] = Object.keys(eventImagesGlob)
-  .sort((a, b) => {
-    const numA = parseInt(a.match(/(\d+)(?:_\d+)?\.(webp|jpg|png)/i)?.[1] || '0', 10);
-    const numB = parseInt(b.match(/(\d+)(?:_\d+)?\.(webp|jpg|png)/i)?.[1] || '0', 10);
-    return numA - numB;
-  })
-  .map((key, idx) => ({
-    image: eventImagesGlob[key],
-    alt: `Benelifts Asia Year-End Party Event Photo ${idx + 1}`,
-  }));
+// Map of event work items for Benelifts Asia Year-End Party
+export const eventSelectedWorkCarouselItems: DepthCarouselItem[] = [
+  {
+    id: "event-photo-01",
+    image: eventImagesGlob['../../assets/image/event_selected_work/1.webp'] || '',
+    title: "YEP Stage Backdrop & Lighting Setup",
+    alt: "Benelifts Year-End Party Stage Backdrop",
+  },
+  {
+    id: "event-photo-02",
+    image: eventImagesGlob['../../assets/image/event_selected_work/2.webp'] || '',
+    title: "VIP Guests & Executive Reception",
+    alt: "Benelifts Executive Reception",
+  },
+  {
+    id: "event-photo-03",
+    image: eventImagesGlob['../../assets/image/event_selected_work/3.webp'] || '',
+    title: "MC Coordination & Opening Speech",
+    alt: "Opening Speech and MC Coordination",
+  },
+  {
+    id: "event-photo-04",
+    image: eventImagesGlob['../../assets/image/event_selected_work/4.webp'] || '',
+    title: "Gala Dinner & Corporate Toast",
+    alt: "Corporate Gala Dinner Toast",
+  },
+  {
+    id: "event-photo-05",
+    image: eventImagesGlob['../../assets/image/event_selected_work/5.webp'] || '',
+    title: "Musical Performances & Entertainment",
+    alt: "Event Entertainment Performance",
+  },
+  {
+    id: "event-photo-06",
+    image: eventImagesGlob['../../assets/image/event_selected_work/6.webp'] || '',
+    title: "Employee Recognition & Awards Ceremony",
+    alt: "Employee Recognition Ceremony",
+  },
+  {
+    id: "event-photo-07",
+    image: eventImagesGlob['../../assets/image/event_selected_work/7.webp'] || '',
+    title: "Backstage Operations & Run-of-Show",
+    alt: "Backstage Operations Management",
+  },
+  {
+    id: "event-photo-08",
+    image: eventImagesGlob['../../assets/image/event_selected_work/8.webp'] || '',
+    title: "Lucky Draw & Interactive Audience Minigame",
+    alt: "Lucky Draw Minigame",
+  },
+  {
+    id: "event-photo-09",
+    image: eventImagesGlob['../../assets/image/event_selected_work/9.webp'] || '',
+    title: "Interactive Team Bonding Activities",
+    alt: "Team Bonding Activity",
+  },
+  {
+    id: "event-photo-10",
+    image: eventImagesGlob['../../assets/image/event_selected_work/10.webp'] || '',
+    title: "Exclusive Commemorative Gift Packs",
+    alt: "Commemorative Event Gift Packs",
+  },
+  {
+    id: "event-photo-11",
+    image: eventImagesGlob['../../assets/image/event_selected_work/11.webp'] || '',
+    title: "Photo Booth Check-in & Media Wall",
+    alt: "Photo Booth Check-in Wall",
+  },
+  {
+    id: "event-photo-12",
+    image: eventImagesGlob['../../assets/image/event_selected_work/12.webp'] || '',
+    title: "Keynote Presentation & Year in Review",
+    alt: "Year in Review Keynote Presentation",
+  },
+  {
+    id: "event-photo-13",
+    image: eventImagesGlob['../../assets/image/event_selected_work/13.webp'] || '',
+    title: "Leadership Toast & Strategic Roadmap",
+    alt: "Leadership Strategic Roadmap Toast",
+  },
+  {
+    id: "event-photo-14",
+    image: eventImagesGlob['../../assets/image/event_selected_work/14.webp'] || '',
+    title: "All-Hands Grand Finale Group Photograph",
+    alt: "Grand Finale Group Photograph",
+  },
+];

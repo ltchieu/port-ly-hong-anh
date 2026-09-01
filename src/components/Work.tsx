@@ -90,12 +90,12 @@ export default function Work() {
 
             {/* React Bits Carousel Component */}
             <ScrollReveal direction="up" delay={0.1}>
-              <div className="w-full flex justify-center items-center py-6 sm:py-8 overflow-hidden min-h-[460px] bg-[#F4FAF9] rounded-2xl border border-[#CCE5E3]">
+              <div className="w-full flex justify-center items-center py-6 sm:py-8 overflow-hidden min-h-[500px] bg-[#F4FAF9] rounded-2xl border border-[#CCE5E3]">
                 <Carousel
                   items={sharkDentalFacebookPosts}
-                  baseWidth={380}
+                  baseWidth={410}
                   autoplay={true}
-                  autoplayDelay={2500}
+                  autoplayDelay={2800}
                   pauseOnHover={true}
                   loop={true}
                   round={false}

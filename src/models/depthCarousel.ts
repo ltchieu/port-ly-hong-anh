@@ -1,4 +1,5 @@
 export interface DepthCarouselItem {
+  id?: string | number;
   image: string;
   alt?: string;
   title?: string;

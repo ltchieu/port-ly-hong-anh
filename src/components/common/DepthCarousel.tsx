@@ -385,7 +385,7 @@ export default function DepthCarousel({
       <div className="depth-carousel__stage" ref={stageRef}>
         {data.map((item, i) => (
           <div
-            key={i}
+            key={item.id ?? i}
             className="depth-carousel__card"
             ref={el => {
               cardRefs.current[i] = el;
