@@ -3,13 +3,14 @@ import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "motion/react";
 import ScrollReveal from "./common/ScrollReveal";
 import FacebookEmbed from "./common/FacebookEmbed";
-import { marketingExecutiveBrands } from "../data/marketingExecutiveData";
+import Carousel from "./common/Carousel";
+import InfiniteMarquee from "./common/InfiniteMarquee";
+import {
+  sharkDentalFacebookPosts,
+  vLotusShortFormVideos,
+} from "../data/selectedWorkData";
 import type { VideoItem } from "../models/marketingExecutive";
-
-// Filter specifically for DREAM CLUB (L117-L141) and HCMCOU (L142-L182)
-const selectedVideoBrands = marketingExecutiveBrands.filter(
-  (brand) => brand.id === "dream-club" || brand.id === "hcmcou"
-);
+import type { MarqueeItem } from "../models/infiniteMarquee";
 
 export default function Work() {
   const [selectedVideo, setSelectedVideo] = useState<VideoItem | null>(null);
@@ -20,6 +21,21 @@ export default function Work() {
 
   const handleCloseVideoModal = () => {
     setSelectedVideo(null);
+  };
+
+  const handleMarqueeItemClick = (item: MarqueeItem) => {
+    if (item.url) {
+      if (item.platform?.toLowerCase() === "facebook") {
+        setSelectedVideo({
+          stt: 1,
+          title: item.title || item.brand || "Video Reel",
+          url: item.url,
+          platform: "Facebook",
+        });
+      } else {
+        window.open(item.url, "_blank", "noopener,noreferrer");
+      }
+    }
   };
 
   return (
@@ -42,68 +58,83 @@ export default function Work() {
           </div>
         </ScrollReveal>
 
-        {/* Video Brand Collections */}
+        {/* Selected Work Brand Collections */}
         <div className="space-y-16">
-          {selectedVideoBrands.map((brandSection, bIdx) => (
-            <div key={brandSection.id} className="space-y-6">
-              {/* Brand Header */}
-              <ScrollReveal direction="up" delay={bIdx * 0.1}>
-                <div className="bg-white border border-[#CCE5E3] p-6 rounded-xl shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
-                  <div className="space-y-1 max-w-2xl">
-                    <span className="font-narrow text-[13px] font-black hologram-metal-text tracking-[0.2em] uppercase block">
-                      {brandSection.category}
-                    </span>
-                    <h3 className="font-display text-2xl sm:text-3xl text-[#0C2B31] uppercase tracking-wide">
-                      {brandSection.brand}
-                    </h3>
-                    <p className="font-sans text-xs sm:text-sm text-[#4E6E75] leading-relaxed pt-1">
-                      {brandSection.description}
-                    </p>
-                  </div>
-                  <span className="font-mono text-xs bg-[#0B6E7B] text-white px-3.5 py-1.5 rounded-full uppercase tracking-wider font-bold self-start md:self-auto shadow-xs">
-                    {brandSection.videos.length} VIDEO REELS
+          {/* 1. DIEM NHAN GROUP JSC | SHARK DENTAL (CAROUSEL) */}
+          <div className="space-y-6">
+            {/* Brand Header */}
+            <ScrollReveal direction="up">
+              <div className="bg-white border border-[#CCE5E3] p-6 rounded-xl shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div className="space-y-1 max-w-2xl">
+                  <span className="font-narrow text-[13px] font-black hologram-metal-text tracking-[0.2em] uppercase block">
+                    Fanpage Content & Social Media Strategy
+                  </span>
+                  <h3 className="font-display text-2xl sm:text-3xl text-[#0C2B31] uppercase tracking-wide">
+                    DIEM NHAN GROUP JSC I SHARK DENTAL
+                  </h3>
+                  <p className="font-sans text-xs sm:text-sm text-[#4E6E75] leading-relaxed pt-1">
+                    Developed bilingual social media content and monthly strategies across Facebook, TikTok and Instagram, including content pillars, creative angles and visual briefs for designers.
+                  </p>
+                </div>
+                <div className="flex items-center gap-2 self-start md:self-auto">
+                  <span className="font-mono text-xs bg-[#0B6E7B] text-white px-3.5 py-1.5 rounded-full uppercase tracking-wider font-bold shadow-xs">
+                    {sharkDentalFacebookPosts.length} FACEBOOK POSTS
                   </span>
                 </div>
-              </ScrollReveal>
-
-              {/* Videos Grid */}
-              <div
-                className={`grid grid-cols-1 ${brandSection.videos.length === 2
-                  ? "md:grid-cols-2 gap-6"
-                  : "sm:grid-cols-2 lg:grid-cols-3 gap-5"
-                  }`}
-              >
-                {brandSection.videos.map((video, vIdx) => (
-                  <ScrollReveal key={video.stt} direction="up" delay={vIdx * 0.08}>
-                    <div
-                      onClick={() => handleOpenVideoModal(video)}
-                      className="group relative bg-[#07262B] rounded-xl overflow-hidden shadow-md hover:shadow-xl border border-[#0B6E7B]/30 transition-all duration-300 cursor-pointer flex flex-col justify-between h-full"
-                    >
-                      {/* Live Facebook Video Player & Native Thumbnail */}
-                      <div className="relative aspect-video w-full overflow-hidden bg-black flex items-center justify-center">
-                        <FacebookEmbed url={video.url} />
-                      </div>
-
-                      {/* Card Content & Action Trigger */}
-                      <div className="p-4 bg-[#0B252B] text-white space-y-3 flex-1 flex flex-col justify-between">
-                        <h4 className="font-sans text-xs sm:text-sm font-bold leading-snug line-clamp-2 group-hover:text-[#2DD4BF] transition-colors">
-                          {video.title}
-                        </h4>
-
-                        <div className="pt-2 border-t border-white/10 flex items-center justify-between text-[11px] font-narrow font-bold text-white/70 uppercase tracking-wider">
-                          <span className="flex items-center gap-1.5">
-                            <i className="fa-solid fa-circle-play text-[10px] hologram-metal-text"></i>
-                            Watch Video
-                          </span>
-                          <i className="fa-solid fa-arrow-up-right-from-square text-xs text-white/50 group-hover:text-white group-hover:translate-x-0.5 transition-all"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </ScrollReveal>
-                ))}
               </div>
-            </div>
-          ))}
+            </ScrollReveal>
+
+            {/* React Bits Carousel Component */}
+            <ScrollReveal direction="up" delay={0.1}>
+              <div className="w-full flex justify-center items-center py-6 sm:py-8 overflow-hidden min-h-[460px] bg-[#F4FAF9] rounded-2xl border border-[#CCE5E3]">
+                <Carousel
+                  items={sharkDentalFacebookPosts}
+                  baseWidth={380}
+                  autoplay={true}
+                  autoplayDelay={2500}
+                  pauseOnHover={true}
+                  loop={true}
+                  round={false}
+                />
+              </div>
+            </ScrollReveal>
+          </div>
+
+          {/* 2. V LOTUS HOLDINGS JSC (INFINITE MARQUEE) */}
+          <div className="space-y-6">
+            {/* Brand Header */}
+            <ScrollReveal direction="up">
+              <div className="bg-white border border-[#CCE5E3] p-6 rounded-xl shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div className="space-y-1 max-w-2xl">
+                  <span className="font-narrow text-[13px] font-black hologram-metal-text tracking-[0.2em] uppercase block">
+                    Video Editing & Short-Form Content Production
+                  </span>
+                  <h3 className="font-display text-2xl sm:text-3xl text-[#0C2B31] uppercase tracking-wide">
+                    V LOTUS HOLDINGS JSC
+                  </h3>
+                  <p className="font-sans text-xs sm:text-sm text-[#4E6E75] leading-relaxed pt-1">
+                    Produced short-form videos for Yoshinoya and Conservo through onsite restaurant shoots, visual storytelling, scripting and end-to-end editing using CapCut Pro and AI tools.
+                  </p>
+                </div>
+                <div className="flex items-center gap-2 self-start md:self-auto">
+                  <span className="font-mono text-xs bg-[#0B6E7B] text-white px-3.5 py-1.5 rounded-full uppercase tracking-wider font-bold shadow-xs">
+                    {vLotusShortFormVideos.length} SHORT-FORM VIDEOS
+                  </span>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            {/* Infinite Marquee Component for Yoshinoya & Conservo Videos */}
+            <ScrollReveal direction="up" delay={0.1}>
+              <div className="w-full py-6 sm:py-8 overflow-hidden bg-[#F4FAF9] rounded-2xl border border-[#CCE5E3]">
+                <InfiniteMarquee
+                  items={vLotusShortFormVideos}
+                  speed={28}
+                  onItemClick={handleMarqueeItemClick}
+                />
+              </div>
+            </ScrollReveal>
+          </div>
         </div>
       </div>
 

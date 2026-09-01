@@ -2,6 +2,7 @@ import { Experience } from "../models/Experience";
 import { getDNImage } from "./dnGroupData";
 import { getVLotusImage } from "./vLotusData";
 import { getBeneliftsImage } from "./beneliftsData";
+import { getPanasonicWebinarImage } from "./panasonicWebinarData";
 
 export const experiences: Experience[] = [
   {
@@ -154,37 +155,60 @@ export const experiences: Experience[] = [
   {
     id: "freelance-event-coordinator",
     index: "04",
-    role: "Independent Communications Associate & Event Coordinator",
-    company: "Freelance Projects",
-    location: "Q2/2025 — PRESENT",
-    summary: "Supported brand communication initiatives across lifestyle, handicrafts, and wedding brands through integrated creative production, visual communications, and customer experience projects",
-    description: "Supported brand communication initiatives across lifestyle, handicrafts, and wedding brands through integrated creative production, visual communications, and customer experience projects",
-    image: "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1000&auto=format&fit=crop",
-    tech: ["Event Planning", "Vendor Coordination", "SOP Development", "On-site Operations", "Content Production"]
-  },
-  {
-    id: "ou-news-marcom-associate",
-    index: "05",
-    role: "Freelance MarCom Associate | Team Leader Assistant",
-    company: "OU NEWS - HCMC Open University",
-    location: "Q1 2021 — Q2 2023 | Q1 2024 — PRESENT",
-    summary: "Produced 100+ news articles, feature stories, press releases, website content and multimedia communication materials for institutional branding.",
-    description: "Produced 100+ news articles, feature stories, press releases, website content and multimedia communication materials for institutional branding.",
-    image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=1000&auto=format&fit=crop",
-    tech: ["MarCom Strategy", "Press Releases", "Workflow Optimization", "Team Leadership", "Livestream & Media"],
+    role: "Freelance Webinar Assistant | Online Room Administrator",
+    company: "Movement Marketing Agency I PANASONIC CFAN WEBINAR",
+    location: "March 2024",
+    summary: "Supported event organizers in coordinating with stakeholders, managing AV technical operations and online room administration for Panasonic CFAN product training webinars.",
+    description: "Supported event organizers in coordinating with relevant stakeholders and managing support resources throughout the webinar, alongside AV technical setup and online room administration.",
+    image: getPanasonicWebinarImage("1.webp") || getPanasonicWebinarImage("5.webp"),
+    tech: ["Webinar Operations", "Room Administration", "AV Technical Setup", "Speaker Coordination", "Stakeholder Management"],
     sections: [
       {
-        title: "Editorial & Media Communications",
+        title: "Webinar Assistant",
         items: [
-          "Produced 100+ news articles, feature stories, press releases, website content and multimedia communication materials for institutional branding.",
-          "Covered university-wide events through photography, videography and social media storytelling."
+          "Supported event organizers in coordinating with relevant stakeholders and managing support resources throughout the webinar.",
+          "Filtered and compiled audience questions for speakers and assisted with speaker coordination during the session."
         ]
       },
       {
-        title: "Event Communications & Workflow Optimization",
+        title: "Webinar Administrator",
         items: [
-          "Delivered communication support for graduation ceremonies, conferences, and campaigns involving 200-600 participants.",
-          "Designed and standardized contributor workflow, reducing content approval time and establishing performance tracking."
+          "Managed audio-visual quality, network connectivity and technical setup for online webinars.",
+          "Monitored participant counts, approved attendees and controlled microphone settings for speakers."
+        ]
+      },
+      {
+        title: "Key achievements",
+        items: [
+          "Successfully supported two product training webinars, attracting 200+ participants in total.",
+          "Generated 30+ orders directly during the events and achieved over 93% positive attendee feedback."
+        ]
+      }
+    ]
+  },
+  {
+    id: "aeon-vietnam",
+    index: "05",
+    role: "Corporate Communications Intern",
+    company: "AEON VIET NAM",
+    location: "October 2023 - February 2024",
+    summary: "Managed end-to-end video production for internal communications and employer branding ('Growth with AEON'), while supporting on-site media and operations for Job Fairs and Mass Recruitment campaigns.",
+    description: "Managed end-to-end video production from script development and content planning to editing and final delivery using CapCut Pro and Canva, alongside supporting internal and recruitment events.",
+    image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=1000&auto=format&fit=crop",
+    tech: ["Video Production", "CapCut Pro & Canva", "Event Operations", "Corporate Communications", "Employer Branding"],
+    sections: [
+      {
+        title: "Video Editor & Short-Form Content Production",
+        items: [
+          "Managed end-to-end video production from script development and content planning to editing and final delivery.",
+          "Produced short-form video content using CapCut Pro and Canva"
+        ]
+      },
+      {
+        title: "Event Operation & Communications",
+        items: [
+          "Supported internal and recruitment events, including Job Fairs and Mass Recruitment campaigns.",
+          "Produced event content through photography, videography, video editing and social media posts to support event communications."
         ]
       }
     ]

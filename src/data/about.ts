@@ -1,13 +1,4 @@
-export interface SkillGroup {
-  name: string;
-  details: string;
-}
-
-export interface CompetencyItem {
-  title: string;
-  icon: string;
-  category: string;
-}
+import type { CompetencyItem, ToolItem } from "../models/about";
 
 export const coreCompetencies: CompetencyItem[] = [
   { title: "Content marketing", icon: "fa-solid fa-pen-nib", category: "STRATEGY" },
@@ -20,12 +11,6 @@ export const coreCompetencies: CompetencyItem[] = [
   { title: "AI productivity", icon: "fa-solid fa-wand-magic-sparkles", category: "AI & TECH" },
   { title: "Workspace & data management", icon: "fa-solid fa-database", category: "OPERATIONS" }
 ];
-
-export interface ToolItem {
-  name: string;
-  icon: string;
-  category?: string;
-}
 
 export const toolsAndPlatforms: ToolItem[] = [
   { name: "CMS", icon: "fa-solid fa-globe", category: "WEB" },

@@ -7,7 +7,7 @@ import DNGroupExperienceShowcase from "./common/DNGroupExperienceShowcase";
 import VLotusExperienceShowcase from "./common/VLotusExperienceShowcase";
 import BeneliftsAsiaExperienceShowcase from "./common/BeneliftsAsiaExperienceShowcase";
 import FreelanceExperienceShowcase from "./common/FreelanceExperienceShowcase";
-import MarComExperienceShowcase from "./common/MarComExperienceShowcase";
+import AeonExperienceShowcase from "./common/AeonExperienceShowcase";
 
 interface ExperienceDetailModalProps {
   experienceId: string | null;
@@ -19,8 +19,8 @@ const experienceIcons: Record<string, string> = {
   "dn-group": "fa-solid fa-tooth",
   "v-lotus": "fa-solid fa-utensils",
   "benelifts-asia": "fa-solid fa-building",
-  "freelance-event-coordinator": "fa-solid fa-champagne-glasses",
-  "ou-news-marcom-associate": "fa-solid fa-newspaper",
+  "freelance-event-coordinator": "fa-solid fa-headset",
+  "aeon-vietnam": "fa-solid fa-bullhorn",
 };
 
 export default function ExperienceDetailModal({
@@ -234,8 +234,8 @@ export default function ExperienceDetailModal({
                   <BeneliftsAsiaExperienceShowcase />
                 ) : currentExp.id === "freelance-event-coordinator" ? (
                   <FreelanceExperienceShowcase />
-                ) : currentExp.id === "ou-news-marcom-associate" ? (
-                  <MarComExperienceShowcase />
+                ) : currentExp.id === "aeon-vietnam" ? (
+                  <AeonExperienceShowcase />
                 ) : (
                   <div className="aspect-video w-full overflow-hidden rounded-2xl bg-[#E7F3F2] relative group border border-[#CCE5E3]">
                     <img

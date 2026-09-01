@@ -1,7 +1,7 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, RefObject, memo, CSSProperties } from 'react';
 import { gsap } from 'gsap';
 import './Masonry.css';
-import type { MasonryItem, MasonryProps } from '../../models/masonry';
+import type { MasonryProps } from '../../models/masonry';
 
 const useMedia = (queries: string[], values: number[], defaultValue: number) => {
   const get = () => values[queries.findIndex(q => matchMedia(q).matches)] ?? defaultValue;

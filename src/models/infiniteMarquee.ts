@@ -3,6 +3,12 @@ export interface MarqueeItem {
   img: string;
   title?: string;
   subtitle?: string;
+  url?: string;
+  platform?: 'facebook' | 'tiktok' | string;
+  brand?: string;
+  category?: string;
+  description?: string;
+  videoId?: string;
 }
 
 export interface InfiniteMarqueeProps {
