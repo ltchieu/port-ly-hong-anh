@@ -5,19 +5,23 @@ import ScrollReveal from "./common/ScrollReveal";
 import FacebookEmbed from "./common/FacebookEmbed";
 import Carousel from "./common/Carousel";
 import InfiniteMarquee from "./common/InfiniteMarquee";
+import DepthCarousel from "./common/DepthCarousel";
 import {
   sharkDentalFacebookPosts,
   vLotusShortFormVideos,
+  eventSelectedWorkCarouselItems,
 } from "../data/selectedWorkData";
-import type { VideoItem } from "../models/marketingExecutive";
 import type { MarqueeItem } from "../models/infiniteMarquee";
 
-export default function Work() {
-  const [selectedVideo, setSelectedVideo] = useState<VideoItem | null>(null);
+interface VideoModalItem {
+  stt: number;
+  title: string;
+  url: string;
+  platform: string;
+}
 
-  const handleOpenVideoModal = (video: VideoItem) => {
-    setSelectedVideo(video);
-  };
+export default function Work() {
+  const [selectedVideo, setSelectedVideo] = useState<VideoModalItem | null>(null);
 
   const handleCloseVideoModal = () => {
     setSelectedVideo(null);
@@ -131,6 +135,70 @@ export default function Work() {
                   items={vLotusShortFormVideos}
                   speed={28}
                   onItemClick={handleMarqueeItemClick}
+                />
+              </div>
+            </ScrollReveal>
+          </div>
+
+          {/* 3. BENELIFTS ASIA COMPANY LIMITED (DEPTH CAROUSEL) */}
+          <div className="space-y-6">
+            {/* Brand Header */}
+            <ScrollReveal direction="up">
+              <div className="bg-white border border-[#CCE5E3] p-6 rounded-xl shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div className="space-y-2 max-w-2xl">
+                  {/* Top Left: YEP Event Plan Link & Category */}
+                  <div className="flex flex-wrap items-center gap-2.5">
+                    <a
+                      href="https://docs.google.com/spreadsheets/d/10qXIwqKY7R7dVaucjhWWpAMN5-JGNgFw9sSNRxJUGSM/edit?usp=sharing"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#F0F8F7] hover:bg-[#0B6E7B] text-[#0B6E7B] hover:text-white border border-[#CCE5E3] hover:border-[#0B6E7B] rounded-lg font-narrow text-xs font-black uppercase tracking-wider transition-all shadow-2xs hover:scale-105"
+                    >
+                      <i className="fa-solid fa-file-spreadsheet text-emerald-600 text-sm"></i>
+                      <span>YEP Event Plan</span>
+                      <i className="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                    </a>
+                    <span className="font-narrow text-[13px] font-black hologram-metal-text tracking-[0.2em] uppercase">
+                      Event Operations & Communications
+                    </span>
+                  </div>
+
+                  <h3 className="font-display text-2xl sm:text-3xl text-[#0C2B31] uppercase tracking-wide">
+                    BENELIFTS ASIA COMPANY LIMITED
+                  </h3>
+                  <p className="font-sans text-xs sm:text-sm text-[#4E6E75] leading-relaxed pt-1">
+                    Planned and supported events, covering event highlights, backstage operations, photography and social media communications for the Year-End Party.
+                  </p>
+                </div>
+                <div className="flex items-center gap-2 self-start md:self-auto">
+                  <span className="font-mono text-xs bg-[#0B6E7B] text-white px-3.5 py-1.5 rounded-full uppercase tracking-wider font-bold shadow-xs">
+                    {eventSelectedWorkCarouselItems.length} EVENT PHOTOS
+                  </span>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            {/* React Bits DepthCarousel Component */}
+            <ScrollReveal direction="up" delay={0.1}>
+              <div className="w-full relative h-[480px] sm:h-[540px] flex items-center justify-center overflow-hidden bg-[#F4FAF9] rounded-2xl border border-[#CCE5E3] py-4">
+                <DepthCarousel
+                  items={eventSelectedWorkCarouselItems}
+                  cardWidth={300}
+                  cardHeight={380}
+                  radius={18}
+                  depth={220}
+                  spread={90}
+                  tilt={22}
+                  tiltDirection="right"
+                  perspective={1400}
+                  visibleCards={4}
+                  falloff={0.2}
+                  blur={6}
+                  autoplay={true}
+                  autoplayDelay={3000}
+                  loop={true}
+                  showControls={true}
+                  showIndicators={true}
                 />
               </div>
             </ScrollReveal>

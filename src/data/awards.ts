@@ -1,5 +1,6 @@
 import { Award } from "../models/Award";
-import microsoftImg from "../../assets/image/Award & Certification/microsoft.jpg";
+import microsoftWordImg from "../../assets/image/Award & Certification/microsoft.jpg";
+import microsoftExcelImg from "../../assets/image/Award & Certification/Microsoft Office Excel.webp";
 import toiecImg from "../../assets/image/Award & Certification/toiec.jpg";
 
 export const awards: Award[] = [
@@ -16,7 +17,7 @@ export const awards: Award[] = [
     image: toiecImg
   },
   {
-    id: 'microsoft-office-specialist',
+    id: 'microsoft-office-specialist-word',
     isFeatured: true,
     year: '2023',
     category: 'PROFESSIONAL IT & PRODUCTIVITY CERTIFICATION',
@@ -25,6 +26,18 @@ export const awards: Award[] = [
     role: 'Certified Specialist (Verification: HkUy-XMYL)',
     project: 'Microsoft Certified Professional',
     description: 'Successfully completed the comprehensive requirements to be recognized as a Microsoft Office Specialist for Office Word 2016, demonstrating advanced document structuring, formatting, and office productivity expertise.',
-    image: microsoftImg
+    image: microsoftWordImg
+  },
+  {
+    id: 'microsoft-office-specialist-excel',
+    isFeatured: true,
+    year: '2023',
+    category: 'PROFESSIONAL IT & PRODUCTIVITY CERTIFICATION',
+    title: 'Microsoft Office Specialist: Office Excel 2016',
+    issuer: 'Microsoft / Certiport',
+    role: 'Certified Specialist (Microsoft Certified Professional)',
+    project: 'Microsoft Certified Professional',
+    description: 'Successfully completed the comprehensive requirements to be recognized as a Microsoft Office Specialist for Office Excel 2016, demonstrating advanced data analysis, spreadsheet modeling, financial functions, and data visualization expertise.',
+    image: microsoftExcelImg
   }
 ];

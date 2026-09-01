@@ -1,5 +1,6 @@
 import type { CarouselItemData } from '../models/carousel';
 import type { MarqueeItem } from '../models/infiniteMarquee';
+import type { DepthCarouselItem } from '../models/depthCarousel';
 import { getVLotusImage } from './vLotusData';
 
 // 8 Highlight Facebook posts for Diem Nhan Group / Shark Dental
@@ -72,7 +73,7 @@ export const sharkDentalFacebookPosts: CarouselItemData[] = [
     postNumber: "Facebook Post #8",
     tag: "Chiến Dịch Truyền Thông",
     title: "Ưu Đãi Đặc Quyền — Tỏa Sáng Nụ Cười Xinh",
-    description: "Nội dung kích hoạt tương tác fanpage, minigame tri ân và thúc đẩy khách hàng đặt lịch trải nghiệm dịch vụ nha khoa.",
+    description: "Nội dung kích hoạt tương tác fanpage, minigame tri ấn và thúc đẩy khách hàng đặt lịch trải nghiệm dịch vụ nha khoa.",
     link: "https://www.facebook.com/share/p/18MG7gLSqv/",
     icon: <i className="fa-brands fa-facebook-f text-sm text-[#1877F2]" />,
   },
@@ -119,3 +120,25 @@ export const vLotusShortFormVideos: MarqueeItem[] = [
     img: getVLotusImage("v_lotus_img_24.webp") || getVLotusImage("v_lotus_img_05.webp"),
   },
 ];
+
+// Event Selected Work Images for BENELIFTS ASIA (Year-End Party)
+const eventImagesGlob = import.meta.glob<string>(
+  '../../assets/image/event_selected_work/**/*.{webp,jpg,jpeg,png,WEBP,PNG,JPG}',
+  { eager: true, import: 'default' }
+);
+
+export const getEventSelectedWorkImage = (filename: string): string => {
+  const matchKey = Object.keys(eventImagesGlob).find(key => key.endsWith(filename));
+  return matchKey ? eventImagesGlob[matchKey] : '';
+};
+
+export const eventSelectedWorkCarouselItems: DepthCarouselItem[] = Object.keys(eventImagesGlob)
+  .sort((a, b) => {
+    const numA = parseInt(a.match(/(\d+)(?:_\d+)?\.(webp|jpg|png)/i)?.[1] || '0', 10);
+    const numB = parseInt(b.match(/(\d+)(?:_\d+)?\.(webp|jpg|png)/i)?.[1] || '0', 10);
+    return numA - numB;
+  })
+  .map((key, idx) => ({
+    image: eventImagesGlob[key],
+    alt: `Benelifts Asia Year-End Party Event Photo ${idx + 1}`,
+  }));

@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef, useCallback, useEffect } from 'react';
+import React, { useLayoutEffect, useRef, useCallback } from 'react';
 import type { ReactNode } from 'react';
 import Lenis from 'lenis';
 
@@ -17,7 +17,7 @@ export const ScrollStackItem: React.FC<ScrollStackItemProps> = ({
 }) => (
   <div
     onClick={onClick}
-    className={`scroll-stack-card relative w-full my-6 rounded-3xl shadow-xl box-border origin-top will-change-transform ${itemClassName}`.trim()}
+    className={`scroll-stack-card relative w-full my-4 sm:my-6 rounded-3xl shadow-xl box-border origin-top will-change-transform ${itemClassName}`.trim()}
     style={{
       backfaceVisibility: 'hidden',
       transformStyle: 'preserve-3d',
@@ -53,7 +53,6 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
   stackPosition = '20%',
   scaleEndPosition = '10%',
   baseScale = 0.85,
-  scaleDuration = 0.5,
   rotationAmount = 0,
   blurAmount = 0,
   useWindowScroll = false,
@@ -136,11 +135,16 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     cardsRef.current.forEach((card, i) => {
       if (!card) return;
 
+      const cardHeight = card.offsetHeight || 300;
       const cardTop = getElementOffset(card, i);
       const triggerStart = cardTop - stackPositionPx - itemStackDistance * i;
       const triggerEnd = cardTop - scaleEndPositionPx;
       const pinStart = cardTop - stackPositionPx - itemStackDistance * i;
-      const pinEnd = endElementTop ? endElementTop - containerHeight / 1.5 : pinStart + 2000;
+      
+      // Calculate a safe pinEnd so cards release before bleeding out of section
+      const pinEnd = endElementTop
+        ? Math.max(pinStart, endElementTop - cardHeight - containerHeight * 0.2 - itemStackDistance * (cardsRef.current.length - 1 - i))
+        : pinStart + 2000;
 
       const scaleProgress = calculateProgress(scrollTop, triggerStart, triggerEnd);
       const targetScale = baseScale + i * itemScale;
@@ -169,10 +173,15 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       let translateY = 0;
       const isPinned = scrollTop >= pinStart && scrollTop <= pinEnd;
 
+      // Safe bounds calculation so cards never overflow bottom container
+      const maxAllowedTranslate = endElementTop
+        ? Math.max(0, endElementTop - cardTop - cardHeight - 24)
+        : 99999;
+
       if (isPinned) {
-        translateY = scrollTop - cardTop + stackPositionPx + itemStackDistance * i;
+        translateY = Math.min(scrollTop - cardTop + stackPositionPx + itemStackDistance * i, maxAllowedTranslate);
       } else if (scrollTop > pinEnd) {
-        translateY = pinEnd - cardTop + stackPositionPx + itemStackDistance * i;
+        translateY = Math.min(pinEnd - cardTop + stackPositionPx + itemStackDistance * i, maxAllowedTranslate);
       }
 
       const newTransform = {
@@ -349,7 +358,6 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     stackPosition,
     scaleEndPosition,
     baseScale,
-    scaleDuration,
     rotationAmount,
     blurAmount,
     useWindowScroll,
@@ -379,13 +387,13 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       <div
         className={`scroll-stack-inner ${
           useWindowScroll
-            ? 'pt-4 pb-12 min-h-0'
+            ? 'pt-4 pb-20 sm:pb-28 min-h-0'
             : 'pt-[15vh] px-4 sm:px-12 md:px-20 pb-16 min-h-screen'
         }`}
       >
         {children}
-        {/* Spacer so the last pin can release cleanly */}
-        <div className="scroll-stack-end w-full h-px" />
+        {/* Generous spacer so the last pin releases cleanly with zero overlap into following sections */}
+        <div className="scroll-stack-end w-full h-16 sm:h-24 lg:h-32 pointer-events-none" />
       </div>
     </div>
   );
