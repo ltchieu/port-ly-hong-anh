@@ -23,6 +23,56 @@ const experienceIcons: Record<string, string> = {
   "aeon-vietnam": "fa-solid fa-bullhorn",
 };
 
+interface ParsedMetric {
+  value: string;
+  label: string;
+  icon: string;
+  iconBg: string;
+}
+
+function parseMetric(text: string): ParsedMetric {
+  const match = text.match(/^([\d,.]+[+%kKmMbB]?|\d+[\w+]*)\s+(.*)$/);
+  let value = "";
+  let label = text;
+
+  if (match) {
+    value = match[1];
+    label = match[2];
+  }
+
+  const lower = text.toLowerCase();
+  let icon = "fa-solid fa-chart-line text-[#0B6E7B]";
+  let iconBg = "bg-[#0B6E7B]/10";
+
+  if (lower.includes("facebook")) {
+    icon = "fa-brands fa-facebook-f text-[#1877F2]";
+    iconBg = "bg-[#1877F2]/10";
+  } else if (lower.includes("instagram")) {
+    icon = "fa-brands fa-instagram text-[#E4405F]";
+    iconBg = "bg-[#E4405F]/10";
+  } else if (lower.includes("tiktok")) {
+    icon = "fa-brands fa-tiktok text-[#0C2B31]";
+    iconBg = "bg-[#0C2B31]/10";
+  } else if (lower.includes("view") || lower.includes("video")) {
+    icon = "fa-solid fa-play text-[#0B6E7B]";
+    iconBg = "bg-[#0B6E7B]/10";
+  } else if (lower.includes("reach") || lower.includes("impression")) {
+    icon = "fa-solid fa-arrow-trend-up text-[#0B6E7B]";
+    iconBg = "bg-[#0B6E7B]/10";
+  } else if (lower.includes("like") || lower.includes("share")) {
+    icon = "fa-solid fa-heart text-[#E11D48]";
+    iconBg = "bg-[#E11D48]/10";
+  } else if (lower.includes("order") || lower.includes("lead")) {
+    icon = "fa-solid fa-receipt text-[#0B6E7B]";
+    iconBg = "bg-[#0B6E7B]/10";
+  } else if (lower.includes("attendee") || lower.includes("feedback")) {
+    icon = "fa-solid fa-star text-[#EAB308]";
+    iconBg = "bg-[#EAB308]/10";
+  }
+
+  return { value, label, icon, iconBg };
+}
+
 export default function ExperienceDetailModal({
   experienceId,
   onClose,
@@ -150,78 +200,148 @@ export default function ExperienceDetailModal({
               tabIndex={0}
               className="flex-1 overflow-y-auto overscroll-contain px-4 sm:px-8 md:px-10 py-6 space-y-8 custom-scrollbar focus:outline-none"
             >
-              {/* Role Title & Summary Banner */}
-              <div className="bg-white border border-[#CCE5E3] p-6 sm:p-8 rounded-2xl shadow-xs space-y-4">
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <span className="inline-block px-3 py-1 bg-[#0B6E7B]/10 text-[#0B6E7B] rounded-md font-narrow text-xs font-black tracking-widest uppercase">
-                    ROLE: {currentExp.role}
-                  </span>
-                  {currentExp.tech && (
-                    <div className="flex flex-wrap gap-1.5">
-                      {currentExp.tech.map((t, idx) => (
-                        <span
-                          key={idx}
-                          className="px-2.5 py-0.5 bg-[#F0F8F7] border border-[#CCE5E3] text-[#4E6E75] font-mono text-[10px] uppercase rounded"
-                        >
-                          {t}
+              {/* Executive Role & Core Competencies Card */}
+              <div className="bg-gradient-to-br from-white via-[#FAFCFC] to-[#F2F8F7] border border-[#CCE5E3] p-6 sm:p-8 rounded-3xl shadow-sm relative overflow-hidden">
+                <div className="absolute right-0 top-0 w-64 h-64 bg-[#0B6E7B]/5 rounded-full blur-3xl pointer-events-none -translate-y-12 translate-x-12" />
+
+                <div className="relative z-10 space-y-6">
+                  {/* Top Bar: Role & Skills */}
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-[#E0EFEF] pb-5">
+                    <div className="space-y-1.5">
+                      <div className="flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-[#0B6E7B] animate-pulse" />
+                        <span className="font-mono text-[11px] font-black text-[#0B6E7B] uppercase tracking-[0.18em]">
+                          EXECUTIVE ROLE SPECIFICATION
                         </span>
-                      ))}
+                      </div>
+                      <h4 className="font-display text-2xl sm:text-3xl font-black uppercase text-[#0C2B31] tracking-tight">
+                        {currentExp.role}
+                      </h4>
                     </div>
+
+                    {currentExp.tech && (
+                      <div className="flex flex-wrap gap-2 items-center">
+                        {currentExp.tech.map((t, idx) => (
+                          <span
+                            key={idx}
+                            className="px-3.5 py-1.5 bg-white/90 backdrop-blur-sm border border-[#CCE5E3] text-[#0C2B31] font-mono text-[11px] uppercase rounded-full shadow-2xs font-bold hover:border-[#0B6E7B] transition-colors"
+                          >
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Structured Section Cards */}
+                  {currentExp.sections ? (
+                    <div className="grid grid-cols-1 gap-5 pt-1">
+                      {currentExp.sections.map((sec, sIdx) => {
+                        const isAchievementSection = sec.title.toLowerCase().includes("achievement");
+
+                        return (
+                          <div
+                            key={sIdx}
+                            className={`rounded-2xl border transition-all duration-300 p-5 sm:p-7 space-y-4 ${
+                              isAchievementSection
+                                ? "bg-gradient-to-br from-[#F5FBFA] via-white to-[#EEF8F7] border-[#B2DCD7] shadow-sm"
+                                : "bg-white border-[#E0EFEF] hover:border-[#0B6E7B]/30 shadow-xs"
+                            }`}
+                          >
+                            {/* Section Header */}
+                            <div className="flex items-center justify-between gap-3 border-b border-[#E7F3F2] pb-3">
+                              <div className="flex items-center gap-3">
+                                <div className="w-8 h-8 rounded-xl bg-[#0B6E7B]/10 text-[#0B6E7B] font-narrow font-black text-xs sm:text-sm flex items-center justify-center shrink-0 border border-[#0B6E7B]/20">
+                                  {String(sIdx + 1).padStart(2, "0")}
+                                </div>
+                                <h5 className="font-narrow text-base sm:text-lg font-black text-[#0C2B31] uppercase tracking-wide">
+                                  {sec.title}
+                                </h5>
+                              </div>
+                              {isAchievementSection && (
+                                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0B6E7B] text-white font-narrow text-[11px] font-black tracking-widest uppercase shadow-xs">
+                                  <i className="fa-solid fa-trophy text-[10px]" />
+                                  <span>IMPACT</span>
+                                </span>
+                              )}
+                            </div>
+
+                            {/* Section Items List */}
+                            <div className="space-y-3.5">
+                              {sec.items.map((item, iIdx) => {
+                                if (typeof item === "string") {
+                                  return (
+                                    <div key={iIdx} className="flex items-start gap-3.5 text-sm sm:text-base text-[#2C4A51] leading-relaxed">
+                                      <div className="w-5 h-5 rounded-full bg-[#0B6E7B]/10 text-[#0B6E7B] flex items-center justify-center shrink-0 mt-0.5 border border-[#0B6E7B]/20">
+                                        <i className="fa-solid fa-check text-[10px]" />
+                                      </div>
+                                      <div className="flex-1 font-sans">
+                                        <HighlightText text={item} />
+                                      </div>
+                                    </div>
+                                  );
+                                } else {
+                                  return (
+                                    <div key={iIdx} className="space-y-3.5 pt-2">
+                                      <div className="flex items-center gap-2.5 text-sm sm:text-base font-bold text-[#0C2B31]">
+                                        <div className="w-6 h-6 rounded-lg bg-[#0B6E7B] text-white flex items-center justify-center shrink-0 text-xs shadow-2xs">
+                                          <i className="fa-solid fa-chart-simple" />
+                                        </div>
+                                        <span>{item.subtitle}</span>
+                                      </div>
+
+                                      {/* High-Impact Stat Bento Grid */}
+                                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-1">
+                                        {item.subitems.map((sub, subIdx) => {
+                                          const parsed = parseMetric(sub);
+                                          return (
+                                            <div
+                                              key={subIdx}
+                                              className="bg-white border border-[#CCE5E3] rounded-2xl p-4 sm:p-5 shadow-xs hover:shadow-md hover:border-[#0B6E7B] hover:-translate-y-0.5 transition-all duration-300 group/stat flex flex-col justify-between"
+                                            >
+                                              <div className="flex items-center justify-between gap-2 mb-3">
+                                                <div className={`w-8 h-8 rounded-xl ${parsed.iconBg} flex items-center justify-center text-sm group-hover/stat:scale-110 transition-transform`}>
+                                                  <i className={parsed.icon} />
+                                                </div>
+                                                <span className="font-mono text-[9px] uppercase font-black text-[#0B6E7B] tracking-widest px-2.5 py-0.5 bg-[#0B6E7B]/5 rounded-full border border-[#0B6E7B]/10">
+                                                  VERIFIED
+                                                </span>
+                                              </div>
+                                              <div>
+                                                {parsed.value ? (
+                                                  <>
+                                                    <div className="font-display text-2xl sm:text-3xl font-black text-[#0C2B31] tracking-tight group-hover/stat:text-[#0B6E7B] transition-colors leading-none">
+                                                      {parsed.value}
+                                                    </div>
+                                                    <div className="font-sans text-xs sm:text-sm font-semibold text-[#4E6E75] mt-1.5 leading-snug">
+                                                      {parsed.label}
+                                                    </div>
+                                                  </>
+                                                ) : (
+                                                  <div className="font-narrow font-bold text-sm sm:text-base text-[#0C2B31]">
+                                                    {sub}
+                                                  </div>
+                                                )}
+                                              </div>
+                                            </div>
+                                          );
+                                        })}
+                                      </div>
+                                    </div>
+                                  );
+                                }
+                              })}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    <p className="font-sans text-base sm:text-lg text-[#2C4A51] leading-relaxed">
+                      <HighlightText text={currentExp.description} />
+                    </p>
                   )}
                 </div>
-
-                {currentExp.sections ? (
-                  <div className="space-y-6 pt-2">
-                    {currentExp.sections.map((sec, sIdx) => (
-                      <div key={sIdx} className="space-y-3">
-                        <h6 className="font-narrow text-sm sm:text-base font-black text-[#0B6E7B] uppercase tracking-wider flex items-center gap-2">
-                          <i className="fa-solid fa-chevron-right text-xs text-[#0B6E7B]"></i>
-                          {sec.title}
-                        </h6>
-                        <ul className="space-y-2 pl-2 font-sans text-sm sm:text-base text-[#2C4A51] leading-relaxed">
-                          {sec.items.map((item, iIdx) => {
-                            if (typeof item === "string") {
-                              return (
-                                <li key={iIdx} className="flex items-start gap-2.5">
-                                  <span className="text-[#0B6E7B] font-bold text-base mt-0.5">•</span>
-                                  <span className="flex-1">
-                                    <HighlightText text={item} />
-                                  </span>
-                                </li>
-                              );
-                            } else {
-                              return (
-                                <li key={iIdx} className="space-y-2.5 pt-1.5">
-                                  <div className="flex items-start gap-2.5">
-                                    <span className="text-[#0B6E7B] font-bold text-base mt-0.5">•</span>
-                                    <span className="font-bold text-sm sm:text-base text-[#0C2B31]">
-                                      {item.subtitle}
-                                    </span>
-                                  </div>
-                                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pl-4 pt-1">
-                                    {item.subitems.map((sub, subIdx) => (
-                                      <div
-                                        key={subIdx}
-                                        className="px-3 py-2 bg-[#F4FAF9] border border-[#0B6E7B]/30 rounded-lg flex items-center gap-2 font-narrow font-black text-xs sm:text-sm text-[#0C2B31] shadow-2xs hover:bg-[#0B6E7B] hover:text-white transition-all group/sub"
-                                      >
-                                        <i className="fa-solid fa-chart-line text-[#0B6E7B] group-hover/sub:text-[#2DD4BF] text-xs transition-colors"></i>
-                                        <span>{sub}</span>
-                                      </div>
-                                    ))}
-                                  </div>
-                                </li>
-                              );
-                            }
-                          })}
-                        </ul>
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <p className="font-sans text-base text-[#2C4A51] leading-relaxed">
-                    <HighlightText text={currentExp.description} />
-                  </p>
-                )}
               </div>
 
               {/* Render Rich Interactive Deep-Dive Showcase based on Experience ID */}
