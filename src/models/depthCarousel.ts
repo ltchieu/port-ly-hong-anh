@@ -28,5 +28,8 @@ export interface DepthCarouselProps {
   showControls?: boolean;
   showIndicators?: boolean;
   onChange?: (index: number, item: DepthCarouselItem) => void;
+  onItemClick?: (index: number, item: DepthCarouselItem) => void;
+  objectFit?: 'cover' | 'contain' | 'fill' | 'none' | 'scale-down';
+  cardBg?: string;
   className?: string;
 }

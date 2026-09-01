@@ -64,6 +64,9 @@ export default function DepthCarousel({
   showControls = true,
   showIndicators = true,
   onChange,
+  onItemClick,
+  objectFit = 'cover',
+  cardBg = '#0b0d12',
   className = ''
 }: DepthCarouselProps) {
   const data = useMemo(() => (Array.isArray(items) ? items : []).map(normalizeItem), [items]);
@@ -80,6 +83,7 @@ export default function DepthCarousel({
   const scaleRef = useRef(1);
   const cfgRef = useRef<CfgState>({} as CfgState);
   const onChangeRef = useRef(onChange);
+  const onItemClickRef = useRef(onItemClick);
 
   const dragRef = useRef<DragState | null>(null);
   const wheelTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -89,6 +93,7 @@ export default function DepthCarousel({
   const [active, setActive] = useState(0);
 
   onChangeRef.current = onChange;
+  onItemClickRef.current = onItemClick;
   cfgRef.current = {
     count,
     depth,
@@ -304,9 +309,12 @@ export default function DepthCarousel({
   const onCardClick = useCallback(
     (index: number) => {
       if (dragRef.current?.moved) return;
+      if (index === focusRef.current) {
+        onItemClickRef.current?.(index, data[index]);
+      }
       setFocus(index, true);
     },
-    [setFocus]
+    [setFocus, data]
   );
 
   useEffect(() => {
@@ -390,13 +398,19 @@ export default function DepthCarousel({
             ref={el => {
               cardRefs.current[i] = el;
             }}
-            style={{ width: cardWidth, height: cardHeight, borderRadius: radius }}
+            style={{ width: cardWidth, height: cardHeight, borderRadius: radius, background: cardBg }}
             aria-roledescription="slide"
             aria-label={`${i + 1} of ${count}`}
             aria-hidden={active !== i}
             onClick={() => onCardClick(i)}
           >
-            <img className="depth-carousel__img" src={item.image} alt={item.alt || ''} draggable={false} />
+            <img
+              className="depth-carousel__img"
+              src={item.image}
+              alt={item.alt || ''}
+              draggable={false}
+              style={{ objectFit }}
+            />
             <span
               className="depth-carousel__tint"
               ref={el => {
