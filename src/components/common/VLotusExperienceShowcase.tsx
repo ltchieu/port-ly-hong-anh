@@ -144,21 +144,6 @@ export default function VLotusExperienceShowcase() {
                       <i className="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                     </a>
                   </div>
-
-                  {video.briefUrl && (
-                    <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5 bg-gradient-to-t from-[#07262B]/95 via-[#07262B]/75 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none flex flex-wrap items-center justify-center gap-2.5 z-10">
-                      <a
-                        href={video.briefUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-4 py-2 bg-white/95 backdrop-blur-md hover:bg-white text-[#0C2B31] border border-white/20 rounded-xl font-narrow text-xs font-black uppercase tracking-wider flex items-center gap-2 transition-all shadow-lg hover:scale-105 pointer-events-auto cursor-pointer"
-                      >
-                        <i className="fa-solid fa-presentation-screen text-emerald-600"></i>
-                        <span>Brief Video</span>
-                        <i className="fa-solid fa-arrow-up-right-from-square text-[10px] text-[#4E6E75]"></i>
-                      </a>
-                    </div>
-                  )}
                 </div>
               </div>
             );
