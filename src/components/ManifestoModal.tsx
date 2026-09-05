@@ -28,23 +28,23 @@ export default function ManifestoModal({ isOpen, onClose }: ManifestoModalProps)
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.95, opacity: 0 }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-[#FAFCFC] text-[#0C2B31] border border-[#CCE5E3] max-w-2xl w-full p-8 md:p-12 rounded-2xl shadow-2xl relative max-h-[85vh] overflow-y-auto"
+            className="bg-[#FAFCFC] text-[#0C2B31] border border-[#CCE5E3] max-w-2xl w-full p-6 sm:p-8 md:p-12 rounded-2xl shadow-2xl relative max-h-[85vh] overflow-y-auto"
           >
             <button
               id="manifesto-close"
               onClick={onClose}
-              className="absolute top-6 right-6 p-2 rounded-full border border-[#CCE5E3] hover:border-[#0B6E7B] hover:text-[#0B6E7B] transition-colors cursor-pointer"
+              className="absolute top-5 right-5 sm:top-6 sm:right-6 p-2 rounded-full border border-[#CCE5E3] hover:border-[#0B6E7B] hover:text-[#0B6E7B] transition-colors cursor-pointer"
               aria-label="Close modal"
             >
               <i className="fa-solid fa-xmark text-sm"></i>
             </button>
 
-            <div className="space-y-6">
+            <div className="space-y-5 sm:space-y-6">
               <span className="font-narrow text-xs font-black hologram-metal-text tracking-[0.25em] block uppercase">
                 EXECUTIVE STATEMENT &bull; LY HONG ANH
               </span>
 
-              <h3 className="font-display text-3xl sm:text-4xl uppercase leading-none tracking-tight text-[#0C2B31]">
+              <h3 className="font-display text-2xl sm:text-3xl md:text-4xl uppercase leading-tight tracking-tight text-[#0C2B31]">
                 Craft The Message. Drive The Impact. Shape The Narrative.
               </h3>
 

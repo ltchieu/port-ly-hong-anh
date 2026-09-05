@@ -75,39 +75,39 @@ export default function Navbar({
               </button>
             </div>
 
-            <div className="flex flex-col gap-8 my-auto">
+            <div className="flex flex-col gap-6 sm:gap-8 my-auto">
               <a
                 href="#about"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="font-narrow text-4xl font-extrabold tracking-[0.05em] hover:text-[#0B6E7B] transition-colors"
+                className="font-narrow text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-[0.05em] hover:text-[#0B6E7B] transition-colors"
               >
                 01 / INTRODUCE
               </a>
               <a
                 href="#experience"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="font-narrow text-4xl font-extrabold tracking-[0.05em] hover:text-[#0B6E7B] transition-colors"
+                className="font-narrow text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-[0.05em] hover:text-[#0B6E7B] transition-colors"
               >
                 02 / EXPERIENCE
               </a>
               <a
                 href="#work"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="font-narrow text-4xl font-extrabold tracking-[0.05em] hover:text-[#0B6E7B] transition-colors"
+                className="font-narrow text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-[0.05em] hover:text-[#0B6E7B] transition-colors"
               >
                 03 / SELECTED WORKS
               </a>
               <a
                 href="#awards"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="font-narrow text-4xl font-extrabold tracking-[0.05em] hover:text-[#0B6E7B] transition-colors"
+                className="font-narrow text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-[0.05em] hover:text-[#0B6E7B] transition-colors"
               >
                 04 / AWARDS
               </a>
               <a
                 href="#contact"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="font-narrow text-4xl font-extrabold tracking-[0.05em] text-left hologram-metal-text hover:opacity-80 transition-opacity cursor-pointer"
+                className="font-narrow text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-[0.05em] text-left hologram-metal-text hover:opacity-80 transition-opacity cursor-pointer"
               >
                 05 / SAY HELLO →
               </a>

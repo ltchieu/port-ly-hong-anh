@@ -105,7 +105,7 @@ export default function Awards() {
         {isMobile ? (
           <div className="w-full space-y-5">
             {/* 1. Mobile 3D Depth Carousel */}
-            <div className="w-full relative h-[290px] sm:h-[320px] flex items-center justify-center overflow-hidden bg-[#F4FAF9] rounded-2xl border border-[#CCE5E3] py-2">
+            <div className="w-full relative h-[300px] sm:h-[330px] flex items-center justify-center overflow-hidden bg-[#F4FAF9] rounded-2xl border border-[#CCE5E3] py-2">
               <DepthCarousel
                 items={awardCarouselItems}
                 cardWidth={310}

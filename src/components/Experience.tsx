@@ -404,7 +404,7 @@ export default function ExperienceSection({
             return (
               <ScrollReveal
                 key={exp.id}
-                direction={isEven ? "left" : "right"}
+                direction="up"
                 delay={idx * 0.08}
                 className="py-2"
               >
@@ -437,7 +437,7 @@ export default function ExperienceSection({
                         <span className="font-narrow text-sm sm:text-base font-black hologram-metal-text tracking-widest block">
                           {exp.index} / {exp.role}
                         </span>
-                        <h3 className="font-display text-xl sm:text-2xl lg:text-3xl uppercase leading-none text-[#0C2B31] group-hover:text-[#0B6E7B] transition-colors">
+                        <h3 className="font-display text-xl sm:text-2xl lg:text-3xl uppercase leading-tight text-[#0C2B31] group-hover:text-[#0B6E7B] transition-colors">
                           {exp.company}
                         </h3>
                         <p className="font-narrow text-xs sm:text-sm font-bold text-[#4E6E75] tracking-wider uppercase">

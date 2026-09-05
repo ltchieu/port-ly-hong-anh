@@ -11,7 +11,7 @@ export default function Footer() {
 
             <div className="lg:col-span-6 space-y-6">
               <ScrollReveal direction="up" delay={0.1}>
-                <h2 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] uppercase leading-[0.8] text-white tracking-tight">
+                <h2 className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] uppercase leading-none sm:leading-[0.85] md:leading-[0.8] text-white tracking-tight">
                   LET&apos;S WORK TOGETHER<br />
                 </h2>
               </ScrollReveal>
