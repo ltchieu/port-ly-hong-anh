@@ -44,12 +44,12 @@ export default function Hero({ currentDateString, currentTime }: HeroProps) {
         >
           {/* Pre-headline: DecryptedText */}
           <DecryptedText
-            text="Lý Hồng Anh (Ly Hong Anh)"
+            text="Lý Hồng Anh"
             animateOn="view"
             speed={75}
             maxIterations={18}
-            parentClassName="font-sans text-xl sm:text-2xl md:text-3xl lg:text-[2rem] text-[#4E6E75] font-medium tracking-wide block mb-3 ml-1 select-none"
-            className="text-[#4E6E75]"
+            parentClassName="font-sans text-2xl sm:text-3xl md:text-4xl lg:text-[2.5rem] text-[#0C2B31] font-bold tracking-tight block mb-2 sm:mb-3 ml-1 select-none"
+            className="text-[#0C2B31]"
             encryptedClassName="text-[#0B6E7B] font-mono font-bold"
           />
 

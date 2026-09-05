@@ -15,7 +15,7 @@ export default function Navbar({
       <nav id="navbar" className="fixed top-0 left-0 w-full z-40 bg-[#FAFCFC]/85 backdrop-blur-md border-b border-[#CCE5E3] py-4 px-6 transition-all duration-300">
         <div className="max-w-[1440px] mx-auto flex justify-between items-center">
           <a href="#" className="flex items-center gap-2.5 font-display text-sm tracking-[0.2em] font-black uppercase text-[#0C2B31] hover:text-[#0B6E7B] transition-all duration-300">
-            <span>LY HONG ANH</span>
+            <span>HONG ANH</span>
           </a>
 
           {/* Desktop Nav */}

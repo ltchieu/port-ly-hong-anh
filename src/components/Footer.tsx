@@ -144,7 +144,7 @@ export default function Footer() {
       <footer className="bg-[#051E22] border-t border-[#0B6E7B]/20 w-full py-12 px-6 text-white">
         <div className="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="font-display text-xl tracking-[0.2em] font-black uppercase text-white hover:text-[#2DD4BF] transition-colors">
-            LY HONG ANH &bull; PORTFOLIO
+            HONG ANH &bull; PORTFOLIO
           </div>
 
           <div className="flex flex-wrap justify-center items-center gap-6">
@@ -158,7 +158,7 @@ export default function Footer() {
           </div>
 
           <div className="font-mono text-[10px] text-white/40 tracking-wider">
-            © {new Date().getFullYear()} LY HONG ANH. ALL RIGHTS RESERVED.
+            © {new Date().getFullYear()} HONG ANH. ALL RIGHTS RESERVED.
           </div>
         </div>
       </footer>
