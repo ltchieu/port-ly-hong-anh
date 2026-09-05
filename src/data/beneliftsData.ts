@@ -127,7 +127,7 @@ export const beneliftsData: BeneliftsData = {
     },
   ],
   seoPillar: {
-    title: "3.1. Technical SEO & Inbound Demand Generation",
+    title: "Technical SEO & Inbound Demand Generation",
     overview: "Created over 45 SEO-optimized (English-Vietnamese) website articles focusing on elevator technology, safety regulations, architectural integration, and European design standards. Conducted thorough technical research, crafted engaging thumbnails, and established an inbound acquisition channel generating up to 20 customer inquiries per month.",
     articleCount: "45+ Bilingual Articles",
     leadGeneration: "Peak 20 qualified homeowner & villa leads / month",
@@ -162,7 +162,7 @@ export const beneliftsData: BeneliftsData = {
     ],
   },
   fanpagePillar: {
-    title: "3.2. Multi-Brand Social Content & Visual Design",
+    title: "Multi-Brand Social Content & Visual Design",
     overview: "Monthly content planning and visual design across 3 distinct brand entities: Benelifts Asia (Corporate & Sales), Benelifts S.r.l (European Engineering), and Casanova (Luxury Aesthetics). Achieved over 600 new followers within the first month and 4.7K reach on key product releases.",
     monthOneGrowth: "+600 New Followers in Month 1",
     fanpages: [
@@ -255,7 +255,7 @@ export const beneliftsData: BeneliftsData = {
     ],
   },
   videoPillar: {
-    title: "3.3. Video Production & Technical Short-Form Content",
+    title: "Video Production & Technical Short-Form Content",
     overview: "Generated video concepts, developed technical scripts, arranged background staging, and coordinated participants for company video production. Filmed and edited informative short-form TikTok/Reels videos.",
     stats: {
       views: "1.2K+",
@@ -314,7 +314,7 @@ export const beneliftsData: BeneliftsData = {
     ],
   },
   highlightPostsSection: {
-    title: "3.4. Highlight Facebook Posts & Copywriting Showcase",
+    title: "Highlight Facebook Posts & Copywriting Showcase",
     sectionTitle: "Multi-Brand Social Copywriting & Brand Storytelling",
     instruction: "Explore multi-brand social media copywriting across Benelifts Asia, Benelifts S.r.l, and Casanova Building.",
     description: "Curated top-performing social posts and engagement campaigns across elevator engineering, luxury interior design, and corporate services.",
@@ -323,7 +323,7 @@ export const beneliftsData: BeneliftsData = {
     posts: [
       {
         id: "bene-fb-post-1",
-        postNumber: "Facebook Post #1",
+        postNumber: "Family & Luxury Living",
         brandName: "Benelifts Asia (Bsmartlifts)",
         title: "CÙNG BENELIFTS - TRÂN TRỌNG TỪNG KHOẢNH KHẮC SUM VẦY",
         category: "Family & Luxury Living",
@@ -339,7 +339,7 @@ export const beneliftsData: BeneliftsData = {
       },
       {
         id: "bene-fb-post-2",
-        postNumber: "Facebook Post #2",
+        postNumber: "Office & Meeting Services",
         brandName: "Casanova Building",
         title: "PHÒNG HỌP THEO GIỜ, KHÔNG LỠ VIỆC GẤP",
         category: "Office & Meeting Room Services",
@@ -361,7 +361,7 @@ Tại Casanova, bạn sẽ được tận hưởng:
       },
       {
         id: "bene-fb-post-3",
-        postNumber: "Facebook Post #3",
+        postNumber: "Italian Engineering",
         brandName: "Benelifts S.r.l (Milan, Italy)",
         title: "💡 DID YOU KNOW THESE 04 INTERESTING FACTS ABOUT ELUX TUBO ELEVATOR?",
         category: "Italian Engineering & Innovation",
@@ -376,7 +376,7 @@ Don't miss out on the sophistication and efficiency of Elux Tubo Elevator! 🌟�
       },
       {
         id: "bene-fb-post-4",
-        postNumber: "Facebook Post #4",
+        postNumber: "Design Trend & Aesthetics",
         brandName: "Benelifts Asia (Bsmartlifts)",
         title: "🌟 Màu sắc của năm 2025: Mocha Mousse – Ấm áp, phong phú và đầy cảm hứng!",
         category: "Design Trends & Color Palette",
@@ -397,7 +397,7 @@ Don't miss out on the sophistication and efficiency of Elux Tubo Elevator! 🌟�
     images: getBeneliftsDesignImages(),
   },
   eventPillar: {
-    title: "3.5. Corporate Events, Exhibitions & Internal Celebrations",
+    title: "Corporate Events, Exhibitions & Internal Celebrations",
     sectionHeader: "Organizer, Main Designer & Photographer OF EVENT",
     overview: "Planned, organized, and managed communications for corporate events and exhibitions, including 20/10 celebrations and New Year Party. Coordinated with vendors, served as MC when needed, and managed end-to-end event",
     photographyCollage: {

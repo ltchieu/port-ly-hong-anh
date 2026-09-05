@@ -24,98 +24,8 @@ export default function DNGroupExperienceShowcase() {
   }, []);
 
   return (
-    <div className="space-y-10 pt-6 border-t border-[#CCE5E3]" onClick={(e) => e.stopPropagation()}>
-      {/* 1. CORPORATE ECOSYSTEM & MISSION BANNER */}
-      <div className="bg-gradient-to-r from-[#07262B] via-[#0A3D44] to-[#07262B] text-white p-6 sm:p-8 rounded-2xl shadow-lg border border-[#0B6E7B]/40 relative overflow-hidden group">
-        <div className="absolute right-0 top-0 translate-x-6 -translate-y-6 w-56 h-56 bg-[#14B8A6]/10 rounded-full blur-3xl pointer-events-none"></div>
-
-        <div className="relative z-10 space-y-5">
-          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#0B6E7B]/40 pb-3">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-[#0B6E7B]/40 backdrop-blur-md rounded-full text-xs sm:text-sm font-narrow font-black tracking-widest text-[#2DD4BF] uppercase border border-[#0B6E7B]/50">
-              <i className="fa-solid fa-tooth text-xs"></i>
-              <span>Project 01 • Corporate & Brand Overview</span>
-            </div>
-            <span className="font-mono text-xs sm:text-sm text-[#2DD4BF] bg-white/10 px-3.5 py-1 rounded-md border border-[#0B6E7B]/40 font-bold">
-              {dnGroupData.overview.scale} • {dnGroupData.overview.offices}
-            </span>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-            <div className="lg:col-span-8 space-y-4">
-              <h4 className="font-display text-2xl sm:text-3xl uppercase tracking-tight text-white leading-tight">
-                {dnGroupData.companyName} — {dnGroupData.brandName}
-              </h4>
-              <p className="font-sans text-base sm:text-lg text-white/90 leading-relaxed">
-                <HighlightText text={dnGroupData.overview.description} />
-              </p>
-              <div className="flex flex-wrap items-center gap-2 pt-1">
-                <span className="font-narrow text-xs sm:text-sm text-[#2DD4BF] font-black uppercase tracking-wider">
-                  Group Brands:
-                </span>
-                {dnGroupData.overview.ecosystemBrands.map((brand, bIdx) => (
-                  <span
-                    key={bIdx}
-                    className="px-3 py-1.5 bg-white/10 text-white rounded-md text-xs sm:text-sm font-narrow font-bold border border-white/20 hover:border-[#2DD4BF] transition-colors"
-                  >
-                    {brand}
-                  </span>
-                ))}
-              </div>
-
-              {/* Action Document Links Top Left */}
-              <div className="flex flex-wrap items-center gap-2.5 pt-2">
-                <a
-                  href={dnGroupData.overview.contentPlanUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-3.5 py-2 bg-[#0B6E7B] hover:bg-[#08545E] text-white border border-[#2DD4BF]/40 rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center gap-2 transition-all shadow-md hover:scale-105 cursor-pointer"
-                >
-                  <i className="fa-solid fa-file-lines text-[#2DD4BF]"></i>
-                  <span>Content Plan</span>
-                  <i className="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-80"></i>
-                </a>
-
-                <a
-                  href={dnGroupData.overview.ducmDetailsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-3.5 py-2 bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-[#2DD4BF] rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center gap-2 transition-all shadow-sm hover:scale-105 cursor-pointer"
-                >
-                  <i className="fa-solid fa-table text-[#2DD4BF]"></i>
-                  <span>Nha khoa Shark x DUCM (Details)</span>
-                  <i className="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-80"></i>
-                </a>
-              </div>
-            </div>
-
-            <div className="lg:col-span-4 flex justify-center lg:justify-end">
-              <div
-                onClick={() =>
-                  handleOpenLightbox(
-                    getDNImage("dn_group_img_01.webp"),
-                    "DN Group — Shark Dental Brand Highlight"
-                  )
-                }
-                className="w-full sm:w-72 aspect-[4/3] rounded-xl overflow-hidden border border-[#0B6E7B]/40 relative group cursor-pointer shadow-md"
-              >
-                <img
-                  src={getDNImage("dn_group_img_01.webp")}
-                  alt="DN Group Portfolio Overview"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#07262B]/80 via-transparent to-transparent flex items-end p-3.5">
-                  <span className="text-xs font-narrow font-bold text-[#2DD4BF] flex items-center gap-1.5">
-                    <i className="fa-solid fa-magnifying-glass-plus text-xs"></i>
-                    Click to Zoom
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* 2. KEY METRIC COUNTERS WITH ANIMATED COUNT-UP */}
+    <div className="space-y-10 pt-2" onClick={(e) => e.stopPropagation()}>
+      {/* KEY METRIC COUNTERS WITH ANIMATED COUNT-UP */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {dnGroupData.keyMetrics.map((metric, mIdx) => (
           <div
@@ -145,7 +55,7 @@ export default function DNGroupExperienceShowcase() {
       </div>
 
       {/* 3. SECTION 1.1: SOCIAL MEDIA PERFORMANCE & ANALYTICS GRID */}
-      <div className="bg-[#F4FAF9] border border-[#CCE5E3] rounded-2xl p-6 sm:p-8 space-y-6">
+      <div className="space-y-6 pt-6 border-t border-[#CCE5E3]">
         <div className="border-b border-[#CCE5E3] pb-5 space-y-3">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
@@ -306,7 +216,7 @@ export default function DNGroupExperienceShowcase() {
       </div>
 
       {/* 4. SECTION 1.2: HIGHLIGHT FACEBOOK POSTS & COPYWRITING SHOWCASE */}
-      <div className="bg-[#F4FAF9] border border-[#CCE5E3] rounded-2xl p-6 sm:p-8 space-y-6">
+      <div className="space-y-6 pt-8 border-t border-[#CCE5E3]">
         <div className="border-b border-[#CCE5E3] pb-5 space-y-3">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
@@ -441,7 +351,7 @@ export default function DNGroupExperienceShowcase() {
       </div>
 
       {/* 5. SECTION 1.3: VIDEO EDITOR & SHORT-FORM PRODUCTION */}
-      <div className="bg-[#F4FAF9] border border-[#CCE5E3] rounded-xl p-6 sm:p-8 space-y-6">
+      <div className="space-y-6 pt-8 border-t border-[#CCE5E3]">
         <div className="border-b border-[#CCE5E3] pb-5 space-y-3">
           <div>
             <span className="font-narrow text-xs sm:text-sm font-black text-[#0B6E7B] tracking-[0.2em] uppercase block">

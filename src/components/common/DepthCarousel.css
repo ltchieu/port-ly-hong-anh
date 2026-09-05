@@ -64,6 +64,28 @@
   mix-blend-mode: multiply;
 }
 
+.depth-carousel__caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px 20px;
+  background: linear-gradient(to top, rgba(7, 38, 43, 0.92) 0%, rgba(7, 38, 43, 0.45) 60%, transparent 100%);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.depth-carousel__title {
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
 .depth-carousel__arrow {
   position: absolute;
   top: 50%;

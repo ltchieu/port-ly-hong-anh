@@ -30,107 +30,8 @@ export default function VLotusExperienceShowcase() {
   }, []);
 
   return (
-    <div className="space-y-10 pt-6 border-t border-[#CCE5E3]" onClick={(e) => e.stopPropagation()}>
-      {/* 1. CORPORATE & F&B DIVISION OVERVIEW BANNER */}
-      <div className="bg-gradient-to-r from-[#07262B] via-[#0A3D44] to-[#07262B] text-white p-6 sm:p-8 rounded-2xl shadow-lg border border-[#0B6E7B]/40 relative overflow-hidden group">
-        <div className="absolute right-0 top-0 translate-x-6 -translate-y-6 w-56 h-56 bg-[#14B8A6]/10 rounded-full blur-3xl pointer-events-none"></div>
-
-        <div className="relative z-10 space-y-5">
-          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#0B6E7B]/40 pb-3">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-[#0B6E7B]/40 backdrop-blur-md rounded-full text-xs sm:text-sm font-narrow font-black tracking-widest text-[#2DD4BF] uppercase border border-[#0B6E7B]/50">
-              <i className="fa-solid fa-file-lines text-xs"></i>
-              <span>CONTENT STRATEGY & EXECUTION EVIDENCE</span>
-            </div>
-            <span className="font-mono text-xs sm:text-sm text-[#2DD4BF] bg-white/10 px-3.5 py-1 rounded-md border border-[#0B6E7B]/40 font-bold">
-              {vLotusData.overview.scale}
-            </span>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-            <div className="lg:col-span-8 space-y-4">
-              <h4 className="font-display text-2xl sm:text-3xl uppercase tracking-tight text-white leading-tight">
-                USSINA, YOSHINOYA & CONSERVO STRATEGY SHOWCASE
-              </h4>
-              <p className="font-sans text-base sm:text-lg text-white/90 leading-relaxed">
-                Explore the complete content plans, weekly performance reports, and brand communication strategies executed from February to August 2025.
-              </p>
-              <div className="space-y-3 pt-1">            
-                <div className="flex flex-wrap items-center gap-2.5 pt-1">
-                  <a
-                    href="https://docs.google.com/spreadsheets/d/1n-Lj-pgF6jiWC0A_rVl9sSk3Zn3s6hNOsEtsEipJCLk/edit?usp=sharing"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-3.5 py-2 bg-[#0B6E7B] hover:bg-[#08545E] text-white border border-[#2DD4BF]/40 rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center gap-2 transition-all shadow-md hover:scale-105 cursor-pointer"
-                  >
-                    <i className="fa-solid fa-chart-simple text-[#2DD4BF]"></i>
-                    <span>View Weekly Report (Details)</span>
-                    <i className="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-80"></i>
-                  </a>
-
-                  <a
-                    href="https://docs.google.com/spreadsheets/d/1NX2T20DUYthFjvFbkQrEXJMWTqgndg1k/edit?usp=sharing&ouid=115935600825419567163&rtpof=true&sd=true"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-3.5 py-2 bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-[#2DD4BF] rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center gap-2 transition-all shadow-sm hover:scale-105 cursor-pointer"
-                  >
-                    <i className="fa-solid fa-bread-slice text-[#2DD4BF]"></i>
-                    <span>View Conservo Content Plan</span>
-                    <i className="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-80"></i>
-                  </a>
-
-                  <a
-                    href="https://docs.google.com/spreadsheets/d/1exNdp-espEwwhrTWQIJ0kUeHSCQVk46_kua6DSsVm2A/edit?usp=sharing"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-3.5 py-2 bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-[#2DD4BF] rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center gap-2 transition-all shadow-sm hover:scale-105 cursor-pointer"
-                  >
-                    <i className="fa-solid fa-bowl-rice text-[#2DD4BF]"></i>
-                    <span>View Yoshinoya Content Plan</span>
-                    <i className="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-80"></i>
-                  </a>
-
-                  <a
-                    href="https://docs.google.com/spreadsheets/d/1W2VrQlxd1YcWlIVlrVDoTljeyrjdt3Wg/edit?usp=sharing&ouid=115935600825419567163&rtpof=true&sd=true"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-3.5 py-2 bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-[#2DD4BF] rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center gap-2 transition-all shadow-sm hover:scale-105 cursor-pointer"
-                  >
-                    <i className="fa-solid fa-drumstick-bite text-[#2DD4BF]"></i>
-                    <span>View Ussina Content Plan</span>
-                    <i className="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-80"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className="lg:col-span-4 flex justify-center lg:justify-end">
-              <div
-                onClick={() =>
-                  handleOpenLightbox(
-                    getVLotusImage("v_lotus_img_01.webp"),
-                    "V Lotus Holdings — Brand Portfolio Showcase"
-                  )
-                }
-                className="w-full sm:w-72 aspect-[4/3] rounded-xl overflow-hidden border border-[#0B6E7B]/40 relative group cursor-pointer shadow-md"
-              >
-                <img
-                  src={getVLotusImage("v_lotus_img_01.webp")}
-                  alt="V Lotus Portfolio Showcase"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#07262B]/80 via-transparent to-transparent flex items-end p-3.5">
-                  <span className="text-xs font-narrow font-bold text-[#2DD4BF] flex items-center gap-1.5">
-                    <i className="fa-solid fa-magnifying-glass-plus text-xs"></i>
-                    Click to Zoom
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* 2. KEY METRIC COUNTERS WITH ANIMATED COUNT-UP */}
+    <div className="space-y-10 pt-2" onClick={(e) => e.stopPropagation()}>
+      {/* KEY METRIC COUNTERS WITH ANIMATED COUNT-UP */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {vLotusData.keyMetrics.map((metric, mIdx) => (
           <div
@@ -160,7 +61,7 @@ export default function VLotusExperienceShowcase() {
       </div>
 
       {/* 3. SECTION 2.1: SEO CONTENT & DIGITAL RESEARCH */}
-      <div className="bg-[#F4FAF9] border border-[#CCE5E3] rounded-xl p-6 sm:p-8 space-y-6">
+      <div className="space-y-6 pt-6 border-t border-[#CCE5E3]">
         <div className="border-b border-[#CCE5E3] pb-5 space-y-3">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
@@ -256,7 +157,7 @@ export default function VLotusExperienceShowcase() {
       </div>
 
       {/* 4. SECTION 2.2: MULTI-BRAND SOCIAL MEDIA CONTENT STRATEGY */}
-      <div className="bg-[#F4FAF9] border border-[#CCE5E3] rounded-xl p-6 sm:p-8 space-y-6">
+      <div className="space-y-6 pt-8 border-t border-[#CCE5E3]">
         <div className="border-b border-[#CCE5E3] pb-5 space-y-3">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
@@ -396,7 +297,7 @@ export default function VLotusExperienceShowcase() {
       </div>
 
       {/* 5. SECTION 2.3: HIGHLIGHT FACEBOOK POSTS & COPYWRITING SHOWCASE */}
-      <div className="bg-[#F4FAF9] border border-[#CCE5E3] rounded-2xl p-6 sm:p-8 space-y-6">
+      <div className="space-y-6 pt-8 border-t border-[#CCE5E3]">
         <div className="border-b border-[#CCE5E3] pb-5 space-y-3">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
@@ -513,7 +414,7 @@ export default function VLotusExperienceShowcase() {
       </div>
 
       {/* 6. SECTION 2.4: VIDEO EDITOR & RESTAURANT MEDIA PRODUCTION */}
-      <div className="bg-[#F4FAF9] border border-[#CCE5E3] rounded-2xl p-6 sm:p-8 space-y-6">
+      <div className="space-y-6 pt-8 border-t border-[#CCE5E3]">
         <div className="border-b border-[#CCE5E3] pb-5 space-y-3">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>

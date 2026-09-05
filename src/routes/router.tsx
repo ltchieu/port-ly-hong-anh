@@ -4,6 +4,7 @@ import MainPortfolio from './MainPortfolio';
 import ScrollManager from './ScrollManager';
 
 const PhoenixMusicFestivalDetail = lazy(() => import('../components/PhoenixMusicFestivalDetail'));
+const ExperienceDetailPage = lazy(() => import('../components/ExperienceDetailPage'));
 
 export default function AppRouter() {
   return (
@@ -15,6 +16,10 @@ export default function AppRouter() {
           <Route
             path="/project/phoenix-music-festival-2022"
             element={<PhoenixMusicFestivalDetail />}
+          />
+          <Route
+            path="/experience/:experienceId"
+            element={<MainPortfolio />}
           />
           {/* Fallback route to home page */}
           <Route path="*" element={<MainPortfolio />} />

@@ -411,6 +411,11 @@ export default function DepthCarousel({
               draggable={false}
               style={{ objectFit }}
             />
+            {item.title && (
+              <div className="depth-carousel__caption">
+                <span className="depth-carousel__title">{item.title}</span>
+              </div>
+            )}
             <span
               className="depth-carousel__tint"
               ref={el => {

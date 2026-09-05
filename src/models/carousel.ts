@@ -15,7 +15,13 @@ export interface CarouselItemData {
   link?: string;
   postNumber?: string;
   tag?: string;
+  image?: string;
   metrics?: CarouselMetricItem[];
+  // Video properties
+  isVideo?: boolean;
+  videoUrl?: string;
+  videoId?: string;
+  platform?: 'facebook' | 'tiktok' | string;
 }
 
 export interface CarouselProps {
@@ -28,4 +34,5 @@ export interface CarouselProps {
   round?: boolean;
   className?: string;
   style?: CSSProperties;
+  variant?: 'default' | 'video';
 }

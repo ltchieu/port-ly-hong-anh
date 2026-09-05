@@ -55,64 +55,40 @@ export default function AeonExperienceShowcase() {
   );
 
   return (
-    <div className="space-y-10 pt-6 border-t border-[#CCE5E3]" onClick={(e) => e.stopPropagation()}>
-      {/* ========================================================================= */}
-      {/* 1. CORPORATE & EMPLOYER BRANDING OVERVIEW BANNER */}
-      {/* ========================================================================= */}
-      <div className="bg-gradient-to-r from-[#07262B] via-[#0A3D44] to-[#07262B] text-white p-6 sm:p-8 rounded-2xl shadow-lg border border-[#0B6E7B]/40 relative overflow-hidden group">
-        <div className="absolute right-0 top-0 translate-x-6 -translate-y-6 w-56 h-56 bg-[#14B8A6]/10 rounded-full blur-3xl pointer-events-none"></div>
-
-        <div className="relative z-10 space-y-6">
-          {/* Header Tag & Timeframe */}
-          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#0B6E7B]/40 pb-4">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-[#0B6E7B]/40 backdrop-blur-md rounded-full text-xs sm:text-sm font-narrow font-black tracking-widest text-[#2DD4BF] uppercase border border-[#0B6E7B]/50">
-              <i className="fa-solid fa-building-flag text-xs"></i>
-              <span>Project 05 • Corporate Communications & Employer Branding</span>
+    <div className="space-y-10 pt-2" onClick={(e) => e.stopPropagation()}>
+      {/* KEY METRIC COUNTERS WITH ANIMATED COUNT-UP */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        {aeonMetrics.map((metric, mIdx) => (
+          <div
+            key={mIdx}
+            className="p-5 bg-white border border-[#CCE5E3] rounded-xl flex flex-col justify-between space-y-3 shadow-2xs hover:border-[#0B6E7B] hover:shadow-md transition-all group"
+          >
+            <div className="flex items-center justify-between text-[#0B6E7B]">
+              <span className="font-narrow text-xs sm:text-sm font-black uppercase tracking-wider text-[#4E6E75] group-hover:text-[#0B6E7B] transition-colors">
+                {metric.label}
+              </span>
+              <div className="w-8 h-8 rounded-lg bg-[#F0F8F7] flex items-center justify-center border border-[#CCE5E3] group-hover:bg-[#0B6E7B] group-hover:text-white transition-all">
+                <i className={`${metric.icon} text-sm`}></i>
+              </div>
             </div>
-            <span className="font-mono text-xs sm:text-sm text-[#2DD4BF] bg-white/10 px-3.5 py-1 rounded-md border border-[#0B6E7B]/40 font-bold">
-              October 2023 - February 2024 • AEON VIET NAM
-            </span>
-          </div>
-
-          {/* Title & Description */}
-          <div className="space-y-3">
-            <h4 className="font-display text-2xl sm:text-3xl uppercase tracking-tight text-white leading-tight">
-              AEON VIETNAM — Corporate Communications & Video Production
-            </h4>
-            <p className="font-sans text-base sm:text-lg text-white/90 leading-relaxed max-w-4xl">
-              <HighlightText text="Produced high-impact short-form video content and managed end-to-end media operations for internal communication channels and recruitment campaigns under the 'Growth with AEON' employer brand." />
-            </p>
-          </div>
-
-          {/* Metric Stat Cards */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 pt-2">
-            {aeonMetrics.map((metric, mIdx) => (
-              <div
-                key={mIdx}
-                className="p-4 bg-white/5 border border-[#0B6E7B]/40 rounded-xl space-y-1 hover:bg-white/10 transition-colors"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="font-narrow text-[11px] font-bold text-[#2DD4BF] uppercase tracking-wider">
-                    {metric.label}
-                  </span>
-                  <i className={`${metric.icon} text-xs text-[#2DD4BF]/80`}></i>
-                </div>
-                <div className="font-display text-2xl sm:text-3xl text-white tracking-tight">
-                  <AnimatedCounter value={metric.value} />
-                </div>
-                <p className="font-sans text-[11px] text-white/70 leading-snug">
+            <div>
+              <span className="font-display text-3xl sm:text-4xl text-[#0C2B31] leading-none block">
+                <AnimatedCounter value={metric.value} />
+              </span>
+              {metric.subtext && (
+                <p className="font-sans text-xs sm:text-sm text-[#4E6E75] mt-1.5 font-medium">
                   {metric.subtext}
                 </p>
-              </div>
-            ))}
+              )}
+            </div>
           </div>
-        </div>
+        ))}
       </div>
 
       {/* ========================================================================= */}
-      {/* 2. SECTION 1: VIDEO EDITOR & SHORT-FORM CONTENT PRODUCTION */}
+      {/* VIDEO EDITOR & SHORT-FORM CONTENT PRODUCTION */}
       {/* ========================================================================= */}
-      <div className="bg-[#F4FAF9] border border-[#CCE5E3] rounded-2xl p-5 sm:p-7 space-y-6">
+      <div className="space-y-6 pt-6 border-t border-[#CCE5E3]">
         <div className="border-b border-[#CCE5E3] pb-4 space-y-3">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <h3 className="font-display text-xl sm:text-2xl uppercase tracking-tight text-[#0C2B31] flex items-center gap-2.5">
@@ -181,7 +157,7 @@ export default function AeonExperienceShowcase() {
 
           {/* 4 Highlight Facebook Reels Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {aeonHighlightVideos.map((video, idx) => (
+            {aeonHighlightVideos.map((video) => (
               <div
                 key={video.id}
                 className="bg-white rounded-2xl border border-[#CCE5E3] overflow-hidden hover:border-[#0B6E7B] hover:shadow-xl transition-all duration-300 flex flex-col justify-between group shadow-xs"
@@ -194,7 +170,7 @@ export default function AeonExperienceShowcase() {
                     </div>
                     <div className="min-w-0">
                       <h5 className="font-narrow text-xs font-black text-[#0C2B31] uppercase tracking-wider truncate">
-                        {video.channel} • REEL 0{idx + 1}
+                        {video.channel} • {video.category}
                       </h5>
                       <p className="font-mono text-[10px] text-[#4E6E75]">
                         Reel ID: {video.reelId}
@@ -249,7 +225,7 @@ export default function AeonExperienceShowcase() {
       {/* ========================================================================= */}
       {/* 3. SECTION 2: EVENT OPERATION & COMMUNICATIONS */}
       {/* ========================================================================= */}
-      <div className="bg-[#F4FAF9] border border-[#CCE5E3] rounded-2xl p-5 sm:p-7 space-y-6">
+      <div className="space-y-6 pt-8 border-t border-[#CCE5E3]">
         <div className="border-b border-[#CCE5E3] pb-4 space-y-2">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <h3 className="font-display text-xl sm:text-2xl uppercase tracking-tight text-[#0C2B31] flex items-center gap-2.5">

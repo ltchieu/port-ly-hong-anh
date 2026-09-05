@@ -23,7 +23,6 @@ export default function About({ setShowManifesto: _setShowManifesto }: AboutProp
         <div className="lg:col-span-5 space-y-6 lg:ml-2">
           <ScrollReveal direction="up" delay={0.1}>
             <div className="flex items-center gap-3">
-              <span className="font-mono text-xs text-[#0B6E7B] font-bold tracking-widest uppercase">01 /</span>
               <h3 className="font-display text-4xl sm:text-5xl md:text-6xl leading-none uppercase text-[#0C2B31] tracking-tighter">
                 INTRODUCE
               </h3>
@@ -73,60 +72,52 @@ export default function About({ setShowManifesto: _setShowManifesto }: AboutProp
                   </div>
                 }
                 secondContent={
-                  <div className="w-full h-full bg-gradient-to-br from-[#062024] via-[#09353B] to-[#04171A] text-white p-6 sm:p-7 flex flex-col justify-between relative overflow-hidden border border-[#0B6E7B]/40 shadow-2xl select-none">
-                    {/* Ambient subtle glow */}
-                    <div className="absolute -top-12 -right-12 w-52 h-52 bg-[#14B8A6]/15 rounded-full blur-3xl pointer-events-none"></div>
-                    <div className="absolute -bottom-10 -left-10 w-44 h-44 bg-[#0B6E7B]/20 rounded-full blur-2xl pointer-events-none"></div>
-
-                    {/* Top Header & Statement */}
+                  <div className="w-full h-full bg-[#F8F9FA] text-[#111827] p-6 sm:p-7 flex flex-col justify-between relative overflow-hidden border border-[#E5E7EB] shadow-2xl select-none">
+                    {/* Top Header & Close Icon */}
                     <div className="relative z-10 space-y-3.5">
-                      <div className="flex items-center justify-between border-b border-[#0B6E7B]/40 pb-2.5">
-                        <span className="font-narrow text-[11px] font-black text-[#2DD4BF] tracking-[0.2em] uppercase bg-[#0B6E7B]/30 border border-[#2DD4BF]/30 px-2.5 py-0.5 rounded">
-                          {executiveStatement.badge}
+                      <div className="flex items-center justify-between">
+                        <span className="font-narrow text-xs sm:text-[13px] font-black uppercase tracking-[0.25em]">
+                          <span className="text-[#00A3C4] font-black">EXECUTIVE </span>
+                          <span className="text-[#F59E0B] font-black">STATEMENT</span>
                         </span>
-                        <i className="fa-solid fa-quote-right text-lg text-[#2DD4BF]"></i>
+                        <div className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-700 bg-white/80 shadow-2xs">
+                          <i className="fa-solid fa-xmark text-xs font-bold"></i>
+                        </div>
                       </div>
 
-                      {/* Tagline / Subtitle */}
-                      <p className="font-narrow text-xs sm:text-[13px] text-[#80E8DD] font-bold uppercase tracking-wider leading-snug">
-                        {executiveStatement.tagline}
-                      </p>
+                      {/* Headline / Title */}
+                      <h4 className="font-display text-2xl sm:text-[27px] lg:text-[29px] font-black uppercase text-[#111827] leading-[1.08] tracking-tight">
+                        SEE DEEPER. GROW WISER.<br />LIVE BRIGHTER.
+                      </h4>
+
+                      {/* Accent Short Dark Bar */}
+                      <div className="w-16 h-[2.5px] bg-[#111827] mt-2 mb-3"></div>
 
                       {/* Highlighted Quote */}
-                      <blockquote className="border-l-2 border-[#2DD4BF] pl-3.5 py-1 bg-white/5 rounded-r-lg">
-                        <p className="font-serif italic text-xs sm:text-sm md:text-[14px] leading-snug text-white font-medium">
-                          &ldquo;{executiveStatement.quote}&rdquo;
-                        </p>
-                      </blockquote>
+                      <p className="font-sans italic font-bold text-xs sm:text-[13.5px] text-[#111827] leading-snug">
+                        &ldquo;{executiveStatement.quote}&rdquo;
+                      </p>
 
                       {/* Narrative Paragraphs */}
-                      <div className="space-y-2.5 pt-1 text-[11px] sm:text-xs leading-relaxed text-white/90">
+                      <div className="space-y-2.5 pt-0.5 text-[11px] sm:text-xs leading-relaxed text-[#4B5563]">
                         <p>
                           {executiveStatement.paragraphs[0]}
                         </p>
-                        <p className="text-white/80">
+                        <p>
                           {executiveStatement.paragraphs[1]}
                         </p>
                       </div>
-                    </div>
 
-                    {/* Bottom Motto & Author Signature */}
-                    <div className="relative z-10 pt-3 border-t border-[#0B6E7B]/40 space-y-2">
-                      <p className="text-[11px] sm:text-xs text-[#2DD4BF] font-medium italic leading-tight">
+                      {/* Motto */}
+                      <p className="font-sans font-bold text-[11.5px] sm:text-xs text-[#1F2937] pt-0.5">
                         {executiveStatement.motto}
                       </p>
-                      <div className="flex items-end justify-between pt-1">
-                        <div className="space-y-0.5">
-                          <span className="font-sans text-xs sm:text-sm font-bold text-white block">
-                            {executiveStatement.author}
-                          </span>
-                          <span className="font-narrow text-[9px] sm:text-[10px] text-[#2DD4BF] uppercase tracking-wider block font-semibold">
-                            {executiveStatement.role}
-                          </span>
-                        </div>
-                        <div className="font-cursive text-2xl sm:text-3xl text-[#2DD4BF] tracking-wide">
-                          Hong Anh
-                        </div>
+                    </div>
+
+                    {/* Bottom Row: Cursive Signature */}
+                    <div className="relative z-10 pt-3.5 border-t border-[#E5E7EB] flex items-center justify-between">
+                      <div className="font-cursive text-3xl sm:text-4xl bg-gradient-to-r from-[#00A3C4] via-[#14B8A6] to-[#F59E0B] bg-clip-text text-transparent select-none tracking-wide">
+                        Hong Anh
                       </div>
                     </div>
                   </div>

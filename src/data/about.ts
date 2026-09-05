@@ -25,13 +25,13 @@ export const toolsAndPlatforms: ToolItem[] = [
 
 export const executiveStatement = {
   badge: "EXECUTIVE STATEMENT",
-  tagline: "Craft the message. Drive the impact. Shape the narrative.",
-  quote: "Great marketing doesn't just speak to the audience, it resonates and inspires action.",
+  tagline: "SEE DEEPER. GROW WISER.\nLIVE BRIGHTER.",
+  quote: "I believe meaningful brands begin with understanding.",
   paragraphs: [
-    "Driven by a strong creative mindset, I approach every project as an opportunity to build a meaningful brand narrative. With a solid foundation in Content Marketing, Social Media Management and Multimedia Production, I have successfully planned and executed digital campaigns that maximize reach and cultivate loyal communities.",
-    "I am deeply focused on the intersection of creative conceptualization and end-to-end campaign execution. By continuously refining my skills in omnichannel content strategy and visual storytelling, I aim to architect campaigns that are both visually compelling and strategically sound."
+    "As a lifelong learner, I explore ideas, create with intention, and continuously grow through every experience. Working in Brand & Marketing Communications, I have built experience across PR, Event Marketing, and Multimedia Production – bringing strategy and creativity together to deliver communications that support business objectives.",
+    "Currently pursuing an MBA, I am expanding my perspective on Brand Strategy, Marketing Management, and Customer Experience, with the belief that learning fuels better decisions, stronger brands, and more meaningful experiences."
   ],
-  motto: "Delivering strategic creativity, one campaign at a time.",
+  motto: "Creating compassionate value, always moving forward.",
   author: "Lý Hồng Anh",
   role: "Content Strategist & Marketing"
 };

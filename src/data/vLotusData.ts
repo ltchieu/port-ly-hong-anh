@@ -79,7 +79,7 @@ export const vLotusData: VLotusData = {
     },
   ],
   seoPillar: {
-    title: "2.1. SEO Content & Culinary Insights",
+    title: "SEO Content & Culinary Insights",
     overview: "Established over 35 SEO-optimized Vietnamese website articles covering products, industry news, and culinary insights. Specialized in in-depth research on images and information to ensure accuracy and quality in every topic. Several articles achieved top search rankings for keywords such as “nhà hàng bò Wagyu”, “bò Wagyu ủ tuyết”,...",
     articleCount: "35+ In-Depth Articles",
     topKeywords: ["bò Wagyu ủ tuyết", "nhà hàng bò Wagyu", "văn hoá bàn ăn Nhật Bản", "ẩm thực Tohoku"],
@@ -123,7 +123,7 @@ export const vLotusData: VLotusData = {
     ],
   },
   fanpagePillar: {
-    title: "2.2. Multi-Brand Social Media Content Strategy",
+    title: "Multi-Brand Social Media Content Strategy",
     overview: "Monthly content planning and execution on social media platforms (Facebook, TikTok, Website, etc.) for brands Conservo, Ussina, and Yoshinoya. Achieved over 1,300+ Facebook followers, 250+ Instagram followers, and 500+ TikTok followers within 6 months. Highest-performing post reached 425,000+ reach, 1,500+ likes, 52 shares, and 35 comments.",
     growthStats: {
       reach: "425,000+ Peak Reach",
@@ -277,14 +277,14 @@ export const vLotusData: VLotusData = {
     ],
   },
   highlightPostsSection: {
-    title: "2.3. Highlight Facebook Posts & Copywriting Showcase",
+    title: "Highlight Facebook Posts & Copywriting Showcase",
     sectionTitle: "High-Impact Multi-Brand Copywriting & Seasonal Campaigns",
     instruction: "Explore viral Japanese culinary copywriting, product launches, brand promotions, and luxury sky dining campaigns.",
     description: "Curated top-performing social posts across Conservo Japanese Breads & Café, Yoshinoya Vietnam, and Ussina Snow Aging Beef.",
     posts: [
       {
         id: "vlotus-fb-post-1",
-        postNumber: "Facebook Post #1",
+        postNumber: "Product Launch",
         brandName: "Conservo - Japanese Breads & Café",
         title: "HOA TRÊN TUYẾT - YUKIBANA",
         category: "BST Thức Uống Mùa Hè",
@@ -301,7 +301,7 @@ YUKIBANA hiện đã có mặt tại các cửa hàng Conservo.
       },
       {
         id: "vlotus-fb-post-2",
-        postNumber: "Facebook Post #2",
+        postNumber: "Brand Promotion",
         brandName: "Yoshinoya Vietnam",
         title: "⚡ YOSHI DAY - DEAL ĐẶC BIỆT CHỈ TỪ 53K",
         category: "Khuyến Mãi & Ngày Hội Thương Hiệu",
@@ -324,7 +324,7 @@ Deadline có thể dời, nhưng hẹn Yoshi Day thì nhất định phải tớ
       },
       {
         id: "vlotus-fb-post-3",
-        postNumber: "Facebook Post #3",
+        postNumber: "Luxury Experience",
         brandName: "Ussina Snow Aging Beef & Bar",
         title: "☁️ SKYLINE JAPANESE AFTERNOON TEA",
         category: "Skyline Dining & Set Trà Chiều",
@@ -347,7 +347,7 @@ Tất cả được phục vụ trong không gian sang trọng giữa tầng kh�
       },
       {
         id: "vlotus-fb-post-4",
-        postNumber: "Facebook Post #4",
+        postNumber: "Storytelling & Brand Culture",
         brandName: "Conservo - Japanese Breads & Café",
         title: "NAMA DONUT - Ít ngọt - Tròn đầy",
         category: "Ra Mắt Bánh Mới & Triết Lý Washoku",
@@ -361,7 +361,7 @@ Chính sự tinh giản trong nguyên liệu, sự chỉn chu trong cách làm v
     ],
   },
   videoPillar: {
-    title: "2.4. Video Editor & Short-Form Media Production",
+    title: "Video Editor & Short-Form Media Production",
     overview: "Executed end-to-end multimedia content production for Conservo Japanese Breads & Café and Yoshinoya Vietnam across Facebook Reels and TikTok. Ideated video angles, coordinated on-site shootings, authored comprehensive creative briefs, and edited dynamic short-form videos with viral reach.",
     briefVideoUrl: "https://docs.google.com/presentation/d/1vXM5CUAIm0cCK_NDEoBUoqhK-zl7rq1eJfKrmhMXO9Y/edit?usp=sharing",
     videos: [

@@ -20,13 +20,30 @@ export type {
 
 // Dynamically import all images under assets/image/DN_Group using Vite import.meta.glob
 const dnImagesGlob = import.meta.glob<string>(
-  '../../assets/image/DN_Group/*.webp',
+  '../../assets/image/DN_Group/*.{webp,png,jpg,jpeg,svg,Webp,PNG,JPG,JPEG}',
   { eager: true, import: 'default' }
 );
 
 export const getDNImage = (filename: string): string => {
-  const matchKey = Object.keys(dnImagesGlob).find(key => key.endsWith(filename));
-  return matchKey ? dnImagesGlob[matchKey] : '';
+  if (!filename) return '';
+  const lowerFilename = filename.toLowerCase();
+
+  // Try direct or endsWith match
+  let matchKey = Object.keys(dnImagesGlob).find(key => {
+    const lKey = key.toLowerCase();
+    return lKey.endsWith(`/${lowerFilename}`) || lKey.endsWith(lowerFilename);
+  });
+  if (matchKey) return dnImagesGlob[matchKey];
+
+  // Fuzzy match ignoring underscores and hyphens (e.g. post2.png matches post_2.png)
+  const cleanTarget = lowerFilename.replace(/[_-]/g, '');
+  matchKey = Object.keys(dnImagesGlob).find(key => {
+    const baseName = (key.split('/').pop() || '').toLowerCase().replace(/[_-]/g, '');
+    return baseName === cleanTarget;
+  });
+  if (matchKey) return dnImagesGlob[matchKey];
+
+  return '';
 };
 
 export const dnGroupData: DNGroupData = {
@@ -70,7 +87,7 @@ export const dnGroupData: DNGroupData = {
     },
   ],
   socialMediaPillar: {
-    title: "1.1. Content Fanpage & Social Strategy",
+    title: "Content Fanpage & Social Strategy",
     sectionTitle: "Social Media Performance & Analytics",
     instruction: "Hover over cards to view engagement metrics; click image to expand.",
     description: "Meta content calendars, monthly editorial roadmaps on Google Docs, fanpage analytics dashboards, cross-platform scheduling, and TikTok viral performance reports.",
@@ -204,7 +221,7 @@ export const dnGroupData: DNGroupData = {
     ],
   },
   highlightPostsSection: {
-    title: "1.2. Highlight Facebook Posts & Copywriting Showcase",
+    title: "Highlight Facebook Posts & Copywriting Showcase",
     sectionTitle: "High-Engagement Facebook Content & Medical Copywriting",
     instruction: "Read detailed content copy, strategic dental storytelling, and click link to view live Facebook post.",
     description: "Curated high-performing Facebook posts covering clinical knowledge, patient smile transformations, customer gratitude, and advanced implantology.",
@@ -213,7 +230,7 @@ export const dnGroupData: DNGroupData = {
     posts: [
       {
         id: "fb-post-1",
-        postNumber: "Facebook Post #1",
+        postNumber: "Medical Copywriting",
         title: "✨ SỰ THẬT: NHỔ RĂNG KHÔN CÓ GIÚP GƯƠNG MẶT THON GỌN HƠN? ✨",
         category: "Kiến Thức & Trị Liệu",
         channel: "Nha Khoa Shark",
@@ -237,7 +254,7 @@ Một nụ cười khỏe mạnh và tự tin sau khi điều trị chính là y
       },
       {
         id: "fb-post-2",
-        postNumber: "Facebook Post #2",
+        postNumber: "Customer Story",
         title: "🚀 BỌC SỨ TỨC THÌ - \"LẤP ĐẦY\" KHOẢNG TRỐNG",
         category: "Khách Hàng & Thẩm Mỹ Răng Sứ",
         channel: "Nha Khoa Shark",
@@ -256,7 +273,7 @@ Nếu khách hàng nào cũng gặp tình trạng tương tự, ghé Nha khoa Sh
       },
       {
         id: "fb-post-3",
-        postNumber: "Facebook Post #3",
+        postNumber: "Brand Appreciation",
         title: "💌 THƯ CẢM ƠN GỬI ĐẾN QUÝ KHÁCH HÀNG",
         category: "Tri Ân Khách Hàng",
         channel: "Nha Khoa Shark",
@@ -273,7 +290,7 @@ Nha khoa Shark.`,
       },
       {
         id: "fb-post-4",
-        postNumber: "Facebook Post #4",
+        postNumber: "Expert Dental Insight",
         title: "🦷 TRỒNG RĂNG IMPLANT CÓ ẢNH HƯỞNG ĐẾN RĂNG KẾ BÊN KHÔNG?",
         category: "Chuyên Sâu Implant",
         channel: "Nha Khoa Shark",
@@ -297,7 +314,7 @@ Mặc dù vậy, nhưng Implant vẫn là kỹ thuật khó, liên quan trực t
     ],
   },
   videoEditorPillars: {
-    title: "1.3. Video Editor & Short-Form Content Production",
+    title: "Video Editor & Short-Form Content Production",
     overview: "Executed multimedia content production for the Shark Dental brand by building and scaling the 'Shark Dental x Điều ước của mẹ' TikTok channel with over 200 on-location and self-shot videos, collaborating with planners on scripts and leveraging CapCut Pro and AI tools for short-form editing.",
     projects: [
       {

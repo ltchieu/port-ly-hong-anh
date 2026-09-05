@@ -37,139 +37,40 @@ export default function FreelanceExperienceShowcase() {
   }, []);
 
   return (
-    <div className="pt-6 space-y-8 border-t border-[#CCE5E3] mt-6" onClick={(e) => e.stopPropagation()}>
-      {/* ========================================================================= */}
-      {/* SECTION 1: PROJECT OVERVIEW, METRICS & PANASONIC REPORT / VIDEO LINKS */}
-      {/* ========================================================================= */}
-      <div className="bg-gradient-to-r from-[#07262B] via-[#0A3D44] to-[#07262B] text-white p-6 sm:p-8 rounded-2xl shadow-lg border border-[#0B6E7B]/40 relative overflow-hidden group">
-        <div className="absolute right-0 top-0 translate-x-6 -translate-y-6 w-56 h-56 bg-[#14B8A6]/10 rounded-full blur-3xl pointer-events-none"></div>
-
-        <div className="relative z-10 space-y-6">
-          {/* Header Tag & Timeframe */}
-          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#0B6E7B]/40 pb-4">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-[#0B6E7B]/40 backdrop-blur-md rounded-full text-xs sm:text-sm font-narrow font-black tracking-widest text-[#2DD4BF] uppercase border border-[#0B6E7B]/50">
-              <i className="fa-solid fa-headset text-xs"></i>
-              <span>Movement Marketing Agency • PANASONIC CFAN</span>
-            </div>
-            <span className="font-mono text-xs sm:text-sm text-[#2DD4BF] bg-white/10 px-3.5 py-1 rounded-md border border-[#0B6E7B]/40 font-bold">
-              March 2024 • Freelance
-            </span>
-          </div>
-
-          {/* Project Title & Key Summary */}
-          <div className="space-y-3">
-            <h4 className="font-display text-2xl sm:text-3xl uppercase tracking-tight text-white leading-tight">
-              Panasonic CFAN Webinar Operations & Technical Administration
-            </h4>
-            <p className="font-sans text-base sm:text-lg text-white/90 leading-relaxed max-w-4xl">
-              <HighlightText text="Coordinated live stakeholder communications, AV technical readiness, attendee admission workflows, and speaker moderation across two flagship product training webinars for Panasonic CFAN." />
-            </p>
-          </div>
-
-          {/* Quick Action Links: Live Spreadsheet Report & YouTube Shorts Video */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* PANASONIC Webinar Report Link Card */}
-            <div className="p-4 sm:p-5 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 hover:border-[#2DD4BF] transition-all flex flex-col justify-between gap-4 shadow-sm">
-              <div className="flex items-start gap-3.5">
-                <div className="w-11 h-11 rounded-xl bg-[#0B6E7B] border border-[#2DD4BF]/50 text-white flex items-center justify-center shrink-0 shadow-md">
-                  <i className="fa-solid fa-file-excel text-lg text-[#2DD4BF]"></i>
-                </div>
-                <div className="space-y-0.5 min-w-0">
-                  <div className="flex items-center gap-2">
-                    <span className="font-narrow text-xs font-black text-[#2DD4BF] tracking-wider uppercase">
-                      Official Spreadsheet
-                    </span>
-                    <span className="px-2 py-0.2 bg-[#2DD4BF]/20 text-[#2DD4BF] font-mono text-[10px] rounded uppercase font-bold">
-                      Live Report
-                    </span>
-                  </div>
-                  <h5 className="font-display text-lg sm:text-xl uppercase tracking-tight text-white">
-                    PANASONIC webinar report
-                  </h5>
-                  <p className="font-sans text-xs text-white/75 leading-relaxed">
-                    Detailed participant tracking, live order conversions, attendee engagement metrics & survey ratings.
-                  </p>
-                </div>
+    <div className="space-y-10 pt-2" onClick={(e) => e.stopPropagation()}>
+      {/* KEY METRIC COUNTERS WITH ANIMATED COUNT-UP */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        {webinarMetrics.map((metric, mIdx) => (
+          <div
+            key={mIdx}
+            className="p-5 bg-white border border-[#CCE5E3] rounded-xl flex flex-col justify-between space-y-3 shadow-2xs hover:border-[#0B6E7B] hover:shadow-md transition-all group"
+          >
+            <div className="flex items-center justify-between text-[#0B6E7B]">
+              <span className="font-narrow text-xs sm:text-sm font-black uppercase tracking-wider text-[#4E6E75] group-hover:text-[#0B6E7B] transition-colors">
+                {metric.label}
+              </span>
+              <div className="w-8 h-8 rounded-lg bg-[#F0F8F7] flex items-center justify-center border border-[#CCE5E3] group-hover:bg-[#0B6E7B] group-hover:text-white transition-all">
+                <i className={`${metric.icon} text-sm`}></i>
               </div>
-
-              <a
-                href={PANASONIC_WEBINAR_REPORT_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full px-5 py-2.5 bg-[#0B6E7B] hover:bg-[#08545E] text-white border border-[#2DD4BF]/50 rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center justify-center gap-2.5 transition-all shadow-md hover:scale-[1.02] cursor-pointer"
-              >
-                <i className="fa-solid fa-table text-[#2DD4BF]"></i>
-                <span>Open Webinar Report</span>
-                <i className="fa-solid fa-arrow-up-right-from-square text-xs opacity-80"></i>
-              </a>
             </div>
-
-            {/* YouTube Shorts Video Recap Card */}
-            <div className="p-4 sm:p-5 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 hover:border-[#FF4D4D] transition-all flex flex-col justify-between gap-4 shadow-sm">
-              <div className="flex items-start gap-3.5">
-                <div className="w-11 h-11 rounded-xl bg-[#FF0000]/30 border border-[#FF4D4D]/50 text-white flex items-center justify-center shrink-0 shadow-md">
-                  <i className="fa-brands fa-youtube text-lg text-[#FF4D4D]"></i>
-                </div>
-                <div className="space-y-0.5 min-w-0">
-                  <div className="flex items-center gap-2">
-                    <span className="font-narrow text-xs font-black text-[#FF4D4D] tracking-wider uppercase">
-                      YouTube Shorts
-                    </span>
-                    <span className="px-2 py-0.2 bg-[#FF0000]/20 text-[#FF4D4D] font-mono text-[10px] rounded uppercase font-bold">
-                      Video Recap
-                    </span>
-                  </div>
-                  <h5 className="font-display text-lg sm:text-xl uppercase tracking-tight text-white">
-                    Webinar Highlight Video
-                  </h5>
-                  <p className="font-sans text-xs text-white/75 leading-relaxed">
-                    Behind-the-scenes short video covering on-site setup, speaker coordination, and live stream control.
-                  </p>
-                </div>
-              </div>
-
-              <a
-                href={PANASONIC_WEBINAR_VIDEO_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full px-5 py-2.5 bg-[#FF0000]/80 hover:bg-[#CC0000] text-white border border-[#FF4D4D]/50 rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center justify-center gap-2.5 transition-all shadow-md hover:scale-[1.02] cursor-pointer"
-              >
-                <i className="fa-brands fa-youtube text-white"></i>
-                <span>Watch YouTube Short</span>
-                <i className="fa-solid fa-arrow-up-right-from-square text-xs opacity-80"></i>
-              </a>
-            </div>
-          </div>
-
-          {/* Metric Stat Cards with AnimatedCounter */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 pt-2">
-            {webinarMetrics.map((metric, mIdx) => (
-              <div
-                key={mIdx}
-                className="p-4 bg-white/5 border border-[#0B6E7B]/40 rounded-xl space-y-1 hover:bg-white/10 transition-colors"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="font-narrow text-[11px] font-bold text-[#2DD4BF] uppercase tracking-wider">
-                    {metric.label}
-                  </span>
-                  <i className={`${metric.icon} text-xs text-[#2DD4BF]/80`}></i>
-                </div>
-                <div className="font-display text-2xl sm:text-3xl text-white tracking-tight">
-                  <AnimatedCounter value={metric.value} />
-                </div>
-                <p className="font-sans text-[11px] text-white/70 leading-snug">
+            <div>
+              <span className="font-display text-3xl sm:text-4xl text-[#0C2B31] leading-none block">
+                <AnimatedCounter value={metric.value} />
+              </span>
+              {metric.subtext && (
+                <p className="font-sans text-xs sm:text-sm text-[#4E6E75] mt-1.5 font-medium">
                   {metric.subtext}
                 </p>
-              </div>
-            ))}
+              )}
+            </div>
           </div>
-        </div>
+        ))}
       </div>
 
       {/* ========================================================================= */}
       {/* SECTION 2: HIGHLIGHT SHORT-FORM VIDEO & BEHIND-THE-SCENES */}
       {/* ========================================================================= */}
-      <div className="bg-[#F4FAF9] border border-[#CCE5E3] rounded-2xl p-5 sm:p-7 space-y-6">
+      <div className="space-y-6 pt-6 border-t border-[#CCE5E3]">
         <div className="border-b border-[#CCE5E3] pb-4 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-3">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
@@ -267,7 +168,7 @@ export default function FreelanceExperienceShowcase() {
       {/* ========================================================================= */}
       {/* SECTION 3: WEBINAR EVENT PHOTOGRAPHY GALLERY (MASONRY) */}
       {/* ========================================================================= */}
-      <div className="bg-[#F4FAF9] border border-[#CCE5E3] rounded-2xl p-5 sm:p-7 space-y-6">
+      <div className="space-y-6 pt-8 border-t border-[#CCE5E3]">
         {/* Section Title Bar */}
         <div className="border-b border-[#CCE5E3] pb-4 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-3">
           <div className="space-y-1">
