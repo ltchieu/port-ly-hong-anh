@@ -43,7 +43,7 @@ export default function Hero({ currentDateString, currentTime }: HeroProps) {
           className="w-full max-w-[94vw] sm:w-[580px] md:w-[740px] lg:w-[940px] xl:w-[1120px] flex flex-col text-left"
         >
           {/* Top Pre-headline Header with Name and Status Badges */}
-          <div className="flex flex-wrap items-center justify-between gap-3 mb-2 sm:mb-3 ml-1">
+          <div className="flex flex-wrap items-center justify-between gap-3 mb-2 sm:mb-3 ml-6">
             <div className="flex items-center gap-3">
               <DecryptedText
                 text="Lý Hồng Anh"
@@ -86,24 +86,6 @@ export default function Hero({ currentDateString, currentTime }: HeroProps) {
               className="font-sans font-black tracking-tight w-full"
             />
           </h1>
-
-          {/* Bottom Narrative & Core Pillar Badges (Tightens composition & bridges to next section) */}
-          <div className="mt-3 sm:mt-5 pt-4 border-t border-[#CCE5E3]/70 flex flex-col lg:flex-row lg:items-center justify-between gap-4 w-full">
-            <p className="font-sans text-xs sm:text-sm md:text-[14.5px] text-[#3D5A61] max-w-xl leading-relaxed">
-              Strategic Content &amp; Campaign Executive with 4+ years orchestrating brand narratives, short-form viral video production, and integrated activations.
-            </p>
-
-            <div className="flex flex-wrap items-center gap-2 shrink-0">
-              {["Content Strategy", "Short-Form Video", "Event Activation", "Brand Identity"].map((tag, idx) => (
-                <span
-                  key={idx}
-                  className="px-3 py-1 rounded-lg bg-white/90 border border-[#CCE5E3] text-[#0C2B31] font-narrow text-[11px] sm:text-xs font-bold uppercase tracking-wider shadow-2xs hover:border-[#0B6E7B] hover:text-[#0B6E7B] transition-colors"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
         </motion.div>
       </div>
 
