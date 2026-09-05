@@ -1,13 +1,10 @@
 import { useState, useMemo, useCallback, useEffect, lazy, Suspense } from "react";
 import { createPortal } from "react-dom";
-import { motion, AnimatePresence } from "motion/react";
-import { beneliftsData, getBeneliftsImage } from "../../data/beneliftsData";
-import ImageLightboxModal from "./ImageLightboxModal";
+import { beneliftsData } from "../../data/beneliftsData";
 import GallerySkeleton from "./GallerySkeleton";
 import AnimatedCounter from "./AnimatedCounter";
 import HighlightText from "./HighlightText";
 import FacebookEmbed from "./FacebookEmbed";
-import type { LightboxImageData } from "../../models/imageLightboxModal";
 
 // Lazy import interactive sub-components
 const BounceCards = lazy(() => import("./BounceCards"));
@@ -30,9 +27,6 @@ const bounceTransformStyles = [
 ];
 
 export default function BeneliftsAsiaExperienceShowcase() {
-  const [activeFanpageId, setActiveFanpageId] = useState<string>("fp-benelifts-asia");
-  const [selectedImage, setSelectedImage] = useState<LightboxImageData | null>(null);
-
   // Gallery Modal state for Event Photography and Design Collages
   const [galleryModal, setGalleryModal] = useState<CustomGalleryModalState>({
     isOpen: false,
@@ -133,23 +127,6 @@ export default function BeneliftsAsiaExperienceShowcase() {
     [designAssetsTop5]
   );
 
-  const activeFanpage = beneliftsData.fanpagePillar.fanpages.find(
-    (fp) => fp.id === activeFanpageId
-  ) || beneliftsData.fanpagePillar.fanpages[0];
-
-  const handleOpenLightbox = useCallback((src: string, title: string, description?: string) => {
-    setSelectedImage({
-      src,
-      title,
-      category: "BENELIFTS ASIA • EUROPEAN ELEVATORS",
-      description: description || "Benelifts Asia marketing and communications asset.",
-    });
-  }, []);
-
-  const handleCloseLightbox = useCallback(() => {
-    setSelectedImage(null);
-  }, []);
-
   return (
     <div className="space-y-10 pt-2" onClick={(e) => e.stopPropagation()}>
       {/* KEY METRIC COUNTERS WITH ANIMATED COUNT-UP */}
@@ -181,208 +158,9 @@ export default function BeneliftsAsiaExperienceShowcase() {
         ))}
       </div>
 
-      {/* 3. SECTION 3.1: TECHNICAL SEO & INBOUND DEMAND GENERATION */}
+      {/* SECTION: DESIGN SOCIAL POST, THUMBNAIL WEBSITE ARTICLES AND POSM */}
       <div className="space-y-6 pt-6 border-t border-[#CCE5E3]">
-        <div className="border-b border-[#CCE5E3] pb-5 space-y-3">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <div>
-              <span className="font-narrow text-xs sm:text-sm font-black text-[#0B6E7B] tracking-[0.2em] uppercase block">
-                BILINGUAL TECHNICAL SEO & INBOUND CONVERSION
-              </span>
-              <h4 className="font-display text-xl sm:text-2xl uppercase tracking-tight text-[#0C2B31]">
-                {beneliftsData.seoPillar.title}
-              </h4>
-            </div>
-
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-[#0B6E7B]/30 rounded-lg text-xs sm:text-sm shadow-2xs">
-              <i className="fa-solid fa-bullseye text-[#0B6E7B]"></i>
-              <span className="font-narrow font-black text-[#0C2B31] uppercase">
-                Direct Inbound: 20 Leads / Month
-              </span>
-            </div>
-          </div>
-
-          <p className="font-sans text-base sm:text-lg text-[#2C4A51] leading-relaxed max-w-5xl">
-            <HighlightText text={beneliftsData.seoPillar.overview} />
-          </p>
-        </div>
-
-        {/* SEO Articles Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {beneliftsData.seoPillar.articles.map((art) => (
-            <div
-              key={art.id}
-              onClick={() =>
-                handleOpenLightbox(art.image, art.title, `${art.impact} • ${art.excerpt}`)
-              }
-              className="bg-white rounded-xl border border-[#CCE5E3] overflow-hidden hover:border-[#0B6E7B] hover:shadow-md transition-all duration-300 flex flex-col justify-between group cursor-pointer"
-            >
-              <div className="relative aspect-[4/3] bg-[#E7F3F2] overflow-hidden">
-                <img
-                  src={art.image}
-                  alt={art.title}
-                  loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute top-3 left-3">
-                  <span className="px-2.5 py-1 bg-[#07262B]/85 backdrop-blur-md text-white font-narrow text-xs font-bold uppercase rounded tracking-wider border border-white/20">
-                    {art.category}
-                  </span>
-                </div>
-                <div className="absolute bottom-3 left-3 right-3">
-                  <span className="px-3 py-1.5 bg-[#0B6E7B] text-white font-narrow text-xs sm:text-sm font-black uppercase rounded-lg shadow-md block text-center">
-                    <i className="fa-solid fa-arrow-trend-up mr-1 text-[#2DD4BF] text-xs"></i>
-                    {art.impact}
-                  </span>
-                </div>
-              </div>
-
-              <div className="p-5 space-y-3.5 flex-1 flex flex-col justify-between">
-                <div className="space-y-2">
-                  <h5 className="font-sans font-bold text-base sm:text-lg text-[#0C2B31] leading-snug">
-                    {art.title}
-                  </h5>
-                  <p className="font-sans text-sm sm:text-base text-[#4E6E75] leading-relaxed line-clamp-3">
-                    <HighlightText text={art.excerpt} />
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* 4. SECTION 3.2: MULTI-BRAND SOCIAL CONTENT & VISUAL DESIGN */}
-      <div className="space-y-6 pt-8 border-t border-[#CCE5E3]">
-        <div className="border-b border-[#CCE5E3] pb-5 space-y-3">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <div>
-              <span className="font-narrow text-xs sm:text-sm font-black text-[#0B6E7B] tracking-[0.2em] uppercase block">
-                VISUAL DESIGN & MULTI-BRAND SOCIAL
-              </span>
-              <h4 className="font-display text-xl sm:text-2xl uppercase tracking-tight text-[#0C2B31]">
-                {beneliftsData.fanpagePillar.title}
-              </h4>
-            </div>
-
-            <span className="px-4 py-2 bg-white border border-[#0B6E7B]/30 rounded-lg text-xs sm:text-sm font-narrow font-black text-[#0C2B31] uppercase shadow-2xs">
-              Month 1: +600 Followers
-            </span>
-          </div>
-
-          <p className="font-sans text-base sm:text-lg text-[#2C4A51] leading-relaxed max-w-5xl">
-            <HighlightText text={beneliftsData.fanpagePillar.overview} />
-          </p>
-        </div>
-
-        {/* Fanpage Switcher Tabs */}
-        <div className="flex flex-wrap gap-3">
-          {beneliftsData.fanpagePillar.fanpages.map((fp) => {
-            const isSelected = activeFanpageId === fp.id;
-            return (
-              <button
-                key={fp.id}
-                onClick={() => setActiveFanpageId(fp.id)}
-                className={`px-5 py-3 rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center gap-2.5 transition-all cursor-pointer border ${
-                  isSelected
-                    ? "bg-[#0B6E7B] text-white border-[#0B6E7B] shadow-sm"
-                    : "bg-white text-[#0C2B31] border-[#CCE5E3] hover:border-[#0B6E7B] hover:bg-[#F0F8F7]"
-                }`}
-              >
-                <i
-                  className={`fa-solid ${
-                    fp.id === "fp-benelifts-asia"
-                      ? "fa-building"
-                      : fp.id === "fp-benelifts-srl"
-                      ? "fa-gear"
-                      : "fa-gem"
-                  } text-sm ${isSelected ? "text-[#2DD4BF]" : "text-[#0B6E7B]"}`}
-                ></i>
-                <span>{fp.name}</span>
-                <span
-                  className={`text-xs px-2.5 py-0.5 rounded-full ${
-                    isSelected ? "bg-white/20 text-white" : "bg-[#F0F8F7] text-[#4E6E75]"
-                  }`}
-                >
-                  {fp.badge}
-                </span>
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Active Fanpage Showcase */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeFanpage.id}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2 }}
-            className="space-y-5"
-          >
-            <div className="bg-white p-5 rounded-xl border border-[#CCE5E3] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-              <div className="space-y-1">
-                <span className="font-narrow text-xs sm:text-sm font-bold text-[#0B6E7B] uppercase tracking-wider block">
-                  Focus: {activeFanpage.subtitle}
-                </span>
-                <p className="font-sans text-sm sm:text-base text-[#2C4A51]">
-                  <HighlightText text={activeFanpage.description} />
-                </p>
-              </div>
-              <span className="font-mono text-xs sm:text-sm font-bold text-[#0B6E7B] bg-[#F0F8F7] px-3.5 py-1.5 rounded-md shrink-0 border border-[#CCE5E3]">
-                {activeFanpage.posts.length} Curated Posts
-              </span>
-            </div>
-
-            {/* Posts Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {activeFanpage.posts.map((post) => (
-                <div
-                  key={post.id}
-                  onClick={() =>
-                    handleOpenLightbox(post.image, post.title, post.description)
-                  }
-                  className="bg-white rounded-xl border border-[#CCE5E3] overflow-hidden hover:border-[#0B6E7B] hover:shadow-md transition-all duration-300 flex flex-col justify-between group cursor-pointer"
-                >
-                  <div className="relative aspect-[4/3] bg-[#E7F3F2] overflow-hidden">
-                    <img
-                      src={post.image}
-                      alt={post.title}
-                      loading="lazy"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute top-3 left-3">
-                      <span className="px-2.5 py-1 bg-[#07262B]/85 backdrop-blur-md text-white font-narrow text-xs font-bold uppercase rounded tracking-wider border border-white/20">
-                        {post.category}
-                      </span>
-                    </div>
-                    <div className="absolute inset-0 bg-[#07262B]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                      <span className="px-4 py-2 bg-[#0B6E7B] text-white rounded-full font-narrow text-xs sm:text-sm font-bold uppercase flex items-center gap-2 shadow-md">
-                        <i className="fa-solid fa-magnifying-glass-plus text-xs"></i>
-                        Zoom
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="p-5 space-y-3.5 flex-1 flex flex-col justify-between">
-                    <div className="space-y-2">
-                      <h5 className="font-sans font-bold text-base sm:text-lg text-[#0C2B31] leading-snug">
-                        {post.title}
-                      </h5>
-                      <p className="font-sans text-sm sm:text-base text-[#4E6E75] line-clamp-2 leading-relaxed">
-                        <HighlightText text={post.description} />
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        </AnimatePresence>
-
-        {/* INTERACTIVE COLLAGE: DESIGN SOCIAL POST, THUMBNAIL WEBSITE ARTICLES AND POSM */}
-        <div className="bg-white p-5 sm:p-7 rounded-2xl border border-[#CCE5E3] space-y-6 shadow-xs hover:border-[#0B6E7B] transition-all mt-6">
+        <div className="bg-white p-5 sm:p-7 rounded-2xl border border-[#CCE5E3] space-y-6 shadow-xs hover:border-[#0B6E7B] transition-all">
           <div className="space-y-1.5 border-b border-[#CCE5E3] pb-4">
             <div className="flex items-center justify-between gap-2">
               <h4 className="font-narrow text-sm sm:text-base font-black text-[#0C2B31] uppercase tracking-wider flex items-center gap-2">
@@ -1151,9 +929,6 @@ export default function BeneliftsAsiaExperienceShowcase() {
           </div>,
           document.body
         )}
-
-      {/* Lightbox Modal */}
-      <ImageLightboxModal selectedImage={selectedImage} onClose={handleCloseLightbox} />
     </div>
   );
 }
