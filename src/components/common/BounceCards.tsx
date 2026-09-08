@@ -171,7 +171,7 @@ export default function BounceCards({
         return (
           <div
             key={idx}
-            className={`card card-${idx}`}
+            className={`bounce-card card card-${idx}`}
             style={{
               transform: `translate(${base.x}px, ${base.y}px) rotate(${base.rotate}deg)`,
               zIndex: idx + 1

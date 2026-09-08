@@ -24,7 +24,8 @@
   backface-visibility: hidden;
 }
 
-.card {
+.stack-container .stack-card,
+.stack-container .card {
   border-radius: 1rem;
   overflow: hidden;
   width: 100%;
@@ -40,7 +41,8 @@
   backface-visibility: hidden;
 }
 
-.card img {
+.stack-container .stack-card img,
+.stack-container .card img {
   pointer-events: none;
   user-select: none;
   -webkit-user-drag: none;

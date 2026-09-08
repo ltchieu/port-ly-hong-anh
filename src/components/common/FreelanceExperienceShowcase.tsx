@@ -201,6 +201,9 @@ export default function FreelanceExperienceShowcase() {
                 <i className="fa-brands fa-youtube"></i>
               </div>
               <div className="leading-tight">
+                <span className="font-narrow text-[10px] sm:text-xs font-black text-[#2DD4BF] tracking-[0.2em] uppercase block">
+                  HIGHLIGHT VIDEO
+                </span>
                 <h4 className="font-display font-bold text-sm sm:text-base text-white uppercase tracking-tight">
                   YOUTUBE SHORTS
                 </h4>

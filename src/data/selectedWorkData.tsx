@@ -4,6 +4,32 @@ import type { DepthCarouselItem } from '../models/depthCarousel';
 import { getVLotusImage } from './vLotusData';
 import { getDNImage } from './dnGroupData';
 
+// Dynamically load all images under assets/image/event_selected_work
+export const eventImagesGlob = import.meta.glob<string>(
+  '../../assets/image/event_selected_work/*.{webp,png,jpg,jpeg,svg,Webp,PNG,JPG,JPEG}',
+  { eager: true, import: 'default' }
+);
+
+export const getEventSelectedWorkImage = (filename: string): string => {
+  if (!filename) return '';
+  const lowerFilename = filename.toLowerCase();
+
+  let matchKey = Object.keys(eventImagesGlob).find(key => {
+    const lKey = key.toLowerCase();
+    return lKey.endsWith(`/${lowerFilename}`) || lKey.endsWith(lowerFilename);
+  });
+  if (matchKey) return eventImagesGlob[matchKey];
+
+  const cleanTarget = lowerFilename.replace(/[_-]/g, '');
+  matchKey = Object.keys(eventImagesGlob).find(key => {
+    const baseName = (key.split('/').pop() || '').toLowerCase().replace(/[_-]/g, '');
+    return baseName === cleanTarget;
+  });
+  if (matchKey) return eventImagesGlob[matchKey];
+
+  return '';
+};
+
 // 8 Highlight Facebook posts for Diem Nhan Group / Shark Dental
 export const sharkDentalFacebookPosts: CarouselItemData[] = [
   {
@@ -69,57 +95,57 @@ export const sharkDentalFacebookPosts: CarouselItemData[] = [
   {
     id: 5,
     postNumber: "Facebook Post #5",
-    tag: "Chăm Sóc Nụ Cười",
-    title: "Bí Quyết Giữ Nụ Cười Luôn Trắng Sáng & Tự Tin",
-    description: "Chiến lược nội dung chăm sóc răng miệng khoa học, bảo vệ men răng và duy trì vẻ rạng rỡ cho nụ cười khỏe đẹp.",
+    tag: "Shark Warranty Card",
+    title: "Shark Warranty Card – One Card, All Warranty Info In One Place",
+    description: "No more worrying about lost paperwork! Shark Dental provides every patient with a Warranty Card where all treatment stages and materials are securely stored with a unique security code.",
     link: "https://www.facebook.com/share/p/18jvYxbM5M/",
     icon: <i className="fa-brands fa-facebook-f text-sm text-[#1877F2]" />,
-    image: getDNImage("dn_group_img_08.webp"),
+    image: getEventSelectedWorkImage("post5.jpg"),
     metrics: [
-      { value: "320K", label: "VIEWS", highlight: true },
-      { value: "1,890h", label: "WATCH TIME" },
-      { value: "96.2%", label: "FYP RATIO" },
+      { value: "100%", label: "DIGITAL CARD", highlight: true },
+      { value: "12 YRS", label: "WARRANTY" },
+      { value: "99.8%", label: "SECURITY" },
     ],
   },
   {
     id: 6,
     postNumber: "Facebook Post #6",
-    tag: "Quy Trình Chuẩn Y Khoa",
-    title: "Trải Nghiệm Dịch Vụ Nha Khoa Chuẩn Y Khoa",
-    description: "Thăm khám 1:1 cùng bác sĩ chuyên khoa với hệ thống công nghệ vô trùng khép kín và trang thiết bị hiện đại.",
+    tag: "Customer Story & Implant",
+    title: "Mr. Bruce's Smile Restoration Journey with Dentium Implant",
+    description: "Restoring missing teeth with Dentium Implant and aesthetic Zirconia crown for tooth #15. Completed in four appointments over four months with up to 12 years warranty coverage.",
     link: "https://www.facebook.com/share/p/1HQaXiChYZ/",
     icon: <i className="fa-brands fa-facebook-f text-sm text-[#1877F2]" />,
-    image: getDNImage("dn_group_img_18.webp"),
+    image: getEventSelectedWorkImage("post6.jpg"),
     metrics: [
-      { value: "185K", label: "REACH", highlight: true },
-      { value: "1,120", label: "LINK CLICKS" },
-      { value: "98.0%", label: "TRUST INDEX" },
+      { value: "12 YRS", label: "WARRANTY", highlight: true },
+      { value: "4 MO", label: "TREATMENT" },
+      { value: "100%", label: "CHEWING FUNCTION" },
     ],
   },
   {
     id: 7,
     postNumber: "Facebook Post #7",
-    tag: "Thiết Kế Nụ Cười",
-    title: "Kiến Tạo Dáng Răng Cá Nhân Hóa Chuẩn Tỷ Lệ Vàng",
-    description: "Tư vấn và thiết kế nụ cười hài hòa phong thủy, tôn lên đường nét thanh tú và phong thái tự tin cho từng khách hàng.",
+    tag: "Porcelain Veneers Makeover",
+    title: "Radiant Smile Makeover — Authentic Porcelain Veneers",
+    description: "No long description is needed — the transformation of his teeth and that radiant smile say it all. Authentic, high-quality dental veneers crafted with clear warranty coverage.",
     link: "https://www.facebook.com/share/p/1EokeUDWka/",
     icon: <i className="fa-brands fa-facebook-f text-sm text-[#1877F2]" />,
-    image: getDNImage("dn_group_img_27.webp"),
+    image: getEventSelectedWorkImage("post7.jpg"),
     metrics: [
-      { value: "410K", label: "VIEWS", highlight: true },
-      { value: "2,150h", label: "WATCH TIME" },
-      { value: "98.1%", label: "FYP RATIO" },
+      { value: "195K", label: "REACH", highlight: true },
+      { value: "1,480", label: "LINK CLICKS" },
+      { value: "98.5%", label: "SATISFACTION" },
     ],
   },
   {
     id: 8,
     postNumber: "Facebook Post #8",
-    tag: "Chiến Dịch Truyền Thông",
-    title: "Ưu Đãi Đặc Quyền — Tỏa Sáng Nụ Cười Xinh",
-    description: "Nội dung kích hoạt tương tác fanpage, minigame tri ấn và thúc đẩy khách hàng đặt lịch trải nghiệm dịch vụ nha khoa.",
+    tag: "Confidence & Veneers",
+    title: "The Moment Our Client Smiled With Complete Confidence",
+    description: "Transforming hesitant smiles into genuine radiance. How customized porcelain veneers at Shark Dental Clinic helped our client unlock joyful, unreserved confidence in every moment.",
     link: "https://www.facebook.com/share/p/18MG7gLSqv/",
     icon: <i className="fa-brands fa-facebook-f text-sm text-[#1877F2]" />,
-    image: getDNImage("dn_group_img_30.webp"),
+    image: getEventSelectedWorkImage("post8.jpg"),
     metrics: [
       { value: "312K", label: "IMPRESSIONS", highlight: true },
       { value: "2,450", label: "CLICKS" },
@@ -217,12 +243,6 @@ export interface EventPlanningDoc {
   tags: string[];
   keyHighlights: string[];
 }
-
-// Dynamically load all images under assets/image/event_selected_work
-const eventImagesGlob = import.meta.glob<string>(
-  '../../assets/image/event_selected_work/*.webp',
-  { eager: true, import: 'default' }
-);
 
 // 2 Strategic Event Planning & Operational Documents (Spreadsheets 1.webp & 2.webp)
 export const beneliftsPlanningDocs: EventPlanningDoc[] = [

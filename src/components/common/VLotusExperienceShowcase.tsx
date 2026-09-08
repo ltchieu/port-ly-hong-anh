@@ -62,7 +62,7 @@ export default function VLotusExperienceShowcase() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
               <span className="font-narrow text-xs sm:text-sm font-black text-[#0B6E7B] tracking-[0.2em] uppercase block">
-                RESTAURANT PRODUCTION & VIRAL SHORT-FORM VIDEOS
+                HIGHLIGHT VIDEOS & RESTAURANT PRODUCTION
               </span>
               <h4 className="font-display text-xl sm:text-2xl uppercase tracking-tight text-[#0C2B31] flex items-center gap-2.5">
                 <i className="fa-solid fa-clapperboard text-[#0B6E7B]"></i>

@@ -95,26 +95,26 @@ export default function AeonExperienceShowcase() {
   return (
     <div className="space-y-10 pt-2" onClick={(e) => e.stopPropagation()}>
       {/* KEY METRIC COUNTERS WITH ANIMATED COUNT-UP */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4">
         {aeonMetrics.map((metric, mIdx) => (
           <div
             key={mIdx}
-            className="p-5 bg-white border border-[#CCE5E3] rounded-xl flex flex-col justify-between space-y-3 shadow-2xs hover:border-[#0B6E7B] hover:shadow-md transition-all group"
+            className="p-4 sm:p-5 bg-white border border-[#CCE5E3] rounded-xl flex flex-col justify-between space-y-3 shadow-2xs hover:border-[#0B6E7B] hover:shadow-md transition-all group min-w-0"
           >
-            <div className="flex items-center justify-between text-[#0B6E7B]">
-              <span className="font-narrow text-xs sm:text-sm font-black uppercase tracking-wider text-[#4E6E75] group-hover:text-[#0B6E7B] transition-colors">
+            <div className="flex items-start justify-between gap-2 text-[#0B6E7B]">
+              <span className="font-narrow text-xs sm:text-sm font-black uppercase tracking-wider text-[#4E6E75] group-hover:text-[#0B6E7B] transition-colors leading-snug flex-1 min-w-0">
                 {metric.label}
               </span>
-              <div className="w-8 h-8 rounded-lg bg-[#F0F8F7] flex items-center justify-center border border-[#CCE5E3] group-hover:bg-[#0B6E7B] group-hover:text-white transition-all">
+              <div className="w-8 h-8 rounded-lg bg-[#F0F8F7] flex items-center justify-center border border-[#CCE5E3] group-hover:bg-[#0B6E7B] group-hover:text-white transition-all shrink-0">
                 <i className={`${metric.icon} text-sm`}></i>
               </div>
             </div>
             <div>
-              <span className="font-display text-3xl sm:text-4xl text-[#0C2B31] leading-none block">
+              <span className="font-display text-2xl sm:text-3xl lg:text-4xl text-[#0C2B31] leading-none block tracking-tight">
                 <AnimatedCounter value={metric.value} />
               </span>
               {metric.subtext && (
-                <p className="font-sans text-xs sm:text-sm text-[#4E6E75] mt-1.5 font-medium">
+                <p className="font-sans text-xs sm:text-sm text-[#4E6E75] mt-1.5 font-medium leading-normal">
                   {metric.subtext}
                 </p>
               )}
@@ -131,7 +131,7 @@ export default function AeonExperienceShowcase() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
               <span className="font-narrow text-xs sm:text-sm font-black text-[#0B6E7B] tracking-[0.2em] uppercase block">
-                VIDEO EDITING & FACEBOOK REELS
+                HIGHLIGHT VIDEOS & FACEBOOK REELS
               </span>
               <h3 className="font-display text-xl sm:text-2xl uppercase tracking-tight text-[#0C2B31] flex items-center gap-2.5">
                 <i className="fa-solid fa-video text-[#0B6E7B]"></i>

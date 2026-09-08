@@ -184,7 +184,7 @@ function Stack({
             disableDrag={shouldDisableDrag || !isTopCard}
           >
             <motion.div
-              className="card"
+              className="stack-card card"
               onClick={() => shouldEnableClick && isTopCard && sendToBack(card.id)}
               animate={{
                 rotateZ: (stack.length - index - 1) * 4 + randomRotate,
