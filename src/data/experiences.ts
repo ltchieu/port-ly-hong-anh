@@ -94,9 +94,9 @@ export const experiences: Experience[] = [
           {
             subtitle: "Achieved peak engagement metrics:",
             subitems: [
-              "425,000+ Best Post Reach",
-              "1,500+ Likes & 52 Shares",
-              "120,000+ Best Video Views"
+              "425,000+ Best Post Reach (1,500+ Likes & 52 Shares)",
+              "120,000+ Best Video Views",
+              "35+ SEO Articles Published (Top Google Rankings on 'bò Wagyu ủ tuyết', 'nhà hàng bò Wagyu')"
             ]
           }
         ]
@@ -108,7 +108,7 @@ export const experiences: Experience[] = [
     index: "03",
     role: "Marketing Officer",
     company: "Benelifts Asia Co.,Ltd. I Benelifts S.r.l",
-    location: "April 2024 - February 2025",
+    location: "February 2024 - February 2025",
     summary: "Planned and executed monthly content calendars for three brands, managed end-to-end video production, created 45+ bilingual SEO articles, and coordinated internal corporate events & trade exhibitions.",
     description: "Planned and executed monthly content calendars for three brands, managed end-to-end video production, created 45+ bilingual SEO articles, and coordinated internal corporate events & trade exhibitions.",
     image: getBeneliftsImage("benelifts_img_01.webp") || getBeneliftsImage("benelifts_img_03.webp"),

@@ -69,8 +69,6 @@ export interface FacebookHighlightPost {
 export interface BeneliftsHighlightPostsSection {
   title: string;
   sectionTitle: string;
-  instruction: string;
-  description: string;
   beneliftsDriveUrl: string;
   casanovaDriveUrl: string;
   posts: FacebookHighlightPost[];
@@ -127,7 +125,6 @@ export interface BeneliftsData {
   };
   videoPillar: {
     title: string;
-    overview: string;
     stats: {
       views: string;
       likes: string;
@@ -144,7 +141,6 @@ export interface BeneliftsData {
   eventPillar: {
     title: string;
     sectionHeader: string;
-    overview: string;
     photographyCollage: BeneliftsEventCollage;
     designCollage: BeneliftsEventCollage;
   };

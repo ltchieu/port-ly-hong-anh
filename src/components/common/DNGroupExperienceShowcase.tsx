@@ -3,8 +3,10 @@ import { dnGroupData, getDNImage } from "../../data/dnGroupData";
 import ImageLightboxModal from "./ImageLightboxModal";
 import AnimatedCounter from "./AnimatedCounter";
 import HighlightText from "./HighlightText";
+import HighlightVideoCard from "./HighlightVideoCard";
 import FacebookEmbed from "./FacebookEmbed";
 import TikTokEmbed from "./TikTokEmbed";
+import ScrollablePostContent from "./ScrollablePostContent";
 import type { LightboxImageData } from "../../models/imageLightboxModal";
 
 export default function DNGroupExperienceShowcase() {
@@ -55,8 +57,8 @@ export default function DNGroupExperienceShowcase() {
       </div>
 
       {/* 3. SECTION 1.1: SOCIAL MEDIA PERFORMANCE & ANALYTICS GRID */}
-      <div className="space-y-6 pt-6 border-t border-[#CCE5E3]">
-        <div className="border-b border-[#CCE5E3] pb-5 space-y-3">
+      <div className="bg-white rounded-2xl sm:rounded-3xl border border-[#CCE5E3] p-5 sm:p-7 lg:p-8 space-y-6 shadow-xs hover:border-[#0B6E7B]/40 transition-all">
+        <div className="border-b border-[#CCE5E3]/80 pb-5 space-y-3">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
               <span className="font-narrow text-xs sm:text-sm font-black text-[#0B6E7B] tracking-[0.2em] uppercase block">
@@ -71,17 +73,13 @@ export default function DNGroupExperienceShowcase() {
             </div>
 
             {/* Post High Performance Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-[#0B6E7B]/30 rounded-lg text-xs sm:text-sm shadow-2xs">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-[#F0F8F7] border border-[#CCE5E3] rounded-xl text-xs sm:text-sm shadow-2xs">
               <i className="fa-solid fa-trophy text-[#0B6E7B]"></i>
               <span className="font-narrow font-black text-[#0C2B31] uppercase">
                 Top Post: 279K+ Views &bull; 96.1K Interactions &bull; 596K Viral Video
               </span>
             </div>
           </div>
-
-          <p className="font-sans text-xs sm:text-sm font-bold text-[#0B6E7B]">
-            {dnGroupData.socialMediaPillar.instruction}
-          </p>
 
           <p className="font-sans text-base sm:text-lg text-[#2C4A51] leading-relaxed max-w-5xl">
             <HighlightText text={dnGroupData.socialMediaPillar.description} />
@@ -216,8 +214,8 @@ export default function DNGroupExperienceShowcase() {
       </div>
 
       {/* 4. SECTION 1.2: HIGHLIGHT FACEBOOK POSTS & COPYWRITING SHOWCASE */}
-      <div className="space-y-6 pt-8 border-t border-[#CCE5E3]">
-        <div className="border-b border-[#CCE5E3] pb-5 space-y-3">
+      <div className="bg-white rounded-2xl sm:rounded-3xl border border-[#CCE5E3] p-5 sm:p-7 lg:p-8 space-y-6 shadow-xs hover:border-[#0B6E7B]/40 transition-all">
+        <div className="border-b border-[#CCE5E3]/80 pb-5 space-y-3">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
               <span className="font-narrow text-xs sm:text-sm font-black text-[#0B6E7B] tracking-[0.2em] uppercase block">
@@ -254,14 +252,6 @@ export default function DNGroupExperienceShowcase() {
               </a>
             </div>
           </div>
-
-          <p className="font-sans text-xs sm:text-sm font-bold text-[#0B6E7B]">
-            {dnGroupData.highlightPostsSection.instruction}
-          </p>
-
-          <p className="font-sans text-base sm:text-lg text-[#2C4A51] leading-relaxed max-w-5xl">
-            <HighlightText text={dnGroupData.highlightPostsSection.description} />
-          </p>
         </div>
 
         {/* 4 Highlight Facebook Posts Grid */}
@@ -269,7 +259,7 @@ export default function DNGroupExperienceShowcase() {
           {dnGroupData.highlightPostsSection.posts.map((post) => (
             <div
               key={post.id}
-              className="bg-white rounded-2xl border border-[#CCE5E3] overflow-hidden hover:border-[#0B6E7B] hover:shadow-xl transition-all duration-300 flex flex-col justify-between shadow-2xs group"
+              className="bg-[#F8FCFB] rounded-2xl border border-[#CCE5E3] overflow-hidden hover:border-[#0B6E7B] hover:shadow-xl transition-all duration-300 flex flex-col justify-between shadow-2xs group"
             >
               {/* Card Header (Facebook Page Identity) */}
               <div className="p-4 sm:p-5 border-b border-[#CCE5E3]/80 bg-[#FBFDFD] flex items-center justify-between gap-3">
@@ -308,9 +298,7 @@ export default function DNGroupExperienceShowcase() {
                     {post.title}
                   </h5>
 
-                  <div className="font-sans text-sm sm:text-base text-[#2C4A51] leading-relaxed whitespace-pre-line bg-[#F8FCFB] p-4 rounded-xl border border-[#CCE5E3]/60 max-h-[380px] overflow-y-auto custom-scrollbar">
-                    {post.content}
-                  </div>
+                  <ScrollablePostContent content={post.content} />
                 </div>
 
                 {/* Card Footer: Action Links & Tags */}
@@ -351,110 +339,92 @@ export default function DNGroupExperienceShowcase() {
       </div>
 
       {/* 5. SECTION 1.3: VIDEO EDITOR & SHORT-FORM PRODUCTION */}
-      <div className="space-y-6 pt-8 border-t border-[#CCE5E3]">
-        <div className="border-b border-[#CCE5E3] pb-5 space-y-3">
-          <div>
-            <span className="font-narrow text-xs sm:text-sm font-black text-[#0B6E7B] tracking-[0.2em] uppercase block">
-              VIDEO EDITING & VIRAL TIKTOK CHANNELS
-            </span>
-            <h4 className="font-display text-xl sm:text-2xl uppercase tracking-tight text-[#0C2B31]">
-              {dnGroupData.videoEditorPillars.title}
-            </h4>
+      <div className="bg-white rounded-2xl sm:rounded-3xl border border-[#CCE5E3] p-5 sm:p-7 lg:p-8 space-y-6 shadow-xs hover:border-[#0B6E7B]/40 transition-all">
+        <div className="border-b border-[#CCE5E3]/80 pb-5 space-y-3">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <span className="font-narrow text-xs sm:text-sm font-black text-[#0B6E7B] tracking-[0.2em] uppercase block">
+                VIDEO EDITING & VIRAL TIKTOK CHANNELS
+              </span>
+              <h4 className="font-display text-xl sm:text-2xl uppercase tracking-tight text-[#0C2B31] flex items-center gap-2.5">
+                <i className="fa-solid fa-clapperboard text-[#0B6E7B]"></i>
+                <span>{dnGroupData.videoEditorPillars.title}</span>
+              </h4>
+            </div>
+
+            {/* Document Action Buttons (Brief Video & Kịch bản đi quay) */}
+            <div className="flex flex-wrap items-center gap-2.5">
+              <a
+                href="https://docs.google.com/spreadsheets/d/1OiF65aYb5gk5Lluo50LQPVBCD9AZ2et2tfgGoGVbAYQ/edit?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3.5 py-2 bg-[#0B6E7B] hover:bg-[#08545E] text-white border border-[#2DD4BF]/40 rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center gap-2 transition-all shadow-xs hover:scale-105 cursor-pointer"
+              >
+                <i className="fa-solid fa-file-lines text-[#2DD4BF]"></i>
+                <span>Brief Video</span>
+                <i className="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-80"></i>
+              </a>
+
+              <a
+                href="https://docs.google.com/spreadsheets/d/145IwPNgMM3_desFcJoGOzzN21Lbtw2hVOaNPayWZrk8/edit?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3.5 py-2 bg-white hover:bg-[#F0F8F7] text-[#0C2B31] border border-[#CCE5E3] hover:border-[#0B6E7B] rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center gap-2 transition-all shadow-xs hover:scale-105 cursor-pointer"
+              >
+                <i className="fa-solid fa-clapperboard text-[#0B6E7B]"></i>
+                <span>Kịch bản đi quay</span>
+                <i className="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-80"></i>
+              </a>
+            </div>
           </div>
-          <p className="font-sans text-base sm:text-lg text-[#2C4A51] leading-relaxed max-w-5xl">
-            <HighlightText text={dnGroupData.videoEditorPillars.overview} />
-          </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {dnGroupData.videoEditorPillars.projects.map((video) => {
-            const isFacebook = video.platform === "facebook";
+        {/* Highlight Videos 4-Column Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+          {dnGroupData.videoEditorPillars.projects.map((video, vIdx) => {
+            const isTikTok = video.platform === "tiktok";
+            const isDieuuoc = video.channel.includes("Điều ước");
 
             return (
-              <div
+              <HighlightVideoCard
                 key={video.id}
-                className="bg-white rounded-2xl border border-[#CCE5E3] overflow-hidden hover:border-[#0B6E7B] hover:shadow-xl transition-all duration-300 flex flex-col justify-between group shadow-xs"
-              >
-                {/* Live Video Embed Player directly rendered with title on hover inside video */}
-                <div className="relative w-full bg-[#07262B] p-4 flex flex-col items-center justify-center overflow-hidden">
-                  <div className="w-full flex justify-center items-center">
-                    {isFacebook ? (
-                      <div className="w-full max-w-[340px] sm:max-w-[380px] h-[520px] sm:h-[580px] rounded-xl overflow-hidden shadow-2xl bg-black border border-white/10 relative flex items-center justify-center">
-                        <FacebookEmbed url={video.videoUrl} className="w-full h-full" />
-                      </div>
-                    ) : (
-                      <TikTokEmbed
-                        url={video.videoUrl}
-                        videoId={video.videoId}
-                        title={video.title}
-                        author="@sharkdentalxdieuuoccuame"
-                      />
-                    )}
-                  </div>
-
-                  {/* Title in the video: appears when hover */}
-                  <div className="absolute inset-x-0 top-0 p-4 sm:p-5 bg-gradient-to-b from-[#07262B]/95 via-[#07262B]/75 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none flex items-center justify-between gap-3 z-10">
-                    <div className="flex items-center gap-3">
-                      <a
-                        href={video.videoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        title={isFacebook ? "Open on Facebook" : "Open on TikTok"}
-                        className={`w-9 h-9 rounded-full flex items-center justify-center text-white shadow-md hover:scale-110 active:scale-95 transition-all shrink-0 pointer-events-auto ${
-                          isFacebook
-                            ? "bg-[#1877F2] hover:bg-[#1565C0]"
-                            : "bg-black hover:bg-neutral-800 border border-white/20"
-                        }`}
-                      >
-                        <i className={`${isFacebook ? "fa-brands fa-facebook-f" : "fa-brands fa-tiktok"} text-sm`}></i>
-                      </a>
-                      <h5 className="font-display text-base sm:text-lg text-white uppercase tracking-tight font-bold drop-shadow-md">
-                        {video.title}
-                      </h5>
-                    </div>
-
-                    <a
-                      href={video.videoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-3 py-1.5 bg-[#0B6E7B] hover:bg-[#08545E] text-white text-xs font-narrow font-bold uppercase rounded-lg shadow-sm transition-all pointer-events-auto shrink-0 flex items-center gap-1.5"
-                    >
-                      <span>{isFacebook ? "Facebook" : "TikTok"}</span>
-                      <i className="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                    </a>
-                  </div>
-                  {/* Bottom Action buttons on hover: Brief Video & Kịch bản đi quay */}
-                  {(video.briefUrl || video.scriptUrl) && (
-                    <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5 bg-gradient-to-t from-[#07262B]/95 via-[#07262B]/75 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none flex flex-wrap items-center justify-center gap-2.5 z-10">
-                      {video.briefUrl && (
-                        <a
-                          href={video.briefUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="px-3.5 py-2 bg-white/95 backdrop-blur-md hover:bg-white text-[#0C2B31] border border-white/20 rounded-xl font-narrow text-xs font-black uppercase tracking-wider flex items-center gap-2 transition-all shadow-lg hover:scale-105 pointer-events-auto cursor-pointer"
-                        >
-                          <i className="fa-solid fa-table text-emerald-600"></i>
-                          <span>Brief Video</span>
-                          <i className="fa-solid fa-arrow-up-right-from-square text-[10px] text-[#4E6E75]"></i>
-                        </a>
-                      )}
-
-                      {video.scriptUrl && (
-                        <a
-                          href={video.scriptUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="px-3.5 py-2 bg-[#0B6E7B]/90 backdrop-blur-md hover:bg-[#0B6E7B] text-white border border-[#2DD4BF]/40 rounded-xl font-narrow text-xs font-black uppercase tracking-wider flex items-center gap-2 transition-all shadow-lg hover:scale-105 pointer-events-auto cursor-pointer"
-                        >
-                          <i className="fa-solid fa-clapperboard text-[#2DD4BF]"></i>
-                          <span>Kịch bản đi quay</span>
-                          <i className="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-80"></i>
-                        </a>
-                      )}
-                    </div>
-                  )}
-                </div>
-              </div>
+                index={vIdx + 1}
+                title={video.title}
+                channelName={isDieuuoc ? "Điều ước của mẹ" : "Nha khoa Shark"}
+                channelHandle={
+                  isDieuuoc
+                    ? "@sharkdentalxdieuuoccuame"
+                    : "@nhakhoashark"
+                }
+                platform={video.platform}
+                videoUrl={video.videoUrl}
+                videoId={video.videoId}
+                image={video.image}
+                stats={{
+                  likes: isDieuuoc
+                    ? vIdx === 2
+                      ? "17.2K"
+                      : "19.4K"
+                    : vIdx === 0
+                    ? "8,420"
+                    : "12.5K",
+                  comments: isDieuuoc ? (vIdx === 2 ? "209" : "264") : (vIdx === 0 ? "132" : "185"),
+                  shares: isDieuuoc ? (vIdx === 2 ? "3,850" : "4,120") : (vIdx === 0 ? "1,540" : "2,180"),
+                }}
+                duration={
+                  isDieuuoc
+                    ? vIdx === 2
+                      ? "00:00/00:58"
+                      : "00:00/01:12"
+                    : vIdx === 0
+                    ? "00:00/00:42"
+                    : "00:00/01:05"
+                }
+                briefUrl={video.briefUrl}
+                scriptUrl={video.scriptUrl}
+                description={video.description}
+                tags={video.tags}
+              />
             );
           })}
         </div>

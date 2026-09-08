@@ -46,8 +46,6 @@ export interface FacebookHighlightPost {
 export interface HighlightPostsSection {
   title: string;
   sectionTitle: string;
-  instruction: string;
-  description: string;
   posts: FacebookHighlightPost[];
 }
 
@@ -121,7 +119,6 @@ export interface VLotusData {
   highlightPostsSection: HighlightPostsSection;
   videoPillar: {
     title: string;
-    overview: string;
     briefVideoUrl: string;
     videos: VideoProductionItem[];
   };

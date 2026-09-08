@@ -66,8 +66,6 @@ export interface FacebookHighlightPost {
 export interface HighlightPostsSection {
   title: string;
   sectionTitle: string;
-  instruction: string;
-  description: string;
   contentPlanUrl: string;
   ducmDetailsUrl: string;
   posts: FacebookHighlightPost[];
@@ -91,7 +89,6 @@ export interface DNGroupData {
   socialMediaPillar: {
     title: string;
     sectionTitle: string;
-    instruction: string;
     description: string;
     bestPostStats: {
       reach: string;
@@ -104,7 +101,6 @@ export interface DNGroupData {
   highlightPostsSection: HighlightPostsSection;
   videoEditorPillars: {
     title: string;
-    overview: string;
     projects: VideoEditorItem[];
   };
 }

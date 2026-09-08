@@ -56,7 +56,7 @@ export default function Hero({ currentDateString, currentTime }: HeroProps) {
               />
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/80 border border-[#CCE5E3] backdrop-blur-md shadow-2xs font-mono text-[11px] sm:text-xs text-[#0B6E7B] font-semibold">
                 <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse"></span>
-                <span>Content Marketing Executive</span>
+                <span>Marketing Executive</span>
               </div>
             </div>
 

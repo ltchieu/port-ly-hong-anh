@@ -256,7 +256,6 @@ export const beneliftsData: BeneliftsData = {
   },
   videoPillar: {
     title: "Video Production & Technical Short-Form Content",
-    overview: "Generated video concepts, developed technical scripts, arranged background staging, and coordinated participants for company video production. Filmed and edited informative short-form TikTok/Reels videos.",
     stats: {
       views: "1.2K+",
       likes: "53",
@@ -316,8 +315,6 @@ export const beneliftsData: BeneliftsData = {
   highlightPostsSection: {
     title: "Highlight Facebook Posts & Copywriting Showcase",
     sectionTitle: "Multi-Brand Social Copywriting & Brand Storytelling",
-    instruction: "Explore multi-brand social media copywriting across Benelifts Asia, Benelifts S.r.l, and Casanova Building.",
-    description: "Curated top-performing social posts and engagement campaigns across elevator engineering, luxury interior design, and corporate services.",
     beneliftsDriveUrl: "https://drive.google.com/drive/folders/1jnMdulePboRumEjfO2bCKCE4KR9dNvi6?usp=sharing",
     casanovaDriveUrl: "https://drive.google.com/drive/folders/1u4qizEZYfOJIsdFtDs4ZBF9Rzj-wt__N?usp=sharing",
     posts: [
@@ -399,7 +396,6 @@ Don't miss out on the sophistication and efficiency of Elux Tubo Elevator! ðŸŒŸð
   eventPillar: {
     title: "Corporate Events, Exhibitions & Internal Celebrations",
     sectionHeader: "Organizer, Main Designer & Photographer OF EVENT",
-    overview: "Planned, organized, and managed communications for corporate events and exhibitions, including 20/10 celebrations and New Year Party. Coordinated with vendors, served as MC when needed, and managed end-to-end event",
     photographyCollage: {
       title: "Event Photography & Event Coverage",
       subtitle: "Live corporate celebrations, milestone moments, team building and 20/10 event photography.",

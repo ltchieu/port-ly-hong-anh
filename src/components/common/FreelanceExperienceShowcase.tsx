@@ -1,36 +1,68 @@
 import { useState, useCallback, useMemo, lazy, Suspense } from 'react';
+import { createPortal } from 'react-dom';
 import ImageLightboxModal from './ImageLightboxModal';
 import GallerySkeleton from './GallerySkeleton';
 import AnimatedCounter from './AnimatedCounter';
-import HighlightText from './HighlightText';
 import YouTubeEmbed from './YouTubeEmbed';
 import type { LightboxImageData } from '../../models/imageLightboxModal';
-import type { MasonryItem } from '../../models/masonry';
 import {
-  PANASONIC_WEBINAR_REPORT_URL,
   PANASONIC_WEBINAR_VIDEO_URL,
   panasonicWebinarVideo,
   webinarMetrics,
-  getWebinarMasonryItems,
+  webinarPhotoCaptions,
+  getPanasonicWebinarImage,
 } from '../../data/panasonicWebinarData';
 
-// Lazy import Masonry to keep initial bundle light
-const Masonry = lazy(() => import('./Masonry'));
+// Lazy import interactive sub-components
+const BounceCards = lazy(() => import('./BounceCards'));
+const Stack = lazy(() => import('./Stack'));
+
+const bounceTransformStyles = [
+  'rotate(10deg) translate(-140px)',
+  'rotate(5deg) translate(-70px)',
+  'rotate(-3deg)',
+  'rotate(-10deg) translate(70px)',
+  'rotate(2deg) translate(140px)',
+];
 
 export default function FreelanceExperienceShowcase() {
   const [selectedImage, setSelectedImage] = useState<LightboxImageData | null>(null);
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
 
-  // Memoize masonry items
-  const masonryItems = useMemo(() => getWebinarMasonryItems(), []);
+  // All 8 webinar event photos
+  const allImages = useMemo(
+    () => webinarPhotoCaptions.map((item) => getPanasonicWebinarImage(item.filename)),
+    []
+  );
 
-  const handleItemClick = useCallback((item: MasonryItem) => {
-    setSelectedImage({
-      src: item.img,
-      title: item.title || 'Panasonic Webinar Event Photography',
-      category: 'PANASONIC CFAN WEBINAR',
-      description: item.subtitle || 'Webinar operations, technical setup, and speaker coordination photography.',
-    });
-  }, []);
+  // Top 5 photos for BounceCards and Stack
+  const bounceImages = useMemo(() => allImages.slice(0, 5), [allImages]);
+
+  const stackCards = useMemo(
+    () =>
+      bounceImages.map((src, idx) => (
+        <img
+          key={idx}
+          src={src}
+          alt={`Webinar Event Photo ${idx + 1}`}
+          className="w-full h-full object-cover rounded-xl border border-[#CCE5E3] shadow-md select-none"
+        />
+      )),
+    [bounceImages]
+  );
+
+  const handleOpenLightbox = useCallback(
+    (src: string, title?: string, description?: string) => {
+      setSelectedImage({
+        src,
+        title: title || 'Panasonic Webinar Event Photography',
+        category: 'PANASONIC CFAN WEBINAR',
+        description:
+          description || 'Webinar operations, technical setup, and speaker coordination photography.',
+      });
+    },
+    []
+  );
 
   const handleCloseLightbox = useCallback(() => {
     setSelectedImage(null);
@@ -38,7 +70,7 @@ export default function FreelanceExperienceShowcase() {
 
   return (
     <div className="space-y-10 pt-2" onClick={(e) => e.stopPropagation()}>
-      {/* KEY METRIC COUNTERS WITH ANIMATED COUNT-UP */}
+      {/* 1. KEY METRIC COUNTERS WITH ANIMATED COUNT-UP */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {webinarMetrics.map((metric, mIdx) => (
           <div
@@ -67,158 +99,244 @@ export default function FreelanceExperienceShowcase() {
         ))}
       </div>
 
-      {/* ========================================================================= */}
-      {/* SECTION 2: HIGHLIGHT SHORT-FORM VIDEO & BEHIND-THE-SCENES */}
-      {/* ========================================================================= */}
-      <div className="space-y-6 pt-6 border-t border-[#CCE5E3]">
-        <div className="border-b border-[#CCE5E3] pb-4 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-3">
-          <div className="space-y-1">
-            <div className="flex items-center gap-2">
-              <span className="font-narrow text-xs font-black text-[#0B6E7B] tracking-[0.2em] uppercase">
-                VIDEO HIGHLIGHT
-              </span>
-              <span className="text-[#CCE5E3]">•</span>
-              <span className="font-mono text-xs font-bold text-[#4E6E75] uppercase">
-                YOUTUBE SHORTS
-              </span>
-            </div>
-            <h3 className="font-display text-xl sm:text-2xl md:text-3xl uppercase tracking-tight text-[#0C2B31] flex items-center gap-2.5">
-              <i className="fa-brands fa-youtube text-[#FF0000]"></i>
-              Webinar Video Recap & Behind-The-Scenes
-            </h3>
-            <p className="font-sans text-sm text-[#4E6E75] max-w-2xl leading-relaxed">
-              On-site operations, speaker coordination, AV technical control, and attendee interaction during the Panasonic CFAN product training webinar.
+      {/* 2. TWO-PART SHOWCASE: EVENT PHOTOGRAPHY BOUNCE CARDS (LEFT) & VIDEO RECAP SHORTS (RIGHT) */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
+        {/* LEFT CARD: WEBINAR EVENT PHOTOGRAPHY */}
+        <div className="bg-white rounded-2xl sm:rounded-3xl border border-[#CCE5E3] p-5 sm:p-7 flex flex-col justify-between space-y-6 shadow-xs hover:border-[#0B6E7B]/40 transition-all">
+          {/* Card Header */}
+          <div className="border-b border-[#CCE5E3]/80 pb-4 space-y-1">
+            <h4 className="font-narrow text-xs sm:text-sm font-black text-[#0C2B31] uppercase tracking-wider flex items-center gap-2">
+              <i className="fa-solid fa-layer-group text-[#0B6E7B]"></i>
+              <span>WEBINAR EVENT PHOTOGRAPHY</span>
+            </h4>
+            <p className="font-sans text-xs sm:text-sm text-[#4E6E75]">
+              Hover over cards to trigger bounce animation; click photo to expand.
             </p>
           </div>
 
-          <div className="flex items-center gap-2 shrink-0">
+          {/* Interactive Bounce Cards Display */}
+          <div className="w-full flex justify-center items-center py-4 sm:py-6 overflow-hidden min-h-[300px] sm:min-h-[320px] bg-white rounded-xl border border-[#CCE5E3]/40 flex-1">
+            <Suspense fallback={<GallerySkeleton height="280px" />}>
+              {/* Desktop & Tablet: BounceCards */}
+              <div className="hidden sm:flex justify-center items-center">
+                <BounceCards
+                  images={bounceImages}
+                  containerWidth={260}
+                  containerHeight={170}
+                  animationDelay={0.15}
+                  animationStagger={0.06}
+                  transformStyles={bounceTransformStyles}
+                  onCardClick={(idx) =>
+                    handleOpenLightbox(
+                      bounceImages[idx],
+                      webinarPhotoCaptions[idx]?.title,
+                      webinarPhotoCaptions[idx]?.subtitle
+                    )
+                  }
+                />
+              </div>
+
+              {/* Mobile view: Stack component */}
+              <div className="flex sm:hidden justify-center items-center h-[230px] w-[200px] relative my-2">
+                <Stack
+                  cards={stackCards}
+                  randomRotation={true}
+                  sendToBackOnClick={true}
+                  sensitivity={120}
+                />
+              </div>
+            </Suspense>
+          </div>
+
+          {/* Card Bottom: Event Photo Collection Thumbnails */}
+          <div className="pt-4 border-t border-[#CCE5E3]/80 space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="font-mono text-[11px] font-black text-[#4E6E75] uppercase tracking-wider">
+                EVENT PHOTO COLLECTION ({allImages.length})
+              </span>
+              <span className="font-sans text-xs text-[#0B6E7B] font-medium hidden sm:inline">
+                Click photo to expand
+              </span>
+            </div>
+
+            {/* 5 Thumbnails Row */}
+            <div className="grid grid-cols-5 gap-2 sm:gap-2.5">
+              {allImages.slice(0, 5).map((img, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={() =>
+                    handleOpenLightbox(
+                      img,
+                      webinarPhotoCaptions[idx]?.title,
+                      webinarPhotoCaptions[idx]?.subtitle
+                    )
+                  }
+                  className="aspect-square rounded-xl overflow-hidden border border-[#CCE5E3] hover:border-[#0B6E7B] hover:shadow-md transition-all duration-300 group/thumb cursor-pointer relative bg-[#F0F8F7]"
+                  title={webinarPhotoCaptions[idx]?.title || `Photo ${idx + 1}`}
+                >
+                  <img
+                    src={img}
+                    alt={`Thumbnail ${idx + 1}`}
+                    loading="lazy"
+                    className="w-full h-full object-cover group-hover/thumb:scale-110 transition-transform duration-300"
+                  />
+                  {idx === 4 && allImages.length > 5 && (
+                    <div className="absolute inset-0 bg-black/50 flex items-center justify-center text-white font-mono text-xs font-black group-hover/thumb:bg-black/30 transition-colors">
+                      +{allImages.length - 5}
+                    </div>
+                  )}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* RIGHT CARD: WEBINAR VIDEO RECAP (DARK CARD MATCHING REFERENCE IMAGE) */}
+        <div className="bg-[#0B1518] text-white rounded-2xl sm:rounded-3xl border border-[#CCE5E3]/30 p-5 sm:p-7 flex flex-col justify-between space-y-5 shadow-xs hover:border-[#0B6E7B]/50 transition-all relative group">
+          {/* Card Top Header */}
+          <div className="flex items-center justify-between gap-3 border-b border-white/10 pb-4">
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded-xl bg-red-600/20 text-red-500 flex items-center justify-center text-base border border-red-500/30 shrink-0">
+                <i className="fa-brands fa-youtube"></i>
+              </div>
+              <div className="leading-tight">
+                <h4 className="font-display font-bold text-sm sm:text-base text-white uppercase tracking-tight">
+                  YOUTUBE SHORTS
+                </h4>
+                <span className="font-sans text-xs text-white/60">
+                  @panasonic_cfan
+                </span>
+              </div>
+            </div>
+
+            <span className="px-2.5 py-1 rounded-md border border-white/20 bg-white/5 text-[10px] font-mono font-bold text-white/80 uppercase tracking-widest">
+              SHORTS
+            </span>
+          </div>
+
+          {/* Video Preview Frame */}
+          <div
+            onClick={() => setIsVideoModalOpen(true)}
+            className="relative w-full aspect-[9/13] sm:aspect-[9/12] max-w-xs mx-auto rounded-2xl overflow-hidden bg-black my-2 border border-white/15 shadow-2xl cursor-pointer group/screen select-none flex flex-col justify-between"
+          >
+            {/* Background Thumbnail */}
+            <img
+              src={allImages[0]}
+              alt="Panasonic Webinar Recap Video Preview"
+              className="absolute inset-0 w-full h-full object-cover group-hover/screen:scale-105 transition-transform duration-700 ease-out"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/25 to-black/90 pointer-events-none" />
+
+            {/* Top Creator Identity */}
+            <div className="relative z-10 p-3 sm:p-3.5 flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-full bg-[#004098] border border-white/40 flex items-center justify-center text-white font-black text-xs shrink-0 shadow-md">
+                P
+              </div>
+              <div className="min-w-0 leading-tight">
+                <span className="font-sans font-bold text-xs sm:text-sm text-white drop-shadow block truncate">
+                  Panasonic Vietnam
+                </span>
+                <span className="font-sans text-[10px] sm:text-xs text-white/70 drop-shadow-xs block truncate">
+                  @panasonic_cfan
+                </span>
+              </div>
+            </div>
+
+            {/* Center Circular Play Button */}
+            <div className="relative z-10 flex items-center justify-center my-auto pointer-events-none">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-black/50 backdrop-blur-md border border-white/30 flex items-center justify-center text-white shadow-2xl group-hover/screen:scale-110 group-hover/screen:bg-red-600 transition-all duration-300">
+                <i className="fa-solid fa-play text-lg sm:text-xl translate-x-0.5"></i>
+              </div>
+            </div>
+
+            {/* Right Action Button Column */}
+            <div className="absolute right-3 bottom-14 z-10 flex flex-col items-center space-y-3 pointer-events-none">
+              <div className="flex flex-col items-center text-center">
+                <div className="w-8 h-8 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center text-white shadow-md">
+                  <i className="fa-solid fa-heart text-xs text-white drop-shadow" />
+                </div>
+                <span className="font-mono text-[10px] font-bold text-white/90 mt-0.5">3,120</span>
+              </div>
+              <div className="flex flex-col items-center text-center">
+                <div className="w-8 h-8 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center text-white shadow-md">
+                  <i className="fa-solid fa-comment text-xs text-white drop-shadow" />
+                </div>
+                <span className="font-mono text-[10px] font-bold text-white/90 mt-0.5">48</span>
+              </div>
+              <div className="flex flex-col items-center text-center">
+                <div className="w-8 h-8 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center text-white shadow-md">
+                  <i className="fa-solid fa-share text-xs text-white drop-shadow" />
+                </div>
+                <span className="font-mono text-[10px] font-bold text-white/90 mt-0.5">760</span>
+              </div>
+            </div>
+
+            {/* Bottom Scrubber & Media Bar */}
+            <div className="relative z-10 px-3.5 pb-3 pt-2 bg-gradient-to-t from-black via-black/80 to-transparent flex items-center justify-between text-white/80 pointer-events-none">
+              <div className="flex items-center gap-2 text-xs">
+                <i className="fa-solid fa-play text-[11px] text-white"></i>
+                <i className="fa-solid fa-volume-high text-[11px] text-white/80"></i>
+                <span className="font-mono text-[10px] sm:text-[11px] text-white/90 font-medium">
+                  00:00/00:58
+                </span>
+              </div>
+              <i className="fa-solid fa-expand text-[11px] text-white/80"></i>
+            </div>
+          </div>
+
+          {/* Card Footer Bar */}
+          <div className="pt-4 border-t border-white/10 flex items-center justify-between gap-3">
+            <div className="flex items-center gap-2 text-xs font-mono text-white/80 hover:text-white transition-colors truncate">
+              <i className="fa-brands fa-youtube text-red-500"></i>
+              <span className="truncate">@panasonic_cfan</span>
+            </div>
+
             <a
               href={PANASONIC_WEBINAR_VIDEO_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-3.5 py-1.5 bg-[#FF0000] hover:bg-[#CC0000] text-white font-narrow text-xs font-black uppercase tracking-wider rounded-lg transition-all flex items-center gap-1.5 shadow-2xs hover:scale-105 cursor-pointer"
+              onClick={(e) => e.stopPropagation()}
+              className="inline-flex items-center gap-1.5 text-xs font-narrow font-bold uppercase tracking-wider text-white hover:text-red-400 transition-colors shrink-0"
             >
-              <i className="fa-brands fa-youtube text-sm"></i>
               <span>Watch on YouTube</span>
               <i className="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
             </a>
           </div>
         </div>
+      </div>
 
-        {/* Highlight Video Embed Card */}
-        <div className="max-w-2xl mx-auto bg-white rounded-2xl border border-[#CCE5E3] overflow-hidden hover:border-[#0B6E7B] hover:shadow-xl transition-all duration-300 flex flex-col justify-between group shadow-xs">
-          {/* Header info bar */}
-          <div className="px-4 py-3 bg-[#F0F8F7] border-b border-[#CCE5E3] flex items-center justify-between gap-3">
-            <div className="flex items-center gap-2.5 min-w-0">
-              <div className="w-8 h-8 rounded-full bg-[#FF0000] text-white flex items-center justify-center shrink-0 shadow-2xs">
-                <i className="fa-brands fa-youtube text-sm"></i>
-              </div>
-              <div className="min-w-0">
-                <h5 className="font-narrow text-xs font-black text-[#0C2B31] uppercase tracking-wider truncate">
-                  {panasonicWebinarVideo.channel}
-                </h5>
-                <p className="font-mono text-[10px] text-[#4E6E75]">
-                  Short ID: {panasonicWebinarVideo.videoId}
-                </p>
-              </div>
-            </div>
-
-            <span className="px-2.5 py-1 bg-[#FF0000]/10 text-[#FF0000] font-mono text-[10px] rounded uppercase font-bold">
-              HD Shorts
-            </span>
-          </div>
-
-          {/* YouTube Short Embed Player Container */}
-          <div className="relative w-full bg-[#07262B] p-4 sm:p-6 flex flex-col items-center justify-center overflow-hidden">
-            <div className="w-full max-w-[320px] sm:max-w-[340px] h-[500px] sm:h-[560px] rounded-xl overflow-hidden shadow-2xl bg-black border border-white/10 relative flex items-center justify-center">
+      {/* 3. INTERACTIVE YOUTUBE SHORTS VIDEO MODAL */}
+      {isVideoModalOpen &&
+        createPortal(
+          <div
+            className="fixed inset-0 z-[99999] bg-[#07262B]/90 backdrop-blur-md flex items-center justify-center p-4"
+            onClick={() => setIsVideoModalOpen(false)}
+          >
+            <div
+              className="relative w-full max-w-sm aspect-[9/16] bg-black rounded-2xl overflow-hidden border border-white/20 shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                type="button"
+                onClick={() => setIsVideoModalOpen(false)}
+                className="absolute top-3 right-3 z-50 w-8 h-8 rounded-full bg-black/70 text-white flex items-center justify-center hover:bg-red-600 transition-colors cursor-pointer"
+                aria-label="Close video"
+              >
+                <i className="fa-solid fa-xmark text-sm"></i>
+              </button>
               <YouTubeEmbed
                 url={PANASONIC_WEBINAR_VIDEO_URL}
+                videoId={panasonicWebinarVideo.videoId}
                 title={panasonicWebinarVideo.title}
-                className="w-full h-full"
               />
             </div>
-          </div>
+          </div>,
+          document.body
+        )}
 
-          {/* Footer description & category badge */}
-          <div className="p-4 sm:p-5 bg-white border-t border-[#CCE5E3] space-y-2">
-            <div className="flex items-center justify-between gap-2">
-              <span className="px-2.5 py-0.5 bg-[#0B6E7B]/10 text-[#0B6E7B] rounded font-narrow text-xs font-bold uppercase">
-                {panasonicWebinarVideo.category}
-              </span>
-              <a
-                href={PANASONIC_WEBINAR_VIDEO_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs font-sans text-[#FF0000] hover:underline flex items-center gap-1 font-semibold"
-              >
-                <span>Direct Link</span>
-                <i className="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
-              </a>
-            </div>
-            <h4 className="font-display text-base sm:text-lg uppercase tracking-tight text-[#0C2B31]">
-              {panasonicWebinarVideo.title}
-            </h4>
-            <p className="font-sans text-xs sm:text-sm text-[#2C4A51] leading-relaxed">
-              {panasonicWebinarVideo.description}
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* ========================================================================= */}
-      {/* SECTION 3: WEBINAR EVENT PHOTOGRAPHY GALLERY (MASONRY) */}
-      {/* ========================================================================= */}
-      <div className="space-y-6 pt-8 border-t border-[#CCE5E3]">
-        {/* Section Title Bar */}
-        <div className="border-b border-[#CCE5E3] pb-4 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-3">
-          <div className="space-y-1">
-            <div className="flex items-center gap-2">
-              <span className="font-narrow text-xs font-black text-[#0B6E7B] tracking-[0.2em] uppercase">
-                SHOWCASE GALLERY
-              </span>
-              <span className="text-[#CCE5E3]">•</span>
-              <span className="font-mono text-xs font-bold text-[#4E6E75] uppercase">
-                {masonryItems.length} ASSETS (WEBP)
-              </span>
-            </div>
-            <h3 className="font-display text-xl sm:text-2xl md:text-3xl uppercase tracking-tight text-[#0C2B31]">
-              Webinar Event Photography
-            </h3>
-            <p className="font-sans text-sm text-[#4E6E75] max-w-2xl leading-relaxed">
-              On-site operations, speaker coordination, AV technical control, and attendee interaction during the Panasonic CFAN product training webinar.
-            </p>
-          </div>
-
-          <div className="flex items-center gap-2 shrink-0">
-            <span className="px-3 py-1 bg-white border border-[#CCE5E3] font-narrow text-xs font-bold uppercase tracking-wider rounded-lg text-[#0B6E7B] flex items-center gap-1.5 shadow-2xs">
-              <i className="fa-solid fa-camera text-[#0B6E7B] text-xs"></i>
-              Masonry Layout
-            </span>
-          </div>
-        </div>
-
-        {/* Masonry Image Gallery */}
-        <Suspense fallback={<GallerySkeleton height="500px" title="Loading Webinar Event Photography..." />}>
-          <div className="min-h-[450px]">
-            <Masonry
-              items={masonryItems}
-              ease="power3.out"
-              duration={0.6}
-              stagger={0.04}
-              animateFrom="bottom"
-              scaleOnHover={true}
-              hoverScale={0.97}
-              onItemClick={handleItemClick}
-            />
-          </div>
-        </Suspense>
-      </div>
-
-      {/* ========================================================================= */}
-      {/* SINGLE IMAGE LIGHTBOX MODAL */}
-      {/* ========================================================================= */}
+      {/* 4. SINGLE IMAGE LIGHTBOX MODAL */}
       <ImageLightboxModal selectedImage={selectedImage} onClose={handleCloseLightbox} />
     </div>
   );
 }
-

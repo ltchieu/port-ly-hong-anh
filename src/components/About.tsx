@@ -72,34 +72,34 @@ export default function About({ setShowManifesto: _setShowManifesto }: AboutProp
                   </div>
                 }
                 secondContent={
-                  <div className="w-full h-full bg-[#F8F9FA] text-[#111827] p-5 sm:p-7 flex flex-col justify-between relative overflow-hidden border border-[#E5E7EB] shadow-2xl select-none">
+                  <div className="w-full h-full bg-[#F8FCFB] text-[#0C2B31] p-5 sm:p-7 flex flex-col justify-between relative overflow-hidden border border-[#CCE5E3] shadow-2xl select-none">
                     {/* Top Header & Close Icon */}
-                    <div className="relative z-10 space-y-2.5 sm:space-y-3.5 overflow-y-auto custom-scrollbar pr-0.5">
+                    <div className="relative z-10 space-y-2.5 sm:space-y-3 overflow-y-auto custom-scrollbar pr-0.5">
                       <div className="flex items-center justify-between">
                         <span className="font-narrow text-xs sm:text-[13px] font-black uppercase tracking-[0.25em]">
-                          <span className="text-[#00A3C4] font-black">EXECUTIVE </span>
-                          <span className="text-[#F59E0B] font-black">STATEMENT</span>
+                          <span className="text-[#0B6E7B] font-black">EXECUTIVE </span>
+                          <span className="text-[#0C2B31] font-black">STATEMENT</span>
                         </span>
-                        <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-700 bg-white/80 shadow-2xs shrink-0">
+                        <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-[#CCE5E3] flex items-center justify-center text-[#0C2B31] bg-white shadow-2xs shrink-0">
                           <i className="fa-solid fa-xmark text-xs font-bold"></i>
                         </div>
                       </div>
 
                       {/* Headline / Title */}
-                      <h4 className="font-display text-xl sm:text-[26px] lg:text-[29px] font-black uppercase text-[#111827] leading-[1.1] tracking-tight">
-                        SEE DEEPER. GROW WISER.<br />LIVE BRIGHTER.
+                      <h4 className="font-display text-base sm:text-xl font-black uppercase text-[#0C2B31] leading-snug tracking-tight">
+                        {executiveStatement.tagline}
                       </h4>
 
                       {/* Accent Short Dark Bar */}
-                      <div className="w-12 sm:w-16 h-[2.5px] bg-[#111827] mt-1.5 sm:mt-2 mb-2 sm:mb-3"></div>
+                      <div className="w-12 sm:w-16 h-[2px] bg-[#0B6E7B] mt-1 sm:mt-1.5 mb-1.5 sm:mb-2"></div>
 
                       {/* Highlighted Quote */}
-                      <p className="font-sans italic font-bold text-[11.5px] sm:text-[13.5px] text-[#111827] leading-snug">
+                      <p className="font-sans italic font-bold text-xs sm:text-[13px] text-[#0C2B31] leading-snug">
                         &ldquo;{executiveStatement.quote}&rdquo;
                       </p>
 
                       {/* Narrative Paragraphs */}
-                      <div className="space-y-2 sm:space-y-2.5 pt-0.5 text-[10.5px] sm:text-xs leading-relaxed text-[#4B5563]">
+                      <div className="space-y-2 pt-0.5 text-[11px] sm:text-xs leading-relaxed text-[#4E6E75]">
                         <p>
                           {executiveStatement.paragraphs[0]}
                         </p>
@@ -109,14 +109,14 @@ export default function About({ setShowManifesto: _setShowManifesto }: AboutProp
                       </div>
 
                       {/* Motto */}
-                      <p className="font-sans font-bold text-[11px] sm:text-xs text-[#1F2937] pt-0.5">
+                      <p className="font-sans font-bold text-xs text-[#0B6E7B] pt-0.5">
                         {executiveStatement.motto}
                       </p>
                     </div>
 
                     {/* Bottom Row: Cursive Signature */}
-                    <div className="relative z-10 pt-2.5 sm:pt-3.5 border-t border-[#E5E7EB] flex items-center justify-between shrink-0 mt-1">
-                      <div className="font-cursive text-2xl sm:text-4xl bg-gradient-to-r from-[#00A3C4] via-[#14B8A6] to-[#F59E0B] bg-clip-text text-transparent select-none tracking-wide">
+                    <div className="relative z-10 pt-2 sm:pt-3 border-t border-[#CCE5E3] flex items-center justify-between shrink-0 mt-1">
+                      <div className="font-cursive text-2xl sm:text-3xl bg-gradient-to-r from-[#0B6E7B] to-[#2DD4BF] bg-clip-text text-transparent select-none tracking-wide">
                         Hong Anh
                       </div>
                     </div>

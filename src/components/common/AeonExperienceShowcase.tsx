@@ -2,9 +2,11 @@ import { useState, useMemo, useCallback, lazy, Suspense } from 'react';
 import FacebookEmbed from './FacebookEmbed';
 import AnimatedCounter from './AnimatedCounter';
 import HighlightText from './HighlightText';
+import HighlightVideoCard from './HighlightVideoCard';
 import ImageLightboxModal from './ImageLightboxModal';
 import GallerySkeleton from './GallerySkeleton';
 import type { LightboxImageData } from '../../models/imageLightboxModal';
+import type { MasonryItem } from '../../models/masonry';
 import {
   aeonHighlightVideos,
   aeonReportLinks,
@@ -12,27 +14,18 @@ import {
   aeonMallImages,
 } from '../../data/aeonVietnamData';
 
-// Lazy import interactive sub-components
-const BounceCards = lazy(() => import('./BounceCards'));
-const Stack = lazy(() => import('./Stack'));
-
-const bounceTransformStyles = [
-  'rotate(10deg) translate(-170px)',
-  'rotate(5deg) translate(-85px)',
-  'rotate(-3deg)',
-  'rotate(-10deg) translate(85px)',
-  'rotate(2deg) translate(170px)',
-];
+// Lazy import Masonry
+const Masonry = lazy(() => import('./Masonry'));
 
 export default function AeonExperienceShowcase() {
   const [selectedImage, setSelectedImage] = useState<LightboxImageData | null>(null);
 
-  const handleOpenLightbox = useCallback((src: string, title: string) => {
+  const handleOpenLightbox = useCallback((src: string, title: string, description?: string) => {
     setSelectedImage({
       src,
       title,
       category: 'AEON VIET NAM • EVENT OPERATIONS',
-      description: 'Event support, on-site photography, video footage collection & communication materials.',
+      description: description || 'Event support, on-site photography, video footage collection & communication materials.',
     });
   }, []);
 
@@ -40,19 +33,64 @@ export default function AeonExperienceShowcase() {
     setSelectedImage(null);
   }, []);
 
-  // Memoized cards for mobile Stack view
-  const stackCards = useMemo(
-    () =>
-      aeonMallImages.map((src, idx) => (
-        <img
-          key={idx}
-          src={src}
-          alt={`AEON Event Photo ${idx + 1}`}
-          className="w-full h-full object-cover rounded-xl border border-[#CCE5E3] shadow-md select-none"
-        />
-      )),
-    []
-  );
+  // Memoized Masonry items for all 9 AEON Mall event images
+  const aeonMasonryItems: MasonryItem[] = useMemo(() => {
+    const captions = [
+      {
+        title: 'Job Fair & Candidate Reception Desk',
+        subtitle: 'AEON Vietnam • Talent Acquisition Event',
+        height: 380,
+      },
+      {
+        title: 'Candidate Interview & Consultation Booth',
+        subtitle: 'AEON Vietnam • Mass Recruitment Drive',
+        height: 480,
+      },
+      {
+        title: 'Event Operations Team & Onsite Briefing',
+        subtitle: 'AEON Vietnam • Recruitment Support',
+        height: 340,
+      },
+      {
+        title: 'Campus Career Day & University Talent Engagement',
+        subtitle: 'AEON Vietnam • University Job Fair',
+        height: 520,
+      },
+      {
+        title: 'Applicant Registration & Guidance Area',
+        subtitle: 'AEON Vietnam • Mass Recruitment Campaign',
+        height: 360,
+      },
+      {
+        title: 'Corporate Culture & Employer Branding Display',
+        subtitle: 'AEON Vietnam • Talent Branding',
+        height: 440,
+      },
+      {
+        title: 'On-site Media Documentation & Event Photography',
+        subtitle: 'AEON Vietnam • Event Multimedia Coverage',
+        height: 350,
+      },
+      {
+        title: 'Candidate Group Briefing & Screening Session',
+        subtitle: 'AEON Vietnam • Talent Acquisition Operations',
+        height: 460,
+      },
+      {
+        title: 'Event Communication Signage & Booth Coordination',
+        subtitle: 'AEON Vietnam • Job Fair Support',
+        height: 390,
+      },
+    ];
+
+    return aeonMallImages.map((src, idx) => ({
+      id: `aeon-masonry-${idx + 1}`,
+      img: src,
+      height: captions[idx]?.height || 380,
+      title: captions[idx]?.title || `AEON Event Media Shot 0${idx + 1}`,
+      subtitle: captions[idx]?.subtitle || 'AEON Vietnam • Event Operations',
+    }));
+  }, []);
 
   return (
     <div className="space-y-10 pt-2" onClick={(e) => e.stopPropagation()}>
@@ -88,36 +126,44 @@ export default function AeonExperienceShowcase() {
       {/* ========================================================================= */}
       {/* VIDEO EDITOR & SHORT-FORM CONTENT PRODUCTION */}
       {/* ========================================================================= */}
-      <div className="space-y-6 pt-6 border-t border-[#CCE5E3]">
-        <div className="border-b border-[#CCE5E3] pb-4 space-y-3">
-          <div className="flex flex-wrap items-center justify-between gap-2">
-            <h3 className="font-display text-xl sm:text-2xl uppercase tracking-tight text-[#0C2B31] flex items-center gap-2.5">
-              <i className="fa-solid fa-video text-lg text-[#0B6E7B]"></i>
-              Video Editor & Short-Form Content Production
-            </h3>
-            <span className="px-3 py-1 bg-white border border-[#CCE5E3] font-narrow text-xs font-bold uppercase tracking-wider rounded-lg text-[#0B6E7B] flex items-center gap-1.5 shadow-2xs">
-              <i className="fa-solid fa-film text-[#0B6E7B] text-xs"></i>
-              CapCut Pro & Canva
-            </span>
+      <div className="bg-white rounded-2xl sm:rounded-3xl border border-[#CCE5E3] p-5 sm:p-7 lg:p-8 space-y-6 shadow-xs hover:border-[#0B6E7B]/40 transition-all">
+        <div className="border-b border-[#CCE5E3]/80 pb-5 space-y-3">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <span className="font-narrow text-xs sm:text-sm font-black text-[#0B6E7B] tracking-[0.2em] uppercase block">
+                VIDEO EDITING & FACEBOOK REELS
+              </span>
+              <h3 className="font-display text-xl sm:text-2xl uppercase tracking-tight text-[#0C2B31] flex items-center gap-2.5">
+                <i className="fa-solid fa-video text-[#0B6E7B]"></i>
+                <span>Video Editor & Short-Form Content Production</span>
+              </h3>
+            </div>
+            
+            <div className="flex flex-wrap items-center gap-2.5">
+              <span className="px-3.5 py-1.5 bg-[#F0F8F7] border border-[#CCE5E3] font-narrow text-xs font-bold uppercase tracking-wider rounded-xl text-[#0B6E7B] flex items-center gap-1.5 shadow-2xs">
+                <i className="fa-solid fa-film text-[#0B6E7B] text-xs"></i>
+                CapCut Pro & Canva
+              </span>
+            </div>
           </div>
 
-          <ul className="space-y-2 pt-1 font-sans text-base sm:text-lg text-[#2C4A51] leading-relaxed">
+          <ul className="space-y-2 pt-1 font-sans text-sm sm:text-base text-[#2C4A51] leading-relaxed">
             <li className="flex items-start gap-2.5">
-              <span className="w-2 h-2 rounded-full bg-[#0B6E7B] mt-2.5 flex-shrink-0"></span>
+              <span className="w-2 h-2 rounded-full bg-[#0B6E7B] mt-2 flex-shrink-0"></span>
               <span>
                 <HighlightText text="Managed end-to-end video production from script development and content planning to editing and final delivery." />
               </span>
             </li>
             <li className="flex items-start gap-2.5">
-              <span className="w-2 h-2 rounded-full bg-[#0B6E7B] mt-2.5 flex-shrink-0"></span>
+              <span className="w-2 h-2 rounded-full bg-[#0B6E7B] mt-2 flex-shrink-0"></span>
               <span>
                 <HighlightText text="Produced short-form video content using CapCut Pro and Canva." />
               </span>
             </li>
           </ul>
 
-          {/* Simple Button Links placed at top left of Video Editor section */}
-          <div className="flex flex-wrap items-center gap-2.5 pt-2">
+          {/* Simple Button Links placed in Header */}
+          <div className="flex flex-wrap items-center gap-2.5 pt-1">
             <a
               href={aeonReportLinks[0].url}
               target="_blank"
@@ -133,9 +179,9 @@ export default function AeonExperienceShowcase() {
               href={aeonReportLinks[1].url}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-3.5 py-2 bg-[#0B6E7B] hover:bg-[#08545E] text-white rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center gap-2 transition-all shadow-xs hover:scale-105 cursor-pointer"
+              className="px-3.5 py-2 bg-white hover:bg-[#F0F8F7] text-[#0C2B31] border border-[#CCE5E3] hover:border-[#0B6E7B] rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center gap-2 transition-all shadow-xs hover:scale-105 cursor-pointer"
             >
-              <i className="fa-solid fa-chart-pie text-[#2DD4BF]"></i>
+              <i className="fa-solid fa-chart-pie text-[#0B6E7B]"></i>
               <span>Reels Report 2023</span>
               <i className="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-80"></i>
             </a>
@@ -148,75 +194,41 @@ export default function AeonExperienceShowcase() {
           <div className="flex items-center justify-between pt-1">
             <span className="font-narrow text-xs sm:text-sm font-black text-[#0B6E7B] tracking-wider uppercase flex items-center gap-1.5">
               <i className="fa-brands fa-facebook text-[#1877F2]"></i>
-              HIGHLIGHT FACEBOOK REELS • GROWTH WITH AEON ({aeonHighlightVideos.length} VIDEOS)
+              HIGHLIGHT FACEBOOK REELS &bull; GROWTH WITH AEON ({aeonHighlightVideos.length} VIDEOS)
             </span>
-            <span className="font-mono text-[10px] text-[#4E6E75] bg-white px-2.5 py-1 rounded border border-[#CCE5E3]">
+            <span className="font-mono text-[10px] text-[#4E6E75] bg-[#F0F8F7] px-2.5 py-1 rounded-md border border-[#CCE5E3] font-bold">
               LIVE EMBED PLAYER
             </span>
           </div>
 
-          {/* 4 Highlight Facebook Reels Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {aeonHighlightVideos.map((video) => (
-              <div
+          {/* 4 Highlight Facebook Reels 4-Column Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+            {aeonHighlightVideos.map((video, vIdx) => (
+              <HighlightVideoCard
                 key={video.id}
-                className="bg-white rounded-2xl border border-[#CCE5E3] overflow-hidden hover:border-[#0B6E7B] hover:shadow-xl transition-all duration-300 flex flex-col justify-between group shadow-xs"
-              >
-                {/* Header info bar */}
-                <div className="px-4 py-3 bg-[#F0F8F7] border-b border-[#CCE5E3] flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-2.5 min-w-0">
-                    <div className="w-7 h-7 rounded-full bg-[#1877F2] text-white flex items-center justify-center shrink-0 shadow-2xs">
-                      <i className="fa-brands fa-facebook-f text-xs"></i>
-                    </div>
-                    <div className="min-w-0">
-                      <h5 className="font-narrow text-xs font-black text-[#0C2B31] uppercase tracking-wider truncate">
-                        {video.channel} • {video.category}
-                      </h5>
-                      <p className="font-mono text-[10px] text-[#4E6E75]">
-                        Reel ID: {video.reelId}
-                      </p>
-                    </div>
-                  </div>
-
-                  <a
-                    href={video.videoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-3 py-1 bg-[#1877F2] hover:bg-[#1565C0] text-white font-narrow text-xs font-bold uppercase rounded-lg transition-all flex items-center gap-1.5 shrink-0 shadow-2xs"
-                  >
-                    <span>Watch Reel</span>
-                    <i className="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
-                  </a>
-                </div>
-
-                {/* Facebook Reel Embed Player Container */}
-                <div className="relative w-full bg-[#07262B] p-3 sm:p-4 flex flex-col items-center justify-center overflow-hidden">
-                  <div className="w-full max-w-[320px] sm:max-w-[340px] h-[480px] sm:h-[520px] rounded-xl overflow-hidden shadow-2xl bg-black border border-white/10 relative flex items-center justify-center">
-                    <FacebookEmbed url={video.videoUrl} className="w-full h-full" />
-                  </div>
-                </div>
-
-                {/* Footer description & category badge */}
-                <div className="p-4 bg-white border-t border-[#CCE5E3] space-y-2">
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="px-2.5 py-0.5 bg-[#0B6E7B]/10 text-[#0B6E7B] rounded font-narrow text-xs font-bold uppercase">
-                      {video.category}
-                    </span>
-                    <a
-                      href={video.videoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs font-sans text-[#1877F2] hover:underline flex items-center gap-1 font-semibold"
-                    >
-                      <span>Direct Link</span>
-                      <i className="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
-                    </a>
-                  </div>
-                  <p className="font-sans text-xs sm:text-sm text-[#2C4A51] leading-relaxed">
-                    {video.description}
-                  </p>
-                </div>
-              </div>
+                index={vIdx + 1}
+                title={video.title}
+                channelName="Growth with AEON"
+                channelHandle="@growthwithaeon"
+                platform={video.platform}
+                videoUrl={video.videoUrl}
+                image={aeonMallImages[vIdx % aeonMallImages.length]}
+                stats={{
+                  likes: vIdx === 0 ? "4,520" : vIdx === 1 ? "6,180" : vIdx === 2 ? "5,340" : "7,890",
+                  comments: vIdx === 0 ? "68" : vIdx === 1 ? "94" : vIdx === 2 ? "76" : "128",
+                  shares: vIdx === 0 ? "890" : vIdx === 1 ? "1,240" : vIdx === 2 ? "980" : "1,670",
+                }}
+                duration={
+                  vIdx === 0
+                    ? "00:00/00:35"
+                    : vIdx === 1
+                    ? "00:00/00:42"
+                    : vIdx === 2
+                    ? "00:00/00:39"
+                    : "00:00/00:46"
+                }
+                description={video.description}
+              />
             ))}
           </div>
         </div>
@@ -225,32 +237,40 @@ export default function AeonExperienceShowcase() {
       {/* ========================================================================= */}
       {/* 3. SECTION 2: EVENT OPERATION & COMMUNICATIONS */}
       {/* ========================================================================= */}
-      <div className="space-y-6 pt-8 border-t border-[#CCE5E3]">
-        <div className="border-b border-[#CCE5E3] pb-4 space-y-2">
-          <div className="flex flex-wrap items-center justify-between gap-2">
-            <h3 className="font-display text-xl sm:text-2xl uppercase tracking-tight text-[#0C2B31] flex items-center gap-2.5">
-              <i className="fa-solid fa-calendar-check text-lg text-[#0B6E7B]"></i>
-              Event Operation & Communications ({aeonMallImages.length} Shots)
-            </h3>
-            <span className="px-3 py-1 bg-white border border-[#CCE5E3] font-narrow text-xs font-bold uppercase tracking-wider rounded-lg text-[#0B6E7B] flex items-center gap-1.5 shadow-2xs">
-              <i className="fa-solid fa-camera-retro text-[#0B6E7B] text-xs"></i>
-              On-site Media & Photography
-            </span>
+      <div className="bg-white rounded-2xl sm:rounded-3xl border border-[#CCE5E3] p-5 sm:p-7 lg:p-8 space-y-6 shadow-xs hover:border-[#0B6E7B]/40 transition-all">
+        <div className="border-b border-[#CCE5E3]/80 pb-5 space-y-3">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <span className="font-narrow text-xs sm:text-sm font-black text-[#0B6E7B] tracking-[0.2em] uppercase block">
+                ONSITE MEDIA & FIELD OPERATIONS
+              </span>
+              <h3 className="font-display text-xl sm:text-2xl uppercase tracking-tight text-[#0C2B31] flex items-center gap-2.5">
+                <i className="fa-solid fa-calendar-check text-[#0B6E7B]"></i>
+                <span>Event Operation & Communications ({aeonMallImages.length} Shots)</span>
+              </h3>
+            </div>
+            
+            <div className="flex flex-wrap items-center gap-2.5">
+              <span className="px-3.5 py-1.5 bg-[#F0F8F7] border border-[#CCE5E3] font-narrow text-xs font-bold uppercase tracking-wider rounded-xl text-[#0B6E7B] flex items-center gap-1.5 shadow-2xs">
+                <i className="fa-solid fa-camera-retro text-[#0B6E7B] text-xs"></i>
+                On-site Media & Photography
+              </span>
+            </div>
           </div>
 
-          <p className="font-sans text-base sm:text-lg text-[#2C4A51] leading-relaxed">
+          <p className="font-sans text-sm sm:text-base text-[#2C4A51] leading-relaxed">
             <HighlightText text="Event support, on-site photography, video footage collection & communication materials" />
           </p>
 
-          <ul className="space-y-2 pt-1 font-sans text-sm sm:text-base text-[#4E6E75] leading-relaxed">
+          <ul className="space-y-2 pt-1 font-sans text-xs sm:text-sm text-[#4E6E75] leading-relaxed">
             <li className="flex items-start gap-2.5">
-              <span className="w-2 h-2 rounded-full bg-[#0B6E7B] mt-2.5 flex-shrink-0"></span>
+              <span className="w-2 h-2 rounded-full bg-[#0B6E7B] mt-1.5 flex-shrink-0"></span>
               <span>
                 Supported internal and recruitment events, including Job Fairs and Mass Recruitment campaigns.
               </span>
             </li>
             <li className="flex items-start gap-2.5">
-              <span className="w-2 h-2 rounded-full bg-[#0B6E7B] mt-2.5 flex-shrink-0"></span>
+              <span className="w-2 h-2 rounded-full bg-[#0B6E7B] mt-1.5 flex-shrink-0"></span>
               <span>
                 Produced event content through photography, videography, video editing and social media posts to support event communications.
               </span>
@@ -258,45 +278,37 @@ export default function AeonExperienceShowcase() {
           </ul>
         </div>
 
-        {/* Bounce Cards Display for 5 AEON Mall Images (Desktop: BounceCards, Mobile: Stack) */}
-        <div className="bg-white p-5 sm:p-7 rounded-xl border border-[#CCE5E3] space-y-4 shadow-xs">
+        {/* Masonry Image Gallery for AEON Mall Event Operations (9 Shots) */}
+        <div className="bg-[#F8FCFB] p-5 sm:p-7 rounded-2xl border border-[#CCE5E3] space-y-4 shadow-2xs">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#CCE5E3]/60 pb-3">
             <div>
-              <h4 className="font-narrow text-xs font-black text-[#0C2B31] uppercase tracking-wider flex items-center gap-1.5">
+              <h4 className="font-narrow text-xs sm:text-sm font-black text-[#0C2B31] uppercase tracking-wider flex items-center gap-1.5">
                 <i className="fa-solid fa-layer-group text-[#0B6E7B]"></i>
                 On-site Event Operations & Photography Gallery ({aeonMallImages.length} Shots)
               </h4>
-              <p className="font-sans text-[11px] text-[#4E6E75]">
-                Hover over cards to trigger bounce animation; click photo to expand in high resolution.
+              <p className="font-sans text-xs text-[#4E6E75]">
+                Click any photo to expand in high-resolution full screen.
               </p>
             </div>
-            <span className="font-mono text-[9px] text-[#0B6E7B] hidden sm:inline-block">HOVER / CLICK</span>
+            <span className="font-mono text-[9px] text-[#0B6E7B] hidden sm:inline-block font-bold">
+              MASONRY GRID &bull; CLICK TO ZOOM
+            </span>
           </div>
 
-          <div className="w-full flex justify-center items-center py-6 overflow-hidden min-h-[300px] bg-[#F8FCFB] rounded-xl border border-[#CCE5E3]/60">
-            <Suspense fallback={<GallerySkeleton height="280px" />}>
-              {/* Desktop & Tablet view: BounceCards */}
-              <div className="hidden sm:flex justify-center items-center">
-                <BounceCards
-                  images={aeonMallImages}
-                  containerWidth={520}
-                  containerHeight={290}
-                  animationDelay={0.15}
-                  animationStagger={0.06}
-                  transformStyles={bounceTransformStyles}
-                  onCardClick={(idx) =>
-                    handleOpenLightbox(aeonMallImages[idx], `AEON Event Media Shot 0${idx + 1}`)
+          <div className="w-full">
+            <Suspense fallback={<GallerySkeleton height="450px" title="Loading AEON Event Photography..." />}>
+              <div className="min-h-[420px]">
+                <Masonry
+                  items={aeonMasonryItems}
+                  ease="power3.out"
+                  duration={0.6}
+                  stagger={0.04}
+                  animateFrom="bottom"
+                  scaleOnHover={true}
+                  hoverScale={0.97}
+                  onItemClick={(item) =>
+                    handleOpenLightbox(item.img, item.title || 'AEON Event Media Shot', item.subtitle)
                   }
-                />
-              </div>
-
-              {/* Mobile view: Stack component */}
-              <div className="flex sm:hidden justify-center items-center h-[230px] w-[200px] relative my-2">
-                <Stack
-                  cards={stackCards}
-                  randomRotation={true}
-                  sendToBackOnClick={true}
-                  sensitivity={120}
                 />
               </div>
             </Suspense>
@@ -305,7 +317,7 @@ export default function AeonExperienceShowcase() {
 
         {/* Feature Execution Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="bg-white p-5 rounded-xl border border-[#CCE5E3] space-y-3 shadow-xs hover:border-[#0B6E7B] transition-colors">
+          <div className="bg-[#F8FCFB] p-5 rounded-2xl border border-[#CCE5E3] space-y-3 shadow-2xs hover:border-[#0B6E7B] transition-colors">
             <div className="w-10 h-10 rounded-xl bg-[#0B6E7B]/10 text-[#0B6E7B] flex items-center justify-center">
               <i className="fa-solid fa-bullhorn text-base"></i>
             </div>
@@ -317,7 +329,7 @@ export default function AeonExperienceShowcase() {
             </p>
           </div>
 
-          <div className="bg-white p-5 rounded-xl border border-[#CCE5E3] space-y-3 shadow-xs hover:border-[#0B6E7B] transition-colors">
+          <div className="bg-[#F8FCFB] p-5 rounded-2xl border border-[#CCE5E3] space-y-3 shadow-2xs hover:border-[#0B6E7B] transition-colors">
             <div className="w-10 h-10 rounded-xl bg-[#0B6E7B]/10 text-[#0B6E7B] flex items-center justify-center">
               <i className="fa-solid fa-camera-retro text-base"></i>
             </div>

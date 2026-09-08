@@ -8,14 +8,15 @@ export interface CarouselMetricItem {
 
 export interface CarouselItemData {
   id: string | number;
-  title: string;
+  title?: string;
   subtitle?: string;
-  description: string;
+  description?: string;
   icon?: ReactNode;
   link?: string;
   postNumber?: string;
   tag?: string;
   image?: string;
+  alt?: string;
   metrics?: CarouselMetricItem[];
   // Video properties
   isVideo?: boolean;
@@ -34,5 +35,5 @@ export interface CarouselProps {
   round?: boolean;
   className?: string;
   style?: CSSProperties;
-  variant?: 'default' | 'video';
+  variant?: 'default' | 'video' | 'image';
 }

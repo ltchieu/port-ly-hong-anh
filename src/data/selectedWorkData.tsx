@@ -258,78 +258,66 @@ export const beneliftsPlanningDocs: EventPlanningDoc[] = [
   },
 ];
 
-// Map of live event photo moments for Benelifts Asia Year-End Party (DepthCarousel)
-export const eventSelectedWorkCarouselItems: DepthCarouselItem[] = [
+// Map of live event photo moments for Benelifts Asia Year-End Party (CenterModeCarousel)
+export const eventSelectedWorkCarouselItems: CarouselItemData[] = [
   {
     id: "event-photo-03",
     image: eventImagesGlob['../../assets/image/event_selected_work/3.webp'] || '',
-    title: "YEP Stage Backdrop & Lighting Setup",
     alt: "Benelifts Year-End Party Stage Backdrop",
   },
   {
     id: "event-photo-04",
     image: eventImagesGlob['../../assets/image/event_selected_work/4.webp'] || '',
-    title: "VIP Guests & Executive Reception",
     alt: "Benelifts Executive Reception",
   },
   {
     id: "event-photo-05",
     image: eventImagesGlob['../../assets/image/event_selected_work/5.webp'] || '',
-    title: "Musical Performances & Stage Entertainment",
     alt: "Event Entertainment Performance",
   },
   {
     id: "event-photo-05-1",
     image: eventImagesGlob['../../assets/image/event_selected_work/5_1.webp'] || '',
-    title: "Gala Dinner & Team Celebration Atmosphere",
     alt: "Gala Dinner and Team Celebration",
   },
   {
     id: "event-photo-06",
     image: eventImagesGlob['../../assets/image/event_selected_work/6.webp'] || '',
-    title: "Employee Recognition & Awards Ceremony",
     alt: "Employee Recognition Ceremony",
   },
   {
     id: "event-photo-07",
     image: eventImagesGlob['../../assets/image/event_selected_work/7.webp'] || '',
-    title: "Backstage Operations & Run-of-Show",
     alt: "Backstage Operations Management",
   },
   {
     id: "event-photo-08",
     image: eventImagesGlob['../../assets/image/event_selected_work/8.webp'] || '',
-    title: "Lucky Draw & Interactive Audience Minigame",
     alt: "Lucky Draw Minigame",
   },
   {
     id: "event-photo-09",
     image: eventImagesGlob['../../assets/image/event_selected_work/9.webp'] || '',
-    title: "Interactive Team Bonding Activities",
     alt: "Team Bonding Activity",
   },
   {
     id: "event-photo-10",
     image: eventImagesGlob['../../assets/image/event_selected_work/10.webp'] || '',
-    title: "Exclusive Commemorative Gift Packs",
     alt: "Commemorative Event Gift Packs",
   },
   {
     id: "event-photo-11",
     image: eventImagesGlob['../../assets/image/event_selected_work/11.webp'] || '',
-    title: "Photo Booth Check-in & Media Wall",
     alt: "Photo Booth Check-in Wall",
   },  
   {
     id: "event-photo-13",
     image: eventImagesGlob['../../assets/image/event_selected_work/13.webp'] || '',
-    title: "Leadership Toast & Strategic Roadmap",
     alt: "Leadership Strategic Roadmap Toast",
   },
   {
     id: "event-photo-14",
     image: eventImagesGlob['../../assets/image/event_selected_work/14.webp'] || '',
-    title: "All-Hands Grand Finale Group Photograph",
     alt: "Grand Finale Group Photograph",
   },
 ];

@@ -89,7 +89,6 @@ export const dnGroupData: DNGroupData = {
   socialMediaPillar: {
     title: "Content Fanpage & Social Strategy",
     sectionTitle: "Social Media Performance & Analytics",
-    instruction: "Hover over cards to view engagement metrics; click image to expand.",
     description: "Meta content calendars, monthly editorial roadmaps on Google Docs, fanpage analytics dashboards, cross-platform scheduling, and TikTok viral performance reports.",
     bestPostStats: {
       reach: "279,000+",
@@ -223,8 +222,6 @@ export const dnGroupData: DNGroupData = {
   highlightPostsSection: {
     title: "Highlight Facebook Posts & Copywriting Showcase",
     sectionTitle: "High-Engagement Facebook Content & Medical Copywriting",
-    instruction: "Read detailed content copy, strategic dental storytelling, and click link to view live Facebook post.",
-    description: "Curated high-performing Facebook posts covering clinical knowledge, patient smile transformations, customer gratitude, and advanced implantology.",
     contentPlanUrl: "https://docs.google.com/document/d/1D8L30oGzTLofJnq7lMFefaDgy83e5oyKtkMc4q8Xbic/edit?usp=sharing",
     ducmDetailsUrl: "https://docs.google.com/spreadsheets/d/1uXekQDkhCKDhSC5cgZ64RscvPxtqvW9Ofnvacmk1Igo/edit?usp=sharing",
     posts: [
@@ -315,7 +312,6 @@ Mặc dù vậy, nhưng Implant vẫn là kỹ thuật khó, liên quan trực t
   },
   videoEditorPillars: {
     title: "Video Editor & Short-Form Content Production",
-    overview: "Executed multimedia content production for the Shark Dental brand by building and scaling the 'Shark Dental x Điều ước của mẹ' TikTok channel with over 200 on-location and self-shot videos, collaborating with planners on scripts and leveraging CapCut Pro and AI tools for short-form editing.",
     projects: [
       {
         id: "fb-shark-reel",

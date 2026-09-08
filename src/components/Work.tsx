@@ -2,9 +2,7 @@ import { useState } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "motion/react";
 import ScrollReveal from "./common/ScrollReveal";
-import FacebookEmbed from "./common/FacebookEmbed";
 import CenterModeCarousel from "./common/CenterModeCarousel";
-import DepthCarousel from "./common/DepthCarousel";
 import {
   sharkDentalFacebookPosts,
   vLotusShortFormVideos,
@@ -13,20 +11,8 @@ import {
   type EventPlanningDoc,
 } from "../data/selectedWorkData";
 
-interface VideoModalItem {
-  stt: number;
-  title: string;
-  url: string;
-  platform: string;
-}
-
 export default function Work() {
-  const [selectedVideo, setSelectedVideo] = useState<VideoModalItem | null>(null);
   const [selectedDoc, setSelectedDoc] = useState<EventPlanningDoc | null>(null);
-
-  const handleCloseVideoModal = () => {
-    setSelectedVideo(null);
-  };
 
   return (
     <section id="work" className="py-24 bg-white scroll-mt-20 border-b border-[#CCE5E3]">
@@ -63,7 +49,7 @@ export default function Work() {
                     DIEM NHAN GROUP JSC I SHARK DENTAL
                   </h3>
                   <p className="font-sans text-xs sm:text-sm text-[#4E6E75] leading-relaxed pt-1">
-                    Managed and planned content for the Shark Dental fanpage, creating engagement-driven copy, promotional content and dental care educational posts.
+                    Developed bilingual social media content and monthly strategies across Facebook, TikTok and Instagram, including content pillars, creative angles and visual briefs for designers.
                   </p>
                 </div>
                 <div className="flex items-center gap-2 self-start md:self-auto">
@@ -311,27 +297,13 @@ export default function Work() {
               </div>
 
               <ScrollReveal direction="up" delay={0.1}>
-                <div className="w-full relative h-[520px] sm:h-[580px] md:h-[620px] flex items-center justify-center overflow-hidden bg-[#F4FAF9] rounded-2xl border border-[#CCE5E3] py-4">
-                  <DepthCarousel
+                <div className="w-full py-4 sm:py-6 overflow-hidden bg-[#F4FAF9] rounded-2xl border border-[#CCE5E3]">
+                  <CenterModeCarousel
                     items={eventSelectedWorkCarouselItems}
-                    cardWidth={620}
-                    cardHeight={380}
-                    radius={20}
-                    depth={240}
-                    spread={120}
-                    tilt={20}
-                    tiltDirection="right"
-                    perspective={1400}
-                    visibleCards={4}
-                    falloff={0.18}
-                    blur={5}
                     autoplay={true}
                     autoplayDelay={3500}
-                    loop={true}
-                    showControls={true}
-                    showIndicators={true}
-                    objectFit="cover"
-                    cardBg="#07262B"
+                    pauseOnHover={true}
+                    variant="image"
                   />
                 </div>
               </ScrollReveal>
@@ -417,71 +389,6 @@ export default function Work() {
                       <i className="fa-solid fa-arrow-up-right-from-square text-xs" />
                     </a>
                   </div>
-                </div>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>,
-        document.body
-      )}
-
-      {/* Video Lightbox Modal Portal */}
-      {createPortal(
-        <AnimatePresence>
-          {selectedVideo && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={handleCloseVideoModal}
-              className="fixed inset-0 z-[999] bg-[#07262B]/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-8"
-            >
-              <motion.div
-                initial={{ scale: 0.95, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.95, opacity: 0 }}
-                onClick={(e) => e.stopPropagation()}
-                className="relative max-w-3xl w-full max-h-[92vh] flex flex-col bg-[#0B252B] border border-[#0B6E7B]/40 rounded-2xl p-5 sm:p-7 shadow-2xl space-y-4 overflow-hidden"
-              >
-                {/* Modal Header */}
-                <div className="w-full flex items-center justify-between border-b border-white/15 pb-3">
-                  <div className="space-y-0.5">
-                    <span className="font-narrow text-[10px] font-black hologram-metal-text tracking-[0.2em] uppercase block">
-                      #{selectedVideo.stt} • {selectedVideo.platform} REEL
-                    </span>
-                    <h3 className="font-display text-base sm:text-lg text-white uppercase tracking-wide line-clamp-1">
-                      {selectedVideo.title}
-                    </h3>
-                  </div>
-
-                  <button
-                    onClick={handleCloseVideoModal}
-                    className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#0B6E7B] text-white flex items-center justify-center transition-colors cursor-pointer border border-white/20"
-                    aria-label="Close video modal"
-                  >
-                    <i className="fa-solid fa-xmark text-sm"></i>
-                  </button>
-                </div>
-
-                {/* Facebook Video Player Box */}
-                <div className="w-full flex-1 min-h-[320px] max-h-[60vh] rounded-xl overflow-hidden bg-black border border-white/10 relative flex items-center justify-center p-2">
-                  <FacebookEmbed url={selectedVideo.url} />
-                </div>
-
-                {/* Modal Footer */}
-                <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-3 pt-3 border-t border-white/15">
-                  <span className="font-sans text-xs text-white/70">
-                    Watching interactive Facebook video Reel embed
-                  </span>
-                  <a
-                    href={selectedVideo.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-2 bg-[#1877F2] text-white hover:bg-[#166fe5] transition-all font-narrow text-xs uppercase tracking-wider font-bold rounded-lg flex items-center gap-2 shadow-sm"
-                  >
-                    <span>Watch on Facebook</span>
-                    <i className="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-                  </a>
                 </div>
               </motion.div>
             </motion.div>

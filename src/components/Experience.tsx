@@ -50,6 +50,9 @@ function parseMetric(text: string): ParsedMetric {
   } else if (lower.includes("tiktok")) {
     icon = "fa-brands fa-tiktok text-[#0C2B31]";
     iconBg = "bg-[#0C2B31]/10";
+  } else if (lower.includes("article") || lower.includes("seo") || lower.includes("ranking") || lower.includes("google")) {
+    icon = "fa-solid fa-magnifying-glass text-[#0B6E7B]";
+    iconBg = "bg-[#0B6E7B]/10";
   } else if (lower.includes("view") || lower.includes("video")) {
     icon = "fa-solid fa-play text-[#0B6E7B]";
     iconBg = "bg-[#0B6E7B]/10";
@@ -74,7 +77,7 @@ function getExperienceActionLinks(expId: string): ActionLink[] {
   switch (expId) {
     case "dn-group":
       return [
-        
+
       ];
 
     case "v-lotus":
@@ -104,42 +107,10 @@ function getExperienceActionLinks(expId: string): ActionLink[] {
 
     case "benelifts-asia":
       return [
-        {
-          label: "Post Drive (Benelifts)",
-          url: beneliftsData.highlightPostsSection.beneliftsDriveUrl,
-          icon: "fa-brands fa-google-drive text-[#2DD4BF]",
-          highlight: true,
-        },
-        {
-          label: "Post Drive (Casanova)",
-          url: beneliftsData.highlightPostsSection.casanovaDriveUrl,
-          icon: "fa-brands fa-google-drive text-[#2DD4BF]",
-        },
-        {
-          label: "Benelifts SEO Plan",
-          url: beneliftsData.websiteArticlesSection.beneliftsSeoPlanUrl,
-          icon: "fa-solid fa-file-lines text-[#2DD4BF]",
-        },
-        {
-          label: "Casanova SEO Plan",
-          url: beneliftsData.websiteArticlesSection.casanovaSeoPlanUrl,
-          icon: "fa-solid fa-file-lines text-[#2DD4BF]",
-        },
       ];
 
     case "freelance-event-coordinator":
       return [
-        {
-          label: "PANASONIC Webinar Report",
-          url: PANASONIC_WEBINAR_REPORT_URL,
-          icon: "fa-solid fa-file-excel text-[#2DD4BF]",
-          highlight: true,
-        },
-        {
-          label: "YouTube Shorts Recap",
-          url: PANASONIC_WEBINAR_VIDEO_URL,
-          icon: "fa-brands fa-youtube text-[#FF4D4D]",
-        },
       ];
 
     case "aeon-vietnam":
@@ -409,9 +380,8 @@ export default function ExperienceSection({
                 className="py-2"
               >
                 <div
-                  className={`flex flex-col lg:flex-row ${
-                    isOpen ? "justify-center" : isEven ? "lg:justify-end" : "lg:justify-start"
-                  } relative w-full transition-all duration-300`}
+                  className={`flex flex-col lg:flex-row ${isOpen ? "justify-center" : isEven ? "lg:justify-end" : "lg:justify-start"
+                    } relative w-full transition-all duration-300`}
                 >
                   {/* Point node on timeline axis */}
                   {!isOpen && (
@@ -420,9 +390,8 @@ export default function ExperienceSection({
 
                   <div
                     data-experience-id={exp.id}
-                    className={`w-full ${
-                      isOpen ? "lg:w-full z-30 bg-white shadow-xl border-[#0B6E7B]/40" : "lg:w-[46%] bg-white/90 shadow-xs"
-                    } backdrop-blur-sm border border-[#CCE5E3] p-6 sm:p-8 rounded-2xl transition-all duration-300 hover:bg-white hover:shadow-lg scroll-mt-24`}
+                    className={`w-full ${isOpen ? "lg:w-full z-30 bg-white shadow-xl border-[#0B6E7B]/40" : "lg:w-[46%] bg-white/90 shadow-xs"
+                      } backdrop-blur-sm border border-[#CCE5E3] p-6 sm:p-8 rounded-2xl transition-all duration-300 hover:bg-white hover:shadow-lg scroll-mt-24`}
                   >
                     {/* Header trigger */}
                     <div
@@ -431,9 +400,9 @@ export default function ExperienceSection({
                       }}
                       data-experience-header={exp.id}
                       onClick={() => handleToggleExperience(exp.id)}
-                      className="cursor-pointer flex items-center justify-between gap-4 select-none group"
+                      className="cursor-pointer flex flex-col md:flex-row md:items-center justify-between gap-4 select-none group"
                     >
-                      <div className="space-y-1">
+                      <div className="space-y-1 flex-1">
                         <span className="font-narrow text-sm sm:text-base font-black hologram-metal-text tracking-widest block">
                           {exp.index} / {exp.role}
                         </span>
@@ -445,19 +414,44 @@ export default function ExperienceSection({
                         </p>
                       </div>
 
-                      {/* Expand / Collapse Button */}
-                      <button
-                        type="button"
-                        className={`w-10 h-10 rounded-full border transition-all duration-300 flex items-center justify-center shrink-0 cursor-pointer ${
-                          isOpen
+                      {/* Header Action Links (Only visible when open, in 1 column with equal width) & Expand / Collapse Button */}
+                      <div className="flex items-start sm:items-center gap-6 sm:gap-8 lg:gap-10 shrink-0">
+                        {isOpen && actionLinks.length > 0 && (
+                          <div className="flex flex-col items-stretch gap-2 w-56 sm:w-64">
+                            {actionLinks.map((link, lIdx) => (
+                              <a
+                                key={lIdx}
+                                href={link.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={(e) => e.stopPropagation()}
+                                className={`w-full px-3.5 py-2 rounded-xl font-narrow text-xs font-black uppercase tracking-wider flex items-center justify-between gap-2 transition-all shadow-xs hover:scale-105 cursor-pointer ${link.highlight
+                                  ? "bg-[#0B6E7B] hover:bg-[#08545E] text-white border border-[#2DD4BF]/40"
+                                  : "bg-[#F0F8F7] hover:bg-white text-[#0C2B31] border border-[#CCE5E3] hover:border-[#0B6E7B]"
+                                  }`}
+                              >
+                                <div className="flex items-center gap-2 truncate pr-1">
+                                  <i className={link.icon}></i>
+                                  <span className="truncate">{link.label}</span>
+                                </div>
+                                <i className="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-70 shrink-0"></i>
+                              </a>
+                            ))}
+                          </div>
+                        )}
+
+                        <button
+                          type="button"
+                          className={`w-10 h-10 rounded-full border transition-all duration-300 flex items-center justify-center shrink-0 cursor-pointer ${isOpen
                             ? "rotate-45 border-[#0B6E7B] bg-[#0B6E7B] text-white shadow-sm"
                             : "border-[#CCE5E3] text-[#0C2B31] group-hover:border-[#0B6E7B] group-hover:bg-[#0B6E7B] group-hover:text-white"
-                        }`}
-                        aria-expanded={isOpen}
-                        aria-label={`${isOpen ? "Collapse" : "Expand"} ${exp.company} details`}
-                      >
-                        <i className="fa-solid fa-plus text-sm"></i>
-                      </button>
+                            }`}
+                          aria-expanded={isOpen}
+                          aria-label={`${isOpen ? "Collapse" : "Expand"} ${exp.company} details`}
+                        >
+                          <i className="fa-solid fa-plus text-sm"></i>
+                        </button>
+                      </div>
                     </div>
 
                     {/* Expandable Content Container */}
@@ -476,68 +470,10 @@ export default function ExperienceSection({
                           className="overflow-hidden"
                         >
                           <div className="pt-8 space-y-10 border-t border-[#CCE5E3] mt-6">
-                            
-                            {/* TOP LEFT ACTION DOCUMENT LINKS */}
-                            {actionLinks.length > 0 && (
-                              <div className="space-y-2">
-                                <span className="font-narrow text-xs font-black text-[#0B6E7B] tracking-wider uppercase block">
-                                  Documents &amp; Reports:
-                                </span>
-                                <div className="flex flex-wrap items-center gap-2.5">
-                                  {actionLinks.map((link, lIdx) => (
-                                    <a
-                                      key={lIdx}
-                                      href={link.url}
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                      onClick={(e) => e.stopPropagation()}
-                                      className={`px-3.5 py-2 rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center gap-2 transition-all shadow-xs hover:scale-105 cursor-pointer ${
-                                        link.highlight
-                                          ? "bg-[#0B6E7B] hover:bg-[#08545E] text-white border border-[#2DD4BF]/40"
-                                          : "bg-[#F0F8F7] hover:bg-white text-[#0C2B31] border border-[#CCE5E3] hover:border-[#0B6E7B]"
-                                      }`}
-                                    >
-                                      <i className={link.icon}></i>
-                                      <span>{link.label}</span>
-                                      <i className="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-70"></i>
-                                    </a>
-                                  ))}
-                                </div>
-                              </div>
-                            )}
 
-                            {/* Executive Role Spec & Tech Badges */}
-                            <div className="space-y-4 pt-2">
-                              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-[#CCE5E3] pb-4">
-                                <div className="space-y-1">
-                                  <div className="flex items-center gap-2">
-                                    <span className="w-2 h-2 rounded-full bg-[#0B6E7B] animate-pulse" />
-                                    <span className="font-mono text-[11px] font-black text-[#0B6E7B] uppercase tracking-[0.18em]">
-                                      EXECUTIVE ROLE SPECIFICATION
-                                    </span>
-                                  </div>
-                                  <h4 className="font-display text-2xl sm:text-3xl font-black uppercase text-[#0C2B31] tracking-tight">
-                                    {exp.role}
-                                  </h4>
-                                </div>
-
-                                {exp.tech && (
-                                  <div className="flex flex-wrap gap-2 items-center">
-                                    {exp.tech.map((t, tIdx) => (
-                                      <span
-                                        key={tIdx}
-                                        className="px-3.5 py-1.5 bg-[#F0F8F7] border border-[#CCE5E3] text-[#0C2B31] font-mono text-[11px] uppercase rounded-full shadow-2xs font-bold hover:border-[#0B6E7B] transition-colors"
-                                      >
-                                        {t}
-                                      </span>
-                                    ))}
-                                  </div>
-                                )}
-                              </div>
-
-                              {/* Structured Sections (Clean unboxed layout without container cards) */}
-                              {exp.sections ? (
-                                <div className="space-y-8 pt-2">
+                            {/* Structured Sections (Clean unboxed layout without container cards) */}
+                            {exp.sections ? (
+                              <div className="space-y-8 pt-2">
                                   {exp.sections.map((sec, sIdx) => {
                                     const isAchievementSection = sec.title.toLowerCase().includes("achievement");
 
@@ -639,7 +575,6 @@ export default function ExperienceSection({
                                   <HighlightText text={exp.description} />
                                 </p>
                               )}
-                            </div>
 
                             {/* INTERACTIVE SHOWCASE COMPONENT */}
                             <div className="pt-6 border-t border-[#CCE5E3]">

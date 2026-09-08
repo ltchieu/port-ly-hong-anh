@@ -54,12 +54,6 @@ export const vLotusData: VLotusData = {
   },
   keyMetrics: [
     {
-      label: "SEO Articles Published",
-      value: "35+",
-      subtext: "Top Google Rankings on 'bò Wagyu ủ tuyết', 'nhà hàng bò Wagyu'",
-      icon: "fa-solid fa-magnifying-glass",
-    },
-    {
       label: "Top Campaign Organic Reach",
       value: "425,000+",
       subtext: "1,500+ Likes • 52 Shares • 35 Comments on Peak Post",
@@ -279,8 +273,6 @@ export const vLotusData: VLotusData = {
   highlightPostsSection: {
     title: "Highlight Facebook Posts & Copywriting Showcase",
     sectionTitle: "High-Impact Multi-Brand Copywriting & Seasonal Campaigns",
-    instruction: "Explore viral Japanese culinary copywriting, product launches, brand promotions, and luxury sky dining campaigns.",
-    description: "Curated top-performing social posts across Conservo Japanese Breads & Café, Yoshinoya Vietnam, and Ussina Snow Aging Beef.",
     posts: [
       {
         id: "vlotus-fb-post-1",
@@ -290,12 +282,17 @@ export const vLotusData: VLotusData = {
         category: "BST Thức Uống Mùa Hè",
         postUrl: "https://www.facebook.com/share/p/1BzohZ2Cfd/",
         content: `Mát lạnh sảng khoái, vị nào cũng mêêêêê!
+
 🌸 Như hoa anh đào khẽ rơi trên nền tuyết trắng – khoảnh khắc đẹp nhất xứ Phù Tang, BST YUKIBANA – HOA TRÊN TUYẾT đã chính thức có mặt tại Conservo.
+
 Với sự kết hợp cùng thương hiệu sữa chua cao cấp Morinaga, BST YUKIBANA mang hương vị chua nhẹ cùng kết cấu đá xay mát lạnh quyện với topping 100% trái cây tươi. Hãy cảm nhận nốt hương tuyệt diệu của Mùa Hoa Anh Đào với 03 vị trái cây:
+
 🍓 𝒀𝒖𝒌𝒊 𝑵𝒐 𝑯𝒂𝒏𝒂 | Dâu Sữa Chua Đá Xay: dâu tươi kết hợp sữa chua thanh nhẹ, tạo hương vị chua ngọt cuốn hút.
 🍈 𝑴𝒊𝒛𝒖 𝑵𝒐 𝑯𝒂𝒏𝒂 | Dưa Lưới Sữa Chua Đá Xay: sự kết hợp mát lành với dưa lưới ngọt thanh trên nền sữa chua beo béo.
 🥭 𝑻𝒂𝒊𝒚𝒐𝒖 𝑵𝒐 𝑯𝒂𝒏𝒂 | Xoài Cát Sữa Chua Đá Xay: vị ngọt ngào từ xoài cát được cân bằng hoàn hảo với chút chua nhẹ của sữa chua.
+
 YUKIBANA hiện đã có mặt tại các cửa hàng Conservo.
+
 Đến Conservo và đắm mình trong khung cảnh & hương vị mùa hoa anh đào Nhật Bản nhé!`,
         tags: ["Yukibana", "Hoa Trên Tuyết", "Morinaga", "Conservo", "Summer Drink"],
       },
@@ -307,7 +304,9 @@ YUKIBANA hiện đã có mặt tại các cửa hàng Conservo.
         category: "Khuyến Mãi & Ngày Hội Thương Hiệu",
         postUrl: "https://www.facebook.com/share/p/1GFxPHVGdH/",
         content: `🔥 Ngày 5 hàng tháng, fan đã sẵn sàng chưa?
+
 Deadline có thể dời, nhưng hẹn Yoshi Day thì nhất định phải tới nha! Chỉ 1 ngày duy nhất trong tháng để ăn ngon, nhẹ ví, cả hội chill hè thật đáng nhớ!
+
 👉 CHỈ TỪ 53K, chọn ngay 1 trong 7 món siêu hot:
 🍚Cơm Bò Yoshi
 🍚Cơm Bò Trứng
@@ -316,6 +315,7 @@ Deadline có thể dời, nhưng hẹn Yoshi Day thì nhất định phải tớ
 🍚Cơm Gà Nanban
 🍚Cơm Gà Karaage
 🍚Cơm Thịt Heo Xào Gừng
+
 📌 Điều kiện áp dụng:
 - Áp dụng hình thức Dùng món tại nhà hàng hoặc Mua mang về trên toàn hệ thống.
 - Áp dụng thanh toán qua đồng thời bằng voucher đối tác GOT IT, URBOX, PLUXEE.
@@ -331,17 +331,22 @@ Deadline có thể dời, nhưng hẹn Yoshi Day thì nhất định phải tớ
         postUrl: "https://www.facebook.com/share/p/1HmovSVXsa/",
         content: `A Perfect Weekend Escape In The Sky
 (English Below)
+
 Dành một chiều cuối tuần thật nhẹ nhàng cho chính mình – nơi không còn ồn ào, chỉ có mây trời, trà thơm và những điều đẹp đẽ.
+
 Giữa guồng quay tất bật, ai cũng cần một khoảng lặng để thở – để lắng nghe chính mình và tận hưởng sự thanh bình. Skyline Japanese Afternoon Tea tại Ussina chính là lời mời cho một buổi chiều như thế.
 Không đơn thuần là một set trà chiều, đây là trải nghiệm được tuyển chọn tỉ mỉ:
+
 ✨ Afternoon Bliss (390,000 VND/khách): bao gồm 8 món ngọt và 1 thức uống tự chọn.
 ✨ Golden Hour (590,000 VND/khách): bao gồm 5 món ngọt, 5 món mặn và 2 thức uống tự chọn.
+
 Tất cả được phục vụ trong không gian sang trọng giữa tầng không – nơi thành phố thu nhỏ dưới chân bạn.
 📌 Điều kiện áp dụng:
 - Giá chưa bao gồm VAT
 - Áp dụng phục vụ từ 2 set cùng loại trở lên
 - Vui lòng đặt trước 1 ngày
 - Thời gian phục vụ từ 14h - 17h mỗi ngày.
+
 💫 Hoàn hảo cho một buổi hẹn cuối tuần, một cuộc trò chuyện riêng tư, hoặc đơn giản là khoảnh khắc yêu chiều bản thân – bởi bạn xứng đáng được tận hưởng những điều đẹp đẽ nhất.`,
         tags: ["Skyline Afternoon Tea", "Ussina Sky 77", "Landmark 81", "Japanese Tea", "Luxury Dining"],
       },
@@ -353,8 +358,11 @@ Tất cả được phục vụ trong không gian sang trọng giữa tầng kh�
         category: "Ra Mắt Bánh Mới & Triết Lý Washoku",
         postUrl: "https://www.facebook.com/share/p/19UtHAxRfr/",
         content: `Thanh nhẹ, tinh tế - đó không chỉ là cách người Nhật tôn vinh ẩm thực, mà còn là triết lý Washoku được gửi gắm vào từng chiếc Nama Donut vừa ra mắt tại Conservo.
+
 Với lớp vỏ mềm mịn ôm trọn phần kem trái cây thanh mát bên trong, Nama Donut mang đến cảm giác dễ chịu, nhẹ nhàng từ miếng đầu tiên. Không quá ngọt, không gây ngấy - chiếc bánh này chiều lòng cả những ai ít hảo đồ ngọt nhất.
+
 Chính sự tinh giản trong nguyên liệu, sự chỉn chu trong cách làm và tâm huyết trong từng chi tiết nhỏ đã tạo nên một chiếc bánh vừa đẹp mắt, vừa hài hoà vị giác. Dù là bữa xế nhẹ, món tráng miệng hay chỉ đơn giản là muốn nạp chút “ngọt lành” cho ngày thêm vui - Nama Donut chính là lựa chọn lý tưởng dành cho bạn.
+
 📍 Ghé Conservo hôm nay để thưởng thức siêu phẩm mới toanh này nhé.`,
         tags: ["Nama Donut", "Washoku Philosophy", "Conservo", "Fresh Bakery", "Japanese Pastry"],
       },
@@ -362,7 +370,6 @@ Chính sự tinh giản trong nguyên liệu, sự chỉn chu trong cách làm v
   },
   videoPillar: {
     title: "Video Editor & Short-Form Media Production",
-    overview: "Executed end-to-end multimedia content production for Conservo Japanese Breads & Café and Yoshinoya Vietnam across Facebook Reels and TikTok. Ideated video angles, coordinated on-site shootings, authored comprehensive creative briefs, and edited dynamic short-form videos with viral reach.",
     briefVideoUrl: "https://docs.google.com/presentation/d/1vXM5CUAIm0cCK_NDEoBUoqhK-zl7rq1eJfKrmhMXO9Y/edit?usp=sharing",
     videos: [
       {

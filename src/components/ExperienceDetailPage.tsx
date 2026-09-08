@@ -51,6 +51,9 @@ function parseMetric(text: string): ParsedMetric {
   } else if (lower.includes("tiktok")) {
     icon = "fa-brands fa-tiktok text-[#0C2B31]";
     iconBg = "bg-[#0C2B31]/10";
+  } else if (lower.includes("article") || lower.includes("seo") || lower.includes("ranking") || lower.includes("google")) {
+    icon = "fa-solid fa-magnifying-glass text-[#0B6E7B]";
+    iconBg = "bg-[#0B6E7B]/10";
   } else if (lower.includes("view") || lower.includes("video")) {
     icon = "fa-solid fa-play text-[#0B6E7B]";
     iconBg = "bg-[#0B6E7B]/10";
@@ -217,8 +220,8 @@ export default function ExperienceDetailPage() {
       {/* 2. MAIN EXPERIENCE CONTENT CONTAINER */}
       <main className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-10 space-y-10">
         
-        {/* Top Header Row: Company Title & Top-Left Action Documents */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-[#CCE5E3]">
+        {/* Top Header Row: Company Title & Top Action Documents */}
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-[#CCE5E3]">
           <div className="space-y-3">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-[#0B6E7B] text-white flex items-center justify-center shrink-0 shadow-md">
@@ -237,74 +240,44 @@ export default function ExperienceDetailPage() {
             <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl uppercase tracking-tighter text-[#0C2B31] leading-tight">
               {currentExp.company}
             </h1>
-
-            {/* TOP LEFT ACTION DOCUMENT LINKS */}
-            {topActionLinks.length > 0 && (
-              <div className="pt-2">
-                <div className="flex flex-wrap items-center gap-2.5">
-                  <span className="font-narrow text-xs font-black text-[#0B6E7B] tracking-wider uppercase mr-1 hidden sm:inline-block">
-                    Documents &amp; Reports:
-                  </span>
-                  {topActionLinks.map((link, lIdx) => (
-                    <a
-                      key={lIdx}
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`px-3.5 py-2 rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center gap-2 transition-all shadow-xs hover:scale-105 cursor-pointer ${
-                        link.highlight
-                          ? "bg-[#0B6E7B] hover:bg-[#08545E] text-white border border-[#2DD4BF]/40"
-                          : "bg-white hover:bg-[#F0F8F7] text-[#0C2B31] border border-[#CCE5E3] hover:border-[#0B6E7B]"
-                      }`}
-                    >
-                      <i className={link.icon}></i>
-                      <span>{link.label}</span>
-                      <i className="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-70"></i>
-                    </a>
-                  ))}
-                </div>
-              </div>
-            )}
           </div>
 
-          {/* Quick experience switch dropdown on mobile/tablet */}
-          <div className="flex items-center gap-2 self-start lg:self-auto">
-            <span className="font-mono text-xs text-[#4E6E75] bg-[#F0F8F7] px-3.5 py-1.5 rounded-full border border-[#CCE5E3] font-bold">
-              {currentExp.role}
-            </span>
-          </div>
-        </div>
-
-        {/* Executive Role & Core Competencies Overview (Container Card Removed) */}
-        <section className="space-y-8 pt-2">
-          {/* Top Bar: Role & Skills */}
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-[#CCE5E3] pb-5">
-            <div className="space-y-1.5">
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#0B6E7B] animate-pulse" />
-                <span className="font-mono text-[11px] font-black text-[#0B6E7B] uppercase tracking-[0.18em]">
-                  EXECUTIVE ROLE SPECIFICATION
-                </span>
-              </div>
-              <h2 className="font-display text-2xl sm:text-3xl font-black uppercase text-[#0C2B31] tracking-tight">
+          {/* Top Actions & Role Badge */}
+          <div className="flex flex-col items-start lg:items-end gap-3 shrink-0">
+            <div className="flex items-center gap-2">
+              <span className="font-mono text-xs text-[#4E6E75] bg-[#F0F8F7] px-3.5 py-1.5 rounded-full border border-[#CCE5E3] font-bold">
                 {currentExp.role}
-              </h2>
+              </span>
             </div>
 
-            {currentExp.tech && (
-              <div className="flex flex-wrap gap-2 items-center">
-                {currentExp.tech.map((t, idx) => (
-                  <span
-                    key={idx}
-                    className="px-3.5 py-1.5 bg-white border border-[#CCE5E3] text-[#0C2B31] font-mono text-[11px] uppercase rounded-full shadow-2xs font-bold hover:border-[#0B6E7B] transition-colors"
+            {topActionLinks.length > 0 && (
+              <div className="flex flex-col items-stretch gap-2 w-56 sm:w-64">
+                {topActionLinks.map((link, lIdx) => (
+                  <a
+                    key={lIdx}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`w-full px-3.5 py-2 rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center justify-between gap-2 transition-all shadow-xs hover:scale-105 cursor-pointer ${
+                      link.highlight
+                        ? "bg-[#0B6E7B] hover:bg-[#08545E] text-white border border-[#2DD4BF]/40"
+                        : "bg-white hover:bg-[#F0F8F7] text-[#0C2B31] border border-[#CCE5E3] hover:border-[#0B6E7B]"
+                    }`}
                   >
-                    {t}
-                  </span>
+                    <div className="flex items-center gap-2 truncate pr-1">
+                      <i className={link.icon}></i>
+                      <span className="truncate">{link.label}</span>
+                    </div>
+                    <i className="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-70 shrink-0"></i>
+                  </a>
                 ))}
               </div>
             )}
           </div>
+        </div>
 
+        {/* Executive Structured Sections */}
+        <section className="space-y-8 pt-2">
           {/* Structured Sections without container cards */}
           {currentExp.sections ? (
             <div className="space-y-8">

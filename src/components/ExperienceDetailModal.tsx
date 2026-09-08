@@ -53,6 +53,9 @@ function parseMetric(text: string): ParsedMetric {
   } else if (lower.includes("tiktok")) {
     icon = "fa-brands fa-tiktok text-[#0C2B31]";
     iconBg = "bg-[#0C2B31]/10";
+  } else if (lower.includes("article") || lower.includes("seo") || lower.includes("ranking") || lower.includes("google")) {
+    icon = "fa-solid fa-magnifying-glass text-[#0B6E7B]";
+    iconBg = "bg-[#0B6E7B]/10";
   } else if (lower.includes("view") || lower.includes("video")) {
     icon = "fa-solid fa-play text-[#0B6E7B]";
     iconBg = "bg-[#0B6E7B]/10";
@@ -205,34 +208,6 @@ export default function ExperienceDetailModal({
                 <div className="absolute right-0 top-0 w-64 h-64 bg-[#0B6E7B]/5 rounded-full blur-3xl pointer-events-none -translate-y-12 translate-x-12" />
 
                 <div className="relative z-10 space-y-6">
-                  {/* Top Bar: Role & Skills */}
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-[#E0EFEF] pb-5">
-                    <div className="space-y-1.5">
-                      <div className="flex items-center gap-2">
-                        <span className="w-2 h-2 rounded-full bg-[#0B6E7B] animate-pulse" />
-                        <span className="font-mono text-[11px] font-black text-[#0B6E7B] uppercase tracking-[0.18em]">
-                          EXECUTIVE ROLE SPECIFICATION
-                        </span>
-                      </div>
-                      <h4 className="font-display text-2xl sm:text-3xl font-black uppercase text-[#0C2B31] tracking-tight">
-                        {currentExp.role}
-                      </h4>
-                    </div>
-
-                    {currentExp.tech && (
-                      <div className="flex flex-wrap gap-2 items-center">
-                        {currentExp.tech.map((t, idx) => (
-                          <span
-                            key={idx}
-                            className="px-3.5 py-1.5 bg-white/90 backdrop-blur-sm border border-[#CCE5E3] text-[#0C2B31] font-mono text-[11px] uppercase rounded-full shadow-2xs font-bold hover:border-[#0B6E7B] transition-colors"
-                          >
-                            {t}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-
                   {/* Structured Section Cards */}
                   {currentExp.sections ? (
                     <div className="grid grid-cols-1 gap-5 pt-1">

@@ -4,7 +4,9 @@ import { beneliftsData } from "../../data/beneliftsData";
 import GallerySkeleton from "./GallerySkeleton";
 import AnimatedCounter from "./AnimatedCounter";
 import HighlightText from "./HighlightText";
+import HighlightVideoCard from "./HighlightVideoCard";
 import FacebookEmbed from "./FacebookEmbed";
+import ScrollablePostContent from "./ScrollablePostContent";
 
 // Lazy import interactive sub-components
 const BounceCards = lazy(() => import("./BounceCards"));
@@ -159,120 +161,125 @@ export default function BeneliftsAsiaExperienceShowcase() {
       </div>
 
       {/* SECTION: DESIGN SOCIAL POST, THUMBNAIL WEBSITE ARTICLES AND POSM */}
-      <div className="space-y-6 pt-6 border-t border-[#CCE5E3]">
-        <div className="bg-white p-5 sm:p-7 rounded-2xl border border-[#CCE5E3] space-y-6 shadow-xs hover:border-[#0B6E7B] transition-all">
-          <div className="space-y-1.5 border-b border-[#CCE5E3] pb-4">
-            <div className="flex items-center justify-between gap-2">
-              <h4 className="font-narrow text-sm sm:text-base font-black text-[#0C2B31] uppercase tracking-wider flex items-center gap-2">
+      <div className="bg-white rounded-2xl sm:rounded-3xl border border-[#CCE5E3] p-5 sm:p-7 lg:p-8 space-y-6 shadow-xs hover:border-[#0B6E7B]/40 transition-all">
+        <div className="border-b border-[#CCE5E3]/80 pb-5 space-y-3">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <span className="font-narrow text-xs sm:text-sm font-black text-[#0B6E7B] tracking-[0.2em] uppercase block">
+                VISUAL DESIGN & POSM ASSETS
+              </span>
+              <h4 className="font-display text-xl sm:text-2xl uppercase tracking-tight text-[#0C2B31] flex items-center gap-2.5">
                 <i className="fa-solid fa-paintbrush text-[#0B6E7B]"></i>
                 <span>{beneliftsData.designAssetsCollage.title}</span>
                 <span className="text-[#0B6E7B]">({beneliftsData.designAssetsCollage.countLabel})</span>
               </h4>
-              <span className="font-mono text-[10px] text-[#0B6E7B] hidden sm:inline-block bg-[#F0F8F7] px-2.5 py-1 rounded-md border border-[#CCE5E3] font-bold">
-                HOVER TO EXPAND &bull; CLICK TO ZOOM
-              </span>
             </div>
-            <p className="font-sans text-xs sm:text-sm text-[#4E6E75] leading-relaxed">
-              {beneliftsData.designAssetsCollage.subtitle}
-            </p>
+
+            <span className="font-mono text-[10px] text-[#0B6E7B] bg-[#F0F8F7] px-3 py-1.5 rounded-xl border border-[#CCE5E3] font-bold">
+              HOVER TO EXPAND &bull; CLICK TO ZOOM
+            </span>
           </div>
 
-          {/* Bounce Cards Display (Desktop: BounceCards, Mobile: Stack) */}
-          <div className="w-full flex justify-center items-center py-6 overflow-hidden min-h-[300px] bg-[#F8FCFB] rounded-xl border border-[#CCE5E3]/60">
-            <Suspense fallback={<GallerySkeleton height="280px" />}>
-              {/* Desktop & Tablet view: BounceCards */}
-              <div className="hidden sm:flex justify-center items-center">
-                <BounceCards
-                  images={designAssetsTop5}
-                  containerWidth={520}
-                  containerHeight={290}
-                  animationDelay={0.15}
-                  animationStagger={0.06}
-                  transformStyles={bounceTransformStyles}
-                  onCardClick={(idx) =>
-                    openGalleryModal(
-                      "Benelifts Asia — Design Social Post, Thumbnails & POSM",
-                      "Visual Design & SEO Thumbnails",
-                      designAssetsImages,
-                      idx
-                    )
-                  }
+          <p className="font-sans text-sm sm:text-base text-[#2C4A51] leading-relaxed max-w-5xl">
+            {beneliftsData.designAssetsCollage.subtitle}
+          </p>
+        </div>
+
+        {/* Bounce Cards Display (Desktop: BounceCards, Mobile: Stack) */}
+        <div className="w-full flex justify-center items-center py-6 overflow-hidden min-h-[300px] bg-[#F8FCFB] rounded-2xl border border-[#CCE5E3]/60">
+          <Suspense fallback={<GallerySkeleton height="280px" />}>
+            {/* Desktop & Tablet view: BounceCards */}
+            <div className="hidden sm:flex justify-center items-center">
+              <BounceCards
+                images={designAssetsTop5}
+                containerWidth={520}
+                containerHeight={290}
+                animationDelay={0.15}
+                animationStagger={0.06}
+                transformStyles={bounceTransformStyles}
+                onCardClick={(idx) =>
+                  openGalleryModal(
+                    "Benelifts Asia — Design Social Post, Thumbnails & POSM",
+                    "Visual Design & SEO Thumbnails",
+                    designAssetsImages,
+                    idx
+                  )
+                }
+              />
+            </div>
+
+            {/* Mobile view: Stack component */}
+            <div className="flex sm:hidden justify-center items-center h-[230px] w-[200px] relative my-2">
+              <Stack
+                cards={designAssetsStackCards}
+                randomRotation={true}
+                sendToBackOnClick={true}
+                sensitivity={120}
+              />
+            </div>
+          </Suspense>
+        </div>
+
+        {/* Remaining images & full modal button */}
+        <div className="space-y-4 pt-2">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#CCE5E3]/60 pb-3">
+            <span className="font-narrow text-xs sm:text-sm font-black text-[#0B6E7B] uppercase tracking-wider flex items-center gap-1.5">
+              <i className="fa-solid fa-layer-group text-xs"></i>
+              <span>Additional Visual Assets ({remainingDesignAssets.length} Designs)</span>
+            </span>
+            <span className="font-sans text-xs text-[#4E6E75]">
+              Click any design below to open full gallery
+            </span>
+          </div>
+
+          {/* Grid of Remaining Images (excluding the 5 in bounce cards) */}
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2.5">
+            {remainingDesignAssets.map((src, idx) => (
+              <button
+                key={idx}
+                onClick={() =>
+                  openGalleryModal(
+                    "Benelifts Asia — Design Social Post, Thumbnails & POSM",
+                    "Visual Design & SEO Thumbnails",
+                    designAssetsImages,
+                    idx + 5
+                  )
+                }
+                className="aspect-square rounded-xl overflow-hidden border border-[#CCE5E3] hover:border-[#0B6E7B] hover:scale-105 transition-all group cursor-pointer shadow-2xs relative"
+              >
+                <img
+                  src={src}
+                  alt={`Design Asset Additional ${idx + 1}`}
+                  loading="lazy"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300 pointer-events-none"
                 />
-              </div>
-
-              {/* Mobile view: Stack component */}
-              <div className="flex sm:hidden justify-center items-center h-[230px] w-[200px] relative my-2">
-                <Stack
-                  cards={designAssetsStackCards}
-                  randomRotation={true}
-                  sendToBackOnClick={true}
-                  sensitivity={120}
-                />
-              </div>
-            </Suspense>
+                <div className="absolute inset-0 bg-[#07262B]/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <i className="fa-solid fa-magnifying-glass-plus text-white text-xs"></i>
+                </div>
+              </button>
+            ))}
           </div>
 
-          {/* Remaining images & full modal button */}
-          <div className="space-y-4 pt-2">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#CCE5E3]/60 pb-3">
-              <span className="font-narrow text-xs sm:text-sm font-black text-[#0B6E7B] uppercase tracking-wider flex items-center gap-1.5">
-                <i className="fa-solid fa-layer-group text-xs"></i>
-                <span>Additional Visual Assets ({remainingDesignAssets.length} Designs)</span>
-              </span>
-              <span className="font-sans text-xs text-[#4E6E75]">
-                Click any design below to open full gallery
-              </span>
-            </div>
-
-            {/* Grid of Remaining Images (excluding the 5 in bounce cards) */}
-            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2.5">
-              {remainingDesignAssets.map((src, idx) => (
-                <button
-                  key={idx}
-                  onClick={() =>
-                    openGalleryModal(
-                      "Benelifts Asia — Design Social Post, Thumbnails & POSM",
-                      "Visual Design & SEO Thumbnails",
-                      designAssetsImages,
-                      idx + 5
-                    )
-                  }
-                  className="aspect-square rounded-xl overflow-hidden border border-[#CCE5E3] hover:border-[#0B6E7B] hover:scale-105 transition-all group cursor-pointer shadow-2xs relative"
-                >
-                  <img
-                    src={src}
-                    alt={`Design Asset Additional ${idx + 1}`}
-                    loading="lazy"
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300 pointer-events-none"
-                  />
-                  <div className="absolute inset-0 bg-[#07262B]/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <i className="fa-solid fa-magnifying-glass-plus text-white text-xs"></i>
-                  </div>
-                </button>
-              ))}
-            </div>
-
-            <button
-              onClick={() =>
-                openGalleryModal(
-                  "Benelifts Asia — Design Social Post, Thumbnails & POSM",
-                  "Visual Design & SEO Thumbnails",
-                  designAssetsImages,
-                  0
-                )
-              }
-              className="w-full py-3 bg-[#F4FAF9] border border-[#CCE5E3] hover:bg-[#0B6E7B] hover:text-white transition-all rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center justify-center gap-2 text-[#0C2B31] cursor-pointer shadow-2xs"
-            >
-              <i className="fa-solid fa-expand text-xs"></i>
-              <span>View Full Design Collection ({designAssetsImages.length} Shots)</span>
-            </button>
-          </div>
+          <button
+            onClick={() =>
+              openGalleryModal(
+                "Benelifts Asia — Design Social Post, Thumbnails & POSM",
+                "Visual Design & SEO Thumbnails",
+                designAssetsImages,
+                0
+              )
+            }
+            className="w-full py-3 bg-[#F4FAF9] border border-[#CCE5E3] hover:bg-[#0B6E7B] hover:text-white transition-all rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center justify-center gap-2 text-[#0C2B31] cursor-pointer shadow-2xs"
+          >
+            <i className="fa-solid fa-expand text-xs"></i>
+            <span>View Full Design Collection ({designAssetsImages.length} Shots)</span>
+          </button>
         </div>
       </div>
 
       {/* 5. SECTION 3.3: VIDEO EDITOR & SHORT-FORM MEDIA PRODUCTION */}
-      <div className="space-y-6 pt-8 border-t border-[#CCE5E3]">
-        <div className="border-b border-[#CCE5E3] pb-5 space-y-3">
+      <div className="bg-white rounded-2xl sm:rounded-3xl border border-[#CCE5E3] p-5 sm:p-7 lg:p-8 space-y-6 shadow-xs hover:border-[#0B6E7B]/40 transition-all">
+        <div className="border-b border-[#CCE5E3]/80 pb-5 space-y-3">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
               <span className="font-narrow text-xs sm:text-sm font-black text-[#0B6E7B] tracking-[0.2em] uppercase block">
@@ -285,7 +292,7 @@ export default function BeneliftsAsiaExperienceShowcase() {
             </div>
 
             {/* Metrics Box with Animated Count Up */}
-            <div className="grid grid-cols-3 divide-x divide-[#CCE5E3] bg-white py-2 px-3 rounded-xl border border-[#CCE5E3] shadow-xs">
+            <div className="grid grid-cols-3 divide-x divide-[#CCE5E3] bg-[#F8FCFB] py-2 px-3 rounded-xl border border-[#CCE5E3] shadow-xs">
               <div className="text-center px-2.5">
                 <span className="block font-display text-base sm:text-lg text-[#0C2B31] tracking-tight leading-none">
                   <AnimatedCounter value={beneliftsData.videoPillar.stats.views} />
@@ -312,80 +319,58 @@ export default function BeneliftsAsiaExperienceShowcase() {
               </div>
             </div>
           </div>
-
-          <p className="font-sans text-base sm:text-lg text-[#2C4A51] leading-relaxed max-w-5xl">
-            <HighlightText text={beneliftsData.videoPillar.overview} />
-          </p>
         </div>
 
-        {/* 4 Highlight Facebook Videos Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {beneliftsData.videoPillar.videos.map((video) => (
-            <div
-              key={video.id}
-              className="bg-white rounded-2xl border border-[#CCE5E3] overflow-hidden hover:border-[#0B6E7B] hover:shadow-xl transition-all duration-300 flex flex-col justify-between group shadow-xs"
-            >
-              {/* Live Video Embed Player */}
-              <div className="relative w-full bg-[#07262B] p-4 flex flex-col items-center justify-center overflow-hidden">
-                <div className="w-full flex justify-center items-center">
-                  <div className="w-full max-w-[340px] sm:max-w-[380px] h-[520px] sm:h-[580px] rounded-xl overflow-hidden shadow-2xl bg-black border border-white/10 relative flex items-center justify-center">
-                    <FacebookEmbed url={video.videoUrl} className="w-full h-full" />
-                  </div>
-                </div>
+        {/* 4 Highlight Facebook Videos 4-Column Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+          {beneliftsData.videoPillar.videos.map((video, vIdx) => {
+            const isCasanova = video.brandName.toLowerCase().includes("casanova");
+            const isSrl = video.brandName.toLowerCase().includes("s.r.l");
 
-                {/* Title in the video: appears on hover */}
-                <div className="absolute inset-x-0 top-0 p-4 sm:p-5 bg-gradient-to-b from-[#07262B]/95 via-[#07262B]/75 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none flex items-center justify-between gap-3 z-10">
-                  <div className="flex items-center gap-3">
-                    <a
-                      href={video.videoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="Open on Facebook"
-                      className="w-9 h-9 rounded-full flex items-center justify-center text-white shadow-md hover:scale-110 active:scale-95 transition-all shrink-0 pointer-events-auto bg-[#1877F2] hover:bg-[#1565C0]"
-                    >
-                      <i className="fa-brands fa-facebook-f text-sm"></i>
-                    </a>
-                    <h5 className="font-display text-base sm:text-lg text-white uppercase tracking-tight font-bold drop-shadow-md">
-                      {video.brandName}
-                    </h5>
-                  </div>
-
-                  <a
-                    href={video.videoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-3 py-1.5 bg-[#0B6E7B] hover:bg-[#08545E] text-white text-xs font-narrow font-bold uppercase rounded-lg shadow-sm transition-all pointer-events-auto shrink-0 flex items-center gap-1.5"
-                  >
-                    <span>Facebook</span>
-                    <i className="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                  </a>
-                </div>
-              </div>
-
-              {/* Card Bottom Meta */}
-              <div className="p-4 sm:p-5 space-y-3 bg-white border-t border-[#CCE5E3]/80">
-                <div className="space-y-1">
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="font-narrow text-xs font-bold text-[#0B6E7B] uppercase tracking-wider">
-                      {video.brandName}
-                    </span>
-                    <span className="font-mono text-xs font-semibold text-[#4E6E75]">
-                      {video.highlight}
-                    </span>
-                  </div>
-                  <p className="font-sans text-xs sm:text-sm text-[#4E6E75]">
-                    <HighlightText text={video.description} />
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))}
+            return (
+              <HighlightVideoCard
+                key={video.id}
+                index={vIdx + 1}
+                title={video.title}
+                channelName={video.brandName}
+                channelHandle={
+                  isCasanova
+                    ? "@casanovabuilding"
+                    : isSrl
+                      ? "@benelifts_italy"
+                      : "@beneliftsasia"
+                }
+                platform={video.platform}
+                videoUrl={video.videoUrl}
+                image={
+                  photoImages[vIdx % photoImages.length] ||
+                  beneliftsData.videoPillar.image
+                }
+                stats={{
+                  likes: vIdx === 0 ? "3,450" : vIdx === 1 ? "4,890" : vIdx === 2 ? "5,210" : "6,780",
+                  comments: vIdx === 0 ? "42" : vIdx === 1 ? "65" : vIdx === 2 ? "78" : "92",
+                  shares: vIdx === 0 ? "620" : vIdx === 1 ? "890" : vIdx === 2 ? "1,040" : "1,350",
+                }}
+                duration={
+                  vIdx === 0
+                    ? "00:00/00:34"
+                    : vIdx === 1
+                      ? "00:00/00:45"
+                      : vIdx === 2
+                        ? "00:00/00:50"
+                        : "00:00/00:40"
+                }
+                description={video.description}
+                tags={video.tags}
+              />
+            );
+          })}
         </div>
       </div>
 
       {/* 6. SECTION 3.4: HIGHLIGHT FACEBOOK POSTS & COPYWRITING SHOWCASE */}
-      <div className="space-y-6 pt-8 border-t border-[#CCE5E3]">
-        <div className="border-b border-[#CCE5E3] pb-5 space-y-3">
+      <div className="bg-white rounded-2xl sm:rounded-3xl border border-[#CCE5E3] p-5 sm:p-7 lg:p-8 space-y-6 shadow-xs hover:border-[#0B6E7B]/40 transition-all">
+        <div className="border-b border-[#CCE5E3]/80 pb-5 space-y-3">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
               <span className="font-narrow text-xs sm:text-sm font-black text-[#0B6E7B] tracking-[0.2em] uppercase block">
@@ -398,7 +383,7 @@ export default function BeneliftsAsiaExperienceShowcase() {
             </div>
 
             {/* Top Left / Header Drive Links */}
-            <div className="flex flex-wrap items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2.5">
               <a
                 href={beneliftsData.highlightPostsSection.beneliftsDriveUrl}
                 target="_blank"
@@ -422,14 +407,6 @@ export default function BeneliftsAsiaExperienceShowcase() {
               </a>
             </div>
           </div>
-
-          <p className="font-sans text-xs sm:text-sm font-bold text-[#0B6E7B]">
-            {beneliftsData.highlightPostsSection.instruction}
-          </p>
-
-          <p className="font-sans text-base sm:text-lg text-[#2C4A51] leading-relaxed max-w-5xl">
-            <HighlightText text={beneliftsData.highlightPostsSection.description} />
-          </p>
         </div>
 
         {/* 4 Highlight Facebook Posts Grid */}
@@ -437,7 +414,7 @@ export default function BeneliftsAsiaExperienceShowcase() {
           {beneliftsData.highlightPostsSection.posts.map((post) => (
             <div
               key={post.id}
-              className="bg-white rounded-2xl border border-[#CCE5E3] overflow-hidden hover:border-[#0B6E7B] hover:shadow-xl transition-all duration-300 flex flex-col justify-between shadow-2xs group"
+              className="bg-[#F8FCFB] rounded-2xl border border-[#CCE5E3] overflow-hidden hover:border-[#0B6E7B] hover:shadow-xl transition-all duration-300 flex flex-col justify-between shadow-2xs group"
             >
               {/* Card Header (Facebook Brand Identity) */}
               <div className="p-4 sm:p-5 border-b border-[#CCE5E3]/80 bg-[#FBFDFD] flex items-center justify-between gap-3">
@@ -476,9 +453,7 @@ export default function BeneliftsAsiaExperienceShowcase() {
                     {post.title}
                   </h5>
 
-                  <div className="font-sans text-sm sm:text-base text-[#2C4A51] leading-relaxed whitespace-pre-line bg-[#F8FCFB] p-4 rounded-xl border border-[#CCE5E3]/60 max-h-[380px] overflow-y-auto custom-scrollbar">
-                    {post.content}
-                  </div>
+                  <ScrollablePostContent content={post.content} />
                 </div>
 
                 {/* Card Footer: Action Links & Tags */}
@@ -519,37 +494,34 @@ export default function BeneliftsAsiaExperienceShowcase() {
       </div>
 
       {/* 7. SECTION 3.5: CORPORATE EVENTS, EXHIBITIONS & INTERNAL CELEBRATIONS */}
-      <div className="space-y-8 pt-8 border-t border-[#CCE5E3]">
+      <div className="bg-white rounded-2xl sm:rounded-3xl border border-[#CCE5E3] p-5 sm:p-7 lg:p-8 space-y-8 shadow-xs hover:border-[#0B6E7B]/40 transition-all">
         {/* Section Header */}
-        <div className="border-b border-[#CCE5E3] pb-5 space-y-3">
+        <div className="border-b border-[#CCE5E3]/80 pb-5 space-y-3">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
               <span className="font-narrow text-xs sm:text-sm font-black text-[#0B6E7B] tracking-[0.2em] uppercase block">
                 {beneliftsData.eventPillar.sectionHeader}
               </span>
-              <h4 className="font-display text-xl sm:text-2xl uppercase tracking-tight text-[#0C2B31]">
-                {beneliftsData.eventPillar.title}
+              <h4 className="font-display text-xl sm:text-2xl uppercase tracking-tight text-[#0C2B31] flex items-center gap-2.5">
+                <i className="fa-solid fa-calendar-check text-[#0B6E7B]"></i>
+                <span>{beneliftsData.eventPillar.title}</span>
               </h4>
             </div>
           </div>
-
-          <p className="font-sans text-base sm:text-lg text-[#2C4A51] leading-relaxed max-w-5xl">
-            <HighlightText text={beneliftsData.eventPillar.overview} />
-          </p>
         </div>
 
         {/* 2 INTERACTIVE VISUAL COLLAGES: STACKED UP-DOWN (SINGLE COLUMN) */}
         <div className="flex flex-col space-y-8">
           {/* COLLAGE 1: EVENT PHOTOGRAPHY & EVENT COVERAGE */}
-          <div className="bg-white p-5 sm:p-7 rounded-2xl border border-[#CCE5E3] space-y-6 shadow-xs hover:border-[#0B6E7B] transition-all">
-            <div className="space-y-1.5 border-b border-[#CCE5E3] pb-4">
+          <div className="bg-[#F8FCFB] p-5 sm:p-7 rounded-2xl border border-[#CCE5E3] space-y-6 shadow-2xs hover:border-[#0B6E7B] transition-all">
+            <div className="space-y-1.5 border-b border-[#CCE5E3]/60 pb-4">
               <div className="flex items-center justify-between gap-2">
                 <h4 className="font-narrow text-sm sm:text-base font-black text-[#0C2B31] uppercase tracking-wider flex items-center gap-2">
                   <i className="fa-solid fa-camera text-[#0B6E7B]"></i>
                   <span>{beneliftsData.eventPillar.photographyCollage.title}</span>
                   <span className="text-[#0B6E7B]">({beneliftsData.eventPillar.photographyCollage.countLabel})</span>
                 </h4>
-                <span className="font-mono text-[10px] text-[#0B6E7B] hidden sm:inline-block bg-[#F0F8F7] px-2.5 py-1 rounded-md border border-[#CCE5E3] font-bold">
+                <span className="font-mono text-[10px] text-[#0B6E7B] hidden sm:inline-block bg-white px-2.5 py-1 rounded-md border border-[#CCE5E3] font-bold">
                   HOVER TO EXPAND &bull; CLICK TO ZOOM
                 </span>
               </div>
@@ -559,7 +531,7 @@ export default function BeneliftsAsiaExperienceShowcase() {
             </div>
 
             {/* Bounce Cards Display (Desktop: BounceCards, Mobile: Stack) */}
-            <div className="w-full flex justify-center items-center py-6 overflow-hidden min-h-[300px] bg-[#F8FCFB] rounded-xl border border-[#CCE5E3]/60">
+            <div className="w-full flex justify-center items-center py-6 overflow-hidden min-h-[300px] bg-white rounded-xl border border-[#CCE5E3]/60">
               <Suspense fallback={<GallerySkeleton height="280px" />}>
                 {/* Desktop & Tablet view: BounceCards */}
                 <div className="hidden sm:flex justify-center items-center">
@@ -642,7 +614,7 @@ export default function BeneliftsAsiaExperienceShowcase() {
                     0
                   )
                 }
-                className="w-full py-3 bg-[#F4FAF9] border border-[#CCE5E3] hover:bg-[#0B6E7B] hover:text-white transition-all rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center justify-center gap-2 text-[#0C2B31] cursor-pointer shadow-2xs"
+                className="w-full py-3 bg-white border border-[#CCE5E3] hover:bg-[#0B6E7B] hover:text-white transition-all rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center justify-center gap-2 text-[#0C2B31] cursor-pointer shadow-2xs"
               >
                 <i className="fa-solid fa-expand text-xs"></i>
                 <span>View Full Photo Set ({photoImages.length} Shots)</span>
@@ -651,15 +623,15 @@ export default function BeneliftsAsiaExperienceShowcase() {
           </div>
 
           {/* COLLAGE 2: EVENT VISUALS & GRAPHIC DESIGN */}
-          <div className="bg-white p-5 sm:p-7 rounded-2xl border border-[#CCE5E3] space-y-6 shadow-xs hover:border-[#0B6E7B] transition-all">
-            <div className="space-y-1.5 border-b border-[#CCE5E3] pb-4">
+          <div className="bg-[#F8FCFB] p-5 sm:p-7 rounded-2xl border border-[#CCE5E3] space-y-6 shadow-2xs hover:border-[#0B6E7B] transition-all">
+            <div className="space-y-1.5 border-b border-[#CCE5E3]/60 pb-4">
               <div className="flex items-center justify-between gap-2">
                 <h4 className="font-narrow text-sm sm:text-base font-black text-[#0C2B31] uppercase tracking-wider flex items-center gap-2">
                   <i className="fa-solid fa-palette text-[#0B6E7B]"></i>
                   <span>{beneliftsData.eventPillar.designCollage.title}</span>
                   <span className="text-[#0B6E7B]">({beneliftsData.eventPillar.designCollage.countLabel})</span>
                 </h4>
-                <span className="font-mono text-[10px] text-[#0B6E7B] hidden sm:inline-block bg-[#F0F8F7] px-2.5 py-1 rounded-md border border-[#CCE5E3] font-bold">
+                <span className="font-mono text-[10px] text-[#0B6E7B] hidden sm:inline-block bg-white px-2.5 py-1 rounded-md border border-[#CCE5E3] font-bold">
                   HOVER TO EXPAND &bull; CLICK TO ZOOM
                 </span>
               </div>
@@ -669,7 +641,7 @@ export default function BeneliftsAsiaExperienceShowcase() {
             </div>
 
             {/* Bounce Cards Display (Desktop: BounceCards, Mobile: Stack) */}
-            <div className="w-full flex justify-center items-center py-6 overflow-hidden min-h-[300px] bg-[#F8FCFB] rounded-xl border border-[#CCE5E3]/60">
+            <div className="w-full flex justify-center items-center py-6 overflow-hidden min-h-[300px] bg-white rounded-xl border border-[#CCE5E3]/60">
               <Suspense fallback={<GallerySkeleton height="280px" />}>
                 {/* Desktop & Tablet view: BounceCards */}
                 <div className="hidden sm:flex justify-center items-center">
@@ -752,7 +724,7 @@ export default function BeneliftsAsiaExperienceShowcase() {
                     0
                   )
                 }
-                className="w-full py-3 bg-[#F4FAF9] border border-[#CCE5E3] hover:bg-[#0B6E7B] hover:text-white transition-all rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center justify-center gap-2 text-[#0C2B31] cursor-pointer shadow-2xs"
+                className="w-full py-3 bg-white border border-[#CCE5E3] hover:bg-[#0B6E7B] hover:text-white transition-all rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center justify-center gap-2 text-[#0C2B31] cursor-pointer shadow-2xs"
               >
                 <i className="fa-solid fa-expand text-xs"></i>
                 <span>View Full Design Suite ({designImages.length} Shots)</span>
@@ -763,40 +735,43 @@ export default function BeneliftsAsiaExperienceShowcase() {
       </div>
 
       {/* 8. SECTION 3.6: SOME SELECTED WEBSITE CONTENTS */}
-      <div className="space-y-6 pt-8 border-t border-[#CCE5E3]">
-        <div className="border-b border-[#CCE5E3] pb-4 flex flex-wrap items-center justify-between gap-3">
+      <div className="bg-white rounded-2xl sm:rounded-3xl border border-[#CCE5E3] p-5 sm:p-7 lg:p-8 space-y-6 shadow-xs hover:border-[#0B6E7B]/40 transition-all">
+        <div className="border-b border-[#CCE5E3]/80 pb-5 flex flex-wrap items-center justify-between gap-3">
           <div>
-            <h4 className="font-display text-lg sm:text-xl uppercase tracking-tight text-[#0C2B31] flex items-center gap-2">
-              <i className="fa-solid fa-newspaper text-base text-[#0B6E7B]"></i>
+            <span className="font-narrow text-xs sm:text-sm font-black text-[#0B6E7B] tracking-[0.2em] uppercase block">
+              SEO & WEBSITE COPYWRITING
+            </span>
+            <h4 className="font-display text-xl sm:text-2xl uppercase tracking-tight text-[#0C2B31] flex items-center gap-2">
+              <i className="fa-solid fa-newspaper text-[#0B6E7B]"></i>
               <span>{beneliftsData.websiteArticlesSection.title}</span>
             </h4>
-            <p className="font-sans text-xs sm:text-sm text-[#4E6E75] mt-0.5">
+            <p className="font-sans text-xs sm:text-sm text-[#4E6E75] mt-1">
               {beneliftsData.websiteArticlesSection.description}
             </p>
           </div>
 
           {/* Links to Benelifts & Casanova SEO Plans */}
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2.5">
             <a
               href={beneliftsData.websiteArticlesSection.beneliftsSeoPlanUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-3 py-1.5 bg-white border border-[#CCE5E3] hover:border-[#0B6E7B] hover:bg-[#0B6E7B] hover:text-white transition-all rounded-lg font-narrow text-[11px] font-bold uppercase tracking-wider flex items-center gap-1.5 text-[#0C2B31] shadow-xs"
+              className="px-3.5 py-2 bg-white hover:bg-[#F0F8F7] text-[#0C2B31] border border-[#CCE5E3] hover:border-[#0B6E7B] rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center gap-2 transition-all shadow-xs hover:scale-105 cursor-pointer"
             >
               <i className="fa-brands fa-google-drive text-[#0B6E7B]"></i>
               <span>Benelifts SEO Articles Plan</span>
-              <i className="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+              <i className="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-80"></i>
             </a>
 
             <a
               href={beneliftsData.websiteArticlesSection.casanovaSeoPlanUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-3 py-1.5 bg-white border border-[#CCE5E3] hover:border-[#0B6E7B] hover:bg-[#0B6E7B] hover:text-white transition-all rounded-lg font-narrow text-[11px] font-bold uppercase tracking-wider flex items-center gap-1.5 text-[#0C2B31] shadow-xs"
+              className="px-3.5 py-2 bg-[#0B6E7B] hover:bg-[#08545E] text-white border border-[#0B6E7B] rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center gap-2 transition-all shadow-xs hover:scale-105 cursor-pointer"
             >
-              <i className="fa-brands fa-google-drive text-[#0B6E7B]"></i>
+              <i className="fa-brands fa-google-drive text-[#2DD4BF]"></i>
               <span>Casanova SEO Articles Plan</span>
-              <i className="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+              <i className="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-80"></i>
             </a>
           </div>
         </div>
@@ -806,11 +781,11 @@ export default function BeneliftsAsiaExperienceShowcase() {
           {beneliftsData.websiteArticlesSection.articles.map((article) => (
             <div
               key={article.id}
-              className="p-4 sm:p-5 bg-white rounded-xl border border-[#CCE5E3] hover:border-[#0B6E7B] hover:shadow-md transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3 group shadow-2xs"
+              className="p-4 sm:p-5 bg-[#F8FCFB] rounded-xl border border-[#CCE5E3] hover:border-[#0B6E7B] hover:shadow-md transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3 group shadow-2xs"
             >
               <div className="space-y-1.5 flex-1">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="font-mono text-xs font-bold px-2.5 py-0.5 bg-[#F4FAF9] border border-[#CCE5E3] text-[#0C2B31] rounded">
+                  <span className="font-mono text-xs font-bold px-2.5 py-0.5 bg-white border border-[#CCE5E3] text-[#0C2B31] rounded">
                     {article.date}
                   </span>
                   <span className="font-narrow text-xs font-bold uppercase tracking-wider text-[#0B6E7B]">
@@ -830,7 +805,7 @@ export default function BeneliftsAsiaExperienceShowcase() {
                 href={article.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 bg-[#F4FAF9] border border-[#CCE5E3] hover:bg-[#0B6E7B] hover:text-white transition-all rounded-lg font-narrow text-xs sm:text-sm font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 text-[#0C2B31] flex-shrink-0"
+                className="px-4 py-2 bg-white border border-[#CCE5E3] hover:bg-[#0B6E7B] hover:text-white transition-all rounded-lg font-narrow text-xs sm:text-sm font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 text-[#0C2B31] flex-shrink-0 shadow-2xs"
               >
                 <span>Read Article</span>
                 <i className="fa-solid fa-arrow-up-right-from-square text-xs"></i>
@@ -914,11 +889,10 @@ export default function BeneliftsAsiaExperienceShowcase() {
                     <button
                       key={idx}
                       onClick={() => setGalleryModal((prev) => ({ ...prev, currentIndex: idx }))}
-                      className={`w-12 h-12 sm:w-14 sm:h-14 rounded-lg overflow-hidden border-2 transition-all flex-shrink-0 cursor-pointer ${
-                        galleryModal.currentIndex === idx
+                      className={`w-12 h-12 sm:w-14 sm:h-14 rounded-lg overflow-hidden border-2 transition-all flex-shrink-0 cursor-pointer ${galleryModal.currentIndex === idx
                           ? "border-[#2DD4BF] scale-105 shadow-lg opacity-100"
                           : "border-white/20 opacity-50 hover:opacity-100 hover:border-[#0B6E7B]"
-                      }`}
+                        }`}
                     >
                       <img src={src} alt={`Thumb ${idx + 1}`} className="w-full h-full object-cover pointer-events-none" />
                     </button>
