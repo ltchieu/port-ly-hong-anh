@@ -1,9 +1,7 @@
-import React, { useState, useCallback } from "react";
-import { createPortal } from "react-dom";
-import { motion, AnimatePresence } from "motion/react";
+import React, { useState } from "react";
 import FacebookEmbed from "./FacebookEmbed";
 import TikTokEmbed from "./TikTokEmbed";
-import YouTubeEmbed from "./YouTubeEmbed";
+import { parseYouTubeUrl } from "./YouTubeEmbed";
 
 export interface HighlightVideoStats {
   likes?: string | number;
@@ -32,6 +30,20 @@ export interface HighlightVideoCardProps {
   className?: string;
 }
 
+const SHORTLINK_VIDEO_MAP: Record<string, string> = {
+  ZSVVXUgju: "7519379432910392584",
+  ZSVVX9Csc: "7517883339034987783",
+};
+
+function extractTikTokId(url: string): string {
+  if (!url) return "";
+  for (const [slug, id] of Object.entries(SHORTLINK_VIDEO_MAP)) {
+    if (url.includes(slug)) return id;
+  }
+  const match = url.match(/\/video\/(\d+)/);
+  return match ? match[1] : "";
+}
+
 export default function HighlightVideoCard({
   index,
   title,
@@ -48,11 +60,17 @@ export default function HighlightVideoCard({
   scriptUrl,
   className = "",
 }: HighlightVideoCardProps) {
-  const [isPlayingModalOpen, setIsPlayingModalOpen] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   const isTikTok = platform.toLowerCase() === "tiktok";
   const isFacebook = platform.toLowerCase() === "facebook";
   const isYouTube = platform.toLowerCase() === "youtube";
+
+  const resolvedTikTokId = videoId || extractTikTokId(videoUrl);
+  const resolvedYouTubeId = videoId || parseYouTubeUrl(videoUrl);
+
+  const shouldPlay = isPlaying || isHovered;
 
   const displayChannel = channelName || title;
   const displayHandle = channelHandle
@@ -67,15 +85,6 @@ export default function HighlightVideoCard({
   const likesCount = stats?.likes ?? (isTikTok ? "14.2K" : "6,666");
   const commentsCount = stats?.comments ?? (isTikTok ? "154" : "128");
   const sharesCount = stats?.shares ?? (isTikTok ? "3,341" : "890");
-
-  const handleOpenPlayer = useCallback((e: React.MouseEvent) => {
-    e.stopPropagation();
-    setIsPlayingModalOpen(true);
-  }, []);
-
-  const handleClosePlayer = useCallback(() => {
-    setIsPlayingModalOpen(false);
-  }, []);
 
   const getPlatformLabel = () => {
     if (isTikTok) return "OPEN ON TIKTOK";
@@ -123,118 +132,178 @@ export default function HighlightVideoCard({
 
       {/* 2. VIDEO MOCKUP SCREEN (9:16 PHONE FRAME) */}
       <div
-        onClick={handleOpenPlayer}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        onClick={(e) => {
+          e.stopPropagation();
+          setIsPlaying(true);
+        }}
         className="relative w-full aspect-[9/16] rounded-xl overflow-hidden bg-[#07181C] my-3 select-none cursor-pointer group/screen border border-[#CCE5E3]/40 shadow-inner flex flex-col justify-between"
       >
-        {/* Background Thumbnail Image */}
-        {image ? (
-          <img
-            src={image}
-            alt={title}
-            loading="lazy"
-            decoding="async"
-            className="w-full h-full object-cover absolute inset-0 transition-transform duration-700 ease-out group-hover/screen:scale-105"
-          />
-        ) : (
-          <div className="w-full h-full absolute inset-0 bg-gradient-to-b from-[#0A262C] via-[#041518] to-black flex items-center justify-center">
-            <i className="fa-solid fa-film text-4xl text-white/10" />
-          </div>
-        )}
+        {shouldPlay ? (
+          <div className="w-full h-full relative bg-black flex items-center justify-center overflow-hidden">
+            {/* Close / Stop Button */}
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsPlaying(false);
+                setIsHovered(false);
+              }}
+              className="absolute top-2.5 right-2.5 z-30 w-7 h-7 rounded-full bg-black/75 hover:bg-red-600 text-white flex items-center justify-center transition-colors cursor-pointer shadow-md border border-white/20"
+              title="Stop video"
+              aria-label="Stop video"
+            >
+              <i className="fa-solid fa-xmark text-xs" />
+            </button>
 
-        {/* Ambient Vignette Gradients */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/90 pointer-events-none" />
-
-        {/* --- Top Overlay: Creator Identity & Watermark --- */}
-        <div className="relative z-10 p-2.5 sm:p-3 flex items-start justify-between gap-2 pointer-events-none">
-          {/* Creator Profile */}
-          <div className="flex items-center gap-2 min-w-0">
-            {avatarUrl ? (
-              <img
-                src={avatarUrl}
-                alt={displayChannel}
-                className="w-7 h-7 sm:w-8 sm:h-8 rounded-full object-cover border border-white/60 shadow-md shrink-0"
-              />
-            ) : (
-              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/25 backdrop-blur-md border border-white/60 text-white font-bold text-[11px] sm:text-xs flex items-center justify-center uppercase shadow-md shrink-0">
-                {displayChannel.charAt(0)}
+            {isFacebook && (
+              <div className="w-full h-full flex items-center justify-center">
+                <FacebookEmbed url={videoUrl} className="w-full h-full" />
               </div>
             )}
-            <div className="min-w-0 leading-tight">
-              <span className="font-sans font-bold text-xs sm:text-[13px] text-white drop-shadow-md truncate block">
-                {displayChannel}
-              </span>
-              <span className="font-sans text-[10px] sm:text-[11px] text-white/80 drop-shadow-sm truncate block">
-                {displayHandle}
-              </span>
-            </div>
-          </div>
 
-          {/* Platform Watermark Badge */}
-          <div className="shrink-0 flex items-center gap-1 px-1.5 py-0.5 rounded bg-black/40 backdrop-blur-md border border-white/20 text-white shadow-sm">
-            {isTikTok && <i className="fa-brands fa-tiktok text-[11px]" />}
-            {isFacebook && (
-              <i className="fa-brands fa-facebook-f text-[10px] text-[#25F4EE]" />
-            )}
+            {isTikTok &&
+              (resolvedTikTokId ? (
+                <iframe
+                  src={`https://www.tiktok.com/player/v1/${resolvedTikTokId}?autoplay=1`}
+                  title={title || displayChannel}
+                  className="w-full h-full border-0 pointer-events-auto"
+                  allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                  allowFullScreen
+                />
+              ) : (
+                <TikTokEmbed
+                  url={videoUrl}
+                  videoId={videoId}
+                  title={title}
+                  author={displayHandle}
+                />
+              ))}
+
             {isYouTube && (
-              <i className="fa-brands fa-youtube text-[10px] text-[#FF4D4D]" />
+              <iframe
+                src={`https://www.youtube-nocookie.com/embed/${resolvedYouTubeId}?autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1`}
+                title={title || displayChannel}
+                className="w-full h-full border-0 pointer-events-auto"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
             )}
-            <span className="font-narrow text-[9px] font-bold tracking-wider uppercase">
-              {isTikTok ? "TikTok" : isFacebook ? "Reels" : "Shorts"}
-            </span>
           </div>
-        </div>
+        ) : (
+          <>
+            {/* Background Thumbnail Image */}
+            {image ? (
+              <img
+                src={image}
+                alt={title}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover absolute inset-0 transition-transform duration-700 ease-out group-hover/screen:scale-105"
+              />
+            ) : (
+              <div className="w-full h-full absolute inset-0 bg-gradient-to-b from-[#0A262C] via-[#041518] to-black flex items-center justify-center">
+                <i className="fa-solid fa-film text-4xl text-white/10" />
+              </div>
+            )}
 
-        {/* --- Center Play Button Overlay --- */}
-        <div className="relative z-10 flex items-center justify-center my-auto pointer-events-none">
-          <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-black/45 backdrop-blur-md border border-white/30 flex items-center justify-center text-white shadow-2xl group-hover/screen:scale-110 group-hover/screen:bg-[#0B6E7B]/90 transition-all duration-300">
-            <i className="fa-solid fa-play text-base sm:text-lg translate-x-0.5" />
-          </div>
-        </div>
+            {/* Ambient Vignette Gradients */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/90 pointer-events-none" />
 
-        {/* --- Right-Side Vertical Engagement Action Stack --- */}
-        <div className="absolute right-2.5 bottom-12 z-10 flex flex-col items-center space-y-3 pointer-events-none">
-          {/* Like */}
-          <div className="flex flex-col items-center text-center">
-            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/35 backdrop-blur-md flex items-center justify-center text-white shadow-md">
-              <i className="fa-solid fa-heart text-xs sm:text-sm text-white drop-shadow" />
+            {/* --- Top Overlay: Creator Identity & Watermark --- */}
+            <div className="relative z-10 p-2.5 sm:p-3 flex items-start justify-between gap-2 pointer-events-none">
+              {/* Creator Profile */}
+              <div className="flex items-center gap-2 min-w-0">
+                {avatarUrl ? (
+                  <img
+                    src={avatarUrl}
+                    alt={displayChannel}
+                    className="w-7 h-7 sm:w-8 sm:h-8 rounded-full object-cover border border-white/60 shadow-md shrink-0"
+                  />
+                ) : (
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/25 backdrop-blur-md border border-white/60 text-white font-bold text-[11px] sm:text-xs flex items-center justify-center uppercase shadow-md shrink-0">
+                    {displayChannel.charAt(0)}
+                  </div>
+                )}
+                <div className="min-w-0 leading-tight">
+                  <span className="font-sans font-bold text-xs sm:text-[13px] text-white drop-shadow-md truncate block">
+                    {displayChannel}
+                  </span>
+                  <span className="font-sans text-[10px] sm:text-[11px] text-white/80 drop-shadow-sm truncate block">
+                    {displayHandle}
+                  </span>
+                </div>
+              </div>
+
+              {/* Platform Watermark Badge */}
+              <div className="shrink-0 flex items-center gap-1 px-1.5 py-0.5 rounded bg-black/40 backdrop-blur-md border border-white/20 text-white shadow-sm">
+                {isTikTok && <i className="fa-brands fa-tiktok text-[11px]" />}
+                {isFacebook && (
+                  <i className="fa-brands fa-facebook-f text-[10px] text-[#25F4EE]" />
+                )}
+                {isYouTube && (
+                  <i className="fa-brands fa-youtube text-[10px] text-[#FF4D4D]" />
+                )}
+                <span className="font-narrow text-[9px] font-bold tracking-wider uppercase">
+                  {isTikTok ? "TikTok" : isFacebook ? "Reels" : "Shorts"}
+                </span>
+              </div>
             </div>
-            <span className="font-narrow font-bold text-[10px] sm:text-[11px] text-white drop-shadow mt-0.5">
-              {likesCount}
-            </span>
-          </div>
 
-          {/* Comment */}
-          <div className="flex flex-col items-center text-center">
-            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/35 backdrop-blur-md flex items-center justify-center text-white shadow-md">
-              <i className="fa-solid fa-comment-dots text-xs sm:text-sm text-white drop-shadow" />
+            {/* --- Center Play Button Overlay --- */}
+            <div className="relative z-10 flex items-center justify-center my-auto pointer-events-none">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-black/45 backdrop-blur-md border border-white/30 flex items-center justify-center text-white shadow-2xl group-hover/screen:scale-110 group-hover/screen:bg-[#0B6E7B]/90 transition-all duration-300">
+                <i className="fa-solid fa-play text-base sm:text-lg translate-x-0.5" />
+              </div>
             </div>
-            <span className="font-narrow font-bold text-[10px] sm:text-[11px] text-white drop-shadow mt-0.5">
-              {commentsCount}
-            </span>
-          </div>
 
-          {/* Bookmark / Share */}
-          <div className="flex flex-col items-center text-center">
-            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/35 backdrop-blur-md flex items-center justify-center text-white shadow-md">
-              <i className="fa-solid fa-bookmark text-xs sm:text-sm text-white drop-shadow" />
+            {/* --- Right-Side Vertical Engagement Action Stack --- */}
+            <div className="absolute right-2.5 bottom-12 z-10 flex flex-col items-center space-y-3 pointer-events-none">
+              {/* Like */}
+              <div className="flex flex-col items-center text-center">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/35 backdrop-blur-md flex items-center justify-center text-white shadow-md">
+                  <i className="fa-solid fa-heart text-xs sm:text-sm text-white drop-shadow" />
+                </div>
+                <span className="font-narrow font-bold text-[10px] sm:text-[11px] text-white drop-shadow mt-0.5">
+                  {likesCount}
+                </span>
+              </div>
+
+              {/* Comment */}
+              <div className="flex flex-col items-center text-center">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/35 backdrop-blur-md flex items-center justify-center text-white shadow-md">
+                  <i className="fa-solid fa-comment-dots text-xs sm:text-sm text-white drop-shadow" />
+                </div>
+                <span className="font-narrow font-bold text-[10px] sm:text-[11px] text-white drop-shadow mt-0.5">
+                  {commentsCount}
+                </span>
+              </div>
+
+              {/* Bookmark / Share */}
+              <div className="flex flex-col items-center text-center">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/35 backdrop-blur-md flex items-center justify-center text-white shadow-md">
+                  <i className="fa-solid fa-bookmark text-xs sm:text-sm text-white drop-shadow" />
+                </div>
+                <span className="font-narrow font-bold text-[10px] sm:text-[11px] text-white drop-shadow mt-0.5">
+                  {sharesCount}
+                </span>
+              </div>
             </div>
-            <span className="font-narrow font-bold text-[10px] sm:text-[11px] text-white drop-shadow mt-0.5">
-              {sharesCount}
-            </span>
-          </div>
-        </div>
 
-        {/* --- Bottom Controls Bar Overlay --- */}
-        <div className="relative z-10 p-2 sm:p-2.5 bg-gradient-to-t from-black/95 via-black/70 to-transparent flex items-center justify-between text-white text-xs pointer-events-none">
-          <div className="flex items-center gap-2">
-            <i className="fa-solid fa-play text-[10px] sm:text-[11px]" />
-            <i className="fa-solid fa-volume-high text-[10px] sm:text-[11px]" />
-            <span className="font-mono text-[9px] sm:text-[10px] font-medium text-white/90 tracking-tight">
-              {duration}
-            </span>
-          </div>
-          <i className="fa-solid fa-expand text-[10px] sm:text-[11px]" />
-        </div>
+            {/* --- Bottom Controls Bar Overlay --- */}
+            <div className="relative z-10 p-2 sm:p-2.5 bg-gradient-to-t from-black/95 via-black/70 to-transparent flex items-center justify-between text-white text-xs pointer-events-none">
+              <div className="flex items-center gap-2">
+                <i className="fa-solid fa-play text-[10px] sm:text-[11px]" />
+                <i className="fa-solid fa-volume-high text-[10px] sm:text-[11px]" />
+                <span className="font-mono text-[9px] sm:text-[10px] font-medium text-white/90 tracking-tight">
+                  {duration}
+                </span>
+              </div>
+              <i className="fa-solid fa-expand text-[10px] sm:text-[11px]" />
+            </div>
+          </>
+        )}
       </div>
 
       {/* 3. CARD BOTTOM ACTION BUTTONS */}
@@ -250,93 +319,6 @@ export default function HighlightVideoCard({
           <i className="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-80" />
         </a>
       </div>
-
-      {/* 4. INTERACTIVE EMBED MODAL FOR DIRECT PLAYBACK */}
-      {createPortal(
-        <AnimatePresence>
-          {isPlayingModalOpen && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={handleClosePlayer}
-              className="fixed inset-0 z-[9999] bg-[#07262B]/95 backdrop-blur-md flex items-center justify-center p-3 sm:p-6"
-            >
-              <motion.div
-                initial={{ scale: 0.94, opacity: 0, y: 15 }}
-                animate={{ scale: 1, opacity: 1, y: 0 }}
-                exit={{ scale: 0.94, opacity: 0, y: 15 }}
-                onClick={(e) => e.stopPropagation()}
-                className="relative max-w-[420px] w-full max-h-[96vh] flex flex-col bg-[#061B1F] border border-[#0B6E7B]/40 rounded-2xl shadow-2xl overflow-hidden"
-              >
-                {/* Modal Header */}
-                <div className="p-3.5 sm:p-4 border-b border-white/15 bg-black/40 flex items-center justify-between gap-3 shrink-0">
-                  <div className="flex items-center gap-2 min-w-0">
-                    <span className="w-5 h-5 rounded-full bg-white text-[#0C2B31] text-[10px] font-black flex items-center justify-center shrink-0">
-                      {index}
-                    </span>
-                    <div className="min-w-0">
-                      <h4 className="font-display text-sm font-bold text-white uppercase tracking-tight truncate">
-                        {displayChannel}
-                      </h4>
-                      <p className="font-mono text-[10px] text-[#2DD4BF] truncate">
-                        {displayHandle}
-                      </p>
-                    </div>
-                  </div>
-
-                  <button
-                    onClick={handleClosePlayer}
-                    className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#0B6E7B] text-white flex items-center justify-center transition-colors cursor-pointer border border-white/20 shrink-0"
-                    aria-label="Close video player"
-                  >
-                    <i className="fa-solid fa-xmark text-sm" />
-                  </button>
-                </div>
-
-                {/* Player Container */}
-                <div className="w-full flex-1 min-h-[460px] sm:min-h-[520px] max-h-[70vh] bg-black flex items-center justify-center relative p-2 overflow-hidden">
-                  {isFacebook && (
-                    <div className="w-full h-full max-w-[340px] flex items-center justify-center">
-                      <FacebookEmbed url={videoUrl} className="w-full h-full" />
-                    </div>
-                  )}
-                  {isTikTok && (
-                    <TikTokEmbed
-                      url={videoUrl}
-                      videoId={videoId}
-                      title={title}
-                      author={displayHandle}
-                    />
-                  )}
-                  {isYouTube && (
-                    <div className="w-full h-full max-w-[340px] flex items-center justify-center">
-                      <YouTubeEmbed url={videoUrl} title={title} className="w-full h-full" />
-                    </div>
-                  )}
-                </div>
-
-                {/* Modal Footer */}
-                <div className="p-3 sm:p-4 border-t border-white/15 bg-black/50 flex items-center justify-between gap-2 shrink-0">
-                  <span className="font-narrow text-xs text-white/70">
-                    Watching {isTikTok ? "TikTok" : isFacebook ? "Facebook Reel" : "YouTube Short"}
-                  </span>
-                  <a
-                    href={videoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-3 py-1.5 bg-[#0B6E7B] hover:bg-[#08545E] text-white rounded-lg font-narrow text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-sm"
-                  >
-                    <span>{getPlatformLabel()}</span>
-                    <i className="fa-solid fa-arrow-up-right-from-square text-[9px]" />
-                  </a>
-                </div>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>,
-        document.body
-      )}
     </div>
   );
 }

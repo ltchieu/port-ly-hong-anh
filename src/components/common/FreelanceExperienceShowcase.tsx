@@ -1,5 +1,4 @@
 import { useState, useCallback, useMemo, lazy, Suspense } from 'react';
-import { createPortal } from 'react-dom';
 import ImageLightboxModal from './ImageLightboxModal';
 import GallerySkeleton from './GallerySkeleton';
 import AnimatedCounter from './AnimatedCounter';
@@ -27,7 +26,9 @@ const bounceTransformStyles = [
 
 export default function FreelanceExperienceShowcase() {
   const [selectedImage, setSelectedImage] = useState<LightboxImageData | null>(null);
-  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const [isPlayingVideo, setIsPlayingVideo] = useState(false);
+  const [isVideoHovered, setIsVideoHovered] = useState(false);
+  const shouldPlayVideo = isPlayingVideo || isVideoHovered;
 
   // All 8 webinar event photos
   const allImages = useMemo(
@@ -220,72 +221,105 @@ export default function FreelanceExperienceShowcase() {
 
           {/* Video Preview Frame */}
           <div
-            onClick={() => setIsVideoModalOpen(true)}
+            onMouseEnter={() => setIsVideoHovered(true)}
+            onMouseLeave={() => setIsVideoHovered(false)}
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsPlayingVideo(true);
+            }}
             className="relative w-full aspect-[9/13] sm:aspect-[9/12] max-w-xs mx-auto rounded-2xl overflow-hidden bg-black my-2 border border-white/15 shadow-2xl cursor-pointer group/screen select-none flex flex-col justify-between"
           >
-            {/* Background Thumbnail */}
-            <img
-              src={allImages[0]}
-              alt="Panasonic Webinar Recap Video Preview"
-              className="absolute inset-0 w-full h-full object-cover group-hover/screen:scale-105 transition-transform duration-700 ease-out"
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/25 to-black/90 pointer-events-none" />
-
-            {/* Top Creator Identity */}
-            <div className="relative z-10 p-3 sm:p-3.5 flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-full bg-[#004098] border border-white/40 flex items-center justify-center text-white font-black text-xs shrink-0 shadow-md">
-                P
+            {shouldPlayVideo ? (
+              <div className="w-full h-full relative bg-black flex items-center justify-center overflow-hidden">
+                {/* Close/Stop Button */}
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsPlayingVideo(false);
+                    setIsVideoHovered(false);
+                  }}
+                  className="absolute top-2.5 right-2.5 z-30 w-7 h-7 rounded-full bg-black/75 hover:bg-red-600 text-white flex items-center justify-center transition-colors cursor-pointer shadow-md border border-white/20"
+                  aria-label="Close video"
+                  title="Stop video"
+                >
+                  <i className="fa-solid fa-xmark text-xs"></i>
+                </button>
+                <iframe
+                  src={`https://www.youtube-nocookie.com/embed/${panasonicWebinarVideo.videoId}?autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1`}
+                  title={panasonicWebinarVideo.title}
+                  className="w-full h-full border-0 pointer-events-auto"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
               </div>
-              <div className="min-w-0 leading-tight">
-                <span className="font-sans font-bold text-xs sm:text-sm text-white drop-shadow block truncate">
-                  Panasonic Vietnam
-                </span>
-                <span className="font-sans text-[10px] sm:text-xs text-white/70 drop-shadow-xs block truncate">
-                  @panasonic_cfan
-                </span>
-              </div>
-            </div>
+            ) : (
+              <>
+                {/* Background Thumbnail */}
+                <img
+                  src={allImages[0]}
+                  alt="Panasonic Webinar Recap Video Preview"
+                  className="absolute inset-0 w-full h-full object-cover group-hover/screen:scale-105 transition-transform duration-700 ease-out"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/25 to-black/90 pointer-events-none" />
 
-            {/* Center Circular Play Button */}
-            <div className="relative z-10 flex items-center justify-center my-auto pointer-events-none">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-black/50 backdrop-blur-md border border-white/30 flex items-center justify-center text-white shadow-2xl group-hover/screen:scale-110 group-hover/screen:bg-red-600 transition-all duration-300">
-                <i className="fa-solid fa-play text-lg sm:text-xl translate-x-0.5"></i>
-              </div>
-            </div>
-
-            {/* Right Action Button Column */}
-            <div className="absolute right-3 bottom-14 z-10 flex flex-col items-center space-y-3 pointer-events-none">
-              <div className="flex flex-col items-center text-center">
-                <div className="w-8 h-8 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center text-white shadow-md">
-                  <i className="fa-solid fa-heart text-xs text-white drop-shadow" />
+                {/* Top Creator Identity */}
+                <div className="relative z-10 p-3 sm:p-3.5 flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-full bg-[#004098] border border-white/40 flex items-center justify-center text-white font-black text-xs shrink-0 shadow-md">
+                    P
+                  </div>
+                  <div className="min-w-0 leading-tight">
+                    <span className="font-sans font-bold text-xs sm:text-sm text-white drop-shadow block truncate">
+                      Panasonic Vietnam
+                    </span>
+                    <span className="font-sans text-[10px] sm:text-xs text-white/70 drop-shadow-xs block truncate">
+                      @panasonic_cfan
+                    </span>
+                  </div>
                 </div>
-                <span className="font-mono text-[10px] font-bold text-white/90 mt-0.5">3,120</span>
-              </div>
-              <div className="flex flex-col items-center text-center">
-                <div className="w-8 h-8 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center text-white shadow-md">
-                  <i className="fa-solid fa-comment text-xs text-white drop-shadow" />
-                </div>
-                <span className="font-mono text-[10px] font-bold text-white/90 mt-0.5">48</span>
-              </div>
-              <div className="flex flex-col items-center text-center">
-                <div className="w-8 h-8 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center text-white shadow-md">
-                  <i className="fa-solid fa-share text-xs text-white drop-shadow" />
-                </div>
-                <span className="font-mono text-[10px] font-bold text-white/90 mt-0.5">760</span>
-              </div>
-            </div>
 
-            {/* Bottom Scrubber & Media Bar */}
-            <div className="relative z-10 px-3.5 pb-3 pt-2 bg-gradient-to-t from-black via-black/80 to-transparent flex items-center justify-between text-white/80 pointer-events-none">
-              <div className="flex items-center gap-2 text-xs">
-                <i className="fa-solid fa-play text-[11px] text-white"></i>
-                <i className="fa-solid fa-volume-high text-[11px] text-white/80"></i>
-                <span className="font-mono text-[10px] sm:text-[11px] text-white/90 font-medium">
-                  00:00/00:58
-                </span>
-              </div>
-              <i className="fa-solid fa-expand text-[11px] text-white/80"></i>
-            </div>
+                {/* Center Circular Play Button */}
+                <div className="relative z-10 flex items-center justify-center my-auto pointer-events-none">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-black/50 backdrop-blur-md border border-white/30 flex items-center justify-center text-white shadow-2xl group-hover/screen:scale-110 group-hover/screen:bg-red-600 transition-all duration-300">
+                    <i className="fa-solid fa-play text-lg sm:text-xl translate-x-0.5"></i>
+                  </div>
+                </div>
+
+                {/* Right Action Button Column */}
+                <div className="absolute right-3 bottom-14 z-10 flex flex-col items-center space-y-3 pointer-events-none">
+                  <div className="flex flex-col items-center text-center">
+                    <div className="w-8 h-8 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center text-white shadow-md">
+                      <i className="fa-solid fa-heart text-xs text-white drop-shadow" />
+                    </div>
+                    <span className="font-mono text-[10px] font-bold text-white/90 mt-0.5">3,120</span>
+                  </div>
+                  <div className="flex flex-col items-center text-center">
+                    <div className="w-8 h-8 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center text-white shadow-md">
+                      <i className="fa-solid fa-comment text-xs text-white drop-shadow" />
+                    </div>
+                    <span className="font-mono text-[10px] font-bold text-white/90 mt-0.5">48</span>
+                  </div>
+                  <div className="flex flex-col items-center text-center">
+                    <div className="w-8 h-8 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center text-white shadow-md">
+                      <i className="fa-solid fa-share text-xs text-white drop-shadow" />
+                    </div>
+                    <span className="font-mono text-[10px] font-bold text-white/90 mt-0.5">760</span>
+                  </div>
+                </div>
+
+                {/* Bottom Scrubber & Media Bar */}
+                <div className="relative z-10 px-3.5 pb-3 pt-2 bg-gradient-to-t from-black via-black/80 to-transparent flex items-center justify-between text-white/80 pointer-events-none">
+                  <div className="flex items-center gap-2 text-xs">
+                    <i className="fa-solid fa-play text-[11px] text-white"></i>
+                    <i className="fa-solid fa-volume-high text-[11px] text-white/80"></i>
+                    <span className="font-mono text-[10px] sm:text-[11px] text-white/90 font-medium">
+                      00:00/00:58
+                    </span>
+                  </div>
+                  <i className="fa-solid fa-expand text-[11px] text-white/80"></i>
+                </div>
+              </>
+            )}
           </div>
 
           {/* Card Footer Bar */}
@@ -309,36 +343,7 @@ export default function FreelanceExperienceShowcase() {
         </div>
       </div>
 
-      {/* 3. INTERACTIVE YOUTUBE SHORTS VIDEO MODAL */}
-      {isVideoModalOpen &&
-        createPortal(
-          <div
-            className="fixed inset-0 z-[99999] bg-[#07262B]/90 backdrop-blur-md flex items-center justify-center p-4"
-            onClick={() => setIsVideoModalOpen(false)}
-          >
-            <div
-              className="relative w-full max-w-sm aspect-[9/16] bg-black rounded-2xl overflow-hidden border border-white/20 shadow-2xl"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                type="button"
-                onClick={() => setIsVideoModalOpen(false)}
-                className="absolute top-3 right-3 z-50 w-8 h-8 rounded-full bg-black/70 text-white flex items-center justify-center hover:bg-red-600 transition-colors cursor-pointer"
-                aria-label="Close video"
-              >
-                <i className="fa-solid fa-xmark text-sm"></i>
-              </button>
-              <YouTubeEmbed
-                url={PANASONIC_WEBINAR_VIDEO_URL}
-                videoId={panasonicWebinarVideo.videoId}
-                title={panasonicWebinarVideo.title}
-              />
-            </div>
-          </div>,
-          document.body
-        )}
-
-      {/* 4. SINGLE IMAGE LIGHTBOX MODAL */}
+      {/* SINGLE IMAGE LIGHTBOX MODAL */}
       <ImageLightboxModal selectedImage={selectedImage} onClose={handleCloseLightbox} />
     </div>
   );

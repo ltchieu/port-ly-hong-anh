@@ -104,7 +104,7 @@ export default function Work() {
                 <CenterModeCarousel
                   items={vLotusShortFormVideos}
                   autoplay={true}
-                  autoplayDelay={4500}
+                  autoplayDelay={7000}
                   pauseOnHover={true}
                   variant="video"
                 />
