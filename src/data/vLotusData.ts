@@ -382,7 +382,6 @@ Chính sự tinh giản trong nguyên liệu, sự chỉn chu trong cách làm v
         briefUrl: "https://docs.google.com/presentation/d/1vXM5CUAIm0cCK_NDEoBUoqhK-zl7rq1eJfKrmhMXO9Y/edit?usp=sharing",
         highlight: "Facebook Reel",
         description: "Engaging short-form bakery presentation and artisan bread crafting reel published on Conservo Japanese Breads & Café Facebook page.",
-        image: getVLotusImage("v_lotus_img_06.webp"),
         tags: ["Facebook Reel", "Conservo", "Artisan Bakery", "Short-Form"],
       },
       {
@@ -391,11 +390,10 @@ Chính sự tinh giản trong nguyên liệu, sự chỉn chu trong cách làm v
         brandName: "Yoshinoya Vietnam",
         title: "Yoshinoya Vietnam",
         role: "Video Creator & Editor",
-        videoUrl: "https://www.facebook.com/reel/1243129067306742/",
+        videoUrl: "https://www.facebook.com/reel/1448127329537509",
         briefUrl: "https://docs.google.com/presentation/d/1vXM5CUAIm0cCK_NDEoBUoqhK-zl7rq1eJfKrmhMXO9Y/edit?usp=sharing",
         highlight: "Facebook Reel",
         description: "Dynamic dining experience, sizzling beef bowls, and lifestyle food reel published on Yoshinoya Vietnam Facebook page.",
-        image: getVLotusImage("v_lotus_img_05.webp"),
         tags: ["Facebook Reel", "Yoshinoya", "Gyudon", "Fast Casual"],
       },
       {
@@ -409,7 +407,6 @@ Chính sự tinh giản trong nguyên liệu, sự chỉn chu trong cách làm v
         briefUrl: "https://docs.google.com/presentation/d/1vXM5CUAIm0cCK_NDEoBUoqhK-zl7rq1eJfKrmhMXO9Y/edit?usp=sharing",
         highlight: "TikTok Video",
         description: "Viral short-form TikTok reel showcasing freshly baked Japanese artisan pastries, cafe ambiance, and customer favorites at Conservo.",
-        image: getVLotusImage("v_lotus_img_31.webp") || getVLotusImage("v_lotus_img_06.webp"),
         tags: ["TikTok Video", "Conservo Việt Nam", "Japanese Bakery", "Food Reel"],
       },
       {
@@ -423,7 +420,6 @@ Chính sự tinh giản trong nguyên liệu, sự chỉn chu trong cách làm v
         briefUrl: "https://docs.google.com/presentation/d/1vXM5CUAIm0cCK_NDEoBUoqhK-zl7rq1eJfKrmhMXO9Y/edit?usp=sharing",
         highlight: "TikTok Video",
         description: "High-energy culinary short-form TikTok reel celebrating Yoshinoya's 120-year Tokyo beef bowl heritage and mouthwatering menu items.",
-        image: getVLotusImage("v_lotus_img_24.webp") || getVLotusImage("v_lotus_img_05.webp"),
         tags: ["TikTok Video", "Yoshinoya Vietnam", "Gyudon Experience", "Viral Food"],
       },
     ],

@@ -65,7 +65,7 @@ export interface VideoProductionItem {
   };
   highlight: string;
   description: string;
-  image: string;
+  image?: string;
   tags: string[];
 }
 

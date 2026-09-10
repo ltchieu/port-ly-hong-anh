@@ -193,7 +193,7 @@ export default function HighlightVideoCard({
           </div>
         ) : (
           <>
-            {/* Background Thumbnail Image */}
+            {/* Background Thumbnail Image or Native Video Player Embed */}
             {image ? (
               <img
                 src={image}
@@ -203,8 +203,41 @@ export default function HighlightVideoCard({
                 className="w-full h-full object-cover absolute inset-0 transition-transform duration-700 ease-out group-hover/screen:scale-105"
               />
             ) : (
-              <div className="w-full h-full absolute inset-0 bg-gradient-to-b from-[#0A262C] via-[#041518] to-black flex items-center justify-center">
-                <i className="fa-solid fa-film text-4xl text-white/10" />
+              <div className="w-full h-full absolute inset-0 bg-black flex items-center justify-center overflow-hidden">
+                {isFacebook && (
+                  <iframe
+                    src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(
+                      videoUrl
+                    )}&show_text=false&autoplay=0&t=0`}
+                    title={title || displayChannel}
+                    className="w-full h-full border-0 pointer-events-none"
+                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                    allowFullScreen
+                    loading="lazy"
+                  />
+                )}
+                {isTikTok && (
+                  <iframe
+                    src={`https://www.tiktok.com/player/v1/${
+                      resolvedTikTokId || "7519379432910392584"
+                    }?autoplay=0`}
+                    title={title || displayChannel}
+                    className="w-full h-full border-0 pointer-events-none"
+                    allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                    allowFullScreen
+                    loading="lazy"
+                  />
+                )}
+                {isYouTube && (
+                  <iframe
+                    src={`https://www.youtube-nocookie.com/embed/${resolvedYouTubeId}?autoplay=0&mute=1&playsinline=1&rel=0&modestbranding=1`}
+                    title={title || displayChannel}
+                    className="w-full h-full border-0 pointer-events-none"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    loading="lazy"
+                  />
+                )}
               </div>
             )}
 

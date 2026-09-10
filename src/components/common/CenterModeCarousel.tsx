@@ -323,13 +323,6 @@ function CenterModeCard({
 
   const videoTargetUrl = item.videoUrl || item.link || "";
 
-  // State to track whether center video iframe is loaded
-  const [iframeLoaded, setIframeLoaded] = useState(false);
-
-  useEffect(() => {
-    setIframeLoaded(false);
-  }, [item.id]);
-
   // Handle native HTML5 video element play/pause
   useEffect(() => {
     if (!videoRef.current) return;
@@ -343,32 +336,48 @@ function CenterModeCard({
 
   /* =========================================================
    * 2A. SIDE CARDS IN VIDEO MODE:
-   * Pure lightweight poster thumbnail with play overlay.
-   * NEVER loads heavy 3rd-party iframes in background!
+   * Displays the real video player showing its native thumbnail.
+   * Clicks advance carousel to center.
    * ========================================================= */
   if (isVideo && !isCenter) {
     return (
-      <div className="relative w-full rounded-2xl overflow-hidden bg-[#07262B] border border-white/15 shadow-md pointer-events-none group">
-        <div className="relative w-full h-[500px] sm:h-[560px] md:h-[600px] bg-[#07181C] overflow-hidden flex items-center justify-center">
-          {item.image ? (
-            <img
-              src={item.image}
-              alt={item.title || "Video Preview"}
-              className="w-full h-full object-cover"
+      <div className="relative w-full rounded-2xl overflow-hidden bg-black border border-white/15 shadow-md pointer-events-none group">
+        <div className="relative w-full h-[500px] sm:h-[560px] md:h-[600px] bg-black overflow-hidden flex items-center justify-center">
+          {isFacebook ? (
+            <iframe
+              src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(
+                videoTargetUrl
+              )}&show_text=false&autoplay=0&t=0`}
+              title={item.title || "Facebook Video Reel"}
+              className="w-full h-full border-0 pointer-events-none"
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+              allowFullScreen
+              loading="lazy"
+            />
+          ) : isTikTok ? (
+            <iframe
+              src={`https://www.tiktok.com/player/v1/${
+                item.videoId || extractTikTokId(videoTargetUrl)
+              }?autoplay=0`}
+              title={item.title || "TikTok Video"}
+              className="w-full h-full border-0 pointer-events-none"
+              allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+              allowFullScreen
               loading="lazy"
             />
           ) : (
-            <div className="w-full h-full bg-gradient-to-b from-[#0A262C] via-[#041518] to-black flex items-center justify-center">
-              <i className="fa-solid fa-film text-4xl text-white/20" />
-            </div>
+            <video
+              src={videoTargetUrl}
+              preload="metadata"
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+            />
           )}
-
-          {/* Vignette Gradients */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/60 pointer-events-none" />
 
           {/* Platform Tag Badge */}
           {item.tag && (
-            <div className="absolute top-3.5 inset-x-3.5 z-20 flex items-center justify-between">
+            <div className="absolute top-3.5 inset-x-3.5 z-20 flex items-center justify-between pointer-events-none">
               <span className="px-2.5 py-1 bg-[#0C2B31]/90 backdrop-blur-md text-white font-narrow text-[10px] font-black uppercase tracking-wider rounded-lg border border-white/15 flex items-center gap-1.5 shadow-md">
                 {isFacebook && <i className="fa-brands fa-facebook-f text-[#1877F2]" />}
                 {isTikTok && <i className="fa-brands fa-tiktok text-white" />}
@@ -377,15 +386,8 @@ function CenterModeCard({
             </div>
           )}
 
-          {/* Centered Glassmorphic Play Button Icon */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <div className="w-14 h-14 rounded-full bg-black/45 backdrop-blur-md border border-white/30 flex items-center justify-center text-white shadow-2xl">
-              <i className="fa-solid fa-play text-lg translate-x-0.5 opacity-90" />
-            </div>
-          </div>
-
           {/* Bottom Title & Subtitle */}
-          <div className="absolute inset-x-0 bottom-0 p-4 space-y-0.5 pointer-events-none">
+          <div className="absolute inset-x-0 bottom-0 p-4 pt-8 bg-gradient-to-t from-black/90 via-black/40 to-transparent space-y-0.5 pointer-events-none z-10">
             {item.subtitle && (
               <span className="font-narrow text-[10px] font-bold text-[#2DD4BF] uppercase tracking-wider block truncate">
                 {item.subtitle}
@@ -402,8 +404,7 @@ function CenterModeCard({
 
   /* =========================================================
    * 2B. ACTIVE CENTER CARD IN VIDEO MODE:
-   * Instant poster facade, stable iframe key (never destroyed on hover),
-   * smooth fade-in once ready, zero pitch-black screen.
+   * Full interactive native video player with native thumbnail.
    * ========================================================= */
   if (isVideo && isCenter) {
     return (
@@ -414,29 +415,7 @@ function CenterModeCard({
       >
         {/* Full Video Container */}
         <div className="relative w-full h-[500px] sm:h-[560px] md:h-[600px] bg-black overflow-hidden flex items-center justify-center">
-          {/* 1. Instant Poster Image (0ms delay - eliminates black box completely) */}
-          {item.image && (
-            <img
-              src={item.image}
-              alt={item.title || "Video Preview"}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-out ${
-                iframeLoaded ? "opacity-0 pointer-events-none" : "opacity-100"
-              }`}
-              loading="eager"
-            />
-          )}
-
-          {/* 2. Loading Indicator while iframe initializes */}
-          {!iframeLoaded && (
-            <div className="absolute inset-0 z-20 flex flex-col items-center justify-center gap-3 bg-black/40 backdrop-blur-[2px] pointer-events-none transition-opacity duration-500">
-              <div className="w-12 h-12 rounded-full border-3 border-[#2DD4BF]/30 border-t-[#2DD4BF] animate-spin shadow-lg" />
-              <span className="font-narrow text-xs font-black text-white uppercase tracking-widest bg-black/75 px-3.5 py-1 rounded-full border border-white/20 shadow-md">
-                Đang Tải Video...
-              </span>
-            </div>
-          )}
-
-          {/* 3. Live Player (Stable Key - will NOT remount/destroy when hovering) */}
+          {/* Live Player showing native thumbnail */}
           {isFacebook ? (
             <iframe
               key={`fb-${item.id}`}
@@ -444,13 +423,10 @@ function CenterModeCard({
                 videoTargetUrl
               )}&show_text=false&autoplay=0&t=0`}
               title={item.title || "Facebook Video Reel"}
-              className={`w-full h-full border-0 pointer-events-auto transition-opacity duration-500 ${
-                iframeLoaded ? "opacity-100" : "opacity-0"
-              }`}
+              className="w-full h-full border-0 pointer-events-auto"
               allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
               allowFullScreen
               loading="lazy"
-              onLoad={() => setIframeLoaded(true)}
             />
           ) : isTikTok ? (
             <iframe
@@ -459,13 +435,10 @@ function CenterModeCard({
                 item.videoId || extractTikTokId(videoTargetUrl)
               }?autoplay=0`}
               title={item.title || "TikTok Video"}
-              className={`w-full h-full border-0 pointer-events-auto transition-opacity duration-500 ${
-                iframeLoaded ? "opacity-100" : "opacity-0"
-              }`}
+              className="w-full h-full border-0 pointer-events-auto"
               allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"
               allowFullScreen
               loading="lazy"
-              onLoad={() => setIframeLoaded(true)}
             />
           ) : (
             <video
@@ -474,13 +447,12 @@ function CenterModeCard({
               preload="metadata"
               muted
               playsInline
-              loop
+              controls
               className="w-full h-full object-cover"
-              onLoadedData={() => setIframeLoaded(true)}
             />
           )}
 
-          {/* Top Tag & Status Badges */}
+          {/* Top Tag Badge */}
           <div className="absolute top-3.5 inset-x-3.5 z-30 pointer-events-none flex items-center justify-between gap-2">
             {item.tag && (
               <span className="px-2.5 py-1 bg-[#0C2B31]/85 backdrop-blur-md text-white font-narrow text-[10px] sm:text-[11px] font-black uppercase tracking-wider rounded-lg border border-white/15 flex items-center gap-1.5 shadow-md">

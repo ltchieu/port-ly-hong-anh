@@ -257,7 +257,7 @@ export default function FreelanceExperienceShowcase() {
               <>
                 {/* Background Thumbnail */}
                 <img
-                  src={allImages[0]}
+                  src={`https://i.ytimg.com/vi/${panasonicWebinarVideo.videoId}/hqdefault.jpg`}
                   alt="Panasonic Webinar Recap Video Preview"
                   className="absolute inset-0 w-full h-full object-cover group-hover/screen:scale-105 transition-transform duration-700 ease-out"
                 />
