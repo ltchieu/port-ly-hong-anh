@@ -29,7 +29,7 @@ export default function Work() {
               </h2>
             </div>
             <p className="font-narrow text-xs font-bold text-[#4E6E75] tracking-widest max-w-xs md:text-right">
-              A precise collision of volunteer leadership, brand identity, and creative event production
+              A refined collection of creativity, visual storytelling, brand identity, and creative event production
             </p>
           </div>
         </ScrollReveal>
@@ -148,11 +148,11 @@ export default function Work() {
                     <span>Operational Blueprints & Planning Documents</span>
                   </span>
                   <h4 className="font-display text-xl sm:text-2xl text-[#0C2B31] uppercase tracking-wide mt-0.5">
-                    Kế Hoạch & Tiến Độ Tổ Chức Sự Kiện
+                    Event Planning & Timeline Blueprints
                   </h4>
                 </div>
                 <p className="font-sans text-xs text-[#4E6E75] max-w-md sm:text-right">
-                  Tài liệu kế hoạch chi tiết từng hoạt động và bảng phân công tiến độ thực hiện Year-End Party.
+                  Detailed activity plans and task assignment timelines for the Year-End Party.
                 </p>
               </div>
 
@@ -178,10 +178,10 @@ export default function Work() {
                         <button
                           onClick={() => setSelectedDoc(doc)}
                           className="px-3 py-1.5 bg-white hover:bg-[#0B6E7B] text-[#0C2B31] hover:text-white border border-[#CCE5E3] hover:border-[#0B6E7B] rounded-lg font-narrow text-xs font-bold uppercase tracking-wider transition-all shadow-2xs flex items-center gap-1.5 shrink-0 cursor-pointer"
-                          title="Phóng to tài liệu để đọc rõ từng dòng"
+                          title="Enlarge document for detailed reading"
                         >
                           <i className="fa-solid fa-magnifying-glass-plus text-xs" />
-                          <span className="hidden sm:inline">Phóng to</span>
+                          <span className="hidden sm:inline">Enlarge</span>
                         </button>
                       </div>
 
@@ -202,7 +202,7 @@ export default function Work() {
                             <i className="fa-solid fa-magnifying-glass-plus text-lg" />
                           </div>
                           <span className="font-narrow text-xs font-black uppercase tracking-wider text-white bg-black/70 px-3.5 py-1 rounded-full border border-white/20 shadow-md">
-                            Click để xem toàn màn hình độ phân giải cao
+                            Click to view full screen in high resolution
                           </span>
                         </div>
 
@@ -225,7 +225,7 @@ export default function Work() {
                           {/* Key Highlights */}
                           <div className="space-y-1.5 bg-[#F0F8F7] p-3.5 rounded-xl border border-[#CCE5E3]/70">
                             <span className="font-narrow text-[10px] font-black text-[#0B6E7B] uppercase tracking-wider block">
-                              Nội dung trọng tâm:
+                              Key Highlights:
                             </span>
                             <ul className="space-y-1">
                               {doc.keyHighlights.map((highlight, hIdx) => (
@@ -257,7 +257,7 @@ export default function Work() {
                             className="flex-1 py-2.5 px-3 bg-[#0B6E7B] hover:bg-[#08545E] text-white rounded-xl font-narrow text-xs font-black uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-sm cursor-pointer hover:shadow-md"
                           >
                             <i className="fa-solid fa-expand text-xs" />
-                            <span>Xem Chi Tiết Tài Liệu</span>
+                            <span>View Document Details</span>
                           </button>
 
                           <a
@@ -265,7 +265,7 @@ export default function Work() {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="py-2.5 px-3 bg-[#F0F8F7] hover:bg-[#E0F2F1] text-[#0B6E7B] border border-[#CCE5E3] rounded-xl font-narrow text-xs font-black uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 shadow-2xs hover:scale-[1.02]"
-                            title="Mở Google Sheets trực tiếp"
+                            title="Open Google Sheets directly"
                           >
                             <i className="fa-solid fa-file-spreadsheet text-emerald-600 text-sm" />
                             <span className="hidden sm:inline">Google Sheets</span>
@@ -288,7 +288,7 @@ export default function Work() {
                     <span>Live Event Photography Gallery</span>
                   </span>
                   <h4 className="font-display text-xl sm:text-2xl text-[#0C2B31] uppercase tracking-wide mt-0.5">
-                    Khoảnh Khắc Đêm Tiệc Year-End Party
+                    Year-End Party Live Moments
                   </h4>
                 </div>
                 <span className="font-mono text-xs text-[#0B6E7B] bg-[#E8F5F4] border border-[#CCE5E3] px-3 py-1 rounded-full font-bold self-start sm:self-auto">
@@ -347,10 +347,10 @@ export default function Work() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-lg font-narrow text-xs font-bold uppercase tracking-wider transition-all"
-                      title="Mở ảnh gốc trong tab mới"
+                      title="Open original image in new tab"
                     >
                       <i className="fa-solid fa-up-right-from-square text-xs" />
-                      <span>Ảnh gốc</span>
+                      <span>Original Image</span>
                     </a>
 
                     <button
@@ -385,7 +385,7 @@ export default function Work() {
                       className="w-full sm:w-auto px-4 py-2 bg-[#0B6E7B] hover:bg-[#0d8594] text-white transition-all font-narrow text-xs uppercase tracking-wider font-bold rounded-xl flex items-center justify-center gap-2 shadow-md"
                     >
                       <i className="fa-solid fa-file-spreadsheet text-emerald-300 text-sm" />
-                      <span>Mở Google Sheets Trực Tiếp</span>
+                      <span>Open Google Sheets Directly</span>
                       <i className="fa-solid fa-arrow-up-right-from-square text-xs" />
                     </a>
                   </div>

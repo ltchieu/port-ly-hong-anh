@@ -53,24 +53,7 @@ export const vLotusData: VLotusData = {
     focus: "Japanese Franchise F&B Marketing & Content Strategy",
   },
   keyMetrics: [
-    {
-      label: "Top Campaign Organic Reach",
-      value: "425,000+",
-      subtext: "1,500+ Likes • 52 Shares • 35 Comments on Peak Post",
-      icon: "fa-solid fa-fire",
-    },
-    {
-      label: "Short-Form Video Views",
-      value: "225,000+",
-      subtext: "120K+ (Conservo) + 105K+ (Yoshinoya TikTok)",
-      icon: "fa-solid fa-play",
-    },
-    {
-      label: "6-Month Social Growth",
-      value: "+2,050",
-      subtext: "1,300+ FB, 250+ IG, 500+ TikTok across multi-brands",
-      icon: "fa-solid fa-arrow-trend-up",
-    },
+
   ],
   seoPillar: {
     title: "SEO Content & Culinary Insights",

@@ -109,19 +109,7 @@ export default function ExperienceDetailPage() {
 
     switch (currentExp.id) {
       case "dn-group":
-        return [
-          {
-            label: "Content Plan",
-            url: dnGroupData.overview.contentPlanUrl,
-            icon: "fa-solid fa-file-lines text-[#2DD4BF]",
-            highlight: true,
-          },
-          {
-            label: "Nha khoa Shark x DUCM (Details)",
-            url: dnGroupData.overview.ducmDetailsUrl,
-            icon: "fa-solid fa-table text-[#2DD4BF]",
-          },
-        ];
+        return [];
 
       case "v-lotus":
         return [
@@ -149,59 +137,13 @@ export default function ExperienceDetailPage() {
         ];
 
       case "benelifts-asia":
-        return [
-          {
-            label: "Post Drive (Benelifts)",
-            url: beneliftsData.highlightPostsSection.beneliftsDriveUrl,
-            icon: "fa-brands fa-google-drive text-[#2DD4BF]",
-            highlight: true,
-          },
-          {
-            label: "Post Drive (Casanova)",
-            url: beneliftsData.highlightPostsSection.casanovaDriveUrl,
-            icon: "fa-brands fa-google-drive text-[#2DD4BF]",
-          },
-          {
-            label: "Benelifts SEO Plan",
-            url: beneliftsData.websiteArticlesSection.beneliftsSeoPlanUrl,
-            icon: "fa-solid fa-file-lines text-[#2DD4BF]",
-          },
-          {
-            label: "Casanova SEO Plan",
-            url: beneliftsData.websiteArticlesSection.casanovaSeoPlanUrl,
-            icon: "fa-solid fa-file-lines text-[#2DD4BF]",
-          },
-        ];
+        return [];
 
       case "freelance-event-coordinator":
-        return [
-          {
-            label: "PANASONIC Webinar Report",
-            url: PANASONIC_WEBINAR_REPORT_URL,
-            icon: "fa-solid fa-file-excel text-[#2DD4BF]",
-            highlight: true,
-          },
-          {
-            label: "YouTube Shorts Recap",
-            url: PANASONIC_WEBINAR_VIDEO_URL,
-            icon: "fa-brands fa-youtube text-[#FF4D4D]",
-          },
-        ];
+        return [];
 
       case "aeon-vietnam":
-        return [
-          {
-            label: "Brief video AEON",
-            url: AEON_BRIEF_VIDEO_URL,
-            icon: "fa-solid fa-file-lines text-[#2DD4BF]",
-            highlight: true,
-          },
-          {
-            label: "Reels Report 2023",
-            url: AEON_REELS_REPORT_URL,
-            icon: "fa-solid fa-chart-pie text-[#2DD4BF]",
-          },
-        ];
+        return [];
 
       default:
         return [];
@@ -242,37 +184,11 @@ export default function ExperienceDetailPage() {
             </h1>
           </div>
 
-          {/* Top Actions & Role Badge */}
-          <div className="flex flex-col items-start lg:items-end gap-3 shrink-0">
-            <div className="flex items-center gap-2">
-              <span className="font-mono text-xs text-[#4E6E75] bg-[#F0F8F7] px-3.5 py-1.5 rounded-full border border-[#CCE5E3] font-bold">
-                {currentExp.role}
-              </span>
-            </div>
-
-            {topActionLinks.length > 0 && (
-              <div className="flex flex-col items-stretch gap-2 w-56 sm:w-64">
-                {topActionLinks.map((link, lIdx) => (
-                  <a
-                    key={lIdx}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`w-full px-3.5 py-2 rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center justify-between gap-2 transition-all shadow-xs hover:scale-105 cursor-pointer ${
-                      link.highlight
-                        ? "bg-[#0B6E7B] hover:bg-[#08545E] text-white border border-[#2DD4BF]/40"
-                        : "bg-white hover:bg-[#F0F8F7] text-[#0C2B31] border border-[#CCE5E3] hover:border-[#0B6E7B]"
-                    }`}
-                  >
-                    <div className="flex items-center gap-2 truncate pr-1">
-                      <i className={link.icon}></i>
-                      <span className="truncate">{link.label}</span>
-                    </div>
-                    <i className="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-70 shrink-0"></i>
-                  </a>
-                ))}
-              </div>
-            )}
+          {/* Role Badge */}
+          <div className="flex items-center gap-2 shrink-0">
+            <span className="font-mono text-xs text-[#4E6E75] bg-[#F0F8F7] px-3.5 py-1.5 rounded-full border border-[#CCE5E3] font-bold">
+              {currentExp.role}
+            </span>
           </div>
         </div>
 
@@ -372,11 +288,69 @@ export default function ExperienceDetailPage() {
                           );
                         }
                       })}
+                      </div>
+
+                      {/* Action Links under Key Achievements (Dark Showcase Banner matching Image 2) */}
+                      {isAchievementSection && topActionLinks.length > 0 && (
+                        <div className="pt-4">
+                          <div className="rounded-2xl sm:rounded-3xl p-6 sm:p-8 bg-[#07262B] border border-[#CCE5E3]/30 text-white flex flex-col lg:flex-row lg:items-center justify-between gap-6 shadow-xl relative overflow-hidden">
+                            {/* Subtle ambient light runner in background */}
+                            <div className="absolute top-0 right-0 w-80 h-80 bg-[#0B6E7B]/20 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
+
+                            {/* Left: Badge, Title & Description */}
+                            <div className="space-y-2.5 max-w-xl relative z-10">
+                              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-[#2DD4BF] font-narrow text-[11px] sm:text-xs font-black uppercase tracking-[0.2em]">
+                                <i className="fa-solid fa-file-lines text-xs text-[#2DD4BF]" />
+                                <span>
+                                  {currentExp.id === "v-lotus"
+                                    ? "BRAND PRESENTATION & STRATEGY"
+                                    : "PROJECT DOCUMENTATION & REPORTS"}
+                                </span>
+                              </div>
+
+                              <h4 className="font-display text-xl sm:text-2xl lg:text-3xl font-black uppercase tracking-tight text-white leading-tight">
+                                {currentExp.id === "v-lotus"
+                                  ? "V-LOTUS MULTI-BRAND PERFORMANCE & CONTENT ROADMAPS"
+                                  : `${currentExp.company} STRATEGIC DOCUMENTATION`}
+                              </h4>
+
+                              <p className="font-sans text-xs sm:text-sm text-white/75 leading-relaxed">
+                                {currentExp.id === "v-lotus"
+                                  ? "Explore the complete weekly performance reports, tracking analytics, and comprehensive monthly editorial content plans crafted across Conservo, Yoshinoya, and Ussina."
+                                  : "Explore the live Google Sheets, performance metrics tracking, and operational strategy documentation."}
+                              </p>
+                            </div>
+
+                            {/* Right: Stacked Action Buttons */}
+                            <div className="flex flex-col gap-2.5 sm:gap-3 shrink-0 w-full lg:w-auto min-w-[260px] sm:min-w-[300px] relative z-10">
+                              {topActionLinks.map((link, lIdx) => (
+                                <a
+                                  key={lIdx}
+                                  href={link.url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="w-full px-4 sm:px-5 py-3 bg-white hover:bg-[#F0F8F7] text-[#0C2B31] hover:text-[#0B6E7B] rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center justify-between gap-3 shadow-md hover:shadow-lg transition-all hover:scale-[1.02] cursor-pointer group/btn border border-white/20"
+                                >
+                                  <div className="flex items-center gap-2.5 min-w-0">
+                                    <i
+                                      className={`${link.icon.replace(
+                                        "text-[#2DD4BF]",
+                                        "text-[#0B6E7B]"
+                                      )} text-sm text-[#0B6E7B] shrink-0`}
+                                    />
+                                    <span className="truncate">{link.label}</span>
+                                  </div>
+                                  <i className="fa-solid fa-arrow-up-right-from-square text-[11px] text-[#0C2B31]/60 group-hover/btn:text-[#0B6E7B] shrink-0" />
+                                </a>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      )}
                     </div>
-                  </div>
-                );
-              })}
-            </div>
+                  );
+                })}
+              </div>
           ) : (
             <p className="font-sans text-base sm:text-lg text-[#2C4A51] leading-relaxed">
               <HighlightText text={currentExp.description} />

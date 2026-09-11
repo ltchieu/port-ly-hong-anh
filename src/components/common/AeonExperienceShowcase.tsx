@@ -138,53 +138,35 @@ export default function AeonExperienceShowcase() {
                 <span>Video Editor & Short-Form Content Production</span>
               </h3>
             </div>
-            
-            <div className="flex flex-wrap items-center gap-2.5">
-              <span className="px-3.5 py-1.5 bg-[#F0F8F7] border border-[#CCE5E3] font-narrow text-xs font-bold uppercase tracking-wider rounded-xl text-[#0B6E7B] flex items-center gap-1.5 shadow-2xs">
-                <i className="fa-solid fa-film text-[#0B6E7B] text-xs"></i>
-                CapCut Pro & Canva
-              </span>
+
+            {/* Simple Button Links placed in Header (Flex Column) */}
+            <div className="flex flex-col gap-2 shrink-0 pr-9">
+              <a
+                href={aeonReportLinks[0].url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3.5 py-2 bg-[#0B6E7B] hover:bg-[#08545E] text-white rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center justify-between gap-2.5 transition-all shadow-xs hover:scale-105 cursor-pointer"
+              >
+                <div className="flex items-center gap-2">
+                  <i className="fa-solid fa-file-lines text-[#2DD4BF]"></i>
+                  <span>Brief video AEON</span>
+                </div>
+                <i className="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-80"></i>
+              </a>
+
+              <a
+                href={aeonReportLinks[1].url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3.5 py-2 bg-white hover:bg-[#F0F8F7] text-[#0C2B31] border border-[#CCE5E3] hover:border-[#0B6E7B] rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center justify-between gap-2.5 transition-all shadow-xs hover:scale-105 cursor-pointer"
+              >
+                <div className="flex items-center gap-2">
+                  <i className="fa-solid fa-chart-pie text-[#0B6E7B]"></i>
+                  <span>Reels Report 2023</span>
+                </div>
+                <i className="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-80"></i>
+              </a>
             </div>
-          </div>
-
-          <ul className="space-y-2 pt-1 font-sans text-sm sm:text-base text-[#2C4A51] leading-relaxed">
-            <li className="flex items-start gap-2.5">
-              <span className="w-2 h-2 rounded-full bg-[#0B6E7B] mt-2 flex-shrink-0"></span>
-              <span>
-                <HighlightText text="Managed end-to-end video production from script development and content planning to editing and final delivery." />
-              </span>
-            </li>
-            <li className="flex items-start gap-2.5">
-              <span className="w-2 h-2 rounded-full bg-[#0B6E7B] mt-2 flex-shrink-0"></span>
-              <span>
-                <HighlightText text="Produced short-form video content using CapCut Pro and Canva." />
-              </span>
-            </li>
-          </ul>
-
-          {/* Simple Button Links placed in Header */}
-          <div className="flex flex-wrap items-center gap-2.5 pt-1">
-            <a
-              href={aeonReportLinks[0].url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-3.5 py-2 bg-[#0B6E7B] hover:bg-[#08545E] text-white rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center gap-2 transition-all shadow-xs hover:scale-105 cursor-pointer"
-            >
-              <i className="fa-solid fa-file-lines text-[#2DD4BF]"></i>
-              <span>Brief video AEON</span>
-              <i className="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-80"></i>
-            </a>
-
-            <a
-              href={aeonReportLinks[1].url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-3.5 py-2 bg-white hover:bg-[#F0F8F7] text-[#0C2B31] border border-[#CCE5E3] hover:border-[#0B6E7B] rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center gap-2 transition-all shadow-xs hover:scale-105 cursor-pointer"
-            >
-              <i className="fa-solid fa-chart-pie text-[#0B6E7B]"></i>
-              <span>Reels Report 2023</span>
-              <i className="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-80"></i>
-            </a>
           </div>
         </div>
 
@@ -192,13 +174,6 @@ export default function AeonExperienceShowcase() {
         <div className="space-y-4">
           {/* Section Header for Reels */}
           <div className="flex items-center justify-between pt-1">
-            <span className="font-narrow text-xs sm:text-sm font-black text-[#0B6E7B] tracking-wider uppercase flex items-center gap-1.5">
-              <i className="fa-brands fa-facebook text-[#1877F2]"></i>
-              HIGHLIGHT FACEBOOK REELS &bull; GROWTH WITH AEON ({aeonHighlightVideos.length} VIDEOS)
-            </span>
-            <span className="font-mono text-[10px] text-[#4E6E75] bg-[#F0F8F7] px-2.5 py-1 rounded-md border border-[#CCE5E3] font-bold">
-              LIVE EMBED PLAYER
-            </span>
           </div>
 
           {/* 4 Highlight Facebook Reels 4-Column Grid */}
@@ -212,7 +187,7 @@ export default function AeonExperienceShowcase() {
                 channelHandle="@growthwithaeon"
                 platform={video.platform}
                 videoUrl={video.videoUrl}
-                image={aeonMallImages[vIdx % aeonMallImages.length]}
+                image={video.image}
                 stats={{
                   likes: vIdx === 0 ? "4,520" : vIdx === 1 ? "6,180" : vIdx === 2 ? "5,340" : "7,890",
                   comments: vIdx === 0 ? "68" : vIdx === 1 ? "94" : vIdx === 2 ? "76" : "128",
@@ -222,10 +197,10 @@ export default function AeonExperienceShowcase() {
                   vIdx === 0
                     ? "00:00/00:35"
                     : vIdx === 1
-                    ? "00:00/00:42"
-                    : vIdx === 2
-                    ? "00:00/00:39"
-                    : "00:00/00:46"
+                      ? "00:00/00:42"
+                      : vIdx === 2
+                        ? "00:00/00:39"
+                        : "00:00/00:46"
                 }
                 description={video.description}
               />
@@ -249,7 +224,7 @@ export default function AeonExperienceShowcase() {
                 <span>Event Operation & Communications ({aeonMallImages.length} Shots)</span>
               </h3>
             </div>
-            
+
             <div className="flex flex-wrap items-center gap-2.5">
               <span className="px-3.5 py-1.5 bg-[#F0F8F7] border border-[#CCE5E3] font-narrow text-xs font-bold uppercase tracking-wider rounded-xl text-[#0B6E7B] flex items-center gap-1.5 shadow-2xs">
                 <i className="fa-solid fa-camera-retro text-[#0B6E7B] text-xs"></i>

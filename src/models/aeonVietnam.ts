@@ -7,6 +7,7 @@ export interface AeonVideoItem {
   reelId: string;
   category: string;
   description: string;
+  image?: string;
 }
 
 export interface AeonReportLink {

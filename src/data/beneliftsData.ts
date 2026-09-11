@@ -276,6 +276,7 @@ export const beneliftsData: BeneliftsData = {
         highlight: "Facebook Reel",
         description: "Engaging showcase featuring compact Italian home elevator installations, smart pit requirements, and premium residential design.",
         tags: ["Facebook Reel", "Benelifts Asia", "Bsmartlifts", "Italian Elevator"],
+        image: getBeneliftsImage("bene_reel_1_thumb.jpg"),
       },
       {
         id: "bene-vid-2",
@@ -284,9 +285,11 @@ export const beneliftsData: BeneliftsData = {
         title: "Casanova Building — Meeting Room & Modern Office Spaces",
         role: "Video Creator & Editor",
         videoUrl: "https://www.facebook.com/reel/9029206577131919/",
+        videoAspectRatio: "16:9",
         highlight: "Facebook Reel",
         description: "Modern short-form video presenting professional hourly meeting room rentals, luxury amenities, and flexible workspace solutions at Casanova Building.",
         tags: ["Facebook Reel", "Casanova Building", "Hourly Meeting Room", "Office Space"],
+        image: getBeneliftsImage("bene_reel_2_thumb.jpg"),
       },
       {
         id: "bene-vid-3",
@@ -298,6 +301,7 @@ export const beneliftsData: BeneliftsData = {
         highlight: "Facebook Video",
         description: "European engineering precision, Milanese craftsmanship, and international safety compliance for luxury residential and commercial elevator systems.",
         tags: ["Facebook Video", "Benelifts S.r.l", "Milan Engineering", "European Safety"],
+        image: getBeneliftsImage("bene_reel_3_thumb.jpg"),
       },
       {
         id: "bene-vid-4",
@@ -309,6 +313,7 @@ export const beneliftsData: BeneliftsData = {
         highlight: "Facebook Reel",
         description: "Dynamic reel showcasing smooth elevator movement, bespoke cabin aesthetics, LED lighting integration, and luxury villa architecture.",
         tags: ["Facebook Reel", "Benelifts Asia", "Bsmartlifts", "Luxury Villa"],
+        image: getBeneliftsImage("bene_reel_4_thumb.jpg"),
       },
     ],
   },
@@ -326,12 +331,18 @@ export const beneliftsData: BeneliftsData = {
         category: "Family & Luxury Living",
         postUrl: "https://www.facebook.com/share/p/19DHHtqkQw/",
         content: `🏠 Đã bao lâu rồi bạn chưa về thăm nhà?
-🏠 Đã bao lâu rồi cả gia đình không quây quần với nhau hàn huyên sum họp trong những bữa cơm?
-💟 Cuối năm chính là thời điểm những trái tim đều hướng về gia đình nên mỗi phút giây đều có giá trị nếu ta biết trân trọng. Dù đó có là khoảng thời gian ngắn ngủi khi cùng làm việc nhà hay cùng di chuyển trong thang máy cũng có thể gắn kết để tình cảm gia đình thêm khăng khít 💑
-💞 Thang máy Benelifts đồng hành cùng những hành động nhỏ nhưng mang ý nghĩa lớn để hoàn thành sứ mệnh “đem mọi người đến gần nhau hơn” với:
-▶️ Thang máy gia đình nhập khẩu nguyên chiếc, tiêu chuẩn Châu Âu an toàn tối ưu hiện nay: đem lại sự an tâm cho cả gia đình.
-▶️ Phong cách thiết kế tinh tế mà đẳng cấp: tạo không gian đẹp, thư giãn
-▶️ Hỗ trợ di chuyển tối ưu: giúp các thành viên trong gia đình có nhiều thời gian hơn cho bản thân và gắn kết tình cảm.`,
+
+        🏠 Đã bao lâu rồi cả gia đình không quây quần với nhau hàn huyên sum họp trong những bữa cơm?
+
+        💟 Cuối năm chính là thời điểm những trái tim đều hướng về gia đình nên mỗi phút giây đều có giá trị nếu ta biết trân trọng. Dù đó có là khoảng thời gian ngắn ngủi khi cùng làm việc nhà hay cùng di chuyển trong thang máy cũng có thể gắn kết để tình cảm gia đình thêm khăng khít 💑
+
+        💞 Thang máy Benelifts đồng hành cùng những hành động nhỏ nhưng mang ý nghĩa lớn để hoàn thành sứ mệnh “đem mọi người đến gần nhau hơn” với:
+
+        ▶️ Thang máy gia đình nhập khẩu nguyên chiếc, tiêu chuẩn Châu Âu an toàn tối ưu hiện nay: đem lại sự an tâm cho cả gia đình.
+
+        ▶️ Phong cách thiết kế tinh tế mà đẳng cấp: tạo không gian đẹp, thư giãn
+
+        ▶️ Hỗ trợ di chuyển tối ưu: giúp các thành viên trong gia đình có nhiều thời gian hơn cho bản thân và gắn kết tình cảm.`,
         tags: ["Benelifts Asia", "Thang Máy Gia Đình", "Sum Vầy", "European Standard"],
       },
       {
@@ -342,18 +353,30 @@ export const beneliftsData: BeneliftsData = {
         category: "Office & Meeting Room Services",
         postUrl: "https://www.facebook.com/share/p/1CRke3T7v1/",
         content: `❓ Bạn đang gặp phải tình huống:
-🆘 Lên lịch họp gấp gáp mà văn phòng bận kín chỗ?
-🆘 Cần không gian chuyên nghiệp để gặp gỡ đối tác quan trọng nhưng e dè chi phí thuê văn phòng dài hạn?
-🆘 Muốn tổ chức buổi đào tạo, hội thảo mà thiếu thốn trang thiết bị và địa điểm phù hợp?
-👉 Đừng lo, đã có Casanova lo cho bạn! Với dịch vụ phòng họp theo giờ, Casanova mang đến giải pháp hoàn hảo để bạn:
-✔️ Gặp gỡ đối tác, ký kết hợp đồng trong không gian sang trọng, chuyên nghiệp.
-✔️ Tổ chức hội thảo, đào tạo cho nhân viên với đầy đủ tiện nghi hiện đại.
-✔️ Thỏa sức bàn chiến lược, "brainstorming" ý tưởng trong môi trường riêng tư, yên tĩnh.
-Tại Casanova, bạn sẽ được tận hưởng:
-✅ Đội ngũ nhân viên chuyên nghiệp, chu đáo, sẵn sàng hỗ trợ mọi nhu cầu của bạn.
-✅ Phòng họp hiện đại, đầy đủ trang thiết bị: máy chiếu, màn hình LCD, wifi tốc độ cao...
-✅ Giá cả cạnh tranh, phù hợp với mọi ngân sách.
-📞 Còn chần chờ gì nữa? Hãy liên hệ Casanova ngay để đặt phòng cho cuộc họp quan trọng của bạn!`,
+
+        🆘 Lên lịch họp gấp gáp mà văn phòng bận kín chỗ?
+
+        🆘 Cần không gian chuyên nghiệp để gặp gỡ đối tác quan trọng nhưng e dè chi phí thuê văn phòng dài hạn?
+
+        🆘 Muốn tổ chức buổi đào tạo, hội thảo mà thiếu thốn trang thiết bị và địa điểm phù hợp?
+
+        👉 Đừng lo, đã có Casanova lo cho bạn! Với dịch vụ phòng họp theo giờ, Casanova mang đến giải pháp hoàn hảo để bạn:
+
+        ✔️ Gặp gỡ đối tác, ký kết hợp đồng trong không gian sang trọng, chuyên nghiệp.
+
+        ✔️ Tổ chức hội thảo, đào tạo cho nhân viên với đầy đủ tiện nghi hiện đại.
+
+        ✔️ Thỏa sức bàn chiến lược, "brainstorming" ý tưởng trong môi trường riêng tư, yên tĩnh.
+
+        Tại Casanova, bạn sẽ được tận hưởng:
+
+        ✅ Đội ngũ nhân viên chuyên nghiệp, chu đáo, sẵn sàng hỗ trợ mọi nhu cầu của bạn.
+
+        ✅ Phòng họp hiện đại, đầy đủ trang thiết bị: máy chiếu, màn hình LCD, wifi tốc độ cao...
+
+        ✅ Giá cả cạnh tranh, phù hợp với mọi ngân sách.
+
+        📞 Còn chần chờ gì nữa? Hãy liên hệ Casanova ngay để đặt phòng cho cuộc họp quan trọng của bạn!`,
         tags: ["Casanova Building", "Phòng Họp Theo Giờ", "Coworking Space", "Meeting Room"],
       },
       {
@@ -364,11 +387,16 @@ Tại Casanova, bạn sẽ được tận hưởng:
         category: "Italian Engineering & Innovation",
         postUrl: "https://www.facebook.com/share/p/1b2H5kxyJE/",
         content: `As a modern and groundbreaking elevator line from Benelifts S.r.l, Elux Tubo not only possesses an exquisite design but also integrates cutting-edge technology. Here are 04 fascinating facts about Elux Tubo that you shouldn't miss:
-✅ Compact design, flexible installation: With its special structure, Elux Tubo can be installed even in limited spaces, requiring only a minimum area of 1m². Suitable for all types of spaces, from small apartments to luxurious villas.
-✅ Smooth operation, noise reduction: Elux Tubo operates with a noise level of just 40dB - equivalent to the sound of a quiet room, providing a smooth moving experience without disturbing your living space.
-✅ Maximized energy efficiency: The drive system of Elux Tubo is optimized to reduce friction, consuming less energy. With European energy labels, Elux Tubo not only runs smoothly but also helps your family save on electricity costs.
-✅ Timeless durability: With premium materials and advanced manufacturing technology, Elux Tubo is designed to operate durably, minimizing maintenance and repair costs throughout its lifespan.
-Don't miss out on the sophistication and efficiency of Elux Tubo Elevator! 🌟🏙️`,
+
+        ✅ Compact design, flexible installation: With its special structure, Elux Tubo can be installed even in limited spaces, requiring only a minimum area of 1m². Suitable for all types of spaces, from small apartments to luxurious villas.
+
+        ✅ Smooth operation, noise reduction: Elux Tubo operates with a noise level of just 40dB - equivalent to the sound of a quiet room, providing a smooth moving experience without disturbing your living space.
+
+        ✅ Maximized energy efficiency: The drive system of Elux Tubo is optimized to reduce friction, consuming less energy. With European energy labels, Elux Tubo not only runs smoothly but also helps your family save on electricity costs.
+
+        ✅ Timeless durability: With premium materials and advanced manufacturing technology, Elux Tubo is designed to operate durably, minimizing maintenance and repair costs throughout its lifespan.
+
+        Don't miss out on the sophistication and efficiency of Elux Tubo Elevator! 🌟🏙️`,
         tags: ["Benelifts S.r.l", "Elux Tubo", "Milan Engineering", "Italian Elevator"],
       },
       {
@@ -379,9 +407,12 @@ Don't miss out on the sophistication and efficiency of Elux Tubo Elevator! 🌟�
         category: "Design Trends & Color Palette",
         postUrl: "https://www.facebook.com/share/p/19dz8QzEM9/",
         content: `Pantone đã chọn "Mocha Mousse" (Pantone 17-1230) làm màu của năm – một tông nâu ấm áp, lấy cảm hứng từ cacao, chocolate và cà phê, mang lại cảm giác dễ chịu và thoải mái trong cuộc sống hàng ngày.
-🤔 Bạn nghĩ sao nếu gia đình của bạn sở hữu chiếc thang máy sắc màu này? Chắc chắn chiếc thang sẽ trở thành một điểm nhấn tinh tế và tạo cảm giác thư thái cho không gian sống!
-✨ Với những màu sơn cao cấp, thang máy Benelifts luôn đáp ứng được nhu cầu của mọi phong cách thiết kế.
-📥 Hãy liên hệ với Benelifts để được tư vấn dòng thang máy phù hợp với nhu cầu của bạn!
+
+        🤔 Bạn nghĩ sao nếu gia đình của bạn sở hữu chiếc thang máy sắc màu này? Chắc chắn chiếc thang sẽ trở thành một điểm nhấn tinh tế và tạo cảm giác thư thái cho không gian sống!
+
+        ✨ Với những màu sơn cao cấp, thang máy Benelifts luôn đáp ứng được nhu cầu của mọi phong cách thiết kế.
+
+        📥 Hãy liên hệ với Benelifts để được tư vấn dòng thang máy phù hợp với nhu cầu của bạn!
 𝑬𝒍𝒆𝒗𝒂𝒕𝒊𝒏𝒈 𝒆𝒗𝒆𝒓𝒚𝒅𝒂𝒚 𝒍𝒊𝒇𝒆 - 𝑵𝒂̂𝒏𝒈 𝒕𝒂̂̀𝒎 𝒄𝒖𝒐̣̂𝒄 𝒔𝒐̂́𝒏𝒈`,
         tags: ["Pantone 2025", "Mocha Mousse", "Interior Design", "Benelifts Asia"],
       },

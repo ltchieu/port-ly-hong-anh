@@ -331,7 +331,7 @@ Mặc dù vậy, nhưng Implant vẫn là kỹ thuật khó, liên quan trực t
         channel: "Nha khoa Shark",
         title: "Nha khoa Shark",
         role: "Production Lead & Video Editor",
-        videoUrl: "https://www.facebook.com/reel/855037387682043",
+        videoUrl: "https://www.facebook.com/reel/834690839370634",
         briefUrl: "https://docs.google.com/spreadsheets/d/1OiF65aYb5gk5Lluo50LQPVBCD9AZ2et2tfgGoGVbAYQ/edit?usp=sharing",
         scriptUrl: "https://docs.google.com/spreadsheets/d/145IwPNgMM3_desFcJoGOzzN21Lbtw2hVOaNPayWZrk8/edit?usp=sharing",
         highlight: "Facebook Video with Brief & Script",

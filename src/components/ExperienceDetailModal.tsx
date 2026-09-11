@@ -2,6 +2,10 @@ import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "motion/react";
 import { experiences } from "../data/experiences";
+import { dnGroupData } from "../data/dnGroupData";
+import { beneliftsData } from "../data/beneliftsData";
+import { PANASONIC_WEBINAR_REPORT_URL, PANASONIC_WEBINAR_VIDEO_URL } from "../data/panasonicWebinarData";
+import { AEON_BRIEF_VIDEO_URL, AEON_REELS_REPORT_URL } from "../data/aeonVietnamData";
 import HighlightText from "./common/HighlightText";
 import DNGroupExperienceShowcase from "./common/DNGroupExperienceShowcase";
 import VLotusExperienceShowcase from "./common/VLotusExperienceShowcase";
@@ -74,6 +78,57 @@ function parseMetric(text: string): ParsedMetric {
   }
 
   return { value, label, icon, iconBg };
+}
+
+interface ActionLink {
+  label: string;
+  url: string;
+  icon: string;
+  highlight?: boolean;
+}
+
+function getModalActionLinks(expId: string): ActionLink[] {
+  switch (expId) {
+    case "dn-group":
+      return [];
+
+    case "v-lotus":
+      return [
+        {
+          label: "Weekly Report (Details)",
+          url: "https://docs.google.com/spreadsheets/d/1n-Lj-pgF6jiWC0A_rVl9sSk3Zn3s6hNOsEtsEipJCLk/edit?usp=sharing",
+          icon: "fa-solid fa-chart-simple text-[#2DD4BF]",
+          highlight: true,
+        },
+        {
+          label: "Conservo Content Plan",
+          url: "https://docs.google.com/spreadsheets/d/1NX2T20DUYthFjvFbkQrEXJMWTqgndg1k/edit?usp=sharing&ouid=115935600825419567163&rtpof=true&sd=true",
+          icon: "fa-solid fa-bread-slice text-[#2DD4BF]",
+        },
+        {
+          label: "Yoshinoya Content Plan",
+          url: "https://docs.google.com/spreadsheets/d/1exNdp-espEwwhrTWQIJ0kUeHSCQVk46_kua6DSsVm2A/edit?usp=sharing",
+          icon: "fa-solid fa-bowl-rice text-[#2DD4BF]",
+        },
+        {
+          label: "Ussina Content Plan",
+          url: "https://docs.google.com/spreadsheets/d/1W2VrQlxd1YcWlIVlrVDoTljeyrjdt3Wg/edit?usp=sharing&ouid=115935600825419567163&rtpof=true&sd=true",
+          icon: "fa-solid fa-drumstick-bite text-[#2DD4BF]",
+        },
+      ];
+
+    case "benelifts-asia":
+      return [];
+
+    case "freelance-event-coordinator":
+      return [];
+
+    case "aeon-vietnam":
+      return [];
+
+    default:
+      return [];
+  }
 }
 
 export default function ExperienceDetailModal({
@@ -217,11 +272,10 @@ export default function ExperienceDetailModal({
                         return (
                           <div
                             key={sIdx}
-                            className={`rounded-2xl border transition-all duration-300 p-5 sm:p-7 space-y-4 ${
-                              isAchievementSection
-                                ? "bg-gradient-to-br from-[#F5FBFA] via-white to-[#EEF8F7] border-[#B2DCD7] shadow-sm"
-                                : "bg-white border-[#E0EFEF] hover:border-[#0B6E7B]/30 shadow-xs"
-                            }`}
+                            className={`rounded-2xl border transition-all duration-300 p-5 sm:p-7 space-y-4 ${isAchievementSection
+                              ? "bg-gradient-to-br from-[#F5FBFA] via-white to-[#EEF8F7] border-[#B2DCD7] shadow-sm"
+                              : "bg-white border-[#E0EFEF] hover:border-[#0B6E7B]/30 shadow-xs"
+                              }`}
                           >
                             {/* Section Header */}
                             <div className="flex items-center justify-between gap-3 border-b border-[#E7F3F2] pb-3">
@@ -306,6 +360,63 @@ export default function ExperienceDetailModal({
                                   );
                                 }
                               })}
+                              {/* Action links under Key Achievements (Dark Showcase Banner matching Image 2) */}
+                              {isAchievementSection && currentExp && getModalActionLinks(currentExp.id).length > 0 && (
+                                <div className="pt-4">
+                                  <div className="rounded-2xl sm:rounded-3xl p-6 sm:p-8 bg-[#07262B] border border-[#CCE5E3]/30 text-white flex flex-col lg:flex-row lg:items-center justify-between gap-6 shadow-xl relative overflow-hidden">
+                                    {/* Subtle ambient light runner in background */}
+                                    <div className="absolute top-0 right-0 w-80 h-80 bg-[#0B6E7B]/20 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
+
+                                    {/* Left: Badge, Title & Description */}
+                                    <div className="space-y-2.5 max-w-xl relative z-10">
+                                      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-[#2DD4BF] font-narrow text-[11px] sm:text-xs font-black uppercase tracking-[0.2em]">
+                                        <i className="fa-solid fa-file-lines text-xs text-[#2DD4BF]" />
+                                        <span>
+                                          {currentExp.id === "v-lotus"
+                                            ? "BRAND PRESENTATION & STRATEGY"
+                                            : "PROJECT DOCUMENTATION & REPORTS"}
+                                        </span>
+                                      </div>
+
+                                      <h4 className="font-display text-xl sm:text-2xl lg:text-3xl font-black uppercase tracking-tight text-white leading-tight">
+                                        {currentExp.id === "v-lotus"
+                                          ? "V-LOTUS MULTI-BRAND PERFORMANCE & CONTENT ROADMAPS"
+                                          : `${currentExp.company} STRATEGIC DOCUMENTATION`}
+                                      </h4>
+
+                                      <p className="font-sans text-xs sm:text-sm text-white/75 leading-relaxed">
+                                        {currentExp.id === "v-lotus"
+                                          ? "Explore the complete weekly performance reports, tracking analytics, and comprehensive monthly editorial content plans crafted across Conservo, Yoshinoya, and Ussina."
+                                          : "Explore the live Google Sheets, performance metrics tracking, and operational strategy documentation."}
+                                      </p>
+                                    </div>
+
+                                    {/* Right: Stacked Action Buttons */}
+                                    <div className="flex flex-col gap-2.5 sm:gap-3 shrink-0 w-full lg:w-auto min-w-[260px] sm:min-w-[300px] relative z-10">
+                                      {getModalActionLinks(currentExp.id).map((link, lIdx) => (
+                                        <a
+                                          key={lIdx}
+                                          href={link.url}
+                                          target="_blank"
+                                          rel="noopener noreferrer"
+                                          className="w-full px-4 sm:px-5 py-3 bg-white hover:bg-[#F0F8F7] text-[#0C2B31] hover:text-[#0B6E7B] rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center justify-between gap-3 shadow-md hover:shadow-lg transition-all hover:scale-[1.02] cursor-pointer group/btn border border-white/20"
+                                        >
+                                          <div className="flex items-center gap-2.5 min-w-0">
+                                            <i
+                                              className={`${link.icon.replace(
+                                                "text-[#2DD4BF]",
+                                                "text-[#0B6E7B]"
+                                              )} text-sm text-[#0B6E7B] shrink-0`}
+                                            />
+                                            <span className="truncate">{link.label}</span>
+                                          </div>
+                                          <i className="fa-solid fa-arrow-up-right-from-square text-[11px] text-[#0C2B31]/60 group-hover/btn:text-[#0B6E7B] shrink-0" />
+                                        </a>
+                                      ))}
+                                    </div>
+                                  </div>
+                                </div>
+                              )}
                             </div>
                           </div>
                         );
@@ -354,11 +465,10 @@ export default function ExperienceDetailModal({
                     <button
                       key={exp.id}
                       onClick={() => onSelectExperience(exp.id)}
-                      className={`px-3 py-1.5 rounded-lg font-narrow text-xs font-black uppercase transition-all whitespace-nowrap flex items-center gap-1.5 cursor-pointer ${
-                        isSelected
-                          ? "bg-[#0B6E7B] text-white shadow-xs"
-                          : "bg-[#F0F8F7] text-[#4E6E75] hover:text-[#0C2B31] hover:bg-[#CCE5E3]/60 border border-[#CCE5E3]"
-                      }`}
+                      className={`px-3 py-1.5 rounded-lg font-narrow text-xs font-black uppercase transition-all whitespace-nowrap flex items-center gap-1.5 cursor-pointer ${isSelected
+                        ? "bg-[#0B6E7B] text-white shadow-xs"
+                        : "bg-[#F0F8F7] text-[#4E6E75] hover:text-[#0C2B31] hover:bg-[#CCE5E3]/60 border border-[#CCE5E3]"
+                        }`}
                     >
                       <i className={`${experienceIcons[exp.id] || "fa-solid fa-briefcase"} text-[10px]`}></i>
                       <span>

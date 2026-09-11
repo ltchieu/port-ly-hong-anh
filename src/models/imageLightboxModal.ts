@@ -8,4 +8,10 @@ export interface LightboxImageData {
 export interface ImageLightboxModalProps {
   selectedImage: LightboxImageData | null;
   onClose: () => void;
+  onPrev?: () => void;
+  onNext?: () => void;
+  hasPrev?: boolean;
+  hasNext?: boolean;
+  currentIndex?: number;
+  totalImages?: number;
 }

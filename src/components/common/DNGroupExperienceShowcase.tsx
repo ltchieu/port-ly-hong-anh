@@ -56,7 +56,97 @@ export default function DNGroupExperienceShowcase() {
         ))}
       </div>
 
-      {/* 3. SECTION 1.1: SOCIAL MEDIA PERFORMANCE & ANALYTICS GRID */}
+      {/* 3. SECTION 1.1: VIDEO EDITOR & SHORT-FORM PRODUCTION */}
+      <div className="bg-white rounded-2xl sm:rounded-3xl border border-[#CCE5E3] p-5 sm:p-7 lg:p-8 space-y-6 shadow-xs hover:border-[#0B6E7B]/40 transition-all">
+        <div className="border-b border-[#CCE5E3]/80 pb-5 space-y-3">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <span className="font-narrow text-xs sm:text-sm font-black text-[#0B6E7B] tracking-[0.2em] uppercase block">
+                HIGHLIGHT VIDEOS & VIRAL TIKTOK CHANNELS
+              </span>
+              <h4 className="font-display text-xl sm:text-2xl uppercase tracking-tight text-[#0C2B31] flex items-center gap-2.5">
+                <i className="fa-solid fa-clapperboard text-[#0B6E7B]"></i>
+                <span>{dnGroupData.videoEditorPillars.title}</span>
+              </h4>
+            </div>
+
+            {/* Document Action Buttons (Brief Video & Kịch bản đi quay) */}
+            <div className="flex flex-wrap items-center gap-2.5">
+              <a
+                href="https://docs.google.com/spreadsheets/d/1OiF65aYb5gk5Lluo50LQPVBCD9AZ2et2tfgGoGVbAYQ/edit?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3.5 py-2 bg-[#0B6E7B] hover:bg-[#08545E] text-white border border-[#2DD4BF]/40 rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center gap-2 transition-all shadow-xs hover:scale-105 cursor-pointer"
+              >
+                <i className="fa-solid fa-file-lines text-[#2DD4BF]"></i>
+                <span>Brief Video</span>
+                <i className="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-80"></i>
+              </a>
+
+              <a
+                href="https://docs.google.com/spreadsheets/d/145IwPNgMM3_desFcJoGOzzN21Lbtw2hVOaNPayWZrk8/edit?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3.5 py-2 bg-white hover:bg-[#F0F8F7] text-[#0C2B31] border border-[#CCE5E3] hover:border-[#0B6E7B] rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center gap-2 transition-all shadow-xs hover:scale-105 cursor-pointer"
+              >
+                <i className="fa-solid fa-clapperboard text-[#0B6E7B]"></i>
+                <span>Kịch bản đi quay</span>
+                <i className="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-80"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Highlight Videos 4-Column Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+          {dnGroupData.videoEditorPillars.projects.map((video, vIdx) => {
+            const isDieuuoc = video.channel.includes("Điều ước");
+
+            return (
+              <HighlightVideoCard
+                key={video.id}
+                index={vIdx + 1}
+                title={video.title}
+                channelName={isDieuuoc ? "Điều ước của mẹ" : "Nha khoa Shark"}
+                channelHandle={
+                  isDieuuoc
+                    ? "@sharkdentalxdieuuoccuame"
+                    : "@nhakhoashark"
+                }
+                platform={video.platform}
+                videoUrl={video.videoUrl}
+                videoId={video.videoId}
+                stats={{
+                  likes: isDieuuoc
+                    ? vIdx === 2
+                      ? "17.2K"
+                      : "19.4K"
+                    : vIdx === 0
+                      ? "8,420"
+                      : "12.5K",
+                  comments: isDieuuoc ? (vIdx === 2 ? "209" : "264") : (vIdx === 0 ? "132" : "185"),
+                  shares: isDieuuoc ? (vIdx === 2 ? "3,850" : "4,120") : (vIdx === 0 ? "1,540" : "2,180"),
+                }}
+                duration={
+                  isDieuuoc
+                    ? vIdx === 2
+                      ? "00:00/00:58"
+                      : "00:00/01:12"
+                    : vIdx === 0
+                      ? "00:00/00:42"
+                      : "00:00/01:05"
+                }
+                briefUrl={video.briefUrl}
+                scriptUrl={video.scriptUrl}
+                description={video.description}
+                tags={video.tags}
+              />
+            );
+          })}
+        </div>
+      </div>
+
+      {/* 4. SECTION 1.2: SOCIAL MEDIA PERFORMANCE & ANALYTICS GRID */}
       <div className="bg-white rounded-2xl sm:rounded-3xl border border-[#CCE5E3] p-5 sm:p-7 lg:p-8 space-y-6 shadow-xs hover:border-[#0B6E7B]/40 transition-all">
         <div className="border-b border-[#CCE5E3]/80 pb-5 space-y-3">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
@@ -338,97 +428,7 @@ export default function DNGroupExperienceShowcase() {
         </div>
       </div>
 
-      {/* 5. SECTION 1.3: VIDEO EDITOR & SHORT-FORM PRODUCTION */}
-      <div className="bg-white rounded-2xl sm:rounded-3xl border border-[#CCE5E3] p-5 sm:p-7 lg:p-8 space-y-6 shadow-xs hover:border-[#0B6E7B]/40 transition-all">
-        <div className="border-b border-[#CCE5E3]/80 pb-5 space-y-3">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <div>
-              <span className="font-narrow text-xs sm:text-sm font-black text-[#0B6E7B] tracking-[0.2em] uppercase block">
-                HIGHLIGHT VIDEOS & VIRAL TIKTOK CHANNELS
-              </span>
-              <h4 className="font-display text-xl sm:text-2xl uppercase tracking-tight text-[#0C2B31] flex items-center gap-2.5">
-                <i className="fa-solid fa-clapperboard text-[#0B6E7B]"></i>
-                <span>{dnGroupData.videoEditorPillars.title}</span>
-              </h4>
-            </div>
 
-            {/* Document Action Buttons (Brief Video & Kịch bản đi quay) */}
-            <div className="flex flex-wrap items-center gap-2.5">
-              <a
-                href="https://docs.google.com/spreadsheets/d/1OiF65aYb5gk5Lluo50LQPVBCD9AZ2et2tfgGoGVbAYQ/edit?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-3.5 py-2 bg-[#0B6E7B] hover:bg-[#08545E] text-white border border-[#2DD4BF]/40 rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center gap-2 transition-all shadow-xs hover:scale-105 cursor-pointer"
-              >
-                <i className="fa-solid fa-file-lines text-[#2DD4BF]"></i>
-                <span>Brief Video</span>
-                <i className="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-80"></i>
-              </a>
-
-              <a
-                href="https://docs.google.com/spreadsheets/d/145IwPNgMM3_desFcJoGOzzN21Lbtw2hVOaNPayWZrk8/edit?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-3.5 py-2 bg-white hover:bg-[#F0F8F7] text-[#0C2B31] border border-[#CCE5E3] hover:border-[#0B6E7B] rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center gap-2 transition-all shadow-xs hover:scale-105 cursor-pointer"
-              >
-                <i className="fa-solid fa-clapperboard text-[#0B6E7B]"></i>
-                <span>Kịch bản đi quay</span>
-                <i className="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-80"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Highlight Videos 4-Column Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
-          {dnGroupData.videoEditorPillars.projects.map((video, vIdx) => {
-            const isTikTok = video.platform === "tiktok";
-            const isDieuuoc = video.channel.includes("Điều ước");
-
-            return (
-              <HighlightVideoCard
-                key={video.id}
-                index={vIdx + 1}
-                title={video.title}
-                channelName={isDieuuoc ? "Điều ước của mẹ" : "Nha khoa Shark"}
-                channelHandle={
-                  isDieuuoc
-                    ? "@sharkdentalxdieuuoccuame"
-                    : "@nhakhoashark"
-                }
-                platform={video.platform}
-                videoUrl={video.videoUrl}
-                videoId={video.videoId}
-                image={video.image}
-                stats={{
-                  likes: isDieuuoc
-                    ? vIdx === 2
-                      ? "17.2K"
-                      : "19.4K"
-                    : vIdx === 0
-                    ? "8,420"
-                    : "12.5K",
-                  comments: isDieuuoc ? (vIdx === 2 ? "209" : "264") : (vIdx === 0 ? "132" : "185"),
-                  shares: isDieuuoc ? (vIdx === 2 ? "3,850" : "4,120") : (vIdx === 0 ? "1,540" : "2,180"),
-                }}
-                duration={
-                  isDieuuoc
-                    ? vIdx === 2
-                      ? "00:00/00:58"
-                      : "00:00/01:12"
-                    : vIdx === 0
-                    ? "00:00/00:42"
-                    : "00:00/01:05"
-                }
-                briefUrl={video.briefUrl}
-                scriptUrl={video.scriptUrl}
-                description={video.description}
-                tags={video.tags}
-              />
-            );
-          })}
-        </div>
-      </div>
 
       {/* Lightbox Modal */}
       <ImageLightboxModal selectedImage={selectedImage} onClose={handleCloseLightbox} />

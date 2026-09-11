@@ -323,16 +323,17 @@ function CenterModeCard({
 
   const videoTargetUrl = item.videoUrl || item.link || "";
 
-  // Handle native HTML5 video element play/pause
+  const [isPlayingNativeVideo, setIsPlayingNativeVideo] = useState(false);
+
+  // Handle native HTML5 video element play/pause on click
   useEffect(() => {
     if (!videoRef.current) return;
-    if (isCenter && isCardHovered) {
+    if (isCenter && isPlayingNativeVideo) {
       videoRef.current.play().catch(() => { });
     } else {
       videoRef.current.pause();
-      videoRef.current.currentTime = 0;
     }
-  }, [isCenter, isCardHovered]);
+  }, [isCenter, isPlayingNativeVideo]);
 
   /* =========================================================
    * 2A. SIDE CARDS IN VIDEO MODE:
@@ -448,7 +449,8 @@ function CenterModeCard({
               muted
               playsInline
               controls
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover cursor-pointer"
+              onClick={() => setIsPlayingNativeVideo((prev) => !prev)}
             />
           )}
 

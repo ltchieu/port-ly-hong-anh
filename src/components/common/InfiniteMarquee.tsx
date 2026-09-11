@@ -9,13 +9,15 @@ function PhoneVideoItem({
   item: MarqueeItem;
   onItemClick?: (item: MarqueeItem) => void;
 }) {
-  const [isHovered, setIsHovered] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
 
-  const isFacebook = item.platform?.toLowerCase() === 'facebook';
-  const isTikTok = item.platform?.toLowerCase() === 'tiktok';
+  const isTikTok = item.platform?.toLowerCase() === 'tiktok' || item.url?.includes('tiktok.com');
+  const isFacebook = item.platform?.toLowerCase() === 'facebook' || item.url?.includes('facebook.com') || (!isTikTok && item.url);
 
   const handleCardClick = () => {
-    if (onItemClick) {
+    if (!isPlaying) {
+      setIsPlaying(true);
+    } else if (onItemClick) {
       onItemClick(item);
     } else if (item.url) {
       window.open(item.url, '_blank', 'noopener,noreferrer');
@@ -25,8 +27,6 @@ function PhoneVideoItem({
   return (
     <div
       className="relative w-[270px] sm:w-[300px] h-[500px] sm:h-[550px] bg-[#071F24] rounded-[40px] p-2.5 shadow-[0_20px_50px_rgba(7,38,43,0.45)] border-4 border-[#12383F] flex flex-col transition-all duration-300 hover:scale-[1.03] hover:border-[#2DD4BF] hover:shadow-[0_25px_60px_rgba(45,212,191,0.25)] select-none cursor-pointer group"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
       onClick={handleCardClick}
     >
       {/* Side phone button accents */}
@@ -54,8 +54,8 @@ function PhoneVideoItem({
           </div>
         </div>
 
-        {/* Top Quick Direct Button (Appears prominently when hovered) */}
-        {isHovered && item.url && (
+        {/* Top Quick Direct Button */}
+        {isPlaying && item.url && (
           <div className="absolute top-8 inset-x-3 z-30 flex items-center justify-between pointer-events-none animate-fadeIn">
             <span className="px-2 py-0.5 bg-black/80 backdrop-blur-md rounded-full text-[9px] font-mono text-[#2DD4BF] border border-white/15 flex items-center gap-1 shadow-sm">
               <span className="w-1.5 h-1.5 rounded-full bg-[#2DD4BF] animate-pulse" />
@@ -79,10 +79,23 @@ function PhoneVideoItem({
           </div>
         )}
 
-        {/* Main Screen Content: Hover to Auto-Play Live Video or Cover Poster */}
+        {/* Main Screen Content: Click to Play Live Video or Cover Poster */}
         <div className="relative w-full h-full flex items-center justify-center overflow-hidden bg-black">
-          {isHovered ? (
+          {isPlaying ? (
             <div className="w-full h-full relative flex items-center justify-center bg-black">
+              {/* Close / Stop Button */}
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsPlaying(false);
+                }}
+                className="absolute top-2.5 right-2.5 z-40 w-7 h-7 rounded-full bg-black/80 hover:bg-red-600 text-white flex items-center justify-center transition-colors cursor-pointer shadow-md border border-white/20"
+                aria-label="Close video"
+                title="Stop video"
+              >
+                <i className="fa-solid fa-xmark text-xs" />
+              </button>
               {isFacebook ? (
                 <iframe
                   src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(item.url || '')}&show_text=false&autoplay=true&t=0`}

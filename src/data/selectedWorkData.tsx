@@ -42,9 +42,9 @@ export const sharkDentalFacebookPosts: CarouselItemData[] = [
     icon: <i className="fa-brands fa-facebook-f text-sm text-[#1877F2]" />,
     image: getDNImage("post.png"),
     metrics: [
-      { value: "596K", label: "VIEWS", highlight: true },
-      { value: "2,684h", label: "WATCH TIME" },
-      { value: "98.4%", label: "FYP RATIO" },
+      { value: "134K", label: "VIEWS", highlight: true },
+      { value: "145", label: "ENGAGEMENTS" },
+      { value: "627", label: "CLICKS" },
     ],
   },
   {
@@ -57,9 +57,9 @@ export const sharkDentalFacebookPosts: CarouselItemData[] = [
     icon: <i className="fa-brands fa-facebook-f text-sm text-[#1877F2]" />,
     image: getDNImage("post_2.png") || getDNImage("post2.png"),
     metrics: [
-      { value: "279K", label: "IMPRESSIONS", highlight: true },
+      { value: "279K", label: "VIEWS", highlight: true },
+      { value: "228", label: "ENGAGEMENTS" },
       { value: "1,998", label: "LINK CLICKS" },
-      { value: "96.8%", label: "ENGAGEMENT" },
     ],
   },
   {
@@ -72,9 +72,9 @@ export const sharkDentalFacebookPosts: CarouselItemData[] = [
     icon: <i className="fa-brands fa-facebook-f text-sm text-[#1877F2]" />,
     image: getDNImage("post_3.png") || getDNImage("post3.png"),
     metrics: [
-      { value: "130K", label: "ORGANIC REACH", highlight: true },
-      { value: "160+", label: "REACTIONS" },
-      { value: "99.2%", label: "SATISFACTION" },
+      { value: "243K", label: "VIEWS", highlight: true },
+      { value: "462", label: "ENGAGEMENTS" },
+      { value: "31", label: "CLICKS" },
     ],
   },
   {
@@ -87,9 +87,9 @@ export const sharkDentalFacebookPosts: CarouselItemData[] = [
     icon: <i className="fa-brands fa-facebook-f text-sm text-[#1877F2]" />,
     image: getEventSelectedWorkImage("post_4.png") || getDNImage("post4.png"),
     metrics: [
-      { value: "215K", label: "VIEWS", highlight: true },
-      { value: "1,420h", label: "WATCH TIME" },
-      { value: "97.5%", label: "FYP RATIO" },
+      { value: "79K", label: "VIEWS", highlight: true },
+      { value: "124", label: "ENGAGEMENTS" },
+      { value: "23", label: "CLICKS" },
     ],
   },
   {
@@ -102,9 +102,9 @@ export const sharkDentalFacebookPosts: CarouselItemData[] = [
     icon: <i className="fa-brands fa-facebook-f text-sm text-[#1877F2]" />,
     image: getEventSelectedWorkImage("post5.jpg"),
     metrics: [
-      { value: "100%", label: "DIGITAL CARD", highlight: true },
-      { value: "12 YRS", label: "WARRANTY" },
-      { value: "99.8%", label: "SECURITY" },
+      { value: "185K", label: "VIEWS", highlight: true },
+      { value: "325", label: "ENGAGEMENTS" },
+      { value: "128", label: "CLICKS" },
     ],
   },
   {
@@ -117,9 +117,9 @@ export const sharkDentalFacebookPosts: CarouselItemData[] = [
     icon: <i className="fa-brands fa-facebook-f text-sm text-[#1877F2]" />,
     image: getEventSelectedWorkImage("post6.jpg"),
     metrics: [
-      { value: "12 YRS", label: "WARRANTY", highlight: true },
-      { value: "4 MO", label: "TREATMENT" },
-      { value: "100%", label: "CHEWING FUNCTION" },
+      { value: "95K", label: "VIEWS", highlight: true },
+      { value: "327", label: "ENGAGEMENTS" },
+      { value: "103", label: "CLICKS" },
     ],
   },
   {
@@ -132,9 +132,9 @@ export const sharkDentalFacebookPosts: CarouselItemData[] = [
     icon: <i className="fa-brands fa-facebook-f text-sm text-[#1877F2]" />,
     image: getEventSelectedWorkImage("post7.jpg"),
     metrics: [
-      { value: "195K", label: "REACH", highlight: true },
-      { value: "1,480", label: "LINK CLICKS" },
-      { value: "98.5%", label: "SATISFACTION" },
+      { value: "102K", label: "VIEWS", highlight: true },
+      { value: "148", label: "ENGAGEMENTS" },
+      { value: "63", label: "CLICKS" },
     ],
   },
   {
@@ -147,9 +147,9 @@ export const sharkDentalFacebookPosts: CarouselItemData[] = [
     icon: <i className="fa-brands fa-facebook-f text-sm text-[#1877F2]" />,
     image: getEventSelectedWorkImage("post8.jpg"),
     metrics: [
-      { value: "312K", label: "IMPRESSIONS", highlight: true },
-      { value: "2,450", label: "CLICKS" },
-      { value: "98.9%", label: "CONVERSION" },
+      { value: "821K", label: "VIEWS", highlight: true },
+      { value: "1.3K", label: "ENGAGEMENTS" },
+      { value: "6,727", label: "CLICKS" },
     ],
   },
 ];
@@ -248,32 +248,32 @@ export interface EventPlanningDoc {
 export const beneliftsPlanningDocs: EventPlanningDoc[] = [
   {
     id: "yep-plan-activities",
-    docNumber: "KẾ HOẠCH #01",
-    title: "Chi Tiết Các Hoạt Động Trong Chương Trình",
+    docNumber: "PLAN #01",
+    title: "Detailed Program Activities & Operations",
     subtitle: "YEP Event Activities & Experience Breakdown",
-    description: "Kế hoạch kịch bản chi tiết cho từng hạng mục trong đêm tiệc YEP: quy trình Check-in đón khách & ký tên bảng Welcome, minigame 'Thử thách phá băng' rút thăm trúng thưởng, tiết mục mở màn và phân bổ nhân sự chuẩn bị.",
+    description: "Detailed operational script for each segment of the Year-End Party: guest check-in & welcome board signing flow, 'Icebreaker Challenge' minigame with lucky draw, opening stage performance, and preparation team staffing.",
     image: eventImagesGlob['../../assets/image/event_selected_work/1.webp'] || '',
     sheetLink: "https://docs.google.com/spreadsheets/d/10qXIwqKY7R7dVaucjhWWpAMN5-JGNgFw9sSNRxJUGSM/edit?usp=sharing",
-    tags: ["Check-in Flow", "Thử Thách Phá Băng", "Kịch Bản Tiết Mục"],
+    tags: ["Check-in Flow", "Icebreaker Challenge", "Stage Program"],
     keyHighlights: [
-      "Khu vực Check-in đón khách & ký tên bảng Welcome theo concept",
-      "Cơ chế minigame Thử thách phá băng & 4 vòng bốc thăm Lucky Draw",
-      "Chuẩn bị âm thanh, đạo cụ, tiết mục mở màn & kịch bản MC"
+      "Guest check-in area & concept-themed Welcome Board signing",
+      "Icebreaker challenge mechanics & 4 rounds of Lucky Draw",
+      "Sound setup, props preparation, opening performance & MC script"
     ]
   },
   {
     id: "yep-plan-timeline",
-    docNumber: "KẾ HOẠCH #02",
-    title: "Bảng Timeline Tiến Độ & Phân Công Nhiệm Vụ",
+    docNumber: "PLAN #02",
+    title: "Master Timeline & Task Delegation Schedule",
     subtitle: "Operational Master Timeline & Task Delegation",
-    description: "Bảng phân công trách nhiệm trước sự kiện và timeline chi tiết trực tiếp trong đêm tiệc. Hồng Anh đảm nhiệm phụ trách chính các khâu: lên list quà tặng, đặt bàn tiệc, thiết kế thiệp mời, poster truyền thông, in backdrop và hỗ trợ điều phối.",
+    description: "Pre-event responsibility delegation and comprehensive real-time schedule for the event night. Hong Anh served as primary coordinator for gift sourcing, banquet catering, invitation card & media poster design, backdrop production, and on-site event coordination.",
     image: eventImagesGlob['../../assets/image/event_selected_work/2.webp'] || '',
     sheetLink: "https://docs.google.com/spreadsheets/d/10qXIwqKY7R7dVaucjhWWpAMN5-JGNgFw9sSNRxJUGSM/edit?usp=sharing",
-    tags: ["Master Timeline", "Phân Công Trách Nhiệm", "On-site Operations"],
+    tags: ["Master Timeline", "Task Delegation", "On-site Operations"],
     keyHighlights: [
-      "Hồng Anh phụ trách: Lên list quà tặng, đặt món ăn bàn tiệc",
-      "Thiết kế thiệp mời, poster group cộng đồng, gửi thư mời khách VIP",
-      "Timeline chi tiết từng khung giờ 17:00 - 20:00 trong đêm tiệc"
+      "Hong Anh in charge of: Curating gift lists, coordinating banquet catering menus",
+      "Designing invitation cards, community group posters, and distributing VIP invitations",
+      "Hourly timeline breakdown for the 17:00 – 20:00 event program"
     ]
   },
 ];

@@ -6,6 +6,12 @@ import type { ImageLightboxModalProps } from '../../models/imageLightboxModal';
 export const ImageLightboxModal = memo(function ImageLightboxModal({
   selectedImage,
   onClose,
+  onPrev,
+  onNext,
+  hasPrev = true,
+  hasNext = true,
+  currentIndex,
+  totalImages,
 }: ImageLightboxModalProps) {
   const [isZoomed, setIsZoomed] = useState<boolean>(false);
 
@@ -20,12 +26,16 @@ export const ImageLightboxModal = memo(function ImageLightboxModal({
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         onClose();
+      } else if (e.key === 'ArrowLeft' && onPrev && hasPrev !== false) {
+        onPrev();
+      } else if (e.key === 'ArrowRight' && onNext && hasNext !== false) {
+        onNext();
       }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [selectedImage, onClose]);
+  }, [selectedImage, onClose, onPrev, onNext, hasPrev, hasNext]);
 
   const toggleZoom = useCallback((e: React.MouseEvent) => {
     e.stopPropagation();
@@ -56,9 +66,16 @@ export const ImageLightboxModal = memo(function ImageLightboxModal({
             {/* Modal Top Header */}
             <div className="flex items-center justify-between border-b border-[#0B6E7B]/30 pb-3 gap-4">
               <div className="space-y-0.5 min-w-0">
-                <span className="font-narrow text-[11px] font-black text-[#2DD4BF] tracking-[0.2em] uppercase block truncate">
-                  {selectedImage.category}
-                </span>
+                <div className="flex items-center gap-2.5 flex-wrap">
+                  <span className="font-narrow text-[11px] font-black text-[#2DD4BF] tracking-[0.2em] uppercase block truncate">
+                    {selectedImage.category}
+                  </span>
+                  {totalImages !== undefined && currentIndex !== undefined && (
+                    <span className="font-mono text-[10px] font-bold text-white/80 px-2 py-0.5 rounded-full bg-white/10 border border-white/15">
+                      {currentIndex + 1} / {totalImages}
+                    </span>
+                  )}
+                </div>
                 <h3 className="font-display text-base sm:text-xl md:text-2xl uppercase tracking-wide text-white truncate">
                   {selectedImage.title}
                 </h3>
@@ -90,17 +107,60 @@ export const ImageLightboxModal = memo(function ImageLightboxModal({
             </div>
 
             {/* Main Centered Large Image Viewport */}
-            <div className="flex-1 flex items-center justify-center my-3 min-h-[300px] max-h-[74vh] overflow-auto rounded-xl bg-black/40 border border-[#0B6E7B]/20 p-2 relative custom-scrollbar">
-              <motion.img
-                src={selectedImage.src}
-                alt={selectedImage.title}
-                animate={{ scale: isZoomed ? 1.85 : 1 }}
-                transition={{ duration: 0.3, ease: 'easeOut' }}
-                onClick={toggleZoom}
-                className={`max-h-[70vh] max-w-full w-auto object-contain rounded shadow-2xl transition-all cursor-${
-                  isZoomed ? 'zoom-out' : 'zoom-in'
-                }`}
-              />
+            <div className="flex-1 flex items-center justify-center my-3 min-h-[300px] max-h-[74vh] overflow-hidden rounded-xl bg-black/40 border border-[#0B6E7B]/20 p-2 relative">
+              {/* Previous Image Arrow Button */}
+              {onPrev && (
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onPrev();
+                  }}
+                  disabled={hasPrev === false}
+                  className={`absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#051E22]/85 hover:bg-[#0B6E7B] text-white border border-[#0B6E7B]/60 hover:border-[#2DD4BF] flex items-center justify-center transition-all shadow-2xl cursor-pointer hover:scale-110 active:scale-95 ${
+                    hasPrev === false ? 'opacity-25 cursor-not-allowed pointer-events-none' : ''
+                  }`}
+                  aria-label="Previous image"
+                  title="Previous image (Left Arrow key)"
+                >
+                  <i className="fa-solid fa-chevron-left text-sm sm:text-base"></i>
+                </button>
+              )}
+
+              {/* Image with key to animate smoothly on image switch */}
+              <div className="w-full h-full flex items-center justify-center overflow-auto custom-scrollbar p-2">
+                <motion.img
+                  key={selectedImage.src}
+                  src={selectedImage.src}
+                  alt={selectedImage.title}
+                  initial={{ opacity: 0.8 }}
+                  animate={{ opacity: 1, scale: isZoomed ? 1.85 : 1 }}
+                  transition={{ duration: 0.25, ease: 'easeOut' }}
+                  onClick={toggleZoom}
+                  className={`max-h-[70vh] max-w-full w-auto object-contain rounded shadow-2xl transition-all cursor-${
+                    isZoomed ? 'zoom-out' : 'zoom-in'
+                  }`}
+                />
+              </div>
+
+              {/* Next Image Arrow Button */}
+              {onNext && (
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onNext();
+                  }}
+                  disabled={hasNext === false}
+                  className={`absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#051E22]/85 hover:bg-[#0B6E7B] text-white border border-[#0B6E7B]/60 hover:border-[#2DD4BF] flex items-center justify-center transition-all shadow-2xl cursor-pointer hover:scale-110 active:scale-95 ${
+                    hasNext === false ? 'opacity-25 cursor-not-allowed pointer-events-none' : ''
+                  }`}
+                  aria-label="Next image"
+                  title="Next image (Right Arrow key)"
+                >
+                  <i className="fa-solid fa-chevron-right text-sm sm:text-base"></i>
+                </button>
+              )}
             </div>
 
             {/* Modal Description Footer */}
@@ -109,9 +169,9 @@ export const ImageLightboxModal = memo(function ImageLightboxModal({
                 <p className="font-sans text-xs sm:text-sm text-white/80 max-w-3xl leading-relaxed">
                   {selectedImage.description}
                 </p>
-                <span className="text-[11px] font-narrow text-[#2DD4BF] font-semibold tracking-wider shrink-0 flex items-center gap-1">
+                <span className="text-[11px] font-narrow text-[#2DD4BF] font-semibold tracking-wider shrink-0 flex items-center gap-1.5">
                   <i className="fa-solid fa-circle-info text-[10px]"></i>
-                  Click photo or button to toggle 2x zoom
+                  <span>Click photo to toggle 2x zoom • Use ← → keys to browse</span>
                 </span>
               </div>
             )}

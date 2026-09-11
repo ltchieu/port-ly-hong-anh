@@ -4,22 +4,11 @@ import ImageLightboxModal from "./ImageLightboxModal";
 import AnimatedCounter from "./AnimatedCounter";
 import HighlightText from "./HighlightText";
 import HighlightVideoCard from "./HighlightVideoCard";
-import FacebookEmbed from "./FacebookEmbed";
-import TikTokEmbed from "./TikTokEmbed";
 import ScrollablePostContent from "./ScrollablePostContent";
 import type { LightboxImageData } from "../../models/imageLightboxModal";
 
 export default function VLotusExperienceShowcase() {
   const [selectedImage, setSelectedImage] = useState<LightboxImageData | null>(null);
-
-  const handleOpenLightbox = useCallback((src: string, title: string, description?: string) => {
-    setSelectedImage({
-      src,
-      title,
-      category: "V LOTUS • LOTUS GROUP F&B",
-      description: description || "V Lotus Holdings culinary marketing and brand communication asset.",
-    });
-  }, []);
 
   const handleCloseLightbox = useCallback(() => {
     setSelectedImage(null);
@@ -102,8 +91,8 @@ export default function VLotusExperienceShowcase() {
                   isConservo
                     ? "@conservovn"
                     : isTikTok
-                    ? "@yoshinoyavietnamofficial"
-                    : "@yoshinoyavn"
+                      ? "@yoshinoyavietnamofficial"
+                      : "@yoshinoyavn"
                 }
                 platform={video.platform}
                 videoUrl={video.videoUrl}
@@ -115,8 +104,8 @@ export default function VLotusExperienceShowcase() {
                       ? "15.8K"
                       : "14.2K"
                     : isTikTok
-                    ? "21.4K"
-                    : "18.6K",
+                      ? "21.4K"
+                      : "18.6K",
                   comments: isConservo ? "186" : "240",
                   shares: isConservo ? "2,350" : "3,120",
                 }}
@@ -126,8 +115,8 @@ export default function VLotusExperienceShowcase() {
                       ? "00:00/00:38"
                       : "00:00/00:45"
                     : isTikTok
-                    ? "00:00/00:48"
-                    : "00:00/00:52"
+                      ? "00:00/00:48"
+                      : "00:00/00:52"
                 }
                 briefUrl={video.briefUrl}
                 description={video.description}

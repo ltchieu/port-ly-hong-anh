@@ -243,10 +243,8 @@ export default function BeneliftsAsiaExperienceShowcase() {
                 }
                 platform={video.platform}
                 videoUrl={video.videoUrl}
-                image={
-                  photoImages[vIdx % photoImages.length] ||
-                  beneliftsData.videoPillar.image
-                }
+                videoAspectRatio={video.videoAspectRatio}
+                image={video.image}
                 stats={{
                   likes: vIdx === 0 ? "3,450" : vIdx === 1 ? "4,890" : vIdx === 2 ? "5,210" : "6,780",
                   comments: vIdx === 0 ? "42" : vIdx === 1 ? "65" : vIdx === 2 ? "78" : "92",

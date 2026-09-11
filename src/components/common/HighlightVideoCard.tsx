@@ -18,6 +18,7 @@ export interface HighlightVideoCardProps {
   platform?: "tiktok" | "facebook" | "youtube" | string;
   videoUrl: string;
   videoId?: string;
+  videoAspectRatio?: "16:9" | "9:16" | "landscape" | "vertical" | string;
   image?: string;
   avatarUrl?: string;
   stats?: HighlightVideoStats;
@@ -52,16 +53,14 @@ export default function HighlightVideoCard({
   platform = "tiktok",
   videoUrl,
   videoId,
+  videoAspectRatio,
   image,
   avatarUrl,
   stats,
   duration = "00:00/00:45",
-  briefUrl,
-  scriptUrl,
   className = "",
 }: HighlightVideoCardProps) {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
 
   const isTikTok = platform.toLowerCase() === "tiktok";
   const isFacebook = platform.toLowerCase() === "facebook";
@@ -70,7 +69,11 @@ export default function HighlightVideoCard({
   const resolvedTikTokId = videoId || extractTikTokId(videoUrl);
   const resolvedYouTubeId = videoId || parseYouTubeUrl(videoUrl);
 
-  const shouldPlay = isPlaying || isHovered;
+  const isRestrictedFacebookReel =
+    isFacebook &&
+    (videoUrl.includes("250697900959082") || videoUrl.includes("330936076752192"));
+
+  const shouldPlay = isPlaying;
 
   const displayChannel = channelName || title;
   const displayHandle = channelHandle
@@ -78,8 +81,8 @@ export default function HighlightVideoCard({
       ? channelHandle
       : `@${channelHandle}`
     : isTikTok
-    ? `@${displayChannel.toLowerCase().replace(/[^a-z0-9_]/g, "") || "tiktok"}`
-    : `@${displayChannel.toLowerCase().replace(/[^a-z0-9_]/g, "") || "social"}`;
+      ? `@${displayChannel.toLowerCase().replace(/[^a-z0-9_]/g, "") || "tiktok"}`
+      : `@${displayChannel.toLowerCase().replace(/[^a-z0-9_]/g, "") || "social"}`;
 
   // Default formatted numbers if not provided
   const likesCount = stats?.likes ?? (isTikTok ? "14.2K" : "6,666");
@@ -132,10 +135,16 @@ export default function HighlightVideoCard({
 
       {/* 2. VIDEO MOCKUP SCREEN (9:16 PHONE FRAME) */}
       <div
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
         onClick={(e) => {
           e.stopPropagation();
+          const isMobileDevice =
+            typeof window !== "undefined" &&
+            (!window.matchMedia("(hover: hover)").matches || window.innerWidth < 768);
+
+          if (isRestrictedFacebookReel && isMobileDevice) {
+            window.open(videoUrl, "_blank", "noopener,noreferrer");
+            return;
+          }
           setIsPlaying(true);
         }}
         className="relative w-full aspect-[9/16] rounded-xl overflow-hidden bg-[#07181C] my-3 select-none cursor-pointer group/screen border border-[#CCE5E3]/40 shadow-inner flex flex-col justify-between"
@@ -148,7 +157,6 @@ export default function HighlightVideoCard({
               onClick={(e) => {
                 e.stopPropagation();
                 setIsPlaying(false);
-                setIsHovered(false);
               }}
               className="absolute top-2.5 right-2.5 z-30 w-7 h-7 rounded-full bg-black/75 hover:bg-red-600 text-white flex items-center justify-center transition-colors cursor-pointer shadow-md border border-white/20"
               title="Stop video"
@@ -159,7 +167,11 @@ export default function HighlightVideoCard({
 
             {isFacebook && (
               <div className="w-full h-full flex items-center justify-center">
-                <FacebookEmbed url={videoUrl} className="w-full h-full" />
+                <FacebookEmbed
+                  url={videoUrl}
+                  aspectRatio={videoAspectRatio}
+                  className="w-full h-full"
+                />
               </div>
             )}
 
@@ -205,22 +217,17 @@ export default function HighlightVideoCard({
             ) : (
               <div className="w-full h-full absolute inset-0 bg-black flex items-center justify-center overflow-hidden">
                 {isFacebook && (
-                  <iframe
-                    src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(
-                      videoUrl
-                    )}&show_text=false&autoplay=0&t=0`}
-                    title={title || displayChannel}
-                    className="w-full h-full border-0 pointer-events-none"
-                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                    allowFullScreen
-                    loading="lazy"
+                  <FacebookEmbed
+                    url={videoUrl}
+                    autoplay={false}
+                    aspectRatio={videoAspectRatio}
+                    className="w-full h-full pointer-events-none"
                   />
                 )}
                 {isTikTok && (
                   <iframe
-                    src={`https://www.tiktok.com/player/v1/${
-                      resolvedTikTokId || "7519379432910392584"
-                    }?autoplay=0`}
+                    src={`https://www.tiktok.com/player/v1/${resolvedTikTokId || "7519379432910392584"
+                      }?autoplay=0`}
                     title={title || displayChannel}
                     className="w-full h-full border-0 pointer-events-none"
                     allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"

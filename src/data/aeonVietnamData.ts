@@ -8,7 +8,7 @@ export const AEON_BRIEF_VIDEO_URL =
   'https://docs.google.com/spreadsheets/d/1M2ym2hW61PyCzL7FcR25thOk2ocSbpuK4iZVmtYPR2M/edit?usp=sharing';
 
 export const AEON_REELS_REPORT_URL =
-  'https://docs.google.com/spreadsheets/d/1M2ym2hW61PyCzL7FcR25thOk2ocSbpuK4iZVmtYPR2M/edit?usp=sharing';
+  'https://docs.google.com/presentation/d/1nLSd1h4olMeVvpjeUzeBrDfbhJa3jWNI5tPsMMvFuRE/edit?slide=id.p1#slide=id.p1';
 
 export const aeonReportLinks: AeonReportLink[] = [
   {
@@ -27,6 +27,19 @@ export const aeonReportLinks: AeonReportLink[] = [
   },
 ];
 
+// Dynamically import all aeon-mall images
+const aeonMallImagesGlob = import.meta.glob<string>(
+  '/assets/image/aeon-mall/*.{webp,WEBP,png,PNG,jpg,JPG,jpeg,JPEG}',
+  { eager: true, import: 'default' }
+);
+
+export const aeonMallImages: string[] = Object.values(aeonMallImagesGlob);
+
+export const getAeonMallImage = (filename: string): string => {
+  const matchKey = Object.keys(aeonMallImagesGlob).find((key) => key.endsWith(filename));
+  return matchKey ? aeonMallImagesGlob[matchKey] : '';
+};
+
 export const aeonHighlightVideos: AeonVideoItem[] = [
   {
     id: 'aeon-reel-01',
@@ -37,6 +50,7 @@ export const aeonHighlightVideos: AeonVideoItem[] = [
     reelId: '250697900959082',
     category: 'Employer Branding',
     description: 'Short-form recruitment and corporate culture story highlighting career journeys at AEON Vietnam.',
+    image: getAeonMallImage('aeon_reel_1_thumb.jpg'),
   },
   {
     id: 'aeon-reel-02',
@@ -47,6 +61,7 @@ export const aeonHighlightVideos: AeonVideoItem[] = [
     reelId: '1794471087668283',
     category: 'Workplace Culture',
     description: 'Dynamic short-form video capturing everyday vibrant work environment and employee empowerment.',
+    image: getAeonMallImage('aeon_reel_2_thumb.jpg'),
   },
   {
     id: 'aeon-reel-03',
@@ -57,6 +72,7 @@ export const aeonHighlightVideos: AeonVideoItem[] = [
     reelId: '899706545007777',
     category: 'Internal Communications',
     description: 'Engaging social video spotlighting talent development initiatives and operational excellence.',
+    image: getAeonMallImage('aeon_reel_3_thumb.jpg'),
   },
   {
     id: 'aeon-reel-04',
@@ -67,6 +83,7 @@ export const aeonHighlightVideos: AeonVideoItem[] = [
     reelId: '657038453174266',
     category: 'Mass Recruitment',
     description: 'High-energy recruitment teaser for mass hiring campaigns and university job fair outreach.',
+    image: getAeonMallImage('aeon_reel_4_thumb.jpg'),
   },
 ];
 
@@ -74,8 +91,8 @@ export const aeonMetrics: AeonMetric[] = [
   {
     label: 'Featured Reels',
     value: '4',
-    subtext: 'High-Performing Short Videos',
-    icon: 'fa-brands fa-facebook',
+    subtext: 'Growth with AEON Series',
+    icon: 'fa-solid fa-video',
   },
   {
     label: 'Video Production',
@@ -96,17 +113,3 @@ export const aeonMetrics: AeonMetric[] = [
     icon: 'fa-solid fa-users',
   },
 ];
-
-// Dynamically import all aeon-mall images
-const aeonMallImagesGlob = import.meta.glob<string>(
-  '/assets/image/aeon-mall/*.{webp,WEBP,png,PNG,jpg,JPG,jpeg,JPEG}',
-  { eager: true, import: 'default' }
-);
-
-export const aeonMallImages: string[] = Object.values(aeonMallImagesGlob);
-
-export const getAeonMallImage = (filename: string): string => {
-  const matchKey = Object.keys(aeonMallImagesGlob).find((key) => key.endsWith(filename));
-  return matchKey ? aeonMallImagesGlob[matchKey] : '';
-};
-

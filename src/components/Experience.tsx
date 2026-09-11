@@ -77,7 +77,6 @@ function getExperienceActionLinks(expId: string): ActionLink[] {
   switch (expId) {
     case "dn-group":
       return [
-
       ];
 
     case "v-lotus":
@@ -414,32 +413,8 @@ export default function ExperienceSection({
                         </p>
                       </div>
 
-                      {/* Header Action Links (Only visible when open, in 1 column with equal width) & Expand / Collapse Button */}
-                      <div className="flex items-start sm:items-center gap-6 sm:gap-8 lg:gap-10 shrink-0">
-                        {isOpen && actionLinks.length > 0 && (
-                          <div className="flex flex-col items-stretch gap-2 w-56 sm:w-64">
-                            {actionLinks.map((link, lIdx) => (
-                              <a
-                                key={lIdx}
-                                href={link.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onClick={(e) => e.stopPropagation()}
-                                className={`w-full px-3.5 py-2 rounded-xl font-narrow text-xs font-black uppercase tracking-wider flex items-center justify-between gap-2 transition-all shadow-xs hover:scale-105 cursor-pointer ${link.highlight
-                                  ? "bg-[#0B6E7B] hover:bg-[#08545E] text-white border border-[#2DD4BF]/40"
-                                  : "bg-[#F0F8F7] hover:bg-white text-[#0C2B31] border border-[#CCE5E3] hover:border-[#0B6E7B]"
-                                  }`}
-                              >
-                                <div className="flex items-center gap-2 truncate pr-1">
-                                  <i className={link.icon}></i>
-                                  <span className="truncate">{link.label}</span>
-                                </div>
-                                <i className="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-70 shrink-0"></i>
-                              </a>
-                            ))}
-                          </div>
-                        )}
-
+                      {/* Expand / Collapse Button */}
+                      <div className="flex items-center shrink-0">
                         <button
                           type="button"
                           className={`w-10 h-10 rounded-full border transition-all duration-300 flex items-center justify-center shrink-0 cursor-pointer ${isOpen
@@ -474,110 +449,169 @@ export default function ExperienceSection({
                             {/* Structured Sections (Clean unboxed layout without container cards) */}
                             {exp.sections ? (
                               <div className="space-y-8 pt-2">
-                                  {exp.sections.map((sec, sIdx) => {
-                                    const isAchievementSection = sec.title.toLowerCase().includes("achievement");
+                                {exp.sections.map((sec, sIdx) => {
+                                  const isAchievementSection = sec.title.toLowerCase().includes("achievement");
 
-                                    return (
-                                      <div
-                                        key={sIdx}
-                                        className="space-y-4 pt-4 border-t border-[#E0EFEF] first:border-t-0 first:pt-0"
-                                      >
-                                        {/* Section Header */}
-                                        <div className="flex items-center justify-between gap-3 pb-2 border-b border-[#E7F3F2]">
-                                          <div className="flex items-center gap-3">
-                                            <div className="w-7 h-7 rounded-lg bg-[#0B6E7B]/10 text-[#0B6E7B] flex items-center justify-center shrink-0 border border-[#0B6E7B]/20">
-                                              <i className={isAchievementSection ? "fa-solid fa-trophy text-xs" : "fa-solid fa-layer-group text-xs"}></i>
-                                            </div>
-                                            <h5 className="font-narrow text-base sm:text-lg font-black text-[#0C2B31] uppercase tracking-wide">
-                                              {sec.title}
-                                            </h5>
+                                  return (
+                                    <div
+                                      key={sIdx}
+                                      className="space-y-4 pt-4 border-t border-[#E0EFEF] first:border-t-0 first:pt-0"
+                                    >
+                                      {/* Section Header */}
+                                      <div className="flex items-center justify-between gap-3 pb-2 border-b border-[#E7F3F2]">
+                                        <div className="flex items-center gap-3">
+                                          <div className="w-7 h-7 rounded-lg bg-[#0B6E7B]/10 text-[#0B6E7B] flex items-center justify-center shrink-0 border border-[#0B6E7B]/20">
+                                            <i className={isAchievementSection ? "fa-solid fa-trophy text-xs" : "fa-solid fa-layer-group text-xs"}></i>
                                           </div>
-                                          {isAchievementSection && (
-                                            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0B6E7B] text-white font-narrow text-[11px] font-black tracking-widest uppercase shadow-xs">
-                                              <i className="fa-solid fa-star text-[10px]" />
-                                              <span>KEY IMPACT</span>
-                                            </span>
-                                          )}
+                                          <h5 className="font-narrow text-base sm:text-lg font-black text-[#0C2B31] uppercase tracking-wide">
+                                            {sec.title}
+                                          </h5>
                                         </div>
-
-                                        {/* Section Items List */}
-                                        <div className="space-y-3.5">
-                                          {sec.items.map((item, iIdx) => {
-                                            if (typeof item === "string") {
-                                              return (
-                                                <div key={iIdx} className="flex items-start gap-3.5 text-sm sm:text-base text-[#2C4A51] leading-relaxed">
-                                                  <div className="w-5 h-5 rounded-full bg-[#0B6E7B]/10 text-[#0B6E7B] flex items-center justify-center shrink-0 mt-0.5 border border-[#0B6E7B]/20">
-                                                    <i className="fa-solid fa-check text-[10px]" />
-                                                  </div>
-                                                  <div className="flex-1 font-sans">
-                                                    <HighlightText text={item} />
-                                                  </div>
-                                                </div>
-                                              );
-                                            } else {
-                                              return (
-                                                <div key={iIdx} className="space-y-3.5 pt-2">
-                                                  <div className="flex items-center gap-2.5 text-sm sm:text-base font-bold text-[#0C2B31]">
-                                                    <div className="w-6 h-6 rounded-lg bg-[#0B6E7B] text-white flex items-center justify-center shrink-0 text-xs shadow-2xs">
-                                                      <i className="fa-solid fa-chart-simple" />
-                                                    </div>
-                                                    <span>{item.subtitle}</span>
-                                                  </div>
-
-                                                  {/* High-Impact Stat Grid */}
-                                                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-1">
-                                                    {item.subitems.map((sub, subIdx) => {
-                                                      const parsed = parseMetric(sub);
-                                                      return (
-                                                        <div
-                                                          key={subIdx}
-                                                          className="bg-[#FAFCFC] border border-[#CCE5E3] rounded-xl p-4 sm:p-5 shadow-2xs hover:shadow-md hover:border-[#0B6E7B] hover:-translate-y-0.5 transition-all duration-300 group/stat flex flex-col justify-between"
-                                                        >
-                                                          <div className="flex items-center justify-between gap-2 mb-3">
-                                                            <div className={`w-8 h-8 rounded-xl ${parsed.iconBg} flex items-center justify-center text-sm group-hover/stat:scale-110 transition-transform`}>
-                                                              <i className={parsed.icon} />
-                                                            </div>
-                                                            <span className="font-mono text-[9px] uppercase font-black text-[#0B6E7B] tracking-widest px-2.5 py-0.5 bg-[#0B6E7B]/5 rounded-full border border-[#0B6E7B]/10">
-                                                              VERIFIED
-                                                            </span>
-                                                          </div>
-                                                          <div>
-                                                            {parsed.value ? (
-                                                              <>
-                                                                <div className="font-display text-2xl sm:text-3xl font-black text-[#0C2B31] tracking-tight group-hover/stat:text-[#0B6E7B] transition-colors leading-none">
-                                                                  {parsed.value}
-                                                                </div>
-                                                                <div className="font-sans text-xs sm:text-sm font-semibold text-[#4E6E75] mt-1.5 leading-snug">
-                                                                  {parsed.label}
-                                                                </div>
-                                                              </>
-                                                            ) : (
-                                                              <div className="font-narrow font-bold text-sm sm:text-base text-[#0C2B31]">
-                                                                {sub}
-                                                              </div>
-                                                            )}
-                                                          </div>
-                                                        </div>
-                                                      );
-                                                    })}
-                                                  </div>
-                                                </div>
-                                              );
-                                            }
-                                          })}
-                                        </div>
+                                        {isAchievementSection && (
+                                          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0B6E7B] text-white font-narrow text-[11px] font-black tracking-widest uppercase shadow-xs">
+                                            <i className="fa-solid fa-star text-[10px]" />
+                                            <span>KEY IMPACT</span>
+                                          </span>
+                                        )}
                                       </div>
-                                    );
-                                  })}
-                                </div>
-                              ) : (
-                                <p className="font-sans text-base sm:text-lg text-[#2C4A51] leading-relaxed">
-                                  <HighlightText text={exp.description} />
-                                </p>
-                              )}
+
+                                      {/* Section Items List */}
+                                      <div className="space-y-3.5">
+                                        {sec.items.map((item, iIdx) => {
+                                          if (typeof item === "string") {
+                                            return (
+                                              <div key={iIdx} className="flex items-start gap-3.5 text-sm sm:text-base text-[#2C4A51] leading-relaxed">
+                                                <div className="w-5 h-5 rounded-full bg-[#0B6E7B]/10 text-[#0B6E7B] flex items-center justify-center shrink-0 mt-0.5 border border-[#0B6E7B]/20">
+                                                  <i className="fa-solid fa-check text-[10px]" />
+                                                </div>
+                                                <div className="flex-1 font-sans">
+                                                  <HighlightText text={item} />
+                                                </div>
+                                              </div>
+                                            );
+                                          } else {
+                                            return (
+                                              <div key={iIdx} className="space-y-3.5 pt-2">
+                                                <div className="flex items-center gap-2.5 text-sm sm:text-base font-bold text-[#0C2B31]">
+                                                  <div className="w-6 h-6 rounded-lg bg-[#0B6E7B] text-white flex items-center justify-center shrink-0 text-xs shadow-2xs">
+                                                    <i className="fa-solid fa-chart-simple" />
+                                                  </div>
+                                                  <span>{item.subtitle}</span>
+                                                </div>
+
+                                                {/* High-Impact Stat Grid */}
+                                                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-1">
+                                                  {item.subitems.map((sub, subIdx) => {
+                                                    const parsed = parseMetric(sub);
+                                                    return (
+                                                      <div
+                                                        key={subIdx}
+                                                        className="bg-[#FAFCFC] border border-[#CCE5E3] rounded-xl p-4 sm:p-5 shadow-2xs hover:shadow-md hover:border-[#0B6E7B] hover:-translate-y-0.5 transition-all duration-300 group/stat flex flex-col justify-between"
+                                                      >
+                                                        <div className="flex items-center justify-between gap-2 mb-3">
+                                                          <div className={`w-8 h-8 rounded-xl ${parsed.iconBg} flex items-center justify-center text-sm group-hover/stat:scale-110 transition-transform`}>
+                                                            <i className={parsed.icon} />
+                                                          </div>
+                                                          <span className="font-mono text-[9px] uppercase font-black text-[#0B6E7B] tracking-widest px-2.5 py-0.5 bg-[#0B6E7B]/5 rounded-full border border-[#0B6E7B]/10">
+                                                            VERIFIED
+                                                          </span>
+                                                        </div>
+                                                        <div>
+                                                          {parsed.value ? (
+                                                            <>
+                                                              <div className="font-display text-2xl sm:text-3xl font-black text-[#0C2B31] tracking-tight group-hover/stat:text-[#0B6E7B] transition-colors leading-none">
+                                                                {parsed.value}
+                                                              </div>
+                                                              <div className="font-sans text-xs sm:text-sm font-semibold text-[#4E6E75] mt-1.5 leading-snug">
+                                                                {parsed.label}
+                                                              </div>
+                                                            </>
+                                                          ) : (
+                                                            <div className="font-narrow font-bold text-sm sm:text-base text-[#0C2B31]">
+                                                              {sub}
+                                                            </div>
+                                                          )}
+                                                        </div>
+                                                      </div>
+                                                    );
+                                                  })}
+                                                </div>
+                                              </div>
+                                            );
+                                          }
+                                        })}
+                                      </div>
+
+                                      {/* Action links under Key Achievements (Dark Showcase Banner matching Image 2) */}
+                                      {isAchievementSection && actionLinks.length > 0 && (
+                                        <div className="pt-4">
+                                          <div className="rounded-2xl sm:rounded-3xl p-6 sm:p-8 bg-[#07262B] border border-[#CCE5E3]/30 text-white flex flex-col lg:flex-row lg:items-center justify-between gap-6 shadow-xl relative overflow-hidden">
+                                            {/* Subtle ambient light runner in background */}
+                                            <div className="absolute top-0 right-0 w-80 h-80 bg-[#0B6E7B]/20 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
+
+                                            {/* Left: Badge, Title & Description */}
+                                            <div className="space-y-2.5 max-w-xl relative z-10">
+                                              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-[#2DD4BF] font-narrow text-[11px] sm:text-xs font-black uppercase tracking-[0.2em]">
+                                                <i className="fa-solid fa-file-lines text-xs text-[#2DD4BF]" />
+                                                <span>
+                                                  {exp.id === "v-lotus"
+                                                    ? "BRAND PRESENTATION & STRATEGY"
+                                                    : "PROJECT DOCUMENTATION & REPORTS"}
+                                                </span>
+                                              </div>
+
+                                              <h4 className="font-display text-xl sm:text-2xl lg:text-3xl font-black uppercase tracking-tight text-white leading-tight">
+                                                {exp.id === "v-lotus"
+                                                  ? "V-LOTUS MULTI-BRAND PERFORMANCE & CONTENT ROADMAPS"
+                                                  : `${exp.company} STRATEGIC DOCUMENTATION`}
+                                              </h4>
+
+                                              <p className="font-sans text-xs sm:text-sm text-white/75 leading-relaxed">
+                                                {exp.id === "v-lotus"
+                                                  ? "Explore the complete weekly performance reports, tracking analytics, and comprehensive monthly editorial content plans crafted across Conservo, Yoshinoya, and Ussina."
+                                                  : "Explore the live Google Sheets, performance metrics tracking, and operational strategy documentation."}
+                                              </p>
+                                            </div>
+
+                                            {/* Right: Stacked Action Buttons */}
+                                            <div className="flex flex-col gap-2.5 sm:gap-3 shrink-0 w-full lg:w-auto min-w-[260px] sm:min-w-[300px] relative z-10">
+                                              {actionLinks.map((link, lIdx) => (
+                                                <a
+                                                  key={lIdx}
+                                                  href={link.url}
+                                                  target="_blank"
+                                                  rel="noopener noreferrer"
+                                                  onClick={(e) => e.stopPropagation()}
+                                                  className="w-full px-4 sm:px-5 py-3 bg-white hover:bg-[#F0F8F7] text-[#0C2B31] hover:text-[#0B6E7B] rounded-xl font-narrow text-xs sm:text-sm font-black uppercase tracking-wider flex items-center justify-between gap-3 shadow-md hover:shadow-lg transition-all hover:scale-[1.02] cursor-pointer group/btn border border-white/20"
+                                                >
+                                                  <div className="flex items-center gap-2.5 min-w-0">
+                                                    <i
+                                                      className={`${link.icon.replace(
+                                                        "text-[#2DD4BF]",
+                                                        "text-[#0B6E7B]"
+                                                      )} text-sm text-[#0B6E7B] shrink-0`}
+                                                    />
+                                                    <span className="truncate">{link.label}</span>
+                                                  </div>
+                                                  <i className="fa-solid fa-arrow-up-right-from-square text-[11px] text-[#0C2B31]/60 group-hover/btn:text-[#0B6E7B] shrink-0" />
+                                                </a>
+                                              ))}
+                                            </div>
+                                          </div>
+                                        </div>
+                                      )}
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                            ) : (
+                              <p className="font-sans text-base sm:text-lg text-[#2C4A51] leading-relaxed">
+                                <HighlightText text={exp.description} />
+                              </p>
+                            )}
 
                             {/* INTERACTIVE SHOWCASE COMPONENT */}
-                            <div className="pt-6 border-t border-[#CCE5E3]">
+                            <div>
                               {exp.id === "dn-group" ? (
                                 <DNGroupExperienceShowcase />
                               ) : exp.id === "v-lotus" ? (

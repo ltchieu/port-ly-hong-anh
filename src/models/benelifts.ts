@@ -50,9 +50,11 @@ export interface BeneliftsVideoItem {
   title: string;
   role: string;
   videoUrl: string;
+  videoAspectRatio?: "16:9" | "9:16" | "landscape" | "vertical" | string;
   highlight: string;
   description: string;
   tags: string[];
+  image?: string;
 }
 
 export interface FacebookHighlightPost {
