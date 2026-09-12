@@ -5,7 +5,6 @@ import GallerySkeleton from "./GallerySkeleton";
 import AnimatedCounter from "./AnimatedCounter";
 import HighlightText from "./HighlightText";
 import HighlightVideoCard from "./HighlightVideoCard";
-import FacebookEmbed from "./FacebookEmbed";
 import ScrollablePostContent from "./ScrollablePostContent";
 
 // Lazy import interactive sub-components

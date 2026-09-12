@@ -4,8 +4,6 @@ import ImageLightboxModal from "./ImageLightboxModal";
 import AnimatedCounter from "./AnimatedCounter";
 import HighlightText from "./HighlightText";
 import HighlightVideoCard from "./HighlightVideoCard";
-import FacebookEmbed from "./FacebookEmbed";
-import TikTokEmbed from "./TikTokEmbed";
 import ScrollablePostContent from "./ScrollablePostContent";
 import type { LightboxImageData } from "../../models/imageLightboxModal";
 
@@ -116,6 +114,7 @@ export default function DNGroupExperienceShowcase() {
                 platform={video.platform}
                 videoUrl={video.videoUrl}
                 videoId={video.videoId}
+                image={video.image}
                 stats={{
                   likes: isDieuuoc
                     ? vIdx === 2

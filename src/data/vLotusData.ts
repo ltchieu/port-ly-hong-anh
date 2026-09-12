@@ -24,7 +24,7 @@ export type {
 
 // Dynamically import all images under assets/image/V_Lotus using Vite import.meta.glob
 const vLotusImagesGlob = import.meta.glob<string>(
-  '../../assets/image/V_Lotus/*.webp',
+  '../../assets/image/V_Lotus/*.{webp,jpg,jpeg,png,JPG,PNG,WEBP}',
   { eager: true, import: 'default' }
 );
 
@@ -365,6 +365,7 @@ Chính sự tinh giản trong nguyên liệu, sự chỉn chu trong cách làm v
         briefUrl: "https://docs.google.com/presentation/d/1vXM5CUAIm0cCK_NDEoBUoqhK-zl7rq1eJfKrmhMXO9Y/edit?usp=sharing",
         highlight: "Facebook Reel",
         description: "Engaging short-form bakery presentation and artisan bread crafting reel published on Conservo Japanese Breads & Café Facebook page.",
+        image: getVLotusImage("conservo_reel_thumb.jpg"),
         tags: ["Facebook Reel", "Conservo", "Artisan Bakery", "Short-Form"],
       },
       {
@@ -377,6 +378,7 @@ Chính sự tinh giản trong nguyên liệu, sự chỉn chu trong cách làm v
         briefUrl: "https://docs.google.com/presentation/d/1vXM5CUAIm0cCK_NDEoBUoqhK-zl7rq1eJfKrmhMXO9Y/edit?usp=sharing",
         highlight: "Facebook Reel",
         description: "Dynamic dining experience, sizzling beef bowls, and lifestyle food reel published on Yoshinoya Vietnam Facebook page.",
+        image: getVLotusImage("yoshinoya_reel_thumb.jpg"),
         tags: ["Facebook Reel", "Yoshinoya", "Gyudon", "Fast Casual"],
       },
       {

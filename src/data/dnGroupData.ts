@@ -349,7 +349,7 @@ Mặc dù vậy, nhưng Implant vẫn là kỹ thuật khó, liên quan trực t
         videoId: "7567568707547958548",
         highlight: "TikTok Video",
         description: "Heartwarming patient story and mother-care viral short-form video produced for the 'Shark Dental x Điều ước của mẹ' campaign channel.",
-        image: getDNImage("dn_group_img_29.webp") || getDNImage("dn_group_img_17.webp"),
+        image: getDNImage("tiktok_dieu_uoc_1_thumb.webp"),
         tags: ["TikTok Viral", "Điều Ước Của Mẹ", "Human Interest", "CapCut Pro"],
       },
       {
@@ -364,7 +364,7 @@ Mặc dù vậy, nhưng Implant vẫn là kỹ thuật khó, liên quan trực t
         scriptUrl: "https://docs.google.com/spreadsheets/d/145IwPNgMM3_desFcJoGOzzN21Lbtw2hVOaNPayWZrk8/edit?usp=sharing",
         highlight: "TikTok Feature with Brief & Script",
         description: "Full-lifecycle TikTok video production supported by strategic creative brief documentation and detailed on-location shooting script (Kịch bản đi quay).",
-        image: getDNImage("dn_group_img_29.webp") || getDNImage("dn_group_img_08.webp"),
+        image: getDNImage("tiktok_dieu_uoc_2_thumb.webp"),
         tags: ["TikTok Production", "Shooting Script", "Creative Brief", "Viral Channel"],
       },
     ],

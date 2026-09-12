@@ -1,5 +1,4 @@
 import { useState, useMemo, useCallback, lazy, Suspense } from 'react';
-import FacebookEmbed from './FacebookEmbed';
 import AnimatedCounter from './AnimatedCounter';
 import HighlightText from './HighlightText';
 import HighlightVideoCard from './HighlightVideoCard';

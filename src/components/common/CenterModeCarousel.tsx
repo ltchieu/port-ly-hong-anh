@@ -2,6 +2,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import type { CarouselItemData } from "../../models/carousel";
 import { ImageLightboxModal } from "./ImageLightboxModal";
+import FacebookEmbed from "./FacebookEmbed";
 
 interface CenterModeCarouselProps {
   items: CarouselItemData[];
@@ -324,6 +325,15 @@ function CenterModeCard({
   const videoTargetUrl = item.videoUrl || item.link || "";
 
   const [isPlayingNativeVideo, setIsPlayingNativeVideo] = useState(false);
+  const [isPlayingFacebook, setIsPlayingFacebook] = useState(false);
+
+  // Reset active video playback when card is no longer centered
+  useEffect(() => {
+    if (!isCenter) {
+      setIsPlayingFacebook(false);
+      setIsPlayingNativeVideo(false);
+    }
+  }, [isCenter]);
 
   // Handle native HTML5 video element play/pause on click
   useEffect(() => {
@@ -345,16 +355,24 @@ function CenterModeCard({
       <div className="relative w-full rounded-2xl overflow-hidden bg-black border border-white/15 shadow-md pointer-events-none group">
         <div className="relative w-full h-[500px] sm:h-[560px] md:h-[600px] bg-black overflow-hidden flex items-center justify-center">
           {isFacebook ? (
-            <iframe
-              src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(
-                videoTargetUrl
-              )}&show_text=false&autoplay=0&t=0`}
-              title={item.title || "Facebook Video Reel"}
-              className="w-full h-full border-0 pointer-events-none"
-              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-              allowFullScreen
-              loading="lazy"
-            />
+            <div className="relative w-full h-full">
+              {item.image ? (
+                <img
+                  src={item.image}
+                  alt={item.title || "Facebook Reel"}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <div className="w-full h-full bg-gradient-to-br from-[#0C2B31] via-[#07181C] to-[#1877F2]/20 flex items-center justify-center">
+                  <i className="fa-brands fa-facebook-f text-white/40 text-4xl" />
+                </div>
+              )}
+              <div className="absolute inset-0 bg-black/35 flex items-center justify-center">
+                <div className="w-11 h-11 rounded-full bg-black/50 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white shadow-md">
+                  <i className="fa-solid fa-play text-xs translate-x-0.5" />
+                </div>
+              </div>
+            </div>
           ) : isTikTok ? (
             <iframe
               src={`https://www.tiktok.com/player/v1/${
@@ -416,19 +434,61 @@ function CenterModeCard({
       >
         {/* Full Video Container */}
         <div className="relative w-full h-[500px] sm:h-[560px] md:h-[600px] bg-black overflow-hidden flex items-center justify-center">
-          {/* Live Player showing native thumbnail */}
+          {/* Live Player showing native thumbnail or authentic Facebook Reel card */}
           {isFacebook ? (
-            <iframe
-              key={`fb-${item.id}`}
-              src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(
-                videoTargetUrl
-              )}&show_text=false&autoplay=0&t=0`}
-              title={item.title || "Facebook Video Reel"}
-              className="w-full h-full border-0 pointer-events-auto"
-              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-              allowFullScreen
-              loading="lazy"
-            />
+            isPlayingFacebook ? (
+              <div className="relative w-full h-full bg-black flex items-center justify-center overflow-hidden">
+                <FacebookEmbed
+                  url={videoTargetUrl}
+                  autoplay={true}
+                  className="w-full h-full"
+                />
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsPlayingFacebook(false);
+                  }}
+                  className="absolute top-3.5 right-3.5 z-40 w-8 h-8 rounded-full bg-black/80 hover:bg-red-600 text-white flex items-center justify-center transition-colors cursor-pointer shadow-lg border border-white/20"
+                  title="Stop video"
+                  aria-label="Stop video"
+                >
+                  <i className="fa-solid fa-xmark text-sm" />
+                </button>
+              </div>
+            ) : (
+              <div
+                onClick={() => {
+                  setIsPlayingFacebook(true);
+                }}
+                className="relative w-full h-full cursor-pointer group/fb"
+                title="Click để phát video"
+              >
+                {item.image ? (
+                  <img
+                    src={item.image}
+                    alt={item.title || "Facebook Reel"}
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover/fb:scale-105"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-[#0C2B31] via-[#07181C] to-[#1877F2]/25 flex items-center justify-center">
+                    <div className="w-16 h-16 rounded-full bg-[#1877F2]/20 border border-[#1877F2]/40 flex items-center justify-center text-[#1877F2] text-3xl shadow-lg">
+                      <i className="fa-brands fa-facebook-f" />
+                    </div>
+                  </div>
+                )}
+
+                {/* Ambient Vignette Gradients */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/85 pointer-events-none" />
+
+                {/* Center Play Button Overlay */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-2.5 pointer-events-none z-10">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-black/45 backdrop-blur-md border border-white/30 flex items-center justify-center text-white shadow-2xl group-hover/fb:scale-110 group-hover/fb:bg-[#0B6E7B]/90 transition-all duration-300">
+                    <i className="fa-solid fa-play text-lg sm:text-xl translate-x-0.5" />
+                  </div>
+                </div>
+              </div>
+            )
           ) : isTikTok ? (
             <iframe
               key={`tiktok-${item.id}`}
